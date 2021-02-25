@@ -30,7 +30,7 @@ class factura(models.Model):
       #detalle =  fields.One2many('sale.order.detalle', 'account.Invoice', string='Detalle')
       zeros =  fields.One2many('zeros.lineas', 'accountInv', string='Zeros')
       
-      @api.multi
+      
       def llamado_boton_factu(self):
         #raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+self.partner_id.name)    
         for r in self:           
@@ -567,7 +567,7 @@ class factura(models.Model):
           return fact          
      
       """
-      @api.multi
+      
       def write(self, vals):
           res = super(factura, self).write(vals)
             #update your custom model's field when the Invoice state is paid
@@ -583,7 +583,7 @@ class factura(models.Model):
           res          
       """
 
-      @api.multi
+      
       def enviar_factura_timbrada_cancelada(self, vals):                                        
           mail_template = self.env['mail.template'].search([('id', '=', 82)])
           if mail_template:
@@ -594,7 +594,7 @@ class factura(models.Model):
              self.env['mail.template'].browse(mail_template.id).send_mail(self.id,force_send=True)              
             
 
-      @api.multi
+      
       def enviar_factura_timbrada(self, vals):                                        
           mail_template = self.env['mail.template'].search([('id', '=', 61)])
           if mail_template:
