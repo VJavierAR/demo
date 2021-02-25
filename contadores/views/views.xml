@@ -37,7 +37,7 @@
                             <field name="name" attrs="{}" invisible="1"/>
                             <field name="grupo"/>
                             <field name="ultimoInforme"/>
-                            <field name="serie" domain="[['x_studio_ubicacion_id','=',dominio]]"/>
+                            <!--<field name="serie" domain="[['x_studio_ubicacion_id','=',dominio]]"/>-->
                             <field name="contadorColor"/>
                             <field name="contadorMono"/>
                             <field name="ip"/>
