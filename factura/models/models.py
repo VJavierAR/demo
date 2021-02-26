@@ -23,7 +23,7 @@ valores = [('01', 'Enero'), ('02', 'Febrero'), ('03', 'Marzo'), ('04', 'Abril'),
 
 
 class factura(models.Model):
-      _inherit = 'account.invoice'
+      _inherit = 'account.move'
       date_invoice = fields.Date(string='Fecha factura', default=datetime.datetime.now(pytz.utc).strftime('%Y-%m-%d'))
       month = fields.Selection(valores,string='Mes',default='04')
       year = fields.Selection(get_years(), string='Año',default=2020)
