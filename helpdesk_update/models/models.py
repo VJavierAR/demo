@@ -984,19 +984,19 @@ class helpdesk_update(models.Model):
     movilClienteContacto = fields.Text(string = 'Movil de contacto cliente', compute = '_compute_movilCliente')
     correoClienteContacto = fields.Text(string = 'Correo de contacto cliente', compute = '_compute_correoCliente')
 
-    @api.one
+    
     @api.depends('clienteContactos')
     def _compute_telefonoCliente(self):
         if self.clienteContactos:
             self.telefonoClienteContacto = self.clienteContactos.phone
 
-    @api.one
+    
     @api.depends('clienteContactos')
     def _compute_movilCliente(self):
         if self.clienteContactos:
             self.movilClienteContacto = self.clienteContactos.mobile
 
-    @api.one
+    
     @api.depends('clienteContactos')
     def _compute_correoCliente(self):
         if self.clienteContactos:
@@ -1008,7 +1008,7 @@ class helpdesk_update(models.Model):
     correoLocalidadContacto = fields.Text(string = 'Correo de localidad', compute = '_compute_correoLocalidad')
     direccionLocalidadText = fields.Text(string = 'Dirección localidad', compute = '_compute_direccionLocalidad')
 
-    #@api.one
+    #
     
     @api.depends('x_studio_empresas_relacionadas')
     def _compute_direccionLocalidad(self):
@@ -1036,19 +1036,19 @@ class helpdesk_update(models.Model):
                                                 </address>
                                             """
 
-    @api.one
+    
     @api.depends('localidadContacto')
     def _compute_telefonoLocalidad(self):
         if self.localidadContacto:
             self.telefonoLocalidadContacto = self.localidadContacto.phone
 
-    @api.one
+    
     @api.depends('localidadContacto')
     def _compute_movilLocalidad(self):
         if self.localidadContacto:
             self.movilLocalidadContacto = self.localidadContacto.mobile
 
-    @api.one
+    
     @api.depends('localidadContacto')
     def _compute_correoLocalidad(self):
         if self.localidadContacto:
@@ -1651,7 +1651,7 @@ class helpdesk_update(models.Model):
 
     #@api.model           
     #@api.depends('productosSolicitud')
-    #@api.one
+    #
     """
     def _productos_solicitud_filtro(self):
         res = {}    
@@ -4032,7 +4032,7 @@ class helpdesk_update(models.Model):
                 raise exceptions.ValidationError("No son vacios : "+str(f))
     
     
-    #@api.one
+    #
     #@api.depends('team_id', 'x_studio_responsable_de_equipo')
     """
     @api.model
