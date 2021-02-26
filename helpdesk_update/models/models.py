@@ -887,7 +887,7 @@ class helpdesk_update(models.Model):
         return ticket
 
 
-    @api.multi
+    
     def write(self, vals):
 
         #_logger.info('vals en write: ' + str(vals))
@@ -1009,7 +1009,7 @@ class helpdesk_update(models.Model):
     direccionLocalidadText = fields.Text(string = 'Dirección localidad', compute = '_compute_direccionLocalidad')
 
     #@api.one
-    @api.multi
+    
     @api.depends('x_studio_empresas_relacionadas')
     def _compute_direccionLocalidad(self):
         for record in self:
@@ -1202,7 +1202,7 @@ class helpdesk_update(models.Model):
                 raise exceptions.Warning('No se pudo actualizar la dirreción de la solicitud: ' + str(sale.name) + ' del ticket: ' + str(self.x_studio_id_ticket) + " debido a que ya fue validada la solicitud. \nIntento actualizar el campo 'Localidad' con la dirección: " + str(self.x_studio_empresas_relacionadas.parent_id.name) + " " + str(self.x_studio_empresas_relacionadas.name))
                 
                 
-    @api.multi
+    
     def regresarAte(self):
         estado = self.stage_id.name
         #if estado == 'Atención':
@@ -1753,7 +1753,7 @@ class helpdesk_update(models.Model):
     
 
 
-    @api.multi
+    
     @api.onchange('x_studio_equipo_por_nmero_de_serie','x_studio_equipo_por_nmero_de_serie_1')
     def abierto(self):
         #que pasa si hay mas de 1 ticket xD .i ->search([['name', '=', self.name]]).id
@@ -2482,7 +2482,7 @@ class helpdesk_update(models.Model):
     estadoSolicitudDeRefaccion = fields.Boolean(string="Paso por estado solicitud de refaccion", default=False)
     
     #@api.oncgange()
-    @api.multi
+    
     def crear_solicitud_refaccion(self):
         for record in self:
             #if record.x_studio_id_ticket != 0:
@@ -2701,7 +2701,7 @@ class helpdesk_update(models.Model):
 
 
 
-    @api.multi
+    
     def crear_y_validar_solicitud_refaccion(self):
         record_ids = self.ids
         #_logger.info('record_ids: ' + str(record_ids))
@@ -2921,7 +2921,7 @@ class helpdesk_update(models.Model):
 
 
     #@api.onchange('x_studio_captura_c')
-    @api.multi
+    
     def capturandoMesa(self):
         for record in self:
             #if self.x_studio_field_nO7Xg.id != False and self.x_studio_field_nO7Xg.state == 'sale':
@@ -2997,7 +2997,7 @@ class helpdesk_update(models.Model):
     estadoSolicitudDeToner = fields.Boolean(string="Paso por estado pendiente por autorizar solicitud", default=False)
     
     #@api.onchange('x_studio_tipo_de_requerimiento')
-    @api.multi
+    
     def toner(self):
       for record in self:
         jalaSolicitudes=''
@@ -3408,7 +3408,7 @@ class helpdesk_update(models.Model):
                 raise exceptions.except_orm(_(errorTonerNoValidado), _(mensajeSolicitudTonerNoValida + " Estado: " + estadoActual))
     
 
-    @api.multi
+    
     def crearYValidarSolicitudDeToner(self):
         for record in self:
             if not record.x_studio_field_nO7Xg:
@@ -3654,7 +3654,7 @@ class helpdesk_update(models.Model):
                       }
                 return {'warning': mess}
 
-    @api.multi
+    
     def crearYValidarSolicitudDeTonerTest(self):
         for record in self:
             jalaSolicitudes = ''
@@ -3934,7 +3934,7 @@ class helpdesk_update(models.Model):
        
     #@api.model            
     @api.onchange('x_studio_activar_compatibilidad')
-    #@api.multi
+    #
     def productos_filtro(self):
         res = {}             
         g = str(self.x_studio_nombretmp)
@@ -4582,7 +4582,7 @@ class helpdesk_update(models.Model):
             
 
     #@api.model
-    #@api.multi
+    #
     @api.onchange('x_studio_equipo_por_nmero_de_serie','x_studio_equipo_por_nmero_de_serie_1.serie','x_studio_equipo_por_nmero_de_serie_1')
     #@api.depends('x_studio_equipo_por_nmero_de_serie')
     def actualiza_datos_cliente(self):
@@ -5126,7 +5126,7 @@ class helpdesk_update(models.Model):
 
     
     order_line = fields.One2many('helpdesk.lines','ticket',string='Order Lines')
-    @api.multi
+    
     def cambio_wizard(self):
         wiz = self.env['helpdesk.comentario'].create({'ticket_id':self.id })
         view = self.env.ref('helpdesk_update.view_helpdesk_comentario')
@@ -5144,7 +5144,7 @@ class helpdesk_update(models.Model):
         }
 
 
-    @api.multi
+    
     def no_validar_con_comentario_wizard(self):
         wiz = self.env['helpdesk.comentario.no.validar'].create({'ticket_id':self.id })
         view = self.env.ref('helpdesk_update.view_helpdesk_no_validar_con_comentario')
@@ -5161,7 +5161,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }
 
-    @api.multi
+    
     def resuelto_con_comentario_wizard(self):
         wiz = self.env['helpdesk.comentario.resuelto'].create({'ticket_id':self.id })
         view = self.env.ref('helpdesk_update.view_helpdesk_resuleto_con_comentario')
@@ -5178,7 +5178,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }
 
-    @api.multi
+    
     def cerrar_con_comentario_wizard(self):
         wiz = self.env['helpdesk.comentario.cerrar'].create({'ticket_id':self.id })
         view = self.env.ref('helpdesk_update.view_helpdesk_cerrar_con_comentario')
@@ -5195,7 +5195,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }
 
-    @api.multi
+    
     def cancelar_con_comentario_wizard(self):
         wiz = self.env['helpdesk.comentario.cancelar'].create({'ticket_id':self.id })
         view = self.env.ref('helpdesk_update.view_helpdesk_cancelar_con_comentario')
@@ -5212,7 +5212,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }
 
-    @api.multi
+    
     def contadores_wizard(self):
         wiz = self.env['helpdesk.contadores'].create({'ticket_id':self.id})
         view = self.env.ref('helpdesk_update.view_helpdesk_contadores')
@@ -5229,7 +5229,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }
 
-    @api.multi
+    
     def contacto_wizard(self):
         wiz = self.env['helpdesk.contacto'].create({'ticket_id':self.id})
         view = self.env.ref('helpdesk_update.view_helpdesk_contacto')
@@ -5246,7 +5246,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }
 
-    @api.multi
+    
     def detalle_serie_wizard(self):
         wiz = self.env['helpdesk.detalle.serie'].create({'ticket_id':self.id})
         view = self.env.ref('helpdesk_update.view_helpdesk_bitacora')
@@ -5263,7 +5263,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }        
 
-    @api.multi
+    
     def reincidencia_wizard(self):
         wiz = self.env['helpdesk.reincidencia'].create({'ticket_id':self.id})
         view = self.env.ref('helpdesk_update.view_helpdesk_reincidencia')
@@ -5281,7 +5281,7 @@ class helpdesk_update(models.Model):
         }   
 
 
-    @api.multi
+    
     def detalle_toner_wizard(self):
         wiz = self.env['helpdesk.datos.toner'].create({
                                                         'ticket_id': self.id
@@ -5304,7 +5304,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }
 
-    @api.multi
+    
     def detalle_mesa_wizard(self):
 
         wiz = self.env['helpdesk.datos.mesa'].search([('ticket_id', '=', self.id)], order = 'create_date desc', limit = 1 )
@@ -5444,7 +5444,7 @@ class helpdesk_update(models.Model):
         }
 
 
-    @api.multi
+    
     def detalle_serie_toner_wizard(self):
         ids = []
         for dca in self.x_studio_equipo_por_nmero_de_serie_1:
@@ -5468,7 +5468,7 @@ class helpdesk_update(models.Model):
         }
 
 
-    #@api.multi
+    #
     def agregar_productos_wizard(self):
         if self.stage_id.id == 18 or self.stage_id.id == 4:
             mensajeTitulo = 'Estado no valido'
@@ -5522,7 +5522,7 @@ class helpdesk_update(models.Model):
             }
 
 
-    #@api.multi
+    #
     def helpdesk_confirmar_validar_refacciones_wizard(self):
         _logger.info('***** Inicio de helpdesk_confirmar_validar_refacciones_wizard: ' + str(datetime.datetime.now(pytz.timezone('America/Mexico_City')).strftime("%d/%m/%Y %H:%M:%S") ) + ' *****')
         wiz = self.env['helpdesk.confirmar.validar.refacciones'].create({'ticket_id':self.id})
@@ -5734,7 +5734,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }
 
-    @api.multi
+    
     def reiniciar_contadores_wizard(self):
         wiz = self.env['helpdesk.contadores.reiniciar.mesa'].create({'ticket_id': self.id})
         #wiz.productos = [(6, 0, self.x_studio_productos.ids)]
@@ -5754,7 +5754,7 @@ class helpdesk_update(models.Model):
             'context': self.env.context,
         }
 
-    @api.multi
+    
     def editar_contadores_wizard(self):
         wiz = self.env['helpdesk.contadores.editar.mesa'].create({'ticket_id': self.id})
         #wiz.productos = [(6, 0, self.x_studio_productos.ids)]
@@ -5907,7 +5907,7 @@ class helpdesk_agregar_productos(models.Model):
 
 
     @api.onchange('activar_compatibilidad')
-    #@api.multi
+    #
     def productos_filtro(self):
         res = {}             
         g = str(self.ticket_id.x_studio_nombretmp)
