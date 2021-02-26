@@ -166,7 +166,7 @@ class gastos_gnsys(models.Model):
     totalMontoMotivosFinal = fields.Float(string = 'Total monto de motivos',track_visibility='onchange')
     def hola(self):
         return { 'warning': { 'title': 'Mensaje de aviso ', 'message': 'La fecha de compromiso de adelanto es mayor a la fecha limite, usted puede continuar'} }
-    @api.multi
+    
     @api.onchange('motivos')
     def calcularTotalMotivos(self):
         message = ""
@@ -234,11 +234,11 @@ class gastos_gnsys(models.Model):
     montoComprobadoAprobado =  fields.Float(string = " Monto comprobado aprobado", track_visibility='onchange')
     estatusComprobaciones = fields.Selection([('activo','Puede agregar comprobaciónes'), ('desactivado','No puede agregar comprobaciónes')], default='activo',string = "Status de comprobaciónes", track_visibility='onchange')
     montoPorComprobar =  fields.Float(string = "Monto por comprobar", track_visibility='onchange')
-    @api.multi
+    
     def activarComprovaciones(self):
         for rec in self : 
             rec.write({'estatusComprobaciones':'activo'})
-    @api.multi
+    
     def desactivaComprovaciones(self):
         for rec in self : 
             rec.write({'estatusComprobaciones':'desactivado'})
@@ -254,19 +254,19 @@ class gastos_gnsys(models.Model):
             self.montoComprobado = montoPagadoTotal
             self.montoComprobadoAprobado = montoComprobadoAprobadoTotal
     #Codigo de estatus del gasto
-    @api.multi
+    
     def cancelarGasto(self):
         for rec in self : 
             rec.write({'statusGasto':'cancelado'})
             rec.write({'autorizacionLider':'rechazado'})
             rec.write({'autorizacionFinanzas':'rechazado'})
-    @api.multi
+    
     def reactivaGasto(self) : 
         for rec in self : 
             rec.write({'statusGasto':'aprovacion'})
             rec.write({'autorizacionFinanzas':'aprobado'})
             rec.write({'autorizacionLider':'aprobado'})
-    @api.multi
+    
     def autorizarGasto(self):
         for rec in self : 
             rec.write({'statusGasto':'autorizacion'})
@@ -356,7 +356,7 @@ class gastos_gnsys(models.Model):
 
     #Conceptos para comprobaciónes
     archivoXMLConceptos=fields.Binary(store=True,readonly=False,string="XML con conceptos")
-    @api.multi
+    
     @api.onchange('archivoXMLConceptos')
     def llenaConceptos(self):
         if(self.archivoXMLConceptos):
@@ -382,7 +382,7 @@ class gastos_gnsys(models.Model):
                 self.update({'comprobaciones': vals})
     # Conceptos para devoluciónes
     archivoXMLDevoluciones =fields.Binary(store=True,readonly=False,string="XML con conceptos")
-    @api.multi
+    
     @api.onchange('archivoXMLDevoluciones')
     def llenaConceptosDev(self):
         if(self.archivoXMLDevoluciones):
@@ -485,7 +485,7 @@ class comprobaciones(models.Model):
         if self.porcentajeAceptado : 
             if self.monto :
                 self.montoAprobado = self.monto * self.porcentajeAceptado
-    @api.multi
+    
     @api.onchange('archivoXML')
     def llenaCampos(self):
         if(self.archivoXML):
@@ -552,7 +552,7 @@ class PagoSolicitante(models.Model):
                 message = ("El pago no puede ser mayor al día de hoy .")
                 mess = { 'title': _('Error'), 'message' : message}
                 return {'warning': mess}
-    @api.multi
+    
     @api.onchange('archivo')
     def llenaCampos(self):
         if(self.archivo):
@@ -591,7 +591,7 @@ class Pagos(models.Model):
     totalMonto = fields.Float(string = "Total de monto")
 
 
-    @api.multi
+    
     @api.onchange('archivoXML')
     def llenaCampos(self):
         if(self.archivoXML):
