@@ -214,8 +214,11 @@ class StockPicking(Model):
     @api.onchange('x_studio_comentario_1')
     def mandarTicket(self):
         if(self.sale_id.x_studio_field_bxHgp):
+            i=True
             #c = self.env['helpdesk.ticket'].search([('id','=',self.x_studio_idtempticket)])
-            self.env['x_historial_helpdesk'].sudo().create({ 'x_id_ticket' : self.sale_id.x_studio_field_bxHgp.id, 'x_persona' : str(self.env.user.name), 'x_estado' : "Comentario", 'x_disgnostico':self.x_studio_comentario_1}) 
+            ########Hay que agregar historial
+            #self.env['x_historial_helpdesk'].sudo().create({ 'x_id_ticket' : self.sale_id.x_studio_field_bxHgp.id, 'x_persona' : str(self.env.user.name), 'x_estado' : "Comentario", 'x_disgnostico':self.x_studio_comentario_1}) 
+            
             #c.write({'x_studio_evidencia_distribuidor': self.x_studio_evidencia_a_ticket})
 
     #@api.onchange('carrier_tracking_ref')
@@ -245,11 +248,12 @@ class StockPicking(Model):
                self.sale_id.x_studio_field_bxHgp.write({'stage_id':18})
                for ev in self.x_studio_evidencia:
                    self.sale_id.x_studio_field_bxHgp.write({'documentosTecnico':[ev.x_foto]})
-                   self.env['x_historial_helpdesk'].sudo().create({ 'x_id_ticket' : self.sale_id.x_studio_field_bxHgp.id
-                                                                      , 'x_persona' : str(self.env.user.name)
-                                                                      , 'x_estado' : "Cierre"
-                                                                      , 'x_disgnostico':ev.x_comentario                                                                   
-                                                                     })
+                   ####Hay que agregar historial
+                   #self.env['x_historial_helpdesk'].sudo().create({ 'x_id_ticket' : self.sale_id.x_studio_field_bxHgp.id
+                    #                                                  , 'x_persona' : str(self.env.user.name)
+                     #                                                 , 'x_estado' : "Cierre"
+                      #                                                , 'x_disgnostico':ev.x_comentario                                                                   
+                       #                                              })
                     
 
         if picking_type.use_create_lots or picking_type.use_existing_lots:
