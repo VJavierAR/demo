@@ -14,7 +14,7 @@ from odoo.addons.web.controllers.main import ReportController  # Import the clas
 def get_years():
     year_list = []
     for i in range(2010, 2036):
-       year_list.append((i, str(i)))
+       year_list.append((str(i), str(i)))
     return year_list
 valores = [('01', 'Enero'), ('02', 'Febrero'), ('03', 'Marzo'), ('04', 'Abril'),
                           ('05', 'Mayo'), ('06', 'Junio'), ('07', 'Julio'), ('08', 'Agosto'),
