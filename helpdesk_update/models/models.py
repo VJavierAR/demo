@@ -11,7 +11,29 @@ import pytz
 import base64
 _logger = logging.getLogger(__name__)
 
-
+class HeldeskHRefacciones(Model.models):
+    _name='x_studio_historico_de_componentes'
+    _description='Historio de componentes'
+    x_esRefaccionDeTechra=fields.Boolean()
+    x_fecha_de_entrega_text=fields.Char()
+    x_name=fields.Char()
+    x_relacion_refacciones=fields.Many2one('helpdesk.confirmar.validar.refacciones')
+    x_robot=fields.Char()
+    x_serieTexto=fields.Char()
+    x_studio_cantidad=fields.Integer()
+    x_studio_contador_bn=fields.Integer()
+    x_studio_contador_color=fields.Integer()
+    x_studio_creado_por_script=fields.Boolean()
+    x_studio_fecha_de_entrega=fields.Datetime()
+    x_studio_fecha_de_uso=fields.Datetime()
+    x_studio_field_MH4DO=fields.Many2one('stock.production.lot')
+    x_studio_field_gKQ9k=fields.Many2one('product.product')
+    x_studio_field_yS42B=fields.Char()
+    x_studio_modelo=fields.Char()
+    x_studio_numero_de_parte=fields.Char()
+    x_studio_ticket=fields.Char()
+    x_tipo=fields.Char()
+    x_ultimaCargaRefacciones=fields.Boolean()
 
 
 #mensajeTituloGlobal = ''
