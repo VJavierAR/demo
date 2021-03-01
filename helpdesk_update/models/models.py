@@ -75,6 +75,11 @@ def convert_timedelta(duration):
     minutes = (seconds % 3600) // 60
     seconds = (seconds % 60)
     return hours, minutes, seconds
+class equipo_series(models.Model):
+    _inherit = 'stock.production.lot'
+    x_studio_impresiones=fields.Integer()
+
+
 
 
 class helpdesk_update(models.Model):
