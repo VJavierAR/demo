@@ -78,6 +78,7 @@ def convert_timedelta(duration):
 class equipo_series(models.Model):
     _inherit = 'stock.production.lot'
     x_studio_impresiones=fields.Integer()
+    x_studio_impresiones_color=fields.Integer()
 
 
 
