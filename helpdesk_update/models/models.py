@@ -11,7 +11,7 @@ import pytz
 import base64
 _logger = logging.getLogger(__name__)
 
-class HeldeskHRefacciones(Model.models):
+class HeldeskHRefacciones(models.Model):
     _name='x_studio_historico_de_componentes'
     _description='Historio de componentes'
     x_esRefaccionDeTechra=fields.Boolean()
