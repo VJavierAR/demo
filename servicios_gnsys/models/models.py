@@ -170,9 +170,6 @@ class equipo_series(models.Model):
     x_studio_impresiones=fields.Integer()
 
 
-
-
-
 class contratos(models.Model):
     _name = "contrato"
     _description = 'Contratos GNSYS'
