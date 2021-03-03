@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <record model="ir.ui.view" id="contadores_form">
+    <record id="contadores_form" model="ir.ui.view">
       <field name="name">contadores.form</field>
       <field name="model">contadores.contadores</field>
       <field name="arch" type="xml">
