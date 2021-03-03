@@ -27,6 +27,7 @@ valores = [('01', 'Enero'), ('02', 'Febrero'), ('03', 'Marzo'), ('04', 'Abril'),
                           ('09', 'Septiembre'), ('10', 'Octubre'), ('11', 'Noviembre'), ('12', 'Diciembre')]
 
 
+
 class dcas(models.Model):
     _name = 'dcas.dcas'
     _description ='DCAS'
