@@ -1,12 +1,10 @@
 <odoo>
   <data>
-    <!-- explicit form view definition -->
-
     <record model="ir.ui.view" id="contadores_form">
       <field name="name">contadores.form</field>
       <field name="model">contadores.contadores</field>
       <field name="arch" type="xml">
-<form>
+        <form>
     <header>
         <field name='estado' widget='statusbar'></field>
     </header>
@@ -55,7 +53,7 @@
         <field name="activity_ids" widget="mail_activity"/>
         <field name="message_ids" widget="mail_thread"/>
     </div>
-</form>
+        </form>
       </field>
     </record>
   </data>
