@@ -2,7 +2,7 @@
   <data>
     <!-- explicit form view definition -->
 
-    <record model="ir.ui.view" id="contadores.form">
+    <record model="ir.ui.view" id="contadores_form">
       <field name="name">contadores.form</field>
       <field name="model">contadores.contadores</field>
       <field name="arch" type="xml">
