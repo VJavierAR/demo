@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-    <record model="ir.ui.view" id="tfs.list">
+    <record model="ir.ui.view" id="tfs_list">
       <field name="name">tfs.form</field>
       <field name="model">tfs.tfs</field>
       <field name="arch" type="xml">
