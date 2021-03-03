@@ -2,7 +2,7 @@
 <odoo>
   <data>
     <record id="contadores_contadores_view_form" model="ir.ui.view">
-      <field name="name">contadores</field>
+      <field name="name">contadores.contadores.form</field>
       <field name="model">contadores.contadores</field>
       <field name="arch" type="xml">
         <form string="Tags">
@@ -35,7 +35,7 @@
                                     <field name="name" attrs="{}" invisible="1"/>
                                     <field name="grupo"/>
                                     <field name="ultimoInforme"/>
-                                    <field name="serie" domain="[['x_studio_ubicacion_id','=',dominio]]"/>
+                                    <field name="serie" />
                                     <field name="contadorColor"/>
                                     <field name="contadorMono"/>
                                     <field name="ip"/>
