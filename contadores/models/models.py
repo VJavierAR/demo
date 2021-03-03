@@ -390,7 +390,7 @@ class dcas(models.Model):
             self.tablahtml=cabecera+ticket+ultimosContadores+fechas+paginasProcesadas+rendimientos+niveles+cierre                                                                                                                                                                                 
     """
 
-    @api.multi
+    
     def editar_contadores_wizard(self):
         wiz = self.env['contadores.dca.editar.contadores'].create({'dca_id': self.id})
         #wiz.productos = [(6, 0, self.x_studio_productos.ids)]
@@ -408,7 +408,7 @@ class dcas(models.Model):
             'context': self.env.context,
         }
     
-    @api.multi
+    
     def reiniciar_contadores_wizard(self):
         wiz = self.env['contadores.dca.reiniciar.contadores'].create({'dca_id': self.id})
         #wiz.productos = [(6, 0, self.x_studio_productos.ids)]
@@ -496,7 +496,7 @@ class contadores(models.Model):
         self.serie=self.env['stock.production.lot'].search([['name','=',self.serie_aux]]).id
         
     
-    @api.multi
+    
     def carga_contadores_fac(self):
         if self.x_studio_estado_capturas=='Listo':
             """
@@ -551,7 +551,7 @@ class contadores(models.Model):
                                  
             self.prefacturas=prefacturas    
     
-    @api.multi
+    
     def carga_contadores_fac_invo(self):
         if self.x_studio_estado_capturas=='Listo':
             prefacturas=''
@@ -728,7 +728,7 @@ class contadores(models.Model):
             self.prefacturas=prefacturas         
             
     
-    @api.multi
+    
     def genera_excel(self):
         workbook = xlsxwriter.Workbook('Example2.xlsx')                        
         for contrato in self.x_studio_contratos:
@@ -1305,7 +1305,7 @@ class contadores(models.Model):
     
 
     """
-    @api.multi
+    
     def carga_contadores(self):
         #ssc=self.env['contadores.contadores'].search([('cliente', '=', self.cliente.id),('mes', '=', self.mes),('anio', '=', self.anio),('id', '!=', self.id)],limit=1)        
        
@@ -1461,7 +1461,7 @@ class contadores(models.Model):
             
 
     """
-    @api.multi
+    
     def carga_contadores(self):
         #ssc=self.env['contadores.contadores'].search([('cliente', '=', self.cliente.id),('mes', '=', self.mes),('anio', '=', self.anio),('id', '!=', self.id)],limit=1)        
         """
