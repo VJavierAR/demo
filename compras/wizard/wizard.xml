@@ -21,7 +21,8 @@
         <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="binding_model_id" ref="purchase.model_purchase_order" />
+        <field name="binding_model_id" ref="model_purchase_order" />
+        <field name="binding_view_types">list</field>
     </record>
 
     
