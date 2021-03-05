@@ -26,7 +26,7 @@
 
 
     
-        <record id="purchase_order_confirm_view" model="ir.ui.view">
+       <!-- <record id="purchase_order_confirm_view" model="ir.ui.view">
             <field name="name">purchase.order.confirm.form</field>
             <field name="model">purchase.order.confirm</field>
             <field name="arch" type="xml">
@@ -71,5 +71,5 @@
             view_id="purchase_order_cancel_view"
             res_model="purchase.order.confirm" src_model="purchase.order"
             view_mode="form" target="new" view_type="form" />
-    </data>
+    --></data>
 </odoo>
