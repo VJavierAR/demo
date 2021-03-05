@@ -232,7 +232,7 @@ class StockPickingMassAction(TransientModel):
                     tipo2=move_lines.mapped('move_id.picking_type_id.name')
                     if('Distribución' in tipo2):
                         pp.sale_id.write({'state':'distribucion'})
-    @api.multi
+    
     def surtir(self):
         self.ensure_one()
         # un reserved
@@ -266,7 +266,7 @@ class StockPickingMassAction(TransientModel):
         assigned_picking_lst.action_done()
         return assigned_picking_lst
 
-    @api.multi
+    
     def vales(self):
         assigned_picking_lst2 = self.picking_ids.\
         filtered(lambda x: (x.picking_type_id.id == 3 or x.picking_type_id.id == 29314 or x.picking_type_id.id == 89) and x.state == 'done')
@@ -274,7 +274,7 @@ class StockPickingMassAction(TransientModel):
             return self.env.ref('stock.action_report_picking').report_action(assigned_picking_lst2)
         else:
             return self.env.ref('studio_customization.vale_de_entrega_56cdb2f0-51e3-447e-8a67-6e5c7a6b3af9').report_action(assigned_picking_lst2)      
-    @api.multi
+    
     def etiquetas(self):
         assigned_picking_lst2 = self.picking_ids.\
         filtered(lambda x: (x.picking_type_id.id == 3 or x.picking_type_id.id == 29314) and x.state == 'done')
