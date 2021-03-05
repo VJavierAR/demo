@@ -103,7 +103,7 @@ class compras(models.Model):
     def solicitarAutorizacion(self):
         self.write({'state':'to approve'})
     
-    @api.multi
+    
     @api.onchange('archivo')
     def factura(self):
         fecha=datetime.datetime.now()-datetime.timedelta(hours=-5)
