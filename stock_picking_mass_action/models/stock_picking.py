@@ -34,7 +34,6 @@ class StockPicking(Model):
     chofer=fields.Many2one('res.users')
     surtir=fields.Boolean(default=False)
 
-    @api.multi
     def devolucionT(self):
         self.ensure_one()
         action_id = self.env.ref('stock.act_stock_return_picking')
@@ -226,7 +225,6 @@ class StockPicking(Model):
     #    c = self.env['helpdesk.ticket'].search([('id','=',self.x_studio_idtempticket)]) 
     #    c.write({'x_studio_nmero_de_guia_1': self.carrier_tracking_ref})        
     
-    @api.multi
     def button_validate(self):
         self.ensure_one()
         if not self.move_lines and not self.move_line_ids:
@@ -682,7 +680,7 @@ class StockPicking(Model):
     #                 self.sale_id.x_studio_field_bxHgp.stage_id=93
     #             if(self.state=="confirmed"):
     #                 self.estado='confirmed'
-    @api.multi
+    
     def cierre(self):
         if(self.x_studio_evidencia_a_ticket and self.partner_id.state_id.name in ["Estado de México","Ciudad de México"]):
             #self.sudo().action_done()
