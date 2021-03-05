@@ -26,7 +26,7 @@ class CreacionRuta(Model):
     active = fields.Boolean('Active', default=True, track_visibility=True)
 
 
-    @api.multi
+    
     def confirmar(self):
         t=""
         if(len(self.ordenes)>0):
