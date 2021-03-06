@@ -7,5 +7,7 @@
     'data': [
         'views/template.xml',
     ],
-   'installable': True,
+    'installable': True,
+    'application': True,
+    'auto_install': False,
 }

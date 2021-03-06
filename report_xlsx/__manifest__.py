@@ -12,5 +12,7 @@
     "depends": ["base", "web"],
     "data": ["views/webclient_templates.xml"],
     "demo": ["demo/report.xml"],
-    "installable": True,
+    'installable': True,
+    'application': True,
+    'auto_install': False,
 }
