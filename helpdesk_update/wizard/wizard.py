@@ -253,7 +253,7 @@ class HelpDeskNoValidarConComentario(TransientModel):
 
         
 
-    #@api.multi
+    #
     def noValidarConComentario(self):
       #_logger.info("res self.ticket_id.x_studio_field_nO7Xg.id: " + str(self.ticket_id.x_studio_field_nO7Xg.id))
       #_logger.info("res self.ticket_id.x_studio_field_nO7Xg.state: " + str(self.ticket_id.x_studio_field_nO7Xg.state))
@@ -1264,7 +1264,7 @@ class helpdesk_contadores(TransientModel):
     bnColor = fields.Text(string='Color o BN', compute = '_compute_actualizaColor')
     textoInformativo = fields.Text(string = ' ', default = ' ', store = True, compute = '_compute_textoInformativo')
 
-    #@api.one 
+    # 
     @api.depends('contadorBNActual', 'contadorColorActual')
     def _compute_textoInformativo(self):
       for record in self:
@@ -3966,7 +3966,7 @@ class helpdesk_agregar_productos(TransientModel):
 
 
     @api.onchange('activar_compatibilidad')
-    #@api.multi
+    #
     def productos_filtro(self):
         res = {}             
         g = str(self.ticket_id.x_studio_nombretmp)
