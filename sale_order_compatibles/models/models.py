@@ -242,7 +242,7 @@ class sale_update(models.Model):
 				for ss in s.x_studio_field_9nQhR.x_studio_histrico_de_componentes:
 					d={'x_studio_field_mqSKO':ss.x_studio_field_gKQ9k.id,'product_id':ss.x_studio_field_gKQ9k.id,'name':ss.x_studio_field_gKQ9k.name,'product_uom_qty':ss.x_studio_cantidad,'product_uom':ss.x_studio_field_gKQ9k.uom_id.id,'price_unit':0.00}
 					self.order_line=[d]
-	@api.multi
+	
 	def action_confirm(self):
 	    if self._get_forbidden_state_confirm() & set(self.mapped('state')):
 	        raise UserError(_(
@@ -361,6 +361,6 @@ class sale_update(models.Model):
 			self.cambio()
 		if(self.x_studio_tipo_de_solicitud == "Retiro"):
 			self.retiro()
-	@api.multi
+	
 	def print_quotation(self):
 		return self.env.ref('studio_customization.presupuesto_pedido_6e389c86-9862-4c69-af3d-c7021b680bab').with_context(discard_logo_check=True).report_action(self)
