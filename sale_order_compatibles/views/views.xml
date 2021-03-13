@@ -27,13 +27,13 @@
 
           <group>
             <group name='Sale order'>
-              <field name="saleOrder" />
+              <field name="saleOrder" options="{'no_create_edit': True, 'no_create': True}"/>
             </group>
           </group>
 
           <group>
             <group name='Equipo'>
-              <field name="equipos" domain="[['categ_id.id', '=', 13]]"/>
+              <field name="equipos" options="{'no_create_edit': True, 'no_create': True}"/>
             </group>
           </group>
 
