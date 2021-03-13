@@ -108,13 +108,13 @@ class dcas(models.Model):
     comentarioDeReinicio = fields.Text(string = 'Comentario de reinicio de contador')
     reinicioDeContador = fields.Boolean(string = 'Reinicio de contador')
     
-    #ticket_techra = fields.Many2one('helpdesk.ticket.techra', string = 'Ticket techra relacion')
+    ticket_techra = fields.Many2one('helpdesk.ticket.techra', string = 'Ticket techra relacion')
     ticket_techra_texto = fields.Text(string = 'Ticket techra texto')
     creado_por_tickets_techra = fields.Boolean(string = 'Creado por ppanificador de ticket techra', default = False)
     x_studio_tiquete=fields.Many2one('helpdesk.ticket')
    
     
-    
+
     @api.onchange('serie')             
     def ultimosContadoresNACM(self):
       #if self.fuente == 'helpdesk.ticket' or self.fuente == 'tfs.tfs':
