@@ -6730,7 +6730,7 @@ class helpdes_diagnostico(models.Model):
 
     ticketRelacion_refacciones = fields.Many2one('helpdesk.confirmar.validar.refacciones', string = 'Ticket realcionado a diagnostico',copied=True)
 
-    ticket_techra = fields.Many2one('helpdesk.ticket.techra', string = 'Ticket techra relacionado al diagnostico')
+    #ticket_techra = fields.Many2one('helpdesk.ticket.techra', string = 'Ticket techra relacionado al diagnostico')
     ticket_techra_text = fields.Text(string = 'Ticket techra texto')
 
 
@@ -7069,13 +7069,14 @@ class helpdesk_ticket_techra(models.Model):
     robot = fields.Text(
                                         string = 'Robot'
                                     )
+    """
     diagnosticos = fields.One2many(
                                         'helpdesk.diagnostico', 
                                         'ticket_techra', 
                                         string = 'Diagnostico', 
                                         track_visibility = 'onchange'
                                     )
-
+    """
     es_repetido = fields.Boolean(
                                     string = 'Es repetido',
                                     default = False
@@ -7084,13 +7085,14 @@ class helpdesk_ticket_techra(models.Model):
                                     string = 'Activo',
                                     default = True
                                 )
+    """
     series = fields.One2many(
                                 'dcas.dcas', 
                                 'ticket_techra', 
                                 string = 'Series en dca', 
                                 track_visibility = 'onchange'
                             )
-
+    """
     creado_el = fields.Text(
         string = 'Fecha'
     )
