@@ -58,7 +58,7 @@
                     <field name='lineas'>
                         <tree editable="bottom">
                             <field name='serie' readonly='1'/>
-                            <field name="almacen" domain="[['x_studio_cliente','=',False]]"/>
+                            <field name="almacen" />
                             <field name="estado"  />
                             <field name="contadorMono"  />
                             <field name="contadorColor"  />
