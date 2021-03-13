@@ -455,7 +455,7 @@
     <record id="action_picking_purchase" model="ir.actions.act_window">
         <field name="name">A Compras</field>
         <field name="res_model">stock.pickings.compras</field>
-        <field name="view_type">form</field>
+        <!--<field name="view_type">form</field>-->
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="binding_model_id" ref="stock.model_stock_picking" />
