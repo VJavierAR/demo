@@ -35,7 +35,7 @@
         <field name="arch" type="xml">
             <form string="Ingreso de Equipos">
                 <group>
-                    <field name='clientes' widget='many2many_tags' domain="[['x_studio_activo_1','=',True],['type','!=','delivery']]"/>
+                    <field name='clientes' widget='many2many_tags' domain="[['type','!=','delivery']]"/>
                 </group>
 
                 <footer>
