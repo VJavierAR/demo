@@ -21,7 +21,8 @@
     # any module necessary for this one to work correctly
     'depends': [
         'helpdesk',
-        'mail'
+        'mail',
+        'contadores',
     ],
 
     # always loaded
