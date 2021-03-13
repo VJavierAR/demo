@@ -22,7 +22,7 @@
       <field name="arch" type="xml">
         <form>
           <header>
-            <field name='estado' widget='statusbar'/>
+            <field name='estado'/>
           </header>
 
           <group>
