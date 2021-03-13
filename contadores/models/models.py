@@ -114,6 +114,7 @@ class dcas(models.Model):
     x_studio_tiquete=fields.Many2one('helpdesk.ticket')
    
     
+    
     @api.onchange('serie')             
     def ultimosContadoresNACM(self):
       #if self.fuente == 'helpdesk.ticket' or self.fuente == 'tfs.tfs':
