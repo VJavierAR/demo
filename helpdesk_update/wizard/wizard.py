@@ -2834,6 +2834,7 @@ class HelpDeskDatosToner(TransientModel):
                                         compute = '_compute_diagnosticos' 
                                     )
     serie = fields.Text(string = "Serie", compute = '_compute_serie_nombre')
+    """
     series = fields.One2many(
                                 'dcas.dcas',
                                 'x_studio_tiquete',
@@ -2841,6 +2842,7 @@ class HelpDeskDatosToner(TransientModel):
                                 #store = True,
                                 compute = '_compute_series'
                             )
+    """
     corte = fields.Selection(
                                 [('1ero','1ero'),('2do','2do'),('3ro','3ro'),('4to','4to')], 
                                 string = 'Corte', 
@@ -3326,7 +3328,7 @@ class helpdesk_crearToner(TransientModel):
 
 
 
-    dca = fields.One2many('dcas.dcas', 'x_studio_tiquete', string = 'Serie', store = True)
+    #dca = fields.One2many('dcas.dcas', 'x_studio_tiquete', string = 'Serie', store = True)
     tipoReporte = fields.Selection(
                                         [('Falla','Falla'),('Incidencia','Incidencia'),('Reeincidencia','Reeincidencia'),('Prefunta','Pregunta'),('Requerimiento','Requerimiento'),('Solicitud de refacción','Solicitud de refacción'),('Conectividad','Conectividad'),('Reincidencias','Reincidencias'),('Instalación','Instalación'),('Mantenimiento Preventivo','Mantenimiento Preventivo'),('IMAC','IMAC'),('Proyecto','Proyecto'),('Retiro de equipo','Retiro de equipo'),('Cambio','Cambio'),('Servicio de Software','Servicio de Software'),('Resurtido de Almacen','Resurtido de Almacen'),('Supervisión','Supervisión'),('Demostración','Demostración'),('Toma de lectura','Toma de lectura')], 
                                         string = 'Tipo de reporte', 
@@ -3498,110 +3500,7 @@ class helpdesk_crearToner(TransientModel):
             "type": "ir.actions.do_nothing",
         }
 
-    """
-    def contacto_toner_wizard(self):
-        wiz = self.env['helpdesk.contacto.toner'].create({
-                                                            #'dca': self.dca.ids,
-                                                            'tipoReporte': self.tipoReporte,
-                                                            'corte': self.corte,
-                                                            'almacen': self.almacen,
-                                                            'almacenes': self.almacenes.id,
-                                                            'cliente': self.cliente.id,
-                                                            'tipoCliente': self.tipoCliente,
-                                                            'localidad': self.localidad.id,
-                                                            'zonaLocalidad': self.zonaLocalidad,
-                                                            'localidadContacto': self.localidadContacto.id,
-                                                            'estadoLocalidad': self.estadoLocalidad,
-                                                            'telefonoContactoLocalidad': self.telefonoContactoLocalidad,
-                                                            'movilContactoLocalidad': self.movilContactoLocalidad,
-                                                            'correoContactoLocalidad': self.correoContactoLocalidad,
-                                                            'direccionLocalidad': self.direccionLocalidad,
-                                                            'comentarioLocalidad': self.comentarioLocalidad,
-                                                            'prioridad': self.prioridad,
-
-                                                            'validarTicket': self.validarTicket,
-                                                            'validarHastaAlmacenTicket': self.validarHastaAlmacenTicket,
-                                                            'ponerTicketEnEspera': self.ponerTicketEnEspera,
-                                                            'textoTicketExistente': self.textoTicketExistente, 
-                                                            'editarCliente': self.editarCliente,
-                                                            'idClienteAyuda': self.idClienteAyuda,
-                                                            'idLocalidadAyuda': self.idLocalidadAyuda,
-                                                            'numeroTicketCliente': self.numeroTicketCliente,
-                                                            'numeroTicketDistribuidor': self.numeroTicketDistribuidor,
-                                                            'textoClienteMoroso': self.textoClienteMoroso,
-                                                            'estatus': self.estatus
-                                                        })
-        #wiz.dca = []
-        listaDeDcas = []
-        for dcaTemp in self.dca:
-            listaDeDcas.append([0, 0, {
-                                            'tablahtml': dcaTemp.tablahtml,
-                                            'x_studio_cliente': dcaTemp.x_studio_cliente,
-                                            'serie': dcaTemp.serie.id,
-                                            'x_studio_color_o_bn': dcaTemp.x_studio_color_o_bn,
-                                            'x_studio_cartuchonefro': dcaTemp.x_studio_cartuchonefro.id,
-                                            'x_studio_rendimiento_negro': dcaTemp.x_studio_rendimiento_negro,
-                                            'x_studio_cartucho_amarillo': dcaTemp.x_studio_cartucho_amarillo.id,
-                                            'x_studio_rendimientoa': dcaTemp.x_studio_rendimientoa,
-                                            'x_studio_cartucho_cian_1': dcaTemp.x_studio_cartucho_cian_1.id,
-                                            'x_studio_rendimientoc': dcaTemp.x_studio_rendimientoc,
-                                            'x_studio_cartucho_magenta': dcaTemp.x_studio_cartucho_magenta.id,
-                                            'x_studio_rendimientom': dcaTemp.x_studio_rendimientom,
-                                            'x_studio_fecha': dcaTemp.x_studio_fecha,
-                                            'x_studio_tiquete': dcaTemp.x_studio_tiquete.id,
-                                            'x_studio_tickett': dcaTemp.x_studio_tickett,
-                                            'fuente': dcaTemp.fuente,
-
-                                            'contadorColor': dcaTemp.contadorColor,
-                                            'x_studio_contador_color_anterior': dcaTemp.x_studio_contador_color_anterior,
-                                            'contadorMono': dcaTemp.contadorMono,
-                                            'x_studio_contador_mono_anterior_1': dcaTemp.x_studio_contador_mono_anterior_1,
-
-                                            'paginasProcesadasBN': dcaTemp.paginasProcesadasBN,
-                                            'porcentajeNegro': dcaTemp.porcentajeNegro,
-                                            'porcentajeAmarillo': dcaTemp.porcentajeAmarillo,
-                                            'porcentajeCian': dcaTemp.porcentajeCian,
-                                            'porcentajeMagenta': dcaTemp.porcentajeMagenta,
-                                            'x_studio_rendimiento': dcaTemp.x_studio_rendimiento,
-                                            'x_studio_rendimiento_color': dcaTemp.x_studio_rendimiento_color,
-                                            'x_studio_toner_negro': dcaTemp.x_studio_toner_negro,
-                                            'x_studio_toner_cian': dcaTemp.x_studio_toner_cian,
-                                            'x_studio_toner_magenta': dcaTemp.x_studio_toner_magenta,
-                                            'x_studio_toner_amarillo': dcaTemp.x_studio_toner_amarillo,
-                                            'nivelCA': dcaTemp.nivelCA,
-                                            'nivelMA': dcaTemp.nivelMA,
-                                            'nivelNA': dcaTemp.nivelNA,
-                                            'nivelAA': dcaTemp.nivelAA,
-                                            'contadorAnteriorNegro': dcaTemp.contadorAnteriorNegro,
-                                            'contadorAnteriorAmarillo': dcaTemp.contadorAnteriorAmarillo,
-                                            'contadorAnteriorMagenta': dcaTemp.contadorAnteriorMagenta,
-                                            'contadorAnteriorCian': dcaTemp.contadorAnteriorCian,
-                                            'paginasProcesadasA': dcaTemp.paginasProcesadasA,
-                                            'paginasProcesadasC': dcaTemp.paginasProcesadasC,
-                                            'paginasProcesadasM': dcaTemp.paginasProcesadasM,
-                                            'renM': dcaTemp.renM,
-                                            'renA': dcaTemp.renA,
-                                            'renC': dcaTemp.renC
-                                        }])
-
-        wiz.dca = listaDeDcas
-                
-            #wiz.dca = 
-        view = self.env.ref('helpdesk_update.view_helpdesk_contacto_toner')
-        return {
-            'name': _('Agregar contacto a localidad'),
-            'type': 'ir.actions.act_window',
-            'view_type': 'form',
-            'view_mode': 'form',
-            'res_model': 'helpdesk.contacto.toner',
-            'views': [(view.id, 'form')],
-            'view_id': view.id,
-            'target': 'new',
-            'res_id': wiz.id,
-            'context': self.env.context,
-        }
-
-    """
+  
     @api.onchange('cliente')
     def cliente_moroso(self):
         if self.cliente:
@@ -4032,7 +3931,7 @@ class HelpDeskContactoToner(TransientModel):
     #ticket_id = fields.Many2one("helpdesk.ticket")
     
 
-    dca = fields.One2many('dcas.dcas', 'x_studio_tiquete', string = 'Serie', store = True)
+    #dca = fields.One2many('dcas.dcas', 'x_studio_tiquete', string = 'Serie', store = True)
     tipoReporte = fields.Selection(
                                         [('Falla','Falla'),('Incidencia','Incidencia'),('Reeincidencia','Reeincidencia'),('Prefunta','Pregunta'),('Requerimiento','Requerimiento'),('Solicitud de refacción','Solicitud de refacción'),('Conectividad','Conectividad'),('Reincidencias','Reincidencias'),('Instalación','Instalación'),('Mantenimiento Preventivo','Mantenimiento Preventivo'),('IMAC','IMAC'),('Proyecto','Proyecto'),('Retiro de equipo','Retiro de equipo'),('Cambio','Cambio'),('Servicio de Software','Servicio de Software'),('Resurtido de Almacen','Resurtido de Almacen'),('Supervisión','Supervisión'),('Demostración','Demostración'),('Toma de lectura','Toma de lectura')], 
                                         string = 'Tipo de reporte', 

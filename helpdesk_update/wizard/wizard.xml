@@ -535,7 +535,7 @@
                                         
                                         <field name="x_studio_usuariocaptura" string="UsuarioCaptura" attrs="{}" invisible="1" force_save='1' />
                                         <field name="x_studio_fecha" string="Fecha  " invisible='1' force_save='1' />
-                                        <field name="x_studio_tiquete" string="Tiquete " invisible='1' force_save='1' />
+                                        <!--<field name="x_studio_tiquete" string="Tiquete " invisible='1' force_save='1' />-->
                                         <field name="x_studio_descripcion" string="Descripción" invisible='1' force_save='1' />
                                         <field name="x_studio_cartucho_negro" string="cartucho negro" invisible='1' force_save='1' />
                                         <field name="ubicacion" string="Ubicación" invisible='1' force_save='1' />
@@ -1437,7 +1437,7 @@
                                         
                                         <field name="x_studio_usuariocaptura" string="UsuarioCaptura" attrs="{}" invisible="1" force_save='1' />
                                         <field name="x_studio_fecha" string="Fecha  " invisible='1' force_save='1' />
-                                        <field name="x_studio_tiquete" string="Tiquete " invisible='1' force_save='1' />
+                                        <!--<field name="x_studio_tiquete" string="Tiquete " invisible='1' force_save='1' />-->
                                         <field name="x_studio_descripcion" string="Descripción" invisible='1' force_save='1' />
                                         <field name="x_studio_cartucho_negro" string="cartucho negro" invisible='1' force_save='1' />
                                         <field name="ubicacion" string="Ubicación" invisible='1' force_save='1' />
