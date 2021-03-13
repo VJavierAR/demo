@@ -40,6 +40,7 @@ class StockPicking(Model):
     surtir=fields.Boolean(default=False)
     x_studio_toneres=fields.Char()
     x_studio_backorder=fields.Boolean()
+    x_studio_tecnico = fields.Many2one('hr.employee','Tecnico')
 
     def devolucionT(self):
         self.ensure_one()
