@@ -1376,26 +1376,16 @@
 
 
 
-
+    <!--
     <record id="view_helpdesk_crear_solicitud_toner" model="ir.ui.view">
         <field name="model">helpdesk.tonerticket</field>
         <field name="arch" type="xml">
             <form string="Crear">
                 <group>
                     <group string='Buscar'>
-                        <!--<field name='serie' widget='many2many_tags' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" force_save = "1"/>-->
 
                         <field name='dca' readonly='0'>
                             <form>
-                                <!--
-                                <div>
-                                  <h1>
-                                    <span>
-                                      <field name="name" readonly="0"/>
-                                    </span>
-                                  </h1>
-                                </div>
-                                -->
                                 <group name="1">
                                     <group name="a">
                                         <field name="x_studio_link" string="link" wiget="html" invisible='1'/>
@@ -1437,7 +1427,6 @@
                                         
                                         <field name="x_studio_usuariocaptura" string="UsuarioCaptura" attrs="{}" invisible="1" force_save='1' />
                                         <field name="x_studio_fecha" string="Fecha  " invisible='1' force_save='1' />
-                                        <!--<field name="x_studio_tiquete" string="Tiquete " invisible='1' force_save='1' />-->
                                         <field name="x_studio_descripcion" string="Descripción" invisible='1' force_save='1' />
                                         <field name="x_studio_cartucho_negro" string="cartucho negro" invisible='1' force_save='1' />
                                         <field name="ubicacion" string="Ubicación" invisible='1' force_save='1' />
@@ -1480,14 +1469,6 @@
                             </tree>
                         </field>
                     </group>
-                    <!--
-                    <group string='Buscar por cliente y localidad'>
-                        
-                        <field name='clienteRelacion' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" attrs='{"domain": [["clienteRelacion.company_type","=","company"]]}' force_save = "1"/>
-                        <field name='localidadRelacion' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" domain='[["parent_id.id","=",idCliente],["type","=","delivery"]]' force_save = "1"/>
-                        <field name='contactoInterno' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" domain='[["parent_id.id", "=", idLocaliidad],["type", "=", "contact"]]' attrs='{"invisible": [["localidad","!=","CORPORATIVO"]]}' force_save = '1'/> 
-                    </group>
-                    -->
                 </group>
 
                 <group>
@@ -1501,10 +1482,6 @@
                             <group>
                                 <field name='tipoReporte' force_save='1' readonly='0' />
                                 <field name='corte' force_save='1' readonly='0' />
-                                <!--<field name='almacen' force_save='1' />-->
-                                <!--
-                                <field name='almacenes' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" domain="['&amp;', ('x_studio_cliente', '=', False), '|', ('id', '=', 1), ('id', '=', 18) ]" />
-                                -->
 
                                 <field name='almacenes' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" domain="['|', '|', ('id', '=', 1), ('id', '=', 18), ('id', '=', 17) ]" readonly='0' />
 
@@ -1538,7 +1515,7 @@
                         </group>
                         <group>
                             <group>
-                                <!--<button name="contacto_toner" string="Añadir contcto a localidad" icon="fa-user-plus"  type="object"  attrs='{"invisible": [["localidad","=", False]]}' groups=""/>-->
+                                
                                 <field name='mostrarAnadirContacto' force_save='1' readonly='0' invisible='0' />
                             </group>
                         </group>
@@ -1558,13 +1535,6 @@
                             </group>
                         </group>
 
-                        <!--
-                        <group>
-                            <group>
-                                <button name='contacto_wizard' string='Añadir contacto a localidad' attrs="{'invisible': [['editarCliente', '=', False]]}" />
-                            </group>
-                        </group>
-                        -->
                         <group>
                             <group>
                                 <field name='telefonoContactoLocalidad' force_save='1' readonly='1'/>
@@ -1603,14 +1573,13 @@
                 </group>
 
                 <footer>
-                    <!--<button name="abrirTicket" string="Abrir ticket existente" type="object" class="oe_highlight" attrs="{'invisible': ['|',['ticket_id_existente','=', 0],['ticket_id_existente','=', False]]}"/>-->
                     <button name="crearTicketToner" string="Crear" type="object" class="oe_highlight" attrs="{'invisible': ['|', '|', '|', ('estatus', '=', 'Moroso'), ('cliente', '=', False), ('dca', '=', False), ('noCrearTicket', '=', True) ]}" />
                     <button special="cancel" string="Cancelar" class="oe_highlight" />
                 </footer>
             </form>
         </field>
     </record>
-
+    -->
 
 
 
