@@ -169,7 +169,6 @@
     <record id="action_concentrado" model="ir.actions.act_window">
         <field name="name">Concentrado</field>
         <field name="res_model">stock.picking.mass.concentrado</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="context">{}</field>
