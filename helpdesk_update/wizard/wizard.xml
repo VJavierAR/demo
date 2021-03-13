@@ -485,15 +485,6 @@
 
                         <field name='dca'>
                             <form>
-                                <!--
-                                <div>
-                                  <h1>
-                                    <span>
-                                      <field name="name" readonly="0"/>
-                                    </span>
-                                  </h1>
-                                </div>
-                                -->
                                 <group name="1">
                                     <group name="a">
                                         <field name="x_studio_link" string="link" wiget="html" invisible='1'/>
@@ -513,7 +504,7 @@
                                         
                                         <field name='x_studio_cartucho_amarillo' domain='[ &quot;&amp;&quot;, ["categ_id", "=", 5], ["x_studio_color","=", "Amarillo"], ["x_studio_toner_compatible.id", "=", x_studio_field_qYMJD] ]' string = 'Cartucho amarillo' attrs="{'invisible': [['colorEquipo', '=', 'B/N']] }" force_save='1' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
                                         <field name='x_studio_rendimientoa' attrs="{'invisible': [['colorEquipo', '=', 'B/N']] }" readonly='1' string='Rendimiento Amarillo' force_save='1' />
-                                        <field name='porcentajeAmarillo' attrs="{'invisible': [['colorEquipo', '=', 'B/N']] }" string='Porcentaje Amarillo' force_save='1' />
+                                        <!--<field name='porcentajeAmarillo' attrs="{'invisible': [['colorEquipo', '=', 'B/N']] }" string='Porcentaje Amarillo' force_save='1' />-->
                                         
                                         <field name='x_studio_cartucho_cian_1' domain="[&quot;&amp;&quot;,[&quot;categ_id&quot;,&quot;=&quot;,5],[&quot;x_studio_color&quot;,&quot;=&quot;,&quot;Cian&quot;],[&quot;x_studio_toner_compatible.id&quot;,&quot;=&quot;,x_studio_field_qYMJD]]" string ='Cartucho cian' attrs="{'invisible': [['colorEquipo', '=', 'B/N']] }" force_save='1' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" />
                                         <field name='x_studio_rendimientoc' attrs="{'invisible': [['colorEquipo', '=', 'B/N']] }" readonly='1' string = 'Rendimiento cian' force_save='1' />
