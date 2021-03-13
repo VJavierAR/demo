@@ -34,7 +34,7 @@ class StockPicking(Model):
     chofer=fields.Many2one('res.users')
     surtir=fields.Boolean(default=False)
     x_studio_toneres=fields.Char()
-    
+    x_studio_backorder=fields.Boolean()
     def devolucionT(self):
         self.ensure_one()
         action_id = self.env.ref('stock.act_stock_return_picking')
