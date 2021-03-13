@@ -7195,6 +7195,7 @@ class helpdesk_ticket_techra(models.Model):
 
 
 
+"""
 class helpdesk_lines(models.Model):
     _name="helpdesk.lines"
     _description = "Ticket Order"
@@ -7253,7 +7254,7 @@ class helpdesk_lines(models.Model):
             if idf != 9 and idf != 8:
                res['domain']={'producto':[('id','in',d)]}
         return res
-    
+"""
 
 
 
