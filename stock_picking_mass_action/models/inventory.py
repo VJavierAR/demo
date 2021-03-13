@@ -69,4 +69,16 @@ class StockPic(Model):
         return self
 
 
+class StockWarehouse(Model):
+    _inherit = 'stock.warehouse'
+
+    x_studio_cliente = fields.Boolean(string = 'Cliente')
+    x_studio_almacn_padre = fields.Many2one('stock.warehouse', string = 'Almacén Padre')
+    x_studio_arreglo = fields.Char(string = 'arreglo')
+    x_studio_field_CQyVe = fields.Many2many('res.users', store=True, string = 'Usuarios')
+    x_studio_field_E0H1Z = fields.Many2one('res.partner', string = 'Ubicación')
+    x_studio_mini = fields.Boolean(string = 'Mini')
+    x_studio_techra = fields.Char(string = 'techra')
+    x_studio_tfs = fields.Many2one('res.partner', string = 'Tfs')
+
 
