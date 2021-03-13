@@ -24,7 +24,8 @@
         'base',
         'stock',
         'sale',
-        'product'
+        'product',
+        'crm',
     ],
 
     # always loaded
