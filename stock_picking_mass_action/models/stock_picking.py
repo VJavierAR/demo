@@ -9,6 +9,7 @@ _logger = logging.getLogger(__name__)
 class HelpdDesk(Model):
     _inherit='helpdesk.ticket'
     x_studio_backorder=fields.One2many('stock.picking','backorder_id')
+    x_studio_tcnico=fields.Many2one('hr.employee')
 class StockPicking(Model):
     _inherit = 'stock.picking'
     active = fields.Boolean('Active', default=True, track_visibility=True)
