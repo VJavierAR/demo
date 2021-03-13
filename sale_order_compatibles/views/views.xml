@@ -22,18 +22,18 @@
       <field name="arch" type="xml">
         <form>
           <header>
-            <field name='estado'/>
+            <field name='estado' widget='statusbar'/>
           </header>
 
           <group>
             <group name='Sale order'>
-              <field name="saleOrder" options="{'no_create_edit': True, 'no_create': True}"/>
+              <field name="saleOrder" />
             </group>
           </group>
 
           <group>
             <group name='Equipo'>
-              <field name="equipos" domain="[['categ_id.id', '=', 13]]" options="{'no_create_edit': True, 'no_create': True}"/>
+              <field name="equipos" domain="[['categ_id.id', '=', 13]]"/>
             </group>
           </group>
 
