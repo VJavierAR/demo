@@ -5,6 +5,10 @@ from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 import logging, ast
 _logger = logging.getLogger(__name__)
 #puro aaa
+
+class HelpdDesk(Model):
+    _inherit='helpdesk.ticket'
+    x_studio_backorder=fields.One2many('stock.picking','backorder_id')
 class StockPicking(Model):
     _inherit = 'stock.picking'
     active = fields.Boolean('Active', default=True, track_visibility=True)
@@ -35,6 +39,7 @@ class StockPicking(Model):
     surtir=fields.Boolean(default=False)
     x_studio_toneres=fields.Char()
     x_studio_backorder=fields.Boolean()
+
     def devolucionT(self):
         self.ensure_one()
         action_id = self.env.ref('stock.act_stock_return_picking')
