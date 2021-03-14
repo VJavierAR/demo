@@ -114,7 +114,7 @@
           -->
 
 
-          
+
           <form string="Helpdesk Ticket"  edit="1" >
               <header>
                   <!--
@@ -149,84 +149,31 @@
                   <!--<div class="row" attrs="{&quot;invisible&quot;: [[&quot;x_studio_id_ticket&quot;, &quot;=&quot;, 0]]}">-->
                   <div class="row">
                       <div class="col-sm-4">
-                          <!--<button name="assign_ticket_to_self" string="Assign To Me" type="object" class="btn-sm oe_highlight" groups="helpdesk.group_helpdesk_user"/>-->
                       </div>
                       <div class="col-sm-4 text-center">
                           <div class="btn-group btn-group-sm" role="group" aria-label="validar opciones">
-                              <!--
-                              <button name="validar_solicitud_toner" effect="{'message':'Exito!','fadeout':'medium'}" string="Validar Toner (Antigua forma!!!)" type="object" class="oe_highlight" groups="studio_customization.validar_toner_d61119fe-f670-4dd0-9dee-6d2bfdd1824e"/>
-                              -->
                               <button name="crearYValidarSolicitudDeToner" effect="{'message':'Exito!','fadeout':'medium'}" string="Crear y validar solicitud de tóner (Nueva forma!!!)" type="object" class="oe_highlight"  groups="studio_customization.validar_toner_d61119fe-f670-4dd0-9dee-6d2bfdd1824e" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
-                              <!--<button name="crearYValidarSolicitudDeTonerTest" effect="{'message':'Exito!','fadeout':'medium'}" string="Test" type="object" class="btn btn-success" groups="studio_customization.validar_toner_d61119fe-f670-4dd0-9dee-6d2bfdd1824e" />-->
-                              <!--
-                              <button name="helpdesk_confirmar_validar_refacciones_wizard" effect="{'message':'Exito!','fadeout':'medium'}" confirm="¿Deseas crear y validar la solicitud de refacción?" string="Crear y Validar solicitud de Refacción" type="object" class="oe_highlight" groups="studio_customization.validar_refaccion_96aa2d5c-a884-4b4d-972a-a4d9c5fdbdd8" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
-                              -->
-                              <!--
-                              Anterior forma
-                              <button name="validar_solicitud_refaccion" effect="{'message':'Exito!','fadeout':'medium'}" confirm="¿Deseas confirmar y validar la solicitud de toner?" string="Validar Refacción" type="object" class="oe_highlight" groups="studio_customization.validar_refaccion_96aa2d5c-a884-4b4d-972a-a4d9c5fdbdd8"/>
-                              -->
-                              
-                              <!--<button name="no_validar_con_comentario_wizard" string="No Validar Refacción" type="object" class="oe_highlight" groups="studio_customization.validar_refaccion_96aa2d5c-a884-4b4d-972a-a4d9c5fdbdd8"/>-->
-                              
                           </div>
                       </div>
-                        
-                             
-                      <!--
-                      <div class="col-sm-4">
-                          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Cambiar estados
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                          
-                             <button name="cambioEstadoAtencion" string="Cambiar estado a atención" type="object" class="dropdown-item oe_highlight" groups="studio_customization.cerrar_tickets_mesa_41c2145f-10a2-429c-b59d-4cc9ec16d613"/>
-                              <button name="cambioResuelto" string="Cambiar estado a resuelto" type="object" class="dropdown-item oe_highlight" groups=""/>
-                              <button name="cambioCotizacion" string="Cambiar estado a cotización" type="object" class="dropdown-item oe_highlight" groups="studio_customization.cambio_cotizacion_co_3157cb27-cdc9-4840-b19d-7f11ad51631a"/>
-                              <button name="cambioCerrado" string="Cambiar estado a cerrado" type="object" class="dropdown-item oe_highlight" groups="studio_customization.cerrar_tickets_mesa_41c2145f-10a2-429c-b59d-4cc9ec16d613"/>
-                              <button name="cambioCancelado" string="Cambiar estado a cancelado" type="object" class="dropdown-item oe_highlight" groups="studio_customization.responsables_de_area_0126b8d9-62a9-425c-b125-0540213a8390"/>
-                          </div>
-                      </div>
-                      -->
-                      
-                      
                       
                   </div>
                   <br/>
                   <div class="row">
                       <div class="col-sm-12 text-center">
                           <div class="btn-group btn-group-sm" role="group" aria-label="Cmbiar de estados">
-                              <!--
-                              <button name="cambioEstadoAtencion" string="Cambiar estado a atención" type="object" class="oe_highlight" groups="studio_customization.atencion_tickets_mesa" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
-                              -->
-                              <!--<button name="cambioResuelto" string="Cambiar estado a resuelto" type="object" class="oe_highlight" groups=""/>-->
                               <button name="cambioCotizacion" string="Cambiar estado a cotización" type="object" class="oe_highlight" groups="studio_customization.cambio_cotizacion_co_3157cb27-cdc9-4840-b19d-7f11ad51631a" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
                               
-                              
-                              
-                              <!--
-                              <button name="cambioCerrado" string="Cambiar estado a cerrado" type="object" class="oe_highlight" groups="studio_customization.cerrar_tickets_mesa_41c2145f-10a2-429c-b59d-4cc9ec16d613" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
-                              <button name="cambioCancelado" string="Cambiar estado a cancelado" type="object" class="oe_highlight" groups="studio_customization.cancelar_tickets_mesa" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
-                              -->
-                              <!--
-                              <button name="cambioEstadoSolicitudRefaccion" string="Solicitud de refacción" type="object" class="oe_highlight" attrs="{'invisible': ['|', '|', '|', '|', '|',  ['x_studio_productos', '=', []], ['x_studio_field_nO7Xg','=',True], ('team_id', '=', 8), ('team_id', '=', 13), ('stage_id', '=', 18), ('stage_id', '=', 4) ]}" groups="" />
-                              -->
-                              <!--studio_customization.grupo_de_tecnicos-->
                           </div>
                           <div class="btn-group btn-group-sm" role="group" aria-label="Cmbiar de estados">
-                              <!--<button name="cerrar_con_comentario_wizard" string="Cerrar" type="object" class="oe_highlight" groups="studio_customization.cerrar_tickets_mesa_41c2145f-10a2-429c-b59d-4cc9ec16d613" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />-->
+                              
                               <button name="cerrar_con_comentario_wizard" string="Cerrar ticket" type="object" icon="fa-lock" class="iconDiagnostico"  groups="studio_customization.cerrar_tickets_mesa_41c2145f-10a2-429c-b59d-4cc9ec16d613" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
                           </div>
                       </div>
                   </div>
                   <br/>
-                  <!--
-                          <div class="row"><div class="col-sm-12"><div class="btn-group btn-group-sm" role="group" aria-label="validar opciones"><button name="validar_solicitud_toner" string="Validar Toner" type="object" class="oe_highlight" groups="studio_customization.validar_toner_d61119fe-f670-4dd0-9dee-6d2bfdd1824e"/><button name="validar_solicitud_refaccion" string="Validar Refacción" type="object" class="oe_highlight" groups="studio_customization.validar_refaccion_96aa2d5c-a884-4b4d-972a-a4d9c5fdbdd8"/></div></div></div><br></br><div class="row"><div class="col-sm-12"><div class="btn-group btn-group-sm" role="group" aria-label="Cambiar estado"><button name="cambioResuelto" string="Cambiar estado a resuelto" type="object" class="oe_highlight" groups=""/><button name="cambioCotizacion" string="Cambiar estado a cotización" type="object" class="oe_highlight" groups=""/><button name="cambioCerrado" string="Cambiar estado a cerrado" type="object" class="oe_highlight" groups=""/><button name="cambioCancelado" string="Cambiar estado a cancelado" type="object" class="oe_highlight" groups=""/></div></div></div><br></br>
-                          -->
-                  <!--Fin agregado por marco-->
                   
                   <div class="oe_title">
                       <h1>
-                          <!--<p>Descripción del reporte: </p>-->
                           <field name="name" class="field_name" string="Descripción del reporte" placeholder="Descripción del reporte..." widget="text" invisible="1"/>
                       </h1>
                       <field name="sla_name" class="badge badge-danger oe_inline" attrs="{'invisible': [('sla_active','=',False)]}"/>
@@ -238,35 +185,23 @@
                           <field name="x_studio_tipo_de_vale" string="Tipo de reporte"  />
                           <field name="x_studio_refticket" string="ticket"  widget="html" />
                           
-                          
                       </group>
                       <group invisible='[["team_id", "!=", 8]]'>
                           <field name='validarHastaAlmacenTicket' />
                           <field name='validarTicket' />
                           <field name='ponerTicketEnEspera' />
                       </group>
-                      <!--
-                      <group name="tipoDeReporte_right">
-                          <field name="x_studio_tipo_de_falla" string="Tipo de falla"  />
-                          <field name="x_studio_tipo_de_incidencia" string="Tipo de incidencia"  />
-                          <field name="x_studio_tipo_de_requerimiento" string="Tipo de requerimiento" />
-                      </group>
-                      -->
+                      
                   </group>
                   
                   <notebook name="studio_notebook_TaG67">
                       <page name="studio_page_TaG67" string="Pedido">
                           <group name="studio_group_TaG67">
                               <group name="studio_group_TaG67_left">
-                                  <!--<button name="capturandoMesa" string="Capturar contadores" style="height:50px" type="object"/>-->
+                                  
                                   <button name="contadores_wizard" string="Capturar contadores" class="oe_highlight" type="object"  attrs="{'invisible':  ['|', '|', '|', '|', ('team_id', '=', 8), ('team_id', '=', 13), ('x_studio_equipo_por_nmero_de_serie', '=', []), ('stage_id', '=', 18), ('stage_id', '=', 4) ]}" />
                                   <button name="capturandoMesa" string="Capturar contadores" class="oe_highlight" type="object"  invisible="1" />
                                   <field name="x_studio_generar_cambio" string="Generar cambio" invisible="1"/>
-                                  
-                                  
-                                  
-                                  
-                                  
                                   
                                   
                                   <field name="x_studio_a" string="a" invisible="1"/>
@@ -280,16 +215,6 @@
                                   <field name="x_studio_tamao_lista" string="Tamaño lista equipo por nmero serie" attrs="{'invisible': 1}"/>
                                   <field name="x_studio_activar_compatibilidad" string="Activar compatibilidad" attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }"/>
                                   
-                                  <!--
-                                  Anterior forma
-                                  <button name="crear_solicitud_refaccion" string="Solicitud de Refacción" attrs="{'invisible': ['|', ('team_id', '=', 8), ('team_id', '=', 13)]}" type="object"/>
-                                  -->
-                                  
-                                    <!--
-                                    <button name="toner" string="Solicitud de Tóner" confirm="Se generara una solicitud de toner " attrs="{'invisible': [&quot;&amp;&quot;, ('team_id', '!=', 8), ('team_id', '!=', 13)]}" type="object"/>
-                                    -->
-                                  <!--<field name="" string="" attrs="{'invisible': 1, 'readonly': 1}"/>-->
-                                  <!--<field style="color:black" name="x_studio_productos"   string="Productos " domain="[]" attrs="{&quot;invisible&quot;: [['team_id','=',8]] }" options="{'no_create_edit': True, 'no_create': True}" >-->
                                   <field style="color:black" name="x_studio_productos" string="Productos " domain="[]" invisible='1' options="{'no_create_edit': True, 'no_create': True}" >
                                       <tree string="Product Variants" decoration-danger="type == 'product' and virtual_available&lt;0" decoration-info="type != 'product' or virtual_available&gt;=0" editable="bottom" >
                                           <field name="create_uid" string="Creado por"  invisible="1" attrs="{'invisible': 1, 'readonly': 1}"/>
@@ -335,11 +260,7 @@
                                   <field name="x_studio_prioridad" string="Prioridad" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
                                   <field name="x_studio_documento_de_origen" string="Documento de origen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                                   <field name="x_studio_transferencia" string="transferencia" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
-                                  <!--
-                                  <field name="company_id" string="Company" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                                  <field name="deadline" attrs="{'readonly': 1, 'required': 0}" invisible="[['deadline','=',false]]"/>
-                                  <field name="sla_id" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                                  -->
+                                  
                                   <field name="activity_state" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                                   <field name="activity_summary" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                                   <field name="x_studio_field_nO7Xg" string="Solicitud" options="{'no_create_edit': True, 'no_create': True}" attrs="{'readonly': 1, 'required': 0}" invisible='["|",["team_id","=",74],["team_id","=",76]]'/>
@@ -349,7 +270,7 @@
                                   <field name="x_studio_field_XALSC" string="Transferir distribucion" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                                   <field name="x_transferir_surt" string="Transferir surtido" readonly="1" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
                                   
-                                  <!-- <field name="x_studio_field_ownS7" string="Transferir transito" invisible="1" readonly="1" required="0"/> -->
+                                  
                                   <field name="x_studio_field_up5pO" string="Estado en Almacén" attrs="{'invisible': 0, 'readonly': 1, 'required': 0}"/>
                                   <field name="x_studio_field_Le2tN" string="Estado en Distribución" attrs="{'invisible': 0, 'readonly': 1, 'required': 0}"/>
                                   
@@ -363,10 +284,6 @@
                                   
                                   
                               </group>
-                              <!--
-                              <group name="studio_group_TaG67_right">
-                              </group>
-                              -->
                           </group>
                       </page>
                       <page name="studio_page_TaG67" string="Cliente">
@@ -388,14 +305,7 @@
                                       
                                       
                                       <field name="idLocalidadAyuda" invisible="1" readonly="1" string="id Localidad Ayuda"/>
-                                      
-                                      
-                                      
-                                      <!--<field name="use_helpdesk_timesheet" invisible="1" readonly="1"/>
-                                      <field name="project_id" invisible="[['use_helpdesk_timesheet','=',False]]" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
-                                      -->
-                                      <!--<field name="task_id" invisible='[["project_id","=", False]]' domain="[['project_id', '=', project_id]]" context="{'default_project_id': project_id}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>-->
-                                      
+                                    
                                       <field name="x_studio_valor_categria_de_producto" string="Valor categria de producto" invisible="1" readonly="1"/>
                                       <field name="x_studio_tipo_de_producto" string="Tipo de producto" invisible="[['team_id','=',74]]" readonly="1"/>
                                       <field name="tag_ids" widget="many2many_tags"  options="{'color_field': 'color', 'no_create_edit': True, 'no_create': True}" />
@@ -408,7 +318,7 @@
                               <group name="studio_group_TaG67_right" string=" ">
                                   <field name="x_studio_field_6furK" string="Zona localidad" attrs='{"readonly": [("cambiarDatosClienteCheck","=",False)]}' force_save="1"/>
                                   <field name="idClienteAyuda" invisible="1" readonly="1" string="id Cliente Ayuda"/>
-                                  <!--<field name="clienteContactos" options="{'no_create_edit': True, 'no_create': True}" domain='[&quot;&amp;&quot;,["parent_id.id","=",idClienteAyuda],["type","=","contact"]]' style="width:350px" attrs='{"readonly": [("cambiarDatosClienteCheck","=",False)]}'/>-->
+                                  
                                   <field name="localidadContacto" string="Localidad Contacto" options="{'no_create_edit': True, 'no_create': True}" domain='[&quot;&amp;&quot;, &quot;&amp;&quot;, "|",["parent_id.id","=",idLocalidadAyuda], ["parent_id.id","=",idClienteAyuda], ["type","=","contact"], ["x_studio_cobranza_o_facturacin", "=", False] ]' style="width:350px" attrs='{"readonly": [("cambiarDatosClienteCheck","=",False)]}'/>
                                   
                               </group>
@@ -433,26 +343,6 @@
                                   
                                   <field name="direccionLocalidadText" widget="html" force_save='1'/>
                                   
-                                  <!--
-                                  <field name="telefonoClienteContacto" readonly="1"/>
-                                  <field name="movilClienteContacto" readonly="1"/>
-                                  <field name="correoClienteContacto" readonly="1"/>
-                                  -->
-                                  
-                                  <!-- Horario de atencion-->
-                                  <!--
-                                  <div class="row">
-                                      <div class="col-sm-12" name="studio_div_20cbff"><p><b>Horario de atención: </b></p><field name="x_studio_hora_inicio"/> : 
-                                          <field name="x_studio_minuto_inicio"/>
-                                          <field name="x_studio_ampm_inicio"/> a 
-                                          <field name="x_studio_hora_fin"/> : 
-                                          <field name="x_studio_minuto_fin"/>
-                                          <field name="x_studio_ampm_fin"/>
-                                      </div>
-                                  </div>
-                                  <br/>
-                                  <br/>
-                                  -->
                               </group>
                           </group>
                       </page>
@@ -478,7 +368,7 @@
                                   <field name="x_studio_desactivar_zona" string="Desactivar zona" invisible="[['team_id','=',8]]"/>
                                   <field name="estatus_techra" string="Estatus techra" invisible="1"/>
                                   <field name="x_studio_field_wK7RR" string="Contactos foráneos" invisible="[['team_id','!=',11]]" domain='[["x_studio_distribuidor","=",True]]' options="{'no_create_edit': True, 'no_create': True}"/>
-                                  <!--<field name="x_studio_tcnico" string="Técnico" invisible="[['team_id','=',8]]" domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]' options="{'no_create ': True, 'no_create_edit' : True}"/>-->
+                                  
                                   <field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" invisible="0" domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]' />
                                   <field name="x_studio_fecha_de_visita" string="Fecha de visita" invisible='[&quot;&amp;&quot;,["stage_id","=",1],"|","|",["team_id","=",74],["team_id","=",11],["team_id","=",8]]'/>
                                   <field name="company_id" groups="base.group_multi_company" invisible="1"/>
@@ -490,7 +380,7 @@
                                   <field name="x_studio_das_de_atraso" invisible="1" readonly="[&quot;&amp;&quot;,['x_studio_prueba','=','Atencion'],['team_id','!=',8]]"/>
                                   <field name="days_difference" string="Días de atraso" readonly="1"/>
                                   <field name="tiempoDeAtrasoTicket" readonly="1" widget='html'/>
-                                  <!--<field name='hour_differenceTicket' readonly='1' />-->
+                                  
                                   <field name="priority" widget="priority"/>
                                   <field name="x_studio_zona" string="Zona" readonly="['|', ('stage_id', '=', 18), ('stage_id', '=', 4)]" />
                                   <field name="zona_estados" string="Zona Estados" readonly="['|', ('stage_id', '=', 18), ('stage_id', '=', 4)]" />
@@ -510,8 +400,6 @@
                                   
                               </group>
                               
-                              
-                              <!--Comentar antes de iniciar pruebas -->
                               <field name="description"  placeholder="Description of the ticket..." />
                               
                               <group>
@@ -522,52 +410,9 @@
                                   
                                   <field invisible="1" name="x_studio_evidencia_distribuidor_filename" readonly="0"/>
                                   <field filename="x_studio_evidencia_distribuidor_filename" name="x_studio_evidencia_distribuidor" string="Evidencia Distribuidor" attrs="{}" readonly="1"/>
-                                  <!--<field name="documentosTecnico" string="Evidencias ticket" attrs="{'invisible': 0, 'readonly': 0, 'required': 0}" widget="many2many_binary"/>-->
+                              
                                   <field name="ultimoEvidencia" string="Evidencia diagnostico" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}" widget="many2many_binary"/>
-                                  
-                                  
-                                  
-                                  <!--
-                                  <field name="historialCuatro"  context="{'default_x_estado': x_studio_ultimoestado_1}" style="width:970px" >
-                                      <form >
-                                          <sheet string="" name="studio_sheet_d31ea3">
-                      
-                                              <notebook name="studio_notebook_hNOtb">
-                                                  <page name="studio_page_hNOtb" string="Nota : ">
-                                                      <group name="studio_group_hNOtb">
-                                                          <group name="studio_group_hNOtb_left">
-                                                              
-                                                              <field name="x_persona" string="encargado" invisible="1" readonly="0" widget="" context="" domain=""/>
-                                                              <field name="x_estado" string="Estado del ticket" invisible="1" readonly="1" widget="" context="" domain=""/>
-                                                              <field name="x_id_ticket" string="" invisible="1" readonly="0" widget="" context="" domain=""/>
-                                                              <field name="x_disgnostico" string="Comentario de ticket" invisible="0" readonly="0"     widget="text" context="" domain=""/>
-                                                              <field name="x_studio_diagnstico" string="Diagnóstico" invisible="1"/>  
-                                                              <field name="x_studio_evidencia" string="Evidencia" invisible="1" readonly="1" widget="binary" context="" domain=""/>
-                                                              
-                                                              <field name="x_studio_dejar_comentario_en_orden" string="Mostrar comentario en documento impreso"/>
-                                                          </group>
-                                                          <group name="studio_group_hNOtb_right"/>
-                                                          </group>
-                                                  </page>
-                                              </notebook>
-                                          </sheet>
-                      
-                                      </form>
-                                      <tree string="" delete="0" >
-                                          
-                                          <field name="id" string="ID" invisible="1" readonly="1" widget="" context="" domain=""/>
-                                          <field name="create_date" string="Creado el" invisible="0" readonly="1" widget="" context="" domain=""/>
-                                          <field name="x_id_ticket" string="ID" invisible="1" readonly="0" widget="" context="" domain=""/>
-                                          <field name="x_estado" string="Estado del ticket" invisible="0" readonly="0" widget="" context="" domain=""/>
-                                          <field name="x_disgnostico" string="Comentario de ticket" invisible="0" readonly="0"    widget="text" context="" domain="" />
-                                          <field name="create_uid" string="Encargado" invisible="0" readonly="1" widget="" context="" domain=""/>
-                                          <field name="x_studio_evidencia" string="Evidencia" invisible="0" readonly="0" widget="" context="" domain=""/>
-                                          
-                                          <field name="x_persona" string="encargado" invisible="1" readonly="0" widget="" context="" domain=""/>
-                                          <field name="x_studio_dejar_comentario_en_orden" string="Mostrar comentario en documento impreso"/>
-                                      </tree>
-                                  </field>
-                                  -->
+                              
                                   <field name="x_studio_ultimoestado_1" string="ultimoEstado" invisible="1" readonly="1" />
                                   
                                   <field name="x_studio_ultima_nota" string="Ultima Nota." invisible="1" widget="html" readonly="1" />
@@ -575,20 +420,7 @@
                                   <field name="x_studio_equipo_por_nmero_de_serie_2" string="Equipo por numero de serie 2" invisible="1" readonly="1" />
                                   <field name="x_studio_numero_serie_text" string="numero serie text" invisible="1" readonly="1" />
                                   <field name="x_studio_nombre_equipo" string="nombre equipó" invisible="1" readonly="1"/>
-                                  
-                                  
-                                  
-                                  
-                                  
                               </group>
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
                               
                           </group>
                       </page>
@@ -607,16 +439,7 @@
                   </notebook>
                   
                   
-                  
-                  <!-- Inicio agregado por marco -->
-                  <!--
-                  <group name="grupoEquipoPornNumeroDeSerieToner">
-                      
-                  </group>
-                  -->
-                  <!--<group name="grupoEquipoPornNumeroDeSerieRefacciones" invisible='[["x_studio_id_ticket", "=", 0]]' -->
                   <group name="grupoEquipoPornNumeroDeSerieRefacciones" >
-                      <!--<button name="capturandoMesa" string="Capturar contadores" style="height:100px" type="object"/>-->
                       <field name="x_studio_generar_cambio" string="Generar cambio" invisible="1"/>
                       <field name="x_studio_equipo_por_nmero_de_serie" string="Equipo por número de serie" style="width:877px" attrs="{}" domain="[]" readonly="0" widget="" context="{'default_x_studio_esconde':'x_studio_idteam'}" options="{'no_create_edit': True, 'no_create': True}">
                         <tree string="Lots/Serial Numbers" editable="bottom" >
@@ -643,12 +466,6 @@
                           <field name="x_studio_solicitar_tner_amarillo" string="Solicitar tóner amarillo" attrs="{&quot;invisible&quot;: [[&quot;x_studio_color_bn&quot;,&quot;=&quot;,&quot;B/N&quot;]]}" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
                           <field name="x_studio_tner_compatible_magenta" string="Tóner Compatible Magenta" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Magenta"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' invisible='[["x_studio_color_bn","=","B/N"]]' groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
                           <field name="x_studio_solicitar_tner_magenta" string="Solicitar tóner magenta" attrs="{&quot;invisible&quot;: [[&quot;x_studio_color_bn&quot;,&quot;=&quot;,&quot;B/N&quot;]]}" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
-                          
-                          <!--
-                          <field name="x_studio_toner_compatible_cian" string="Tóner Compatible Cian" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Cian"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' invisible="0"/>
-                          <field name="x_studio_tner_compatible_amarrillo" string="Tóner Compatible Amarillo" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Amarillo"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' invisible="0"/>
-                          <field name="x_studio_tner_compatible_magenta" string="Tóner Compatible Magenta" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Magenta"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' invisible="0"/>
-                          -->
                           
                           <field name="x_studio_w" string="Numero de serie" readonly="1" invisible="1" context="{'default_x_studio_w':name}"/>
                           <field name="id" string="ID" readonly="1" invisible="1"/>
@@ -724,24 +541,10 @@
                                               <field name="state" invisible="1"/>
                                           </tree>
                                       </field>
-                                      <!--
-                                      <field name="x_studio_histrico_de_componentes" string="Histórico De Componentes" attrs="{'readonly': 1}" readonly="1">
-                                          <tree string="Historio de componentes">
-                                              <field name="x_name" attrs="{}" invisible="1"/>
-                                              <field name="x_studio_field_gKQ9k"/>
-                                              <field name="x_studio_fecha_de_uso"/>
-                                          </tree>
-                                      </field>
-                                      -->
-                                      
-                                      
                                       
                                       <field name="x_studio_tmpint" invisible="1"/>
                                       <field name="x_studio_toner_compatible" invisible="1" domain='[&quot;&amp;&quot;, ["categ_id","=",5],["x_studio_toner_compatible.id","=",x_studio_tmpint]]'/>
                                       <field name="x_studio_toner_compatible_nombre" string="Toner Compatible nombre" invisible="1"/>
-                                      
-                                      
-                                      
                                       
                                       <field name="x_studio_field_B7uLt" string="DCAS" context="{&quot;default_x_studio_field_ue4Ea&quot;: id}" attrs="{}" invisible="1" delete="0">
                                           <tree string="DCAS" delete="0">
@@ -1005,78 +808,7 @@
                           </form>
                       </field>
                       
-                      <!--
-                      <field name="x_studio_contador_bn" string="Contador B/N" attrs="{'invisible': 1, 'readonly': 1}"/>
-                      <field name="x_studio_contador_bn_a_capturar" string="Contador B/N a capturar" attrs="{'invisible': 1, 'readonly': 1}"/>
-                      <field name="x_studio_contador_color" string="Contador color" attrs="{'invisible': 1, 'readonly': 1}"/>
-                      <field name="x_studio_contador_color_a_capturar" string="Contador color a capturar" attrs="{'invisible': 1, 'readonly': 1}"/>
-                      <field name="x_studio_tamao_lista" string="Tamaño lista equipo por nmero serie" attrs="{'invisible': 1}"/>
-                      
-                      -->
-                      
-                      <!--<field name="x_studio_activar_compatibilidad" string="Activar compatibilidad" attrs="{'invisible': 0, 'readonly': 0}"/>-->
-                      <!--<button name="crear_solicitud_refaccion" string="Solicitud de Refacción" attrs="{'invisible': [('team_id', '=', 8)]}" type="object"/>-->
-                        <!--<button name="toner" string="Solicitud de Tóner" attrs="{'invisible': [('team_id', '!=', 8)]}" type="object"/>-->
-                      <!--<field name="" string="" attrs="{'invisible': 1, 'readonly': 1}"/>-->
-                      
-                      <!--
-                      <field style="color:black" name="x_studio_productos"   string="Productos " domain="[]" attrs="{&quot;invisible&quot;: [['team_id','=',8]]}">
-                          <tree string="Product Variants" decoration-danger="type == 'product' and virtual_available&lt;0" decoration-info="type != 'product' or virtual_available&gt;=0" editable="bottom">
-                              <field name="create_uid" string="Creado por"  invisible="1" attrs="{'invisible': 1, 'readonly': 1}"/>
-                              <field name="x_studio_aadido_por" string="Añadido por"  invisible="1"  attrs="{'invisible': 1, 'readonly': 0}"/>
-                              <field name="x_studio_aadido_por_1" string="Añadido por" invisible="1" attrs="{'invisible': 1, 'readonly': 0}"/>
-                              <field name="x_studio_testuse" string="Prueba" invisible="1" attrs="{'invisible': 1, 'readonly': 1}"/>
-                              <field name="x_studio_field_Fj4xh" string="New Texto" invisible="1" attrs="{'invisible': 1, 'readonly': 1}"/>
-                              <field name="x_studio_currentuser" string="Usuario"  readonly="1" invisible="1" attrs="{'invisible': 0, 'readonly': 1}"/>
-                              <field name="categ_id" attrs="{}" readonly="1" required="1"/>
-                              <field name="default_code" attrs="{}" readonly="1"/>
-                              <field name="name" attrs="{}" readonly="1" required="1"/>
-                              <field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant" invisible="1"/>
-                              <field name="lst_price" attrs="{}" readonly="1" invisible="1"/>
-                              <field name="standard_price" attrs="{}" readonly="1" invisible="1"/>
-                              <field name="type" invisible="1" required="1"/>
-                              <field name="price" invisible="not context.get('pricelist',False)"/>
-                              <field name="qty_available" attrs="{'invisible':[('type', '!=', 'product')]}" readonly="1"/>
-                              <field name="virtual_available" attrs="{'invisible':[('type', '!=', 'product')]}" readonly="1"/>
-                              <field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="uom.group_uom" attrs="{}" readonly="1" required="1" invisible="1"/>
-                              <field name="barcode" attrs="{}" invisible="1"/>
-                              <field name="x_studio_cantidad_pedida" string="Cantidad pedida"/>
-                              <field name="product_tmpl_id" invisible="1" required="1"/>
-                              <field name="active" invisible="1"/>
-                          </tree>
-                      </field>
-                      <field name="x_studio_usuario" string="Usuario" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                      <field name="x_studio_verificacin_de_tner" string="Verificación de tóner" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
-                      <field name="documentosTecnico" string="Evidencias técnico" attrs="{'invisible': 0, 'readonly': 0, 'required': 0}" widget="many2many_binary"/>
-                      <field name="x_studio_verificacin_de_refaccin" string="Verificación de refacción" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
-                      <field name="x_studio_observaciones_adicionales_" string="" attrs="{'readonly': 0, 'required': 0}" invisible="['|', ['stage_id','!=',3],['team_id','!=',74]]"/>
-                      <field name="x_studio_prioridad" string="Prioridad" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
-                      <field name="x_studio_documento_de_origen" string="Documento de origen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                      <field name="x_studio_transferencia" string="transferencia" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
-                      
-                      <field name="activity_state" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                      <field name="activity_summary" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                      <field name="x_studio_field_nO7Xg" string="Pedido de venta" attrs="{'readonly': 0, 'required': 0}" invisible='["|",["team_id","=",74],["team_id","=",76]]'/>
-                      <field name="x_studio_prueba" string="Estado" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                      <field name="x_studio_field_SbRz2" string="Transfer almacen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                      <field name="x_studio_field_XALSC" string="Transferir distribucion" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                      <field name="x_transferir_surt" string="Transferir surtido" readonly="1" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
-                      
-                      
-                      <field name="x_studio_field_up5pO" string="Estado en Almacén" attrs="{'invisible': 0, 'readonly': 1, 'required': 0}"/>
-                      <field name="x_studio_field_Le2tN" string="Estado en Distribución" attrs="{'invisible': 0, 'readonly': 1, 'required': 0}"/>
-                      
-                      
-                      <field name="x_estado_en_almacen" String="Estado en Almacén" invisible="0" readonly="1" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
-                      
-                      <field name="x_estado_en_distribucion" String="Estado en Distribución" invisible="0" readonly="1" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
-                      
-                      -->
-                      
-                      
                   </group>
-                  
-                  
                   
                   <group string="Diagnostico" class="text-center"></group>
                   
@@ -1084,11 +816,8 @@
                   
                   <field name="x_studio_ultima_evidencia" widget="html" string="Ultima Evidencia"/>
                   
-                  
-                  <!--Fin agregado por marco-->
-                  
                   <group>
-                      <!--<group name="datosTicket" string="Datos Ticket" invisible='[["x_studio_id_ticket", "=", 0]]'>-->
+                      
                       <group name="datosTicket" string="Datos Ticket" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea">
                           <field name="estadoAsignacion" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
                           <field name="estadoAtencion" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
@@ -1106,174 +835,9 @@
                           <field name="contadores_anteriores" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea" />
                           
                       </group>
-                      <!--<group name="datosCliente" string="Datos cliente" invisible='[["x_studio_id_ticket", "=", 0]]'>-->
-                      <!--
-                      <group name="datosCliente" string="Datos cliente" >
-                      -->
-                          <!--
-                          <field name="partner_id" class="field_partner_id" options="{'no_create ': True, 'no_create_edit' : True}"/>
-                          <field name="x_studio_zona_cliente" invisible="1" readonly="1"/>
-                          <field name="x_studio_contacto" invisible="1" readonly="1" />
-                          <field name="partner_name" attrs="{'invisible': 1}"/>
-                          <field name="partner_email" invisible="1"/>
-                          <field name="x_studio_telefono" string="Teléfono del cliente" invisible="1"/>
-                          <field name="x_studio_movil" string="Móvil del cliente" invisible="1"/>
-                          <field name="x_studio_id_ayuda" string="id ayuda" invisible="1"/>
-                          <field name="x_studio_empresas_relacionadas" domain='[&quot;&amp;&quot;,["parent_id.id","=",x_studio_id_ayuda],["type","=","delivery"]]' string="Localidad"/>
-                          <field name="x_studio_field_6furK" string="Zona localidad" readonly="1"/>
-                          <field name="idLocalidadAyuda" invisible="1" readonly="1" string="id Localidad Ayuda"/>
-                          <field name="localidadContacto" string="Localidad Contacto" domain='[&quot;&amp;&quot;,["parent_id.id","=",idLocalidadAyuda],["type","=","contact"]]'/>
-                          <field name="agregarContactoCheck" string="Añadir contacto a localidad" groups="studio_customization.crear_usuarios_desde_091db177-3de4-472f-b4c3-db59fb26110f"/>
-                          -->
-                          <!-- Agregar un contacto a la localidad -->
-                          <!--
-                          <sheet>
-                              
-                              <div class="row border border-info" attrs="{&quot;invisible&quot;: [[&quot;agregarContactoCheck&quot;,&quot;=&quot;,False]]}" groups="studio_customization.crear_usuarios_desde_091db177-3de4-472f-b4c3-db59fb26110f">
-                                  <div class="col-sm-2"/>
-                                      <div class="col-sm-8">
-                                          <div class="row">
-                                              <div class="col-12">
-                                                  <p>Tipo de dirección: 
-                                                      <field name="tipoDeDireccion"/>
-                                                  </p>
-                                                  <p>Subtipo: 
-                                                      <field name="subtipo"/>
-                                                  </p>
-                                                  <p>Nombre del contacto: 
-                                                      <field name="nombreDelContacto"/>
-                                                  </p>
-                                                  <p>Titulo: 
-                                                  <field name="titulo" placeholder="Por ejemplo, Sr."/>
-                                                  </p>
-                                                  <p>Puesto de trabajo: 
-                                                      <field name="puestoDeTrabajo" placeholder="Por ejemplo, Director de ventas"/>
-                                                  </p>
-                                                  <p>Correo electronico: 
-                                                      <field name="correoElectronico"/>
-                                                  </p>
-                                                  <p>Teléfono: 
-                                                      <field name="telefono"/>
-                                                  </p>
-                                                  <p>Móvil: 
-                                                      <field name="movil"/>
-                                                  </p>
-                                                  <p>Notas: 
-                                                      <field name="notas" placeholder="Notas internas..."/>
-                                                  </p>
-                                              </div>
-                                          </div>
-                                          <div class="row" attrs="{&quot;invisible&quot;: [&quot;|&quot;,[&quot;tipoDeDireccion&quot;,&quot;=&quot;,&quot;contact&quot;],[&quot;tipoDeDireccion&quot;,&quot;=&quot;,False]]}">
-                                              <div class="col-12">
-                                                  <p>Calle: 
-                                                      <field name="direccionNombreCalle"/>
-                                                  </p>
-                                                  <p>Número exterior: 
-                                                      <field name="direccionNumeroExterior"/>
-                                                  </p>
-                                                  <p>Número interior: 
-                                                      <field name="direccionNumeroInterior"/>
-                                                  </p>
-                                                  <p>Colonia: 
-                                                      <field name="direccionColonia"/>
-                                                  </p>
-                                                  <p>Localidad: 
-                                                      <field name="direccionLocalidad"/>
-                                                  </p>
-                                                  <p>País: 
-                                                      <field name="direccionPais"/>
-                                                  </p>
-                                                  <p>Ciudad: 
-                                                      <field name="direccionCiudad"/>
-                                                  </p>
-                                                  <p>Estado: 
-                                                      <field name="direccionEstado"/>
-                                                  </p>
-                                                  <p>Código postal: 
-                                                      <field name="direccionCodigoPostal"/>
-                                                  </p>
-                                                  <p attrs="{&quot;invisible&quot;: [[&quot;tipoDeDireccion&quot;,&quot;!=&quot;,&quot;delivery&quot;]]}">Zona: 
-                                                      <field name="direccionZona"/>
-                                                  </p>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  <div class="col-sm-2">
-                                      <button class="oe_highlight" name="agregarContactoALocalidad" string="Añadir contacto a localidad" type="object"/>
-                                  </div>
-                              </div>
-                          </sheet>
-                          -->
-                          <!--
-                          <div class="row" attrs='{"invisible": [["agregarContactoCheck","=",False]]}'><div class="col-sm-9"></div><div class="col-sm-3 text-left"><button name="agregarContactoALocalidad" string="Añadir contacto a localidad" style="height:100px" type="object"/></div></div>
-                          -->
-                          <!--
-                          <br/>
-                          <br/>
-                          -->
-                          <!--
-                          <field name="x_studio_telfono_localidad_contacto" string="Télefono localidad contacto" readonly="1"/>
-                          <field name="x_studio_movil_localidad_contacto" string="Movil localidad contacto" readonly="1"/>
-                          <field name="x_studio_email_localidad_contacto" string="Correo electrónico localidad contacto" readonly="1"/>
-                          <field name="x_studio_fecha_prevista" string="Fecha Prevista" />
-                          <field name="x_studio_correo_electrnico_de_localidad" string="Correo electrónico de localidad" invisible="1"/>
-                          <field name="x_studio_telefono_localidad" string="Teléfono locaidad" invisible="1"/>
-                          <field name="x_studio_movil_localidad" string="Movil locaidad" invisible="1"/>
-                          -->
-
-                          <!-- Horario de atencion-->
-                          
-                          <!--
-                          <div class="row">
-                              <div class="col-sm-12" name="studio_div_20cbff"><p><b>Horario de atención: </b></p><field name="x_studio_hora_inicio"/> : 
-                                  <field name="x_studio_minuto_inicio"/>
-                                  <field name="x_studio_ampm_inicio"/> a 
-                                  <field name="x_studio_hora_fin"/> : 
-                                  <field name="x_studio_minuto_fin"/>
-                                  <field name="x_studio_ampm_fin"/>
-                              </div>
-                          </div>
-                          <br/>
-
-                          <field name="x_studio_nivel_del_cliente" string="Nivel del cliente" widget="selection_badge" readonly="1" />
-                          <field name="use_helpdesk_timesheet" invisible="1" readonly="1"/>
-                          <field name="project_id" invisible="[['use_helpdesk_timesheet','=',False]]" />
-                          <field name="task_id" invisible='[["project_id","=", False]]' domain="[['project_id', '=', project_id]]" context="{'default_project_id': project_id}"/>
-                          <field name="ticket_type_id" string="Tipo de vale" invisible="1" />
-                          <field name="x_studio_tipo_de_vale" string="Tipo de vale"  />
-                          <field name="x_studio_tipo_de_falla" string="Tipo de falla"  />
-                          <field name="x_studio_tipo_de_incidencia" string="Tipo de incidencia"  />
-                          <field name="x_studio_valor_categria_de_producto" string="Valor categria de producto" invisible="1" readonly="1"/>
-                          <field name="x_studio_tipo_de_requerimiento" string="Tipo de requerimiento" />
-                          <field name="x_studio_tipo_de_producto" string="Tipo de producto" invisible="[['team_id','=',74]]" />
-                          <field name="tag_ids" widget="many2many_tags"  options="{'color_field': 'color'}"/>
-                          <field name="x_studio_id_cliente" string="id cliente" invisible="1" />
-                          <field name="x_studio_filtro_numeros_de_serie" string="id localidad" invisible="1" readonly="1"/>
-                          <field name="x_studio_localidad_id" string="localidad_id" invisible="1"/>
-                          -->
-                          <!--
-                      </group>
-                      -->
-                  </group>
-
-                  <!--<group name="notasDocumentadas" string="Notas" invisible='[["x_studio_id_ticket", "=", 0]]'>-->
-                  <!--<group name="notasDocumentadas" string="Notas" >
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
                       
                   </group>
-                  -->
-                  <!--<group invisible='[["x_studio_id_ticket", "=", 0]]'>-->
+
                   <group>
                       <group>
                           <field name="x_studio_field_cG9va" string="Línea de pedido de venta"  readonly="0" widget="" context="" domain=""/>
@@ -1282,7 +846,7 @@
                           
                       </group>
                   </group>
-                  <!--<group invisible='[["x_studio_id_ticket", "=", 0]]'>-->
+                  
                   <group >
                       <group>
                           <field name="x_studio_realizar_visita" string="Realizar visita" invisible='[["ticket_type_id","!=",5]]' readonly="0" widget="" context="" domain=""/>
@@ -1301,7 +865,7 @@
                       </group>
                   </group>
                   <group> 
-                      <!--<group invisible='[["x_studio_id_ticket", "=", 0]]'>-->
+                      
                       <group>
                           <field name="x_studio_evidencia_1" string="Evidencia" invisible='[["stage_id", "!=", 3]]'/>
                           <field name="x_studio_evidencia_1_filename" string="Filename for x_studio_filename" invisible="1"/>    
@@ -1309,7 +873,7 @@
                       <group>
                       </group>
                   </group>
-                  <!--<field name="description" class="field_description" placeholder="Description of the ticket..."/>-->
+                  
               </sheet>
               
               
