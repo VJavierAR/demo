@@ -83,6 +83,14 @@ class StockWarehouse(Model):
 
 
 class StockMoveLine(Model):
+    _inherit = 'stock.location'
+
+    x_studio_field_JoD2k = fields.Many2one('stock.warehouse', string = 'Almacén', store=True)
+
+class StockMoveLine(Model):
     _inherit = 'stock.move.line'
 
     x_studio_almacen = fields.Char(related='location_id.x_studio_field_JoD2k.display_name', string='Almacen')
+
+
+
