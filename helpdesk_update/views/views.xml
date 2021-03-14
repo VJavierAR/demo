@@ -124,7 +124,8 @@
               </header>
               <sheet>
                   <!--<field name="sla_active" invisible="1"/>-->
-                  <field name="partner_tickets" invisible="1"/>
+                  <!--<field name="partner_tickets" invisible="1"/>-->
+                  <!--
                   <div class="oe_button_box" name="button_box">
                       <button class="oe_stat_button" name="open_customer_tickets" icon="fa-ticket" type="object" invisible="['|', ('partner_id', '=', False), ('partner_tickets', '&lt;=', 1)]">
                           <field name="partner_tickets" string="Customer Tickets" widget="statinfo"/>
@@ -136,6 +137,7 @@
                           <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
                       </button>
                   </div>
+                  -->
                   <field name="kanban_state" widget="state_selection" />
                   
                   <div class="row">
