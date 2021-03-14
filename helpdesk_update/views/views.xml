@@ -169,7 +169,7 @@
                       <h1>
                           <field name="name" class="field_name" string="Descripción del reporte" placeholder="Descripción del reporte..." widget="text" invisible="1"/>
                       </h1>
-                      <field name="sla_name" class="badge badge-danger oe_inline" attrs="{'invisible': [('sla_active','=',False)]}"/>
+                      <!--<field name="sla_name" class="badge badge-danger oe_inline" attrs="{'invisible': [('sla_active','=',False)]}"/>-->
                   </div>
                   
                   <group name="tipoDeReporte">
