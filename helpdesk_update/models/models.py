@@ -272,6 +272,8 @@ class helpdesk_update(models.Model):
 
     x_studio_fecha_prevista = fields.Datetime(string = 'Fecha Prevista')
     x_studio_fecha_nota = fields.Char(string='Fecha Nota', readonly=True)
+    x_studio_field_XALSC = fields.Many2one('stock.picking', string = 'Transferir dis')
+    
 
     
 
