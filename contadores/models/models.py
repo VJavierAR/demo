@@ -1786,6 +1786,8 @@ class lor(models.Model):
     instalado_el = fields.Datetime(string = 'Fecha de instalación', store=True)
     html = fields.Text(string = 'Tickets', compute = 'gener_tabla_tickets')
 
+    x_studio_estado = fields.Selection([["Obsoleto","Obsoleto"],["Usado","Usado"],["Hueso","Hueso"],["Para reparación","Para reparación"],["Nuevo","Nuevo"],["Buenas condiciones","Buenas condiciones"],["Excelentes condiciones","Excelentes condiciones"],["Back-up","Back-up"],["Dañado","Dañado"]], store=True, track_visibility='onchange')
+
     
     def gener_tabla_tickets(self):
       serie_name = self.mapped('name')[0]
