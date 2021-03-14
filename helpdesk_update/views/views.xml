@@ -117,21 +117,15 @@
 
           <form string="Helpdesk Ticket"  edit="1" >
               <header>
-                  <!--
-                  <button name="assign_ticket_to_self" string="Assign To Me" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user"/>
-                  <button name="validar_solicitud_toner"  attrs="{'invisible':[['x_studio_tipo_de_requerimiento','!=','Tóner']]}" string="Validar Toner" type="object" class="oe_highlight" groups="studio_customization.validar_toner_d61119fe-f670-4dd0-9dee-6d2bfdd1824e"/>
-                  <button name="validar_solicitud_refaccion" attrs="{'invisible':['&amp;',['x_studio_tipo_de_falla','!=','Solicitud de refacción'],['x_studio_tipo_de_incidencia','!=','Solicitud de refacción']]}"     string="Validar Refacción" type="object" class="oe_highlight" groups="studio_customization.validar_refaccion_96aa2d5c-a884-4b4d-972a-a4d9c5fdbdd8"/>
-                  -->
                   
                   <field name="stage_id" widget="statusbar"  attrs="{'readonly':True}"  />
                   
                   
               </header>
               <sheet>
-                  <field name="sla_active" invisible="1"/>
+                  <!--<field name="sla_active" invisible="1"/>-->
                   <field name="partner_tickets" invisible="1"/>
                   <div class="oe_button_box" name="button_box">
-                      <!--<button class="oe_stat_button" name="open_customer_tickets" icon="fa-ticket" type="object" invisible="['|', ('partner_id', '=', False), ('partner_tickets', '&lt;=', 1)]" attrs="{'invisible': ['|', ('partner_id', '=', False), ('partner_tickets', '&lt;=', 1)]}">-->
                       <button class="oe_stat_button" name="open_customer_tickets" icon="fa-ticket" type="object" invisible="['|', ('partner_id', '=', False), ('partner_tickets', '&lt;=', 1)]">
                           <field name="partner_tickets" string="Customer Tickets" widget="statinfo"/>
                       </button>
@@ -144,9 +138,6 @@
                   </div>
                   <field name="kanban_state" widget="state_selection" />
                   
-                  <!--Inicio agregado por marco-->
-                  
-                  <!--<div class="row" attrs="{&quot;invisible&quot;: [[&quot;x_studio_id_ticket&quot;, &quot;=&quot;, 0]]}">-->
                   <div class="row">
                       <div class="col-sm-4">
                       </div>
