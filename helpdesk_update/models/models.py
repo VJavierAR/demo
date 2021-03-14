@@ -268,7 +268,10 @@ class helpdesk_update(models.Model):
     ticketDeReincidencia = fields.Text(string = 'Ticket de provenencia', store = True)
 
     days_difference = fields.Integer(compute='_compute_difference',string='días de atraso')
-    x_studio_field_nO7Xg=fields.Many2one('sale.order')
+    x_studio_field_nO7Xg = fields.Many2one('sale.order')
+
+    x_studio_fecha_prevista = fields.Datetime(string = 'Fecha Prevista')
+    x_studio_fecha_nota = fields.Char(string='Fecha Nota', readonly=True)
 
     
 
