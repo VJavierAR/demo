@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 def get_years():
     year_list = []
     for i in range(2010, 2036):
-       year_list.append((i, str(i)))
+       year_list.append((str(i), str(i)))
     return year_list
 valores = [('01', 'Enero'), ('02', 'Febrero'), ('03', 'Marzo'), ('04', 'Abril'),
                           ('05', 'Mayo'), ('06', 'Junio'), ('07', 'Julio'), ('08', 'Agosto'),
@@ -24,6 +24,7 @@ class fac_order(models.Model):
       nameDos = fields.Char()
       month = fields.Selection(valores,string='Mes',default='04')
       year = fields.Selection(''.join(get_years()), string='Año',default=2020)
+      #year = fields.Selection(''.join(valores), string='Año',default=2020)
       excedente=fields.Text(string='Excedentes')
                              
      
