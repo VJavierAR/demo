@@ -383,7 +383,7 @@
                                   <!--<field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" invisible="0" domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]' />-->
                                   <field name="x_studio_fecha_de_visita" string="Fecha de visita" attrs='{"invisible": [&quot;&amp;&quot;,["stage_id","=",1],"|","|",["team_id","=",74],["team_id","=",11],["team_id","=",8]]}' />
                                   <field name="company_id" groups="base.group_multi_company" invisible="1"/>
-                                  <field name="deadline" readonly="1" attrs="{'invisible': [('deadline', '=', False)]}"/>
+                                  <!--<field name="deadline" readonly="1" attrs="{'invisible': [('deadline', '=', False)]}"/>-->
                                   <field name="sla_id" invisible="1" readonly="1"/>
                                   
                               </group>
