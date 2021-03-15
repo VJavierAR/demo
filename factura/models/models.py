@@ -23,12 +23,12 @@ valores = [('01', 'Enero'), ('02', 'Febrero'), ('03', 'Marzo'), ('04', 'Abril'),
 
 
 class factura(models.Model):
-      _inherit = 'account.invoice'
+      _inherit = 'account.move'
       date_invoice = fields.Date(string='Fecha factura', default=datetime.datetime.now(pytz.utc).strftime('%Y-%m-%d'))
       month = fields.Selection(valores,string='Mes',default='04')
       #year = fields.Selection(get_years(), string='Año',default=2020)
       year = fields.Selection([['2010', '2036']], string='Año',default='2010')
-      #detalle =  fields.One2many('sale.order.detalle', 'account.Invoice', string='Detalle')
+      #detalle =  fields.One2many('sale.order.detalle', 'account.move', string='Detalle')
       zeros =  fields.One2many('zeros.lineas', 'accountInv', string='Zeros')
       
       #@api.multi
@@ -135,7 +135,7 @@ class factura(models.Model):
                   raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+str(serviciosd)+"aaaaa")    
                else:
                   for rs in range(lenset-1):                                            
-                      a=self.env['account.invoice'].create(
+                      a=self.env['account.move'].create(
                           
                           {'x_studio_captura':self.x_studio_captura.id,'partner_id':self.partner_id.id,
                            
@@ -144,7 +144,7 @@ class factura(models.Model):
                            ,'company_id':self.company_id.id,'l10n_mx_edi_payment_method_id':self.l10n_mx_edi_payment_method_id.id,'payment_term_id':self.payment_term_id.id,
                            
                            'l10n_mx_edi_usage':self.l10n_mx_edi_usage,'journal_id':self.journal_id.id})                                            
-                      self.env.cr.execute("insert into x_account_invoice_contrato_rel (account_invoice_id, contrato_id) values (" +str(a.id) + ", " +  str(self.x_studio_contrato_1[0].id) + ");")                          
+                      self.env.cr.execute("insert into x_account.move_contrato_rel (account.move_id, contrato_id) values (" +str(a.id) + ", " +  str(self.x_studio_contrato_1[0].id) + ");")                          
                       for d in self.invoice_line_ids:
                           if asts[rs]==d.x_studio_id_servicio:  
                              d.write({'invoice_id': a.id})
@@ -184,7 +184,7 @@ class factura(models.Model):
                     
                     part=self.env['res.partner'].search([('parent_id', '=',self.partner_id.id),('name','=',cambio)])
                     
-                    local=self.env['account.invoice'].create(
+                    local=self.env['account.move'].create(
                           
                           {'x_studio_captura':self.x_studio_captura.id,'partner_id':part.id,
                            
@@ -194,7 +194,7 @@ class factura(models.Model):
                            
                            'l10n_mx_edi_usage':self.l10n_mx_edi_usage,'journal_id':self.journal_id.id})
                     
-                    self.env.cr.execute("insert into x_account_invoice_contrato_rel (account_invoice_id, contrato_id) values (" +str(local.id) + ", " +  str(self.x_studio_contrato_1[0].id) + ");")                          
+                    self.env.cr.execute("insert into x_account.move_contrato_rel (account.move_id, contrato_id) values (" +str(local.id) + ", " +  str(self.x_studio_contrato_1[0].id) + ");")                          
                     for det in localidades:                            
                         if str(sale)==str(det.locacion):
                            det.write({'accountInvoice':local.id}) 
@@ -214,7 +214,7 @@ class factura(models.Model):
             
             
             if self.x_studio_contrato_1[0].dividirExcedentes and len(self.x_studio_detalle)>0:
-               ex=self.env['account.invoice'].create(
+               ex=self.env['account.move'].create(
                           
                           {'x_studio_captura':self.x_studio_captura.id,'partner_id':self.partner_id.id,
                            
@@ -223,7 +223,7 @@ class factura(models.Model):
                            ,'company_id':self.company_id.id,'l10n_mx_edi_payment_method_id':self.l10n_mx_edi_payment_method_id.id,'payment_term_id':self.payment_term_id.id,
                            
                            'l10n_mx_edi_usage':self.l10n_mx_edi_usage,'journal_id':self.journal_id.id})
-               self.env.cr.execute("insert into x_account_invoice_contrato_rel (account_invoice_id, contrato_id) values (" +str(ex.id) + ", " +  str(self.x_studio_contrato_1[0].id) + ");")                          
+               self.env.cr.execute("insert into x_account.move_contrato_rel (account.move_id, contrato_id) values (" +str(ex.id) + ", " +  str(self.x_studio_contrato_1[0].id) + ");")                          
                #self.excedente="<a href='https://gnsys-corp.odoo.com/web#id="+str(fac.id)+"&action=1167&model=sale.order&view_type=form&menu_id=406' target='_blank'>"+str(fac.name)+"</a>"
                for d in self.invoice_line_ids:
                    if d.product_id.name == 'RENTA EQUIPO':                      
@@ -300,20 +300,20 @@ class factura(models.Model):
 
                                      if k.x_studio_color_o_bn=='B/N':
                                          if bnp>0: 
-                                            inv = self.env['account.invoice.line'].create({'x_studio_id_servicio':m.id,'invoice_id': self.id,'x_studio_id_servicio':m.id,'account_id':cuenta,'name':'(82121500) PAGINAS IMPRESAS NEGRO','x_studio_serie':k.serie.name,'product_id':pbn,'quantity':bnp,'price_unit':m.clickExcedenteBN})                                         
+                                            inv = self.env['account.move.line'].create({'x_studio_id_servicio':m.id,'invoice_id': self.id,'x_studio_id_servicio':m.id,'account_id':cuenta,'name':'(82121500) PAGINAS IMPRESAS NEGRO','x_studio_serie':k.serie.name,'product_id':pbn,'quantity':bnp,'price_unit':m.clickExcedenteBN})                                         
                                             inv.write({ 'invoice_line_tax_ids' : [ (6, 0 , [2] ) ] })                                         
                                          else:
                                             self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':m.clickExcedenteBN,'serie':k.serie.name,'descripcion':'(82121500) PAGINAS IMPRESAS NEGRO'})
 
                                      if k.x_studio_color_o_bn=='Color':
                                          if colorp>0: 
-                                            inv=self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'account_id':cuenta,'name':'(82121500) PAGINAS IMPRESAS COLOR','x_studio_serie':k.serie.name,'product_id':pcolor,'quantity':colorp,'price_unit':m.clickExcedenteColor})                                               
+                                            inv=self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'account_id':cuenta,'name':'(82121500) PAGINAS IMPRESAS COLOR','x_studio_serie':k.serie.name,'product_id':pcolor,'quantity':colorp,'price_unit':m.clickExcedenteColor})                                               
                                             inv.write( { 'invoice_line_tax_ids' : [ (6, 0 , [2] ) ] })    
                                          else:
                                             self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':m.clickExcedenteColor,'serie':k.serie.name,'descripcion':'(82121500) PAGINAS IMPRESAS COLOR'})   
 
                                          if bnp>0:
-                                            invc=self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'account_id':cuenta,'name':'(82121500) PAGINAS IMPRESAS NEGRO','x_studio_serie':k.serie.name,'product_id':pbn,'quantity':bnp,'price_unit':m.clickExcedenteBN})                                                      
+                                            invc=self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'account_id':cuenta,'name':'(82121500) PAGINAS IMPRESAS NEGRO','x_studio_serie':k.serie.name,'product_id':pbn,'quantity':bnp,'price_unit':m.clickExcedenteBN})                                                      
                                             invc.write( { 'invoice_line_tax_ids' : [ (6, 0 , [2] ) ] }) 
                                          else:
                                             self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':m.clickExcedenteBN,'serie':k.serie.name,'descripcion':'(82121500) PAGINAS IMPRESAS NEGRO'})   
@@ -326,23 +326,23 @@ class factura(models.Model):
                                         p=' MODELO '+str(k.serie.product_id.name)+' Período ' + str(dict(self._fields['month'].selection).get(self.month)) +' de ' + str(self.year)
                                      if k.x_studio_color_o_bn=='B/N':
                                         if bnp>0:
-                                           self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'account_id':cuenta,'product_id':pbn,'quantity':bnp,'price_unit':m.clickExcedenteBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO :'+str(bnp)+' NEGRO INCLUYE ('+str(m.bolsaBN)+')  : SERIE:'+k.serie.name+p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ] })                                                    
+                                           self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'account_id':cuenta,'product_id':pbn,'quantity':bnp,'price_unit':m.clickExcedenteBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO :'+str(bnp)+' NEGRO INCLUYE ('+str(m.bolsaBN)+')  : SERIE:'+k.serie.name+p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ] })                                                    
                                         else:
                                             self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':m.clickExcedenteBN,'serie':k.serie.name,'descripcion':'(82121500) PAGINAS IMPRESAS NEGRO'})
 
                                      if k.x_studio_color_o_bn=='Color':
                                         if colorp>0:
-                                           self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'account_id':cuenta,'product_id':pcolor,'quantity':colorp,'price_unit':m.clickExcedenteColor,'name':'(82121500) PAGINAS IMPRESAS COLOR: '+str(colorp)+'  INCLUYE ('+str(m.bolsaColor)+') SERIE : '+k.serie.name+p ,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
+                                           self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'account_id':cuenta,'product_id':pcolor,'quantity':colorp,'price_unit':m.clickExcedenteColor,'name':'(82121500) PAGINAS IMPRESAS COLOR: '+str(colorp)+'  INCLUYE ('+str(m.bolsaColor)+') SERIE : '+k.serie.name+p ,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
                                         else:
                                             self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':m.clickExcedenteColor,'serie':k.serie.name,'descripcion':'(82121500) PAGINAS IMPRESAS COLOR'})   
 
                                         if bnp>0:
-                                           self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'account_id':cuenta,'product_id':pbn,'quantity':bnp,'price_unit':m.clickExcedenteBN,'name':'(82121500) PAGINAS IMPRESAS: '+str(bnp)+' NEGRO INCLUYE ('+str(m.bolsaBN)+')  SERIE:'+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                               
+                                           self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'account_id':cuenta,'product_id':pbn,'quantity':bnp,'price_unit':m.clickExcedenteBN,'name':'(82121500) PAGINAS IMPRESAS: '+str(bnp)+' NEGRO INCLUYE ('+str(m.bolsaBN)+')  SERIE:'+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                               
                                         else:
                                             self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':m.clickExcedenteBN,'serie':k.serie.name,'descripcion':'(82121500) PAGINAS IMPRESAS NEGRO'})
                                      if str(k.serie.x_studio_estado)!='Back-up':   
-                                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'account_id':cuenta,'product_id':rentaE,'quantity':1,'price_unit':m.rentaMensual,'name':'(80161801)  RENTA EQUIPO ' +k.serie.x_studio_locacion_recortada+' SERIE: '+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                    
-                                        #self.env['account.invoice.line'].create({'invoice_id': sale.id,'x_studio_serie':k.name,'product_id':rentaE,'product_uom_qty':1,'x_studio_cantidad':'1','price_unit':m.rentaMensual,'name':'(80161801)  RENTA EQUIPO ' +k.x_studio_locacion_recortada+' SERIE: '+k.name +p,'discount':int(self.x_studio_descuento)})                                                    
+                                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'account_id':cuenta,'product_id':rentaE,'quantity':1,'price_unit':m.rentaMensual,'name':'(80161801)  RENTA EQUIPO ' +k.serie.x_studio_locacion_recortada+' SERIE: '+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                    
+                                        #self.env['account.move.line'].create({'invoice_id': sale.id,'x_studio_serie':k.name,'product_id':rentaE,'product_uom_qty':1,'x_studio_cantidad':'1','price_unit':m.rentaMensual,'name':'(80161801)  RENTA EQUIPO ' +k.x_studio_locacion_recortada+' SERIE: '+k.name +p,'discount':int(self.x_studio_descuento)})                                                    
                 #self.compute_taxes()                          
 
                                   if m.id==int(k.x_studio_servicio) and (m.nombreAnte=='Renta base con ML incluidas BN o color + ML. excedentes' or m.nombreAnte=='Renta base con páginas incluidas BN o color + pag. excedentes' ):
@@ -353,31 +353,31 @@ class factura(models.Model):
                                          if k.x_studio_color_o_bn=='B/N':
                                             if m.bolsaBN<bnp:
                                                bnp=bnp-m.bolsaBN
-                                               self.env['account.invoice.line'].create({'invoice_id':self.id,'x_studio_serie':k.serie.name,'product_id':pbn,'account_id':cuenta,'quantity':bnp,'price_unit':m.clickExcedenteBN,'x_studio_bolsa':m.bolsaBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(bnp)+' INCLUYE ('+str(m.bolsaBN)+') SERIE: '+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
+                                               self.env['account.move.line'].create({'invoice_id':self.id,'x_studio_serie':k.serie.name,'product_id':pbn,'account_id':cuenta,'quantity':bnp,'price_unit':m.clickExcedenteBN,'x_studio_bolsa':m.bolsaBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(bnp)+' INCLUYE ('+str(m.bolsaBN)+') SERIE: '+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
                                             #aqui tenemos que ver que onda con currente pa and currentp    
                                             else:
                                                self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':m.clickExcedenteBN,'serie':k.serie.name,'bolsa':m.bolsaBN,'descripcion':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(abs(int(k.x_studio_lectura_anterior_bn)-int(k.contadorMono)))+' INCLUYE ('+str(m.bolsaBN)+') :'+p})
                                             #else:    
-                                            #   self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.name,'product_id':pbn,'quantity':0,'x_studio_cantidad':'0','price_unit':m.clickExcedenteBN,'x_studio_bolsa':m.bolsaBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(abs(int(currentPA.contadorMono)-int(currentP.contadorMono)))+' INCLUYE ('+str(m.bolsaBN)+') SERIE:'+k.name +p})                                                     
+                                            #   self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.name,'product_id':pbn,'quantity':0,'x_studio_cantidad':'0','price_unit':m.clickExcedenteBN,'x_studio_bolsa':m.bolsaBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(abs(int(currentPA.contadorMono)-int(currentP.contadorMono)))+' INCLUYE ('+str(m.bolsaBN)+') SERIE:'+k.name +p})                                                     
                                          if k.x_studio_color_o_bn=='Color':
                                             if m.bolsaBN<bnp:
                                                bnpt=bnp 
                                                bnp=bnp-m.bolsaBN
-                                               self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'product_id':pbn,'account_id':cuenta,'quantity':bnp,'price_unit':m.clickExcedenteBN,'x_studio_bolsa':m.bolsaBN,'x_studio_excedente':'si','name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(bnpt)+' INCLUYE ('+str(m.bolsaBN)+') SERIE:'+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                  
+                                               self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'product_id':pbn,'account_id':cuenta,'quantity':bnp,'price_unit':m.clickExcedenteBN,'x_studio_bolsa':m.bolsaBN,'x_studio_excedente':'si','name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(bnpt)+' INCLUYE ('+str(m.bolsaBN)+') SERIE:'+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                  
                                             else:
                                                self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':m.clickExcedenteBN,'serie':k.serie.name,'bolsa':m.bolsaBN,'descripcion':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(abs(int(k.x_studio_lectura_anterior_bn)-int(k.contadorMono)))+' INCLUYE ('+str(m.bolsaBN)+') :'+p})
                                             #else:
-                                            #   self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.name,'product_id':pbn,'quantity':0,'x_studio_cantidad':'0','price_unit':m.clickExcedenteBN,'x_studio_bolsa':m.bolsaBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(abs(int(currentPA.contadorMono)-int(currentP.contadorMono)))+' INCLUYE ('+str(m.bolsaBN)+') SERIE:'+k.name+p })                                                     
+                                            #   self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.name,'product_id':pbn,'quantity':0,'x_studio_cantidad':'0','price_unit':m.clickExcedenteBN,'x_studio_bolsa':m.bolsaBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(abs(int(currentPA.contadorMono)-int(currentP.contadorMono)))+' INCLUYE ('+str(m.bolsaBN)+') SERIE:'+k.name+p })                                                     
                                             if m.bolsaColor<colorp:
                                                clor=colorp 
                                                colorp=colorp-m.bolsaColor                                    
-                                               self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'product_id':pcolor,'account_id':cuenta,'quantity':colorp,'price_unit':m.clickExcedenteColor,'x_studio_bolsa':m.bolsaColor,'name':'(82121500) PAGINAS IMPRESAS COLOR: '+str(clor)+' INCLUYE ('+str(m.bolsaColor)+') SERIE:'+str(k.serie.name) +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})    
+                                               self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'product_id':pcolor,'account_id':cuenta,'quantity':colorp,'price_unit':m.clickExcedenteColor,'x_studio_bolsa':m.bolsaColor,'name':'(82121500) PAGINAS IMPRESAS COLOR: '+str(clor)+' INCLUYE ('+str(m.bolsaColor)+') SERIE:'+str(k.serie.name) +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})    
                                             else:
                                                self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':m.clickExcedenteColor,'serie':k.serie.name,'bolsa':m.bolsaColor,'descripcion':'(82121500) PAGINAS IMPRESAS COLOR: '+str(abs(int(k.x_studio_lectura_anterior_color)-int(k.contadorColor)))+' INCLUYE ('+str(m.bolsaColor)+') :'+p})
                                             #else:
-                                            #   self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.name,'product_id':pcolor,'quantity':0,'price_unit':m.clickExcedenteColor,'x_studio_bolsa':m.bolsaColor,'name':'(82121500)  PAGINAS IMPRESAS COLOR: '+str(abs(int(currentPA.contadorColor)-int(currentP.contadorColor)))+' INCLUYE ('+str(m.bolsaColor)+') SERIE:'+k.name+p })                                      
-                                         #self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.name,'product_id':rentaE,'quantity':1,'price_unit':m.rentaMensual,'name':'(80161801)  RENTA EQUIPO ' +k.x_studio_locacion_recortada+' SERIE: '+k.name +p,'discount':int(self.x_studio_descuento)})                                                                                                                                      
-                                         self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'product_id':rentaE,'account_id':cuenta,'quantity':1,'price_unit':m.rentaMensual,'name':'(80161801)  RENTA EQUIPO ' +k.serie.x_studio_locacion_recortada+' SERIE: '+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})             
+                                            #   self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.name,'product_id':pcolor,'quantity':0,'price_unit':m.clickExcedenteColor,'x_studio_bolsa':m.bolsaColor,'name':'(82121500)  PAGINAS IMPRESAS COLOR: '+str(abs(int(currentPA.contadorColor)-int(currentP.contadorColor)))+' INCLUYE ('+str(m.bolsaColor)+') SERIE:'+k.name+p })                                      
+                                         #self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.name,'product_id':rentaE,'quantity':1,'price_unit':m.rentaMensual,'name':'(80161801)  RENTA EQUIPO ' +k.x_studio_locacion_recortada+' SERIE: '+k.name +p,'discount':int(self.x_studio_descuento)})                                                                                                                                      
+                                         self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'x_studio_serie':k.serie.name,'product_id':rentaE,'account_id':cuenta,'quantity':1,'price_unit':m.rentaMensual,'name':'(80161801)  RENTA EQUIPO ' +k.serie.x_studio_locacion_recortada+' SERIE: '+k.serie.name +p,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})             
                new_timee = (old_timee - datetime.datetime.now()).total_seconds()        
                             
                _logger.info('tiempo 11 : ' + str(new_timee)+'   '+str(len(detalleC)))
@@ -443,13 +443,13 @@ class factura(models.Model):
                             if procesadasColorBN< j.bolsaBN :
                                self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'unidad':'ZP','cantidad':0.0,'precioUnitario':j.clickExcedenteBN,'bolsa':j.bolsaBN,'descripcion':'(82121500) PAGINAS IMPRESAS NEGRO : '+str(procesadasColorBN)+' INCLUYE:'+str(j.bolsaBN)})                               
                             if procesadasColorBN > j.bolsaBN:
-                               self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':pbn,'quantity':abs(j.bolsaBN-procesadasColorBN),'price_unit':j.clickExcedenteBN,'x_studio_bolsa':j.bolsaBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(procesadasColorBN)+' INCLUYE:'+str(j.bolsaBN),'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
+                               self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':pbn,'quantity':abs(j.bolsaBN-procesadasColorBN),'price_unit':j.clickExcedenteBN,'x_studio_bolsa':j.bolsaBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO: '+str(procesadasColorBN)+' INCLUYE:'+str(j.bolsaBN),'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
                             if procesadasColorTotal<j.bolsaColor :            
                                self.env['zeros.lineas'].create({'accountInv': self.id,'idServicio':m.id,'cantidad':0.0,'unidad':'ZP','precioUnitario':j.clickExcedenteColor,'bolsa':j.bolsaColor,'descripcion':'(82121500) PAGINAS IMPRESAS COLOR : '+str(procesadasColorTotal)+' INCLUYE: '+str(j.bolsaColor)})
                                #raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+str(j.clickExcedenteColor))
                             if procesadasColorTotal > j.bolsaColor:
-                               self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':pcolor,'quantity':abs(j.bolsaColor-procesadasColorTotal),'price_unit':j.clickExcedenteColor,'x_studio_bolsa':j.bolsaColor,'name':'(82121500) PAGINAS IMPRESAS COLOR : '+str(abs(bolsacolor-procesadasColorTotal))+' INCLUYE: '+str(j.bolsaColor),'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                   
-                            self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':rentaG,'quantity':1.0,'price_unit':j.rentaMensual,'name':'(80161801)  RENTA '+ str(len(p))+' EQUIPOS EN GENERAL.','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
+                               self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':pcolor,'quantity':abs(j.bolsaColor-procesadasColorTotal),'price_unit':j.clickExcedenteColor,'x_studio_bolsa':j.bolsaColor,'name':'(82121500) PAGINAS IMPRESAS COLOR : '+str(abs(bolsacolor-procesadasColorTotal))+' INCLUYE: '+str(j.bolsaColor),'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                   
+                            self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':rentaG,'quantity':1.0,'price_unit':j.rentaMensual,'name':'(80161801)  RENTA '+ str(len(p))+' EQUIPOS EN GENERAL.','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
                             
                             
                             #raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+str(new_time))
@@ -503,34 +503,34 @@ class factura(models.Model):
                                    totalesNegro=bnp+totalesNegro
                                 
                             if totalesColor>0:   
-                              self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':pcolor,'quantity':totalesColor,'price_unit':j.clickExcedenteColor,'name':'(82121500) PAGINAS IMPRESAS COLOR : '+str(totalesColor)+' INCLUYE: '+str(m.bolsaColor),'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
+                              self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':pcolor,'quantity':totalesColor,'price_unit':j.clickExcedenteColor,'name':'(82121500) PAGINAS IMPRESAS COLOR : '+str(totalesColor)+' INCLUYE: '+str(m.bolsaColor),'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})
                             if totalesNegro>0:
-                              self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':pbn,'quantity':totalesNegro,'price_unit':j.clickExcedenteBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO : '+str(totalesNegro)+' INCLUYE: '+str(m.bolsaBN),'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                  
-                            self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':rentaG,'quantity':1.0,'price_unit':j.rentaMensual,'name':'(80161801) RENTA '+ str(len(p))+' EQUIPOS EN GENERAL.','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})   
+                              self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':pbn,'quantity':totalesNegro,'price_unit':j.clickExcedenteBN,'name':'(82121500) PAGINAS IMPRESAS NEGRO : '+str(totalesNegro)+' INCLUYE: '+str(m.bolsaBN),'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                  
+                            self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':rentaG,'quantity':1.0,'price_unit':j.rentaMensual,'name':'(80161801) RENTA '+ str(len(p))+' EQUIPOS EN GENERAL.','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})   
             #self.compute_taxes()                                                             
                       
             
                for s in self.x_studio_servicios:
                      if s.nombreAnte=='SERVICIO DE PCOUNTER' or s.nombreAnte=='SERVICIO DE PCOUNTER1' or s.nombreAnte=='ADMINISTRACION DE DOCUMENTOS CON PCOUNTER' or s.nombreAnte=='SERVICIO DE MANTENIMIENTO DE PCOUNTER' or s.nombreAnte=='SERVICIO DE MANTENIMIENTO PCOUNTER' or s.nombreAnte=='RENTA DE LICENCIAMIENTO PCOUNTER':                        
-                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':spc ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'(82121500) SERVICIO DE PCOUNTER','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                    
+                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':spc ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'(82121500) SERVICIO DE PCOUNTER','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                    
                      if s.nombreAnte=='SERVICIO DE TFS' or s.nombreAnte=='OPERADOR TFS' or s.nombreAnte=='TFS' or s.nombreAnte=='SERVICIO DE TFS ' :                                                                                                                                                     
-                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':tfs ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'SERVICIO DE TFS','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2, 13] ) ]})                                                            
+                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':tfs ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'SERVICIO DE TFS','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2, 13] ) ]})                                                            
                         #self.env['account_tax_sale_order_line_rel'].create({'sale_order_line_id': acci.id,'account_tax_id':idtax.id})                                                                                    
-                        #self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':11419 ,'quantity':1.0,'price_unit':s.rentaMensual,'discount':int(self.x_studio_descuento)})                                                                                                    
+                        #self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':11419 ,'quantity':1.0,'price_unit':s.rentaMensual,'discount':int(self.x_studio_descuento)})                                                                                                    
                      if s.nombreAnte=='SERVICIO DE MANTENIMIENTO':                        
-                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':sm ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'SERVICIO DE MANTENIMIENTO','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                    
+                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':sm ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'SERVICIO DE MANTENIMIENTO','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                    
                      if s.nombreAnte=='LECTORES DE PROXIMIDAD':                        
-                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':lp ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'LECTORES DE PROXIMIDAD','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                       
+                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':lp ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'LECTORES DE PROXIMIDAD','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                       
                      if s.nombreAnte=='PAPEL 350,000 HOJAS':                        
-                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':impre ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'PAPEL 350,000 HOJAS','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                          
+                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':impre ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'PAPEL 350,000 HOJAS','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                          
                      if s.nombreAnte=='SOPORTE Y MANTENIMIENTO DE EQUIPOS':                        
-                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':sme ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'SOPORTE Y MANTENIMIENTO DE EQUIPOS','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                       
+                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':sme ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'SOPORTE Y MANTENIMIENTO DE EQUIPOS','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                       
                      if s.nombreAnte=='SERVICIO DE ADMINISTRADOR KM NET MANAGER':                        
-                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':netMa ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'SERVICIO DE ADMINISTRADOR KM NET MANAGER','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                    
+                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':netMa ,'quantity':1.0,'price_unit':s.rentaMensual,'name':'SERVICIO DE ADMINISTRADOR KM NET MANAGER','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                    
                      if s.nombreAnte=='PAGINAS IMPRESAS EN BN':                        
-                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':paginasbn ,'quantity':int(s.cantidad),'price_unit':s.rentaMensual,'name':'PAGINAS IMPRESAS EN BN','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                    
+                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':paginasbn ,'quantity':int(s.cantidad),'price_unit':s.rentaMensual,'name':'PAGINAS IMPRESAS EN BN','account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})                                                                                                    
                      if s.nombreAnte=='RENTA MENSUAL DE LICENCIA  7 EMBEDED' or s.nombreAnte=='RENTA MENSUAL DE LICENCIA  14 EMBEDED' or  s.nombreAnte=='RENTA MENSUAL DE LICENCIA  2 EMBEDED':                        
-                        self.env['account.invoice.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':embeded ,'quantity':1.0,'price_unit':s.rentaMensual,'name':s.nombreAnte,'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})  
+                        self.env['account.move.line'].create({'invoice_id': self.id,'x_studio_id_servicio':m.id,'product_id':embeded ,'quantity':1.0,'price_unit':s.rentaMensual,'name':s.nombreAnte,'account_id':cuenta,'invoice_line_tax_ids' : [ (6, 0 , [2] ) ]})  
             self.compute_taxes()    
     
     
@@ -619,7 +619,7 @@ class LineasCero(models.Model):
       _name = 'zeros.lineas'
       _description = 'Consumos en Zero'
     
-      accountInv = fields.Many2one('account.invoice', string='Factura')
+      accountInv = fields.Many2one('account.move', string='Factura')
       cantidad=  fields.Integer(string='Cantidad')
       descripcion=  fields.Text(string='Descripción')
       precioUnitario =  fields.Float(string='Precio Unitario')
