@@ -23,8 +23,8 @@ class fac_order(models.Model):
 
       nameDos = fields.Char()
       month = fields.Selection(valores,string='Mes',default='04')
-      year = fields.Selection(''.join(get_years()), string='Año',default=2020)
-      #year = fields.Selection(''.join(valores), string='Año',default=2020)
+      #year = fields.Selection(''.join(get_years()), string='Año',default=2020)
+      year = fields.Selection([['2010', '2036']], string='Año',default=2020)
       excedente=fields.Text(string='Excedentes')
                              
      
