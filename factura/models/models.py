@@ -26,7 +26,8 @@ class factura(models.Model):
       _inherit = 'account.invoice'
       date_invoice = fields.Date(string='Fecha factura', default=datetime.datetime.now(pytz.utc).strftime('%Y-%m-%d'))
       month = fields.Selection(valores,string='Mes',default='04')
-      year = fields.Selection(get_years(), string='Año',default=2020)
+      #year = fields.Selection(get_years(), string='Año',default=2020)
+      year = fields.Selection([['2010', '2036']], string='Año',default='2010')
       #detalle =  fields.One2many('sale.order.detalle', 'account.Invoice', string='Detalle')
       zeros =  fields.One2many('zeros.lineas', 'accountInv', string='Zeros')
       
