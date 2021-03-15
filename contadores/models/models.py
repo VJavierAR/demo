@@ -2054,7 +2054,7 @@ class lor(models.Model):
           record['x_studio_fecha_ultima_lectura'] = fecha
 
     x_studio_field_06Xvu = fields.Integer(store=True, string='New Número entero')
-    x_studio_field_17hqX = fields.Integer(store=True, readonly=True, related='x_studio_field_a9oR8.id', string='New Related Field')
+    #x_studio_field_17hqX = fields.Integer(store=True, readonly=True, related='x_studio_field_a9oR8.id', string='New Related Field')
     x_studio_field_2MXvT = fields.Many2one('helpdesk.ticket',string='Tiquete del Servicio de Asistencia',store=True)
     x_studio_field_3OnO2 = fields.Many2one('dcas.dcas',string='DCAS primero',store=True, copied=True, compute = '_compute_x_studio_field_3OnO2')
 
