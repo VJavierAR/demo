@@ -1787,8 +1787,423 @@ class lor(models.Model):
     html = fields.Text(string = 'Tickets', compute = 'gener_tabla_tickets')
 
     x_studio_estado = fields.Selection([["Obsoleto","Obsoleto"],["Usado","Usado"],["Hueso","Hueso"],["Para reparación","Para reparación"],["Nuevo","Nuevo"],["Buenas condiciones","Buenas condiciones"],["Excelentes condiciones","Excelentes condiciones"],["Back-up","Back-up"],["Dañado","Dañado"]], store=True, track_visibility='onchange')
+    x_studio__amarrillo = fields.Integer(store=True, string='% Amarrillo')
+    x_studio__cian = fields.Integer(store=True, string='& cian')
+    x_studio__magenta = fields.Integer(store=True, string='% Magenta')
+    x_studio__negro = fields.Integer(store=True, string='% negro')
+    x_studio_activo = fields.Boolean(store=True, string='Activo')
+    x_studio_amarillo = fields.Char(store=True, readonly=True, string='Amarillo', compute = '_compute_x_studio_amarillo')
 
+    @api.depends('dca')
+    def _compute_x_studio_amarillo(self):
+      for record in self:
+        if len(record.dca) > 0:
+          cont_color = str(record.dca[len(record.dca) - 1].porcentajeAmarillo)
+          record['x_studio_amarillo'] = str(cont_color) 
+
+    x_studio_amarillo_anterior = fields.Char(store=True, readonly=True, string='Amarillo Anterior', compute = '_compute_x_studio_amarillo_anterior')
+
+    @api.depends('dca')
+    def _compute_x_studio_amarillo_anterior(self):
+      for record in self:
+        if len(record.dca) > 0:
+          cont_color = str(record.dca[len(record.dca) - 2].porcentajeAmarillo)
+          record['x_studio_amarillo_anterior'] = str(cont_color) 
+
+    x_studio_arreglo = fields.Char(store=True, string='arreglo')
+    x_studio_calle = fields.Char(store=False, readonly=True, string='calle')
+    x_studio_cambiar = fields.Boolean(store=True, string='Cambiar')
+    x_studio_cambio = fields.Boolean(store=True, string='Cambiar', track_visibility = 'onchange')
+    x_studio_categoria_de_producto = fields.Many2one('product.category',string='Categoría de producto',store=True)
+    x_studio_categoria_de_producto_3 = fields.Many2one('product.category',string='Categoría de producto',store=True)
+    x_studio_centro_de_costos = fields.Char(store=False, string='Ubicación')
+
+    x_studio_cian_1 = fields.Char(store=True, readonly=True, string='Cian', compute = '_compute_x_studio_cian_1')
+
+    @api.depends('dca')
+    def _compute_x_studio_cian_1(self):
+      for record in self:
+        if len(record.dca) > 0:
+          cont_color = str(record.dca[len(record.dca) - 1].porcentajeCian)
+          record['x_studio_cian_1'] = str(cont_color) 
+
+    x_studio_cian_anteior = fields.Char(store=True, readonly=True, string='Cian Anteior', compute = '_compute_x_studio_cian_anteior')
+
+    @api.depends('dca')
+    def _compute_x_studio_cian_anteior(self):
+      for record in self:
+        if len(record.dca) > 0:
+          cont_color = str(record.dca[len(record.dca) - 2].porcentajeCian)
+          record['x_studio_cian_anteior'] = str(cont_color) 
+
+    x_studio_ciudad = fields.Char(readonly=False, string='Ciudad')
+    x_studio_cliente = fields.Many2one('res.partner',string='Cliente',store=True, track_visibility = 'onchange')
+    x_studio_colonia = fields.Char(readonly=True, string='Colonia')
+
+    x_studio_color_bn = fields.Selection([['B/N', 'B/N'], ['Color', 'Color']], related='product_id.x_studio_color_bn')
+    x_studio_colorestoner = fields.Char(readonly=True, store=True, string='colorestoner', track_visibility = 'onchange')
+    x_studio_comentario = fields.Text(string = 'Comentario', store = True)
+    x_studio_contador_bn = fields.Char(readonly=True, string='Contador B/N', compute = '_compute_x_studio_contador_bn')
+
+    @api.depends('dca')
+    def _compute_x_studio_contador_bn(self):
+      for record in self:
+        t=len(record.dca)
+        h=[]
+        d=''
+        f=0
+        if t > 0:
+          for a in record.dca :
+            d=str(a.fuente)
+            if d=='helpdesk.ticket': 
+               h.append(a.contadorMono)
+            if len(h)==0:
+              f=0
+            if len(h)>1:
+              f=max(h)
+            if len(h)==1:
+              f=h[0]  
+          record['x_studio_contador_bn'] = f
+        else:
+          record['x_studio_contador_bn'] = 0
+
+    x_studio_contador_bn_a_capturar = fields.Integer(store=True, string='Contador B/N a capturar')
+    x_studio_contador_bn_anterior = fields.Char(readonly=True, string='Contador B/N anterior', compute = '_compute_x_studio_contador_bn_anterior')
+
+    @api.depends('dca')
+    def _compute_x_studio_contador_bn_anterior(self):
+      for record in self:
+        record['x_studio_contador_bn_anterior'] = 0
+
+    x_studio_contador_bn_mesa = fields.Integer(store=True, readonly=True, string='Contador BN Mesa', compute = '_compute_x_studio_contador_bn_mesa')
+
+    @api.depends('dca')
+    def _compute_x_studio_contador_bn_mesa(self):
+      for record in self:
+        t=len(record.dca)
+        h=[]
+        d=''
+        f=0
+        if t > 0:
+          for a in record.dca :
+            d=str(a.fuente)
+            if d=='helpdesk.ticket': 
+               h.append(a.contadorMono)
+            if len(h)==0:
+              f=0
+            if len(h)>1:
+              f=max(h)
+            if len(h)==1:
+              f=h[0]  
+          record['x_studio_contador_bn_mesa'] = f
+        else:
+          record['x_studio_contador_bn_mesa'] = 0
+
+    x_studio_contador_bn_mesa__1 = fields.Integer(store=True, string='Contador BN Mesa')
+    x_studio_contador_color = fields.Char(readonly=True, string='Contador Color', compute = '_compute_x_studio_contador_color')
+
+    @api.depends('dca')
+    def _compute_x_studio_contador_color(self):
+      for record in self:
+        t=len(record.dca)
+        h=[]
+        
+        if t > 0:
+          for a in record.dca :
+            d=str(a.fuente)
+            if d=='helpdesk.ticket': 
+              h.append(a.contadorColor)
+          #m=max(h)
+          if len(h)==0:
+           record['x_studio_contador_color'] = 0
+          else:
+           record['x_studio_contador_color'] = max(h)
+
+    x_studio_contador_color_a_capturar = fields.Integer(store=True, string='Contador color a capturar')
+    x_studio_contador_color_anterior = fields.Char(readonly=True, string='Contador Color anterior', compute = '_compute_x_studio_contador_color_anterior')
+
+    @api.depends('dca')
+    def _compute_x_studio_contador_color_anterior(self):
+      for record in self:
+        record['x_studio_contador_color_anterior'] = 0
+
+    x_studio_contador_color_mesa = fields.Integer(readonly=True, string='Contador Color Mesa', compute = '_compute_x_studio_contador_color_mesa')
+
+    @api.depends('dca')
+    def _compute_x_studio_contador_color_mesa(self):
+      for record in self:
+        t=len(record.dca)
+        h=[]
+        d=''
+        f=0
+        if t > 0:
+          for a in record.dca :
+            d=str(a.fuente)
+            if d=='helpdesk.ticket': 
+               h.append(a.contadorColor)
+            if len(h)==0:
+              f=0
+            if len(h)>1:
+              f=max(h)
+            if len(h)==1:
+              f=h[0]  
+          record['x_studio_contador_color_mesa'] = f
+        else:
+          record['x_studio_contador_color_mesa'] = 0
+
+    x_studio_contador_kit_mantenimiento = fields.Integer(store=True, string='Contador kit mantenimiento')
+    x_studio_contador_mesa_bn = fields.Integer(readonly=True, string='Contador Mesa BN', compute = '_compute_x_studio_contador_mesa_bn')
+
+    @api.depends('dca')
+    def _compute_x_studio_contador_mesa_bn(self):
+      for record in self:
+        t=len(record.dca)
+        h=[]
+        d=''
+        f=0
+        if t > 0:
+          for a in record.dca :
+            d=str(a.fuente)
+            if d=='helpdesk.ticket': 
+               h.append(a.contadorMono)
+            if len(h)==0:
+              f=0
+            if len(h)>1:
+              f=max(h)
+            if len(h)==1:
+              f=h[0]  
+          record['x_studio_contador_mesa_bn'] = f
+        else:
+          record['x_studio_contador_mesa_bn'] = 0
+
+    x_studio_contador_mesa_color = fields.Integer(store=True, string='Contador mesa color')
+    x_studio_contador_rodillo = fields.Integer(store=True, string='Contador rodillo')
+    x_studio_contador_unidad_de_imagen = fields.Integer(store=True, string='Contador unidad de imagen')
+    x_studio_contrato = fields.Char(readonly=True, string='Contrato', compute = '_compute_x_studio_contrato')
+
+    @api.depends('servicio')
+    def _compute_x_studio_contrato(self):
+      for r in self:
+        if r.servicio:
+          r['x_studio_contrato']=str(r.servicio.contrato.idTechraRef)
+
+    x_studio_cp = fields.Char(readonly=True, store=False, string='CP')
+    x_studio_currentuser = fields.Char(readonly=True, string='currentUser', compute = '_compute_x_studio_currentuser')
+
+    @api.depends('x_studio_currentuser')
+    def _compute_x_studio_currentuser(self):
+      for t in self:
+        t['x_studio_currentuser'] = self.env.user.name
+
+
+    x_studio_d_envio = fields.Char(readonly=True, store=False, string='d envio')
+    x_studio_dcas_penultimo = fields.Char(readonly=True, store=True, string='DCAS penultimo', compute = '_compute_x_studio_dcas_penultimo')
+
+    @api.depends('dca')
+    def _compute_x_studio_dcas_penultimo(self):
+      for record in self:
+        if len(record.dca) > 0:
+          cont_mono = str(record.dca[len(record.dca) - 2].contadorMono)
+          cont_color = str(record.dca[len(record.dca) - 2].contadorColor)
+          cont_color_negro = str(record.dca[len(record.dca) - 2].porcentajeNegro)
+          cont_color_magenta = str(record.dca[len(record.dca) - 2].porcentajeMagenta)
+          cont_color_amarillo = str(record.dca[len(record.dca) - 2].porcentajeAmarillo)
+          cont_color_cyan = str(record.dca[len(record.dca) - 2].porcentajeCian)
+          record['x_studio_dcas_penultimo'] = 'último Contador monocormatico '+cont_mono + ' último Contador color '+  cont_color + ' último procentaje negro '+  cont_color_negro +' último procentaje magenta ' + cont_color_magenta + ' último procentaje amarillo ' + cont_color_amarillo + ' último procentaje cyan ' + cont_color_cyan
     
+    x_studio_dcas_ultimo = fields.Char(readonly=True, store=True, string='DCAS ultimo', compute = '_compute_x_studio_dcas_ultimo')
+
+    @api.depends('dca')
+    def _compute_x_studio_dcas_ultimo(self):
+      for record in self:
+        if len(record.dca) > 0:
+          cont_mono = str(record.dca[len(record.dca) - 1].contadorMono)
+          cont_color = str(record.dca[len(record.dca) - 1].contadorColor)
+          cont_color_negro = str(record.dca[len(record.dca) - 1].porcentajeNegro)
+          cont_color_magenta = str(record.dca[len(record.dca) - 1].porcentajeMagenta)
+          cont_color_amarillo = str(record.dca[len(record.dca) - 1].porcentajeAmarillo)
+          cont_color_cyan = str(record.dca[len(record.dca) - 1].porcentajeCian)
+          record['x_studio_dcas_ultimo'] = 'último Contador monocormatico '+cont_mono + ' último Contador color '+  cont_color + ' último procentaje negro '+  cont_color_negro +' último procentaje magenta ' + cont_color_magenta +  ' último procentaje amarillo ' + cont_color_amarillo + ' último procentaje cyan ' + cont_color_cyan
+    
+    x_studio_delegacion = fields.Char(readonly=True, store=False, string='delegacion')
+    x_studio_demo = fields.Boolean(store=True, string='Demo', track_visibility = 'onchange')
+    x_studio_equipo = fields.Char(readonly=True, store=False, string='equipo')
+    x_studio_esconde = fields.Char(store=False, copied = True, string='esconde')
+    x_studio_estado = fields.Selection([["Obsoleto","Obsoleto"],["Usado","Usado"],["Hueso","Hueso"],["Para reparación","Para reparación"],["Nuevo","Nuevo"],["Buenas condiciones","Buenas condiciones"],["Excelentes condiciones","Excelentes condiciones"],["Back-up","Back-up"],["Dañado","Dañado"]], store=True, string = 'Estado', track_visibility = 'onchange')
+    x_studio_estado_1 = fields.Char(readonly=True, store=False, string='Estado')
+    x_studio_etapa = fields.Selection([["Almacen","Almacen"],["Distribución","Distribución"],["Ruta","Ruta"]], store=True, string = 'Etapa')
+    x_studio_evidencias = fields.Binary(string='Evidencias', store=True)
+    x_studio_evidencias_filename = fields.Char(store=True, string='Filename for x_studio_evidencias')
+    x_studio_exterior = fields.Char(readonly=True, string='Exterior')
+    x_studio_fecha_lectura_actual = fields.Char(readonly=True, store=True, string='Fecha lectura actual', compute = '_compute_x_studio_fecha_lectura_actual')
+
+    @api.depends('dca')
+    def _compute_x_studio_fecha_lectura_actual(self):
+      for record in self:
+        if len(record.dca) > 0:
+          fecha = str(record.dca[len(record.dca) - 2].create_date)
+          record['x_studio_fecha_lectura_actual'] = fecha
+
+    x_studio_fecha_ultima_lectura = fields.Char(readonly=True, store=True, string='Fecha última lectura', compute = '_compute_x_studio_fecha_ultima_lectura')
+
+    @api.depends('dca')
+    def _compute_x_studio_fecha_ultima_lectura(self):
+      for record in self:
+        if len(record.dca) > 0:
+          fecha = str(record.dca[len(record.dca) - 1].create_date)
+          record['x_studio_fecha_ultima_lectura'] = fecha
+
+    x_studio_field_06Xvu = fields.Integer(store=True, string='New Número entero')
+    x_studio_field_17hqX = fields.Integer(store=True, readonly=True, related='x_studio_field_a9oR8.id', string='New Related Field')
+    x_studio_field_2MXvT = fields.Many2one('helpdesk.ticket',string='Tiquete del Servicio de Asistencia',store=True)
+    x_studio_field_3OnO2 = fields.Many2one('dcas.dcas',string='DCAS primero',store=True, copied=True, compute = '_compute_x_studio_field_3OnO2')
+
+    @api.depends('dca')
+    def _compute_x_studio_field_3OnO2(self):
+      for record in self:
+        if len(record.dca) > 0:
+          record['x_studio_field_3OnO2'] = record.dca[len(record.dca) - 1].id
+
+    x_studio_field_4TVx2 = fields.Integer(store=True, string='New Número entero')
+    x_studio_field_6HFrO = fields.Many2one('product.category',string='New Campo relacionado',store=True)
+    x_studio_field_8tSxH = fields.Selection([['SOPORTE Y MANTENIMIENTO DE EQUIPOS', 'SOPORTE Y MANTENIMIENTO DE EQUIPOS'], ['SERVICIO DE ADMINISTRADOR KM NET MANAGER', 'SERVICIO DE ADMINISTRADOR KM NET MANAGER'], ['Costo por página procesada BN o color', 'Costo por página procesada BN o color'], ['RENTA MENSUAL DE LICENCIA EMBEDED', 'RENTA MENSUAL DE LICENCIA EMBEDED'], ['Renta base con ML incluidas BN o color + ML. excedentes', 'Renta base con ML incluidas BN o color + ML. excedentes'], ['TFS', 'TFS'], ['SERVICIO DE PCOUNTER', 'SERVICIO DE PCOUNTER'], ['Renta global + costo de página procesada BN o color', 'Renta global + costo de página procesada BN o color'], ['Renta global con páginas incluidas BN o color + pag. Excedentes', 'Renta global con páginas incluidas BN o color + pag. Excedentes'], ['Renta base + costo de página procesada BN o color', 'Renta base + costo de página procesada BN o color'], ['PAGINAS IMPRESAS EN BN', 'PAGINAS IMPRESAS EN BN']], store=True, readonly=True, string = 'New Campo relacionado', track_visibility = 'always')
+    x_studio_field_A6PR9 = fields.Char(readonly=True, store=False, string='Color Tóner', compute = '_compute_x_studio_field_A6PR9')
+
+    @api.depends('x_studio_toner_compatible')
+    def _compute_x_studio_field_A6PR9(self):
+      for record in self:
+        record['x_studio_field_A6PR9'] = record.x_studio_toner_compatible.x_studio_color
+
+    x_studio_field_B7uLt = fields.One2many('x_dcas','x_studio_field_ue4Ea', string='DCAS')
+    """
+    x_studio_field_GCPuy = 
+    x_studio_field_Hqyl6)
+    x_studio_field_K5APD)
+    x_studio_field_L0MFC)
+    x_studio_field_LV0Ls)
+    x_studio_field_OLXDH)
+    x_studio_field_OnbMI)
+    x_studio_field_PYss4)
+    x_studio_field_PwHLb)
+    x_studio_field_Q3Qpi)
+    x_studio_field_QwAZL)
+    x_studio_field_RJsuy)
+    x_studio_field_SOEw0)
+    x_studio_field_T6sqp)
+    x_studio_field_T7oRn)
+    x_studio_field_T7oRn_filename)
+    x_studio_field_U8OZg)
+    x_studio_field_X8DSD)
+    x_studio_field_XUPMG)
+    x_studio_field_YleJ2)
+    x_studio_field_Yxv2m)
+    x_studio_field_Zi7sY)
+    x_studio_field_ZwQ81)
+    x_studio_field_a9oR8)
+    x_studio_field_alFCw_filename)
+    x_studio_field_bh9t3)
+    x_studio_field_dyZzv)
+    x_studio_field_fBLGz)
+    x_studio_field_jBvLz)
+    x_studio_field_kgrzI)
+    x_studio_field_lMCjm)
+    x_studio_field_lVjdA)
+    x_studio_field_nXQHF)
+    x_studio_field_nbkyC)
+    x_studio_field_nrBXH)
+    x_studio_field_oRtcm)
+    x_studio_field_pnM9a)
+    x_studio_field_tLm45)
+    x_studio_field_uNrUk)
+    x_studio_field_vJQCQ)
+    x_studio_field_x7TId)
+    x_studio_field_xNRsI)
+    x_studio_field_zAuUJ)
+    x_studio_field_zQZRw)
+    
+    x_studio_helpdesk_team_id)
+    x_studio_histrico_de_componentes)
+    x_studio_idotrosistmp)
+    x_studio_idreal)
+    x_studio_idservicio)
+    x_studio_idticket)
+    x_studio_idtoner)
+    x_studio_impresiones)
+    x_studio_impresiones_color)
+    x_studio_impresiones_color_mesa)
+    x_studio_impresiones_color_mesa_1)
+    x_studio_impresiones_mesa)
+    x_studio_impresiones_tner)
+    x_studio_instalado)
+    x_studio_interior)
+    x_studio_lec_ant_bn)
+    x_studio_lec_ant_color)
+    x_studio_locacion_recortada)
+    x_studio_localidad)
+    x_studio_localidad_1)
+    x_studio_localidad_2)
+    x_studio_magenta)
+    x_studio_magenta_anterior)
+    x_studio_mini)
+    x_studio_ml)
+    x_studio_modelo_equipo)
+    x_studio_move_line)
+    x_studio_negro)
+    x_studio_negro_anterior)
+    x_studio_numero_de_serie)
+    x_studio_pais)
+    x_studio_periodo)
+    x_studio_pg_proc)
+    x_studio_pg_proc_color)
+    x_studio_producto_temp)
+    x_studio_reftoner)
+    x_studio_reftonera)
+    x_studio_reftonerm)
+    x_studio_rendimiento)
+    x_studio_resultado)
+    x_studio_servicio_contrato)
+    x_studio_servicios)
+    x_studio_solicitar_tner_amarillo)
+    x_studio_solicitar_tner_bn)
+    x_studio_solicitar_tner_cian_1)
+    x_studio_solicitar_tner_magenta)
+    x_studio_suscripcion)
+    x_studio_tamdca)
+    x_studio_test)
+    x_studio_ticketactual)
+    x_studio_tickttmp)
+    x_studio_tmp_char)
+    x_studio_tmpint)
+    x_studio_tner_compatible_amarrillo)
+    x_studio_tner_compatible_magenta)
+    x_studio_toner)
+    x_studio_toner_1)
+    x_studio_toner_compatible)
+    x_studio_toner_compatible_1)
+    x_studio_toner_compatible_cian)
+    x_studio_toner_compatible_nombre)
+    x_studio_toner_compatibles)
+    x_studio_ubicacin)
+    x_studio_ubicacion_id)
+    x_studio_ubicaciontest)
+    x_studio_ultima_ubicacin)
+    x_studio_ultimafuente)
+    x_studio_ultimalecturacolor)
+    x_studio_ultimalecturam)
+    x_studio_ultimo_contador_negro_toner)
+    x_studio_ultimo_contador_toner)
+    x_studio_ultimo_mantenimiento_preventivo)
+    x_studio_ultma_ubicacin)
+    x_studio_venta)
+    x_studio_w)
+    x_studio_zona)
+    x_x_studio_equipo_por_nmero_de_serie_2__helpdesk_ticket_count)
+    
+    """
+
+
+
+
     def gener_tabla_tickets(self):
       serie_name = self.mapped('name')[0]
       serie_id = self.mapped('id')[0]
