@@ -214,25 +214,35 @@
                                           <!--
                                           <field name="x_studio_aadido_por" string="Añadido por"  invisible="1"  attrs="{'invisible': 1, 'readonly': 0}"/>
                                           <field name="x_studio_aadido_por_1" string="Añadido por" invisible="1" attrs="{'invisible': 1, 'readonly': 0}"/>
-                                          -->
+                                          
                                           <field name="x_studio_testuse" string="Prueba" invisible="1" attrs="{'invisible': 1, 'readonly': 1}"/>
+
                                           <field name="x_studio_field_Fj4xh" string="New Texto" invisible="1" attrs="{'invisible': 1, 'readonly': 1}"/>
                                           <field name="x_studio_currentuser" string="Usuario"  readonly="1" invisible="1" attrs="{'invisible': 0, 'readonly': 1}"/>
+                                          -->
                                           <field name="categ_id" attrs="{}" readonly="1" required="1"/>
                                           <field name="default_code" attrs="{}" readonly="1"/>
                                           <field name="name" attrs="{}" readonly="1" required="1"/>
                                           <field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant" invisible="1"/>
+                                          <!--
                                           <field name="lst_price" attrs="{}" readonly="1" invisible="1"/>
+
                                           <field name="standard_price" attrs="{}" readonly="1" invisible="1"/>
+
                                           <field name="type" invisible="1" required="1"/>
+                                          -->
                                           <field name="price" invisible="not context.get('pricelist',False)"/>
                                           <field name="qty_available" attrs="{'invisible':[('type', '!=', 'product')]}" readonly="1"/>
                                           <field name="virtual_available" attrs="{'invisible':[('type', '!=', 'product')]}" readonly="1"/>
+                                          <!--
                                           <field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="uom.group_uom" attrs="{}" readonly="1" required="1" invisible="1"/>
                                           <field name="barcode" attrs="{}" invisible="1"/>
+                                          -->
                                           <field name="x_studio_cantidad_pedida" string="Cantidad pedida"/>
+                                          <!--
                                           <field name="product_tmpl_id" invisible="1" required="1"/>
                                           <field name="active" invisible="1"/>
+                                          -->
                                       </tree>
                                   </field>
                                   
