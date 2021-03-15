@@ -211,17 +211,17 @@ class StockPicking(Model):
             self.sale_id.x_studio_field_bxHgp.sudo().write({'x_studio_nmero_de_guia_1': self.carrier_tracking_ref})
       
     
-    @api.onchange('x_studio_evidencia_a_ticket')
-    def mandarTicket(self):
-        if(self.sale_id.x_studio_field_bxHgp):
-            self.sale_id.x_studio_field_bxHgp.sudo().write({'x_studio_evidencia_distribuidor': self.x_studio_evidencia_a_ticket})
+    #@api.onchange('x_studio_evidencia_a_ticket')
+    #def mandarTicket(self):
+    #    if(self.sale_id.x_studio_field_bxHgp):
+    #        self.sale_id.x_studio_field_bxHgp.sudo().write({'x_studio_evidencia_distribuidor': self.x_studio_evidencia_a_ticket})
             #c = self.env['helpdesk.ticket'].search([('id','=',self.x_studio_idtempticket)]) 
             #c.write({'x_studio_evidencia_distribuidor': self.x_studio_evidencia_a_ticket})
 
-    @api.onchange('x_studio_comentario_1')
-    def mandarTicket(self):
-        if(self.sale_id.x_studio_field_bxHgp):
-            i=True
+    #@api.onchange('x_studio_comentario_1')
+    #def mandarTicket(self):
+    #    if(self.sale_id.x_studio_field_bxHgp):
+    #        i=True
             #c = self.env['helpdesk.ticket'].search([('id','=',self.x_studio_idtempticket)])
             ########Hay que agregar historial
             #self.env['x_historial_helpdesk'].sudo().create({ 'x_id_ticket' : self.sale_id.x_studio_field_bxHgp.id, 'x_persona' : str(self.env.user.name), 'x_estado' : "Comentario", 'x_disgnostico':self.x_studio_comentario_1}) 
@@ -234,13 +234,13 @@ class StockPicking(Model):
     #    c.write({'x_studio_nmero_de_guia_1': self.carrier_tracking_ref})        
     
     def button_validate(self):
-        self.ensure_one()
+        #self.ensure_one()
         if not self.move_lines and not self.move_line_ids:
             raise UserError(_('Please add some items to move.'))
 
         # If no lots when needed, raise error
         picking_type = self.picking_type_id
-        if(picking_type.id==2 and self.x_studio_evidencia_a_ticket==False):
+        if(picking_type.id==2):
             raise UserError(_('Se requiere la Evidencia.'))
             
         precision_digits = self.env['decimal.precision'].precision_get('Product Unit of Measure')
