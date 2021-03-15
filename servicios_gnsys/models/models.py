@@ -89,7 +89,7 @@ class servicios_gnsys(models.Model):
         if self.serviciosNombre:            
             self.nombreAnte=str(self.serviciosNombre)
     
-    @api.multi
+    #@api.multi
     def crear_solicitud_arrendamineto(self):
         for record in self:            
             if len(record.x_studio_field_7jBI3) > 0:
@@ -295,7 +295,7 @@ class contratos(models.Model):
             self.rfcCliente = self.cliente.vat
 
     @api.onchange('fechaDeFinDeContrato')
-    @api.multi
+    #@api.multi
     def expiracionServicios(self):
 
         if self.fechaDeFinDeContrato:
