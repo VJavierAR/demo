@@ -458,18 +458,21 @@
                         <tree string="Lots/Serial Numbers" editable="bottom" >
                           
                           <field name="x_studio_esconde" string="esconde id" invisible="1"/>
-                          <field name="x_studio_equipo" string="id area de atencion" attrs="{'readonly': 0, 'invisible': 1}"/>
+                          <!--<field name="x_studio_equipo" string="id area de atencion" attrs="{'readonly': 0, 'invisible': 1}"/>-->
                           <field name="name" string="Serial Number" attrs="{'readonly': 1, 'invisible': 0}" required="1" />
                            
                           <field name="product_id" string="Producto" attrs="{'readonly': 1, 'invisible': 0}" required="1" />
                           <!--<field name="x_studio_ultima_ubicacin" string="Ultima Ubicación" attrs="{'readonly': 1, 'invisible': 1}"/>-->
+                          <!--
                           <field name="x_studio_producto_temp" string="producto temp" attrs="{'readonly': 1, 'invisible': 1}" />
                           <field name="x_studio_field_lMCjm" string="Producto" attrs="{'invisible': 1}" widget="many2many_tags"/>
                           <field name="x_studio_field_A6PR9" string="Color Tóner" attrs="{'readonly': 1, 'invisible': 1}"/>
                           <field name="x_studio_idtoner" string="idtoner" attrs="{'readonly': 1, 'invisible': 1}"/>
                           <field name="x_studio_tmpint" string="tmpint" attrs="{'readonly': 1, 'invisible': 1}"/>
                           <field name="x_studio_tmpint" string="tmpint" attrs="{'readonly': 1, 'invisible': 1}"/>
+                          
                           <field name="x_studio_color_bn" string="Color B/N" attrs="{'readonly': 1}" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
+
                           <field name="x_studio_toner_compatible" string="Tóner Compatible" domain='["&amp;",["categ_id","=",5],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' attrs="{'readonly': 0}" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
                           
                           <field name="x_studio_solicitar_tner_bn" string="Solicitar tóner BN" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
@@ -521,6 +524,7 @@
                           <field name="x_studio_evidencias_filename" string="Filename for x_studio_evidencias" attrs="{'invisible': 1}"/>
                           <field name="x_studio_evidencias" string="Evidencias" filename="x_studio_evidencias_filename"/>
                           <field name="create_date" string="Created on" attrs="{'readonly': 1, 'invisible': 1}"/>
+                          -->
                         </tree>
                           <form string="Lots/Serial Numbers">
                               <sheet name="studio_sheet_81b1e2">

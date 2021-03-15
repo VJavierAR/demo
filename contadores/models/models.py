@@ -2069,14 +2069,14 @@ class lor(models.Model):
     x_studio_field_6HFrO = fields.Many2one('product.category',string='New Campo relacionado',store=True)
     x_studio_field_8tSxH = fields.Selection([['SOPORTE Y MANTENIMIENTO DE EQUIPOS', 'SOPORTE Y MANTENIMIENTO DE EQUIPOS'], ['SERVICIO DE ADMINISTRADOR KM NET MANAGER', 'SERVICIO DE ADMINISTRADOR KM NET MANAGER'], ['Costo por página procesada BN o color', 'Costo por página procesada BN o color'], ['RENTA MENSUAL DE LICENCIA EMBEDED', 'RENTA MENSUAL DE LICENCIA EMBEDED'], ['Renta base con ML incluidas BN o color + ML. excedentes', 'Renta base con ML incluidas BN o color + ML. excedentes'], ['TFS', 'TFS'], ['SERVICIO DE PCOUNTER', 'SERVICIO DE PCOUNTER'], ['Renta global + costo de página procesada BN o color', 'Renta global + costo de página procesada BN o color'], ['Renta global con páginas incluidas BN o color + pag. Excedentes', 'Renta global con páginas incluidas BN o color + pag. Excedentes'], ['Renta base + costo de página procesada BN o color', 'Renta base + costo de página procesada BN o color'], ['PAGINAS IMPRESAS EN BN', 'PAGINAS IMPRESAS EN BN']], store=True, readonly=True, string = 'New Campo relacionado', track_visibility = 'always')
     
-    """
+    
     x_studio_field_A6PR9 = fields.Char(readonly=True, store=False, string='Color Tóner', compute = '_compute_x_studio_field_A6PR9')
 
     @api.depends('x_studio_toner_compatible')
     def _compute_x_studio_field_A6PR9(self):
       for record in self:
         record['x_studio_field_A6PR9'] = record.x_studio_toner_compatible.x_studio_color
-    """
+    
     x_studio_field_B7uLt = fields.One2many('x_dcas','x_studio_field_ue4Ea', string='DCAS')
     """
     x_studio_field_GCPuy = 
@@ -2196,7 +2196,10 @@ class lor(models.Model):
     x_studio_tner_compatible_magenta)
     x_studio_toner)
     x_studio_toner_1)
-    x_studio_toner_compatible)
+    """
+    x_studio_toner_compatible = fields.Many2one('product.product',string='Tóner Compatible BN',store=True, copied=True)
+
+    """
     x_studio_toner_compatible_1)
     x_studio_toner_compatible_cian)
     x_studio_toner_compatible_nombre)
