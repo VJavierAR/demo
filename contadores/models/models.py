@@ -2100,7 +2100,10 @@ class lor(models.Model):
     x_studio_field_XUPMG)
     x_studio_field_YleJ2)
     x_studio_field_Yxv2m)
-    x_studio_field_Zi7sY)
+    """
+    x_studio_field_Zi7sY = fields.Many2one('product.product',string='Producto',store=True)
+
+    """
     x_studio_field_ZwQ81)
     x_studio_field_a9oR8)
     x_studio_field_alFCw_filename)
@@ -2164,7 +2167,10 @@ class lor(models.Model):
     x_studio_periodo)
     x_studio_pg_proc)
     x_studio_pg_proc_color)
-    x_studio_producto_temp)
+    """
+    x_studio_producto_temp = fields.Many2one('product.product',string='producto temp',store=True, readonly=True, related='x_studio_field_Zi7sY')
+
+    """
     x_studio_reftoner)
     x_studio_reftonera)
     x_studio_reftonerm)
