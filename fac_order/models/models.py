@@ -27,7 +27,7 @@ class fac_order(models.Model):
       excedente=fields.Text(string='Excedentes')
                              
      
-      @api.multi 
+      #@api.multi 
       def cambiaPeriodo(self):
         lineas=self.order_line
         nuevomes= str(dict(self._fields['month'].selection).get(self.month))
@@ -42,7 +42,7 @@ class fac_order(models.Model):
 
         
         
-      @api.multi
+      #@api.multi
       def llamado_boton(self):
         for r in self:           
           pbn=0
@@ -487,7 +487,7 @@ class detalle(models.Model):
       color=fields.Text(string="Color")
      
      
-      @api.multi
+      #@api.multi
       def probar(self):
         for r in self:                    
           f=len(r.x_studio_servicios_contratos)
