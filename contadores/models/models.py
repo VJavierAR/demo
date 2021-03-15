@@ -1979,6 +1979,7 @@ class lor(models.Model):
     x_studio_contador_mesa_color = fields.Integer(store=True, string='Contador mesa color')
     x_studio_contador_rodillo = fields.Integer(store=True, string='Contador rodillo')
     x_studio_contador_unidad_de_imagen = fields.Integer(store=True, string='Contador unidad de imagen')
+    """
     x_studio_contrato = fields.Char(readonly=True, string='Contrato', compute = '_compute_x_studio_contrato')
 
     @api.depends('servicio')
@@ -1986,7 +1987,7 @@ class lor(models.Model):
       for r in self:
         if r.servicio:
           r['x_studio_contrato']=str(r.servicio.contrato.idTechraRef)
-
+    """
     x_studio_cp = fields.Char(readonly=True, store=False, string='CP')
     x_studio_currentuser = fields.Char(readonly=True, string='currentUser', compute = '_compute_x_studio_currentuser')
 
