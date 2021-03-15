@@ -560,7 +560,7 @@
                                       <field name="x_studio_toner_compatible" attrs="{'invisible': True}" domain='[&quot;&amp;&quot;, ["categ_id","=",5],["x_studio_toner_compatible.id","=",x_studio_tmpint]]'/>
                                       <field name="x_studio_toner_compatible_nombre" string="Toner Compatible nombre" attrs="{'invisible': True}"/>
                                       
-                                      <field name="x_studio_field_B7uLt" string="DCAS" context="{&quot;default_x_studio_field_ue4Ea&quot;: id}" attrs="{}" attrs="{'invisible': True}" delete="0">
+                                      <field name="x_studio_field_B7uLt" string="DCAS" context="{&quot;default_x_studio_field_ue4Ea&quot;: id}" attrs="{'invisible': True}" delete="0">
                                           <tree string="DCAS" delete="0">
                                               <field name="x_name" modifiers="{}"/>
                                               <field name="x_numero_serie"/>
@@ -608,8 +608,8 @@
                                                   <field name="x_studio_descripcion" studio-view-group-ids="29" studio-view-group-names="User"/>
                                                   <field name="contadorMono" studio-view-group-ids="29" studio-view-group-names="User"/>
                                                   <field name="contadorColor" studio-view-group-ids="29" studio-view-group-names="User"/>
-                                                  <field name="create_uid" attrs="{}" invisible="1" studio-view-group-ids="29" studio-view-group-names="User"/>
-                                                  <field name="x_studio_usuariocaptura" attrs="{}" invisible="1" studio-view-group-ids="29" studio-view-group-names="User"/>
+                                                  <field name="create_uid" attrs="{'invisible': True}" studio-view-group-ids="29" studio-view-group-names="User"/>
+                                                  <field name="x_studio_usuariocaptura" attrs="{'invisible': True}" studio-view-group-ids="29" studio-view-group-names="User"/>
                                                   <field name="fuente" studio-view-group-ids="29" studio-view-group-names="User" attrs="{'invisible': True}"/>
                                                   <field name="x_studio_fecha" studio-view-group-ids="29" studio-view-group-names="User" attrs="{'invisible': True}"/>
                                                   <field name="x_studio_robot" studio-view-group-ids="29" studio-view-group-names="User" attrs="{'invisible': True}"/>
