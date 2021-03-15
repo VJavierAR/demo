@@ -318,7 +318,7 @@
                                       <field name="idLocalidadAyuda" invisible="1" readonly="1" string="id Localidad Ayuda"/>
                                     
                                       <field name="x_studio_valor_categria_de_producto" string="Valor categria de producto" invisible="1" readonly="1"/>
-                                      <field name="x_studio_tipo_de_producto" string="Tipo de producto" invisible="[['team_id','=',74]]" readonly="1"/>
+                                      <field name="x_studio_tipo_de_producto" string="Tipo de producto" attrs="{'invisible': [['team_id','=',74]]}" readonly="1"/>
                                       <field name="tag_ids" widget="many2many_tags"  options="{'color_field': 'color', 'no_create_edit': True, 'no_create': True}" />
                                       <field name="x_studio_id_cliente" string="id cliente" invisible="1"  readonly="1"/>
                                       <field name="x_studio_filtro_numeros_de_serie" string="id localidad" invisible="1" readonly="1"/>
