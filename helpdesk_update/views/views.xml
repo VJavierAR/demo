@@ -376,9 +376,9 @@
                                   
                                   
                                   <field name="x_studio_responsable_de_equipo" string="Encargado de área" options="{'no_create_edit': True, 'no_create': True}" />
-                                  <field name="x_studio_desactivar_zona" string="Desactivar zona" invisible="[['team_id','=',8]]"/>
+                                  <field name="x_studio_desactivar_zona" string="Desactivar zona" attrs="{'invisible': [['team_id','=',8]]}" />
                                   <field name="estatus_techra" string="Estatus techra" invisible="1"/>
-                                  <field name="x_studio_field_wK7RR" string="Contactos foráneos" invisible="[['team_id','!=',11]]" domain='[["x_studio_distribuidor","=",True]]' options="{'no_create_edit': True, 'no_create': True}"/>
+                                  <field name="x_studio_field_wK7RR" string="Contactos foráneos" attrs="{'invisible': [['team_id','!=',11]]}" domain='[["x_studio_distribuidor","=",True]]' options="{'no_create_edit': True, 'no_create': True}"/>
                                   
                                   <field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" invisible="0" domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]' />
                                   <field name="x_studio_fecha_de_visita" string="Fecha de visita" attrs='{"invisible": [&quot;&amp;&quot;,["stage_id","=",1],"|","|",["team_id","=",74],["team_id","=",11],["team_id","=",8]]}' />
@@ -471,11 +471,12 @@
                           <field name="x_studio_toner_compatible" string="Tóner Compatible" domain='["&amp;",["categ_id","=",5],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' readonly="0" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
                           
                           <field name="x_studio_solicitar_tner_bn" string="Solicitar tóner BN" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
-                          <field name="x_studio_toner_compatible_cian" string="Tóner Compatible Cian" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Cian"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' invisible='[["x_studio_color_bn","=","B/N"]]' groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
+                          <field name="x_studio_toner_compatible_cian" string="Tóner Compatible Cian" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Cian"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' attrs='{"invisible": [["x_studio_color_bn","=","B/N"]]}' groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
                           <field name="x_studio_solicitar_tner_cian_1" string="Solicitar tóner cian" attrs="{&quot;invisible&quot;: [[&quot;x_studio_color_bn&quot;,&quot;=&quot;,&quot;B/N&quot;]]}" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
-                          <field name="x_studio_tner_compatible_amarrillo" string="Tóner Compatible Amarillo" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Amarillo"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' invisible='[["x_studio_color_bn","=","B/N"]]' groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
+                          <field name="x_studio_tner_compatible_amarrillo" string="Tóner Compatible Amarillo" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Amarillo"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]'
+                          attrs='{"invisible": [["x_studio_color_bn","=","B/N"]]}' groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
                           <field name="x_studio_solicitar_tner_amarillo" string="Solicitar tóner amarillo" attrs="{&quot;invisible&quot;: [[&quot;x_studio_color_bn&quot;,&quot;=&quot;,&quot;B/N&quot;]]}" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
-                          <field name="x_studio_tner_compatible_magenta" string="Tóner Compatible Magenta" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Magenta"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' invisible='[["x_studio_color_bn","=","B/N"]]' groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
+                          <field name="x_studio_tner_compatible_magenta" string="Tóner Compatible Magenta" domain='[&quot;&amp;&quot;,["categ_id","=",5],["x_studio_color","=","Magenta"],["x_studio_toner_compatible.id","=",x_studio_tmpint]]' attrs='{"invisible": [["x_studio_color_bn","=","B/N"]]}' groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
                           <field name="x_studio_solicitar_tner_magenta" string="Solicitar tóner magenta" attrs="{&quot;invisible&quot;: [[&quot;x_studio_color_bn&quot;,&quot;=&quot;,&quot;B/N&quot;]]}" groups="studio_customization.equipo_de_toner_f5f2cc29-0c9e-499b-913e-61e0eca63c29"/>
                           
                           <field name="x_studio_w" string="Numero de serie" readonly="1" invisible="1" context="{'default_x_studio_w':name}"/>
@@ -860,11 +861,11 @@
                   
                   <group >
                       <group>
-                          <field name="x_studio_realizar_visita" string="Realizar visita" invisible='[["ticket_type_id","!=",5]]' readonly="0" widget="" context="" domain=""/>
+                          <field name="x_studio_realizar_visita" string="Realizar visita" attrs='{"invisible": [["ticket_type_id","!=",5]]}' readonly="0" widget="" context="" domain=""/>
                           <field name="x_studio_evidencias_filename" string="Filename for x_studio_evidencias" invisible="1" readonly="0" widget="" context="" domain=""/>
-                          <field name="x_studio_evidencias" string="Evidencias" invisible='[["stage_id","!=",13]]' readonly="0" widget="" context="" domain=""/>
-                          <field name="x_studio_rango_inicial_de_visita" string="Rango inicial de visita" invisible='[["ticket_type_id","!=",5]]' readonly="0" widget="" context="" domain=""/>
-                          <field name="x_studio_rango_final_de_visita" string="Rango final de visita" invisible='[["ticket_type_id","!=",5]]' readonly="0" widget="" context="" domain=""/>
+                          <field name="x_studio_evidencias" string="Evidencias" attrs='{"invisible": [["stage_id","!=",13]]}' readonly="0" widget="" context="" domain=""/>
+                          <field name="x_studio_rango_inicial_de_visita" string="Rango inicial de visita" attrs='{"invisible": [["ticket_type_id","!=",5]]}' readonly="0" widget="" context="" domain=""/>
+                          <field name="x_studio_rango_final_de_visita" string="Rango final de visita" attrs='{"invisible": [["ticket_type_id","!=",5]]}' readonly="0" widget="" context="" domain=""/>
                       </group>
                       <group>
                           <field name="x_studio_hte_ultima_fecha" string="Hte última fecha" invisible="1" readonly="1" widget="" context="" domain=""/>
@@ -872,13 +873,13 @@
                           <field name="x_studio_hte_ultimo_diagnostico" string="Hte último diagnóstico" invisible="1" readonly="0" widget="text" context="" domain=""/>
                           <field name="x_studio_hte_ultimo_encargado" string="Hte último encargo" invisible="1" readonly="0" widget="" context="" domain=""/>
                           <field name="x_studio_evidencia_filename" string="Filename for x_studio_evidencia" invisible="1" readonly="0" widget="" context="" domain=""/>
-                          <field name="x_studio_evidencia" string="Evidencia" invisible='[["stage_id","!=",17]]' readonly="0" widget="" context="" domain=""/>
+                          <field name="x_studio_evidencia" string="Evidencia" attrs='{"invisible": [["stage_id","!=",17]]}' readonly="0" widget="" context="" domain=""/>
                       </group>
                   </group>
                   <group> 
                       
                       <group>
-                          <field name="x_studio_evidencia_1" string="Evidencia" invisible='[["stage_id", "!=", 3]]'/>
+                          <field name="x_studio_evidencia_1" string="Evidencia" attrs='{"invisible": [["stage_id", "!=", 3]]}'/>
                           <field name="x_studio_evidencia_1_filename" string="Filename for x_studio_filename" invisible="1"/>    
                       </group>
                       <group>
