@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 def get_plazo():
     year_list = []
     for i in range(1, 100):
-       year_list.append((i, str(i)))
+       year_list.append((str(i), str(i)))
     return year_list
 
 class servicios_gnsys(models.Model):
@@ -379,8 +379,8 @@ class penalizaciones(models.Model):
     #name = fields.Char(string="Nombre")
     contrato = fields.Many2one('contrato', string="Contrato")
    
-    plazoIni = fields.Selection(get_plazo(), string='Plazo Inicio',default=1)
-    plazoFinal = fields.Selection(get_plazo(), string='Plazo Final',default=12)
+    plazoIni = fields.Selection(get_plazo(), string='Plazo Inicio',default='1')
+    plazoFinal = fields.Selection(get_plazo(), string='Plazo Final',default='12')
     porcentaje = fields.Float()
     total=fields.Float(string='Penalización a pagar por concepto de cancelación')
     totalResidual=fields.Float(string='% Residual a pagar, adicional a la penalización')
