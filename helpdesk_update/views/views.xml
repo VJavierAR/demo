@@ -267,7 +267,7 @@
                                   <field name="x_studio_verificacin_de_tner" string="Verificación de tóner" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
                                   
                                   <field name="x_studio_verificacin_de_refaccin" string="Verificación de refacción" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
-                                  <field name="x_studio_observaciones_adicionales_" string="" attrs="{'readonly': 0, 'required': 0, 'invisible': ['|', ['stage_id','!=',3],['team_id','!=',74]]}" />
+                                  <field name="x_studio_observaciones_adicionales_" string="" attrs="{'readonly': 0, 'required': 0}" /> <!-- 'invisible': ['|', ['stage_id','!=',3],['team_id','!=',74]] -->
                                   <field name="x_studio_prioridad" string="Prioridad" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
                                   <field name="x_studio_documento_de_origen" string="Documento de origen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                                   <field name="x_studio_transferencia" string="transferencia" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
