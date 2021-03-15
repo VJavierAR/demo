@@ -2144,13 +2144,19 @@ class lor(models.Model):
     x_studio_locacion_recortada)
     x_studio_localidad)
     x_studio_localidad_1)
-    x_studio_localidad_2)
+    """
+    x_studio_localidad_2 = fields.Many2one('res.partner',string='Localidad',store=True, track_visibility='onchange')
+
+    """
     x_studio_magenta)
     x_studio_magenta_anterior)
     x_studio_mini)
     x_studio_ml)
     x_studio_modelo_equipo)
-    x_studio_move_line)
+    """
+    x_studio_move_line = fields.One2many('stock.move.line','lot_id', string='Movimientos')
+
+    """
     x_studio_negro)
     x_studio_negro_anterior)
     x_studio_numero_de_serie)
@@ -2196,7 +2202,29 @@ class lor(models.Model):
     x_studio_ultimo_contador_negro_toner)
     x_studio_ultimo_contador_toner)
     x_studio_ultimo_mantenimiento_preventivo)
-    x_studio_ultma_ubicacin)
+    """
+
+    x_studio_ultma_ubicacin = fields.Char(readonly=True, string='Ultíma Ubicación', compute = '_compute_x_studio_ultma_ubicacin')
+
+    @api.depends('x_studio_cambio')
+    def _compute_x_studio_fecha_lectura_actual(self):
+      for r in self:
+        tam=len(r.x_studio_move_line)
+        pos=tam-1
+        if(r.x_studio_localidad_2):
+            loca=r.x_studio_localidad_2
+            r['x_studio_ultma_ubicacin'] = str(loca.display_name)
+            r['x_studio_delegacion']=str(loca.l10n_mx_edi_locality)
+            r['x_studio_calle']=str(loca.street_name)
+            r['x_studio_cp']=str(loca.zip)
+            r['x_studio_interior']=str(loca.street_number2)
+            r['x_studio_exterior']=str(loca.street_number)
+            r['x_studio_colonia']=str(loca.l10n_mx_edi_colony)
+            r['x_studio_ciudad']=str(loca.x_studio_ciudad)
+            r['x_studio_estado_1']=str(loca.state_id.name)
+            r['x_studio_zona']=str(loca.x_studio_field_SqU5B)
+
+    """
     x_studio_venta)
     x_studio_w)
     x_studio_zona)
