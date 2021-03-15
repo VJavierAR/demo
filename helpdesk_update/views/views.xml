@@ -234,8 +234,10 @@
                                           <field name="type" invisible="1" required="1"/>
                                           -->
                                           <field name="price" invisible="not context.get('pricelist',False)"/>
+                                          <!--
                                           <field name="qty_available" attrs="{'invisible':[('type', '!=', 'product')]}" readonly="1"/>
                                           <field name="virtual_available" attrs="{'invisible':[('type', '!=', 'product')]}" readonly="1"/>
+                                          -->
                                           <!--
                                           <field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="uom.group_uom" attrs="{}" readonly="1" required="1" invisible="1"/>
                                           <field name="barcode" attrs="{}" invisible="1"/>
