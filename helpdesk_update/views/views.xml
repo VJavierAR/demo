@@ -267,14 +267,14 @@
                                   <field name="x_studio_verificacin_de_tner" string="Verificación de tóner" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
                                   
                                   <field name="x_studio_verificacin_de_refaccin" string="Verificación de refacción" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
-                                  <field name="x_studio_observaciones_adicionales_" string="" attrs="{'readonly': 0, 'required': 0}" /> <!-- 'invisible': ['|', ['stage_id','!=',3],['team_id','!=',74]] -->
+                                  <field name="x_studio_observaciones_adicionales_" string="" attrs="{'readonly': 0, 'required': 0, 'invisible': ['|', ['stage_id','!=',3],['team_id','!=',74]]}" />
                                   <field name="x_studio_prioridad" string="Prioridad" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
                                   <field name="x_studio_documento_de_origen" string="Documento de origen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                                   <field name="x_studio_transferencia" string="transferencia" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
                                   
                                   <field name="activity_state" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                                   <field name="activity_summary" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
-                                  <field name="x_studio_field_nO7Xg" string="Solicitud" options="{'no_create_edit': True, 'no_create': True}" attrs="{'readonly': 1, 'required': 0}" invisible='["|",["team_id","=",74],["team_id","=",76]]'/>
+                                  <field name="x_studio_field_nO7Xg" string="Solicitud" options="{'no_create_edit': True, 'no_create': True}" attrs="{'readonly': 1, 'required': 0, 'invisible': ['|',['team_id','=',74],['team_id','=',76]]}" />
                                   
                                   <field name="x_studio_prueba" string="Estado" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                                   <field name="x_studio_field_SbRz2" string="Transfer almacen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
@@ -381,7 +381,7 @@
                                   <field name="x_studio_field_wK7RR" string="Contactos foráneos" invisible="[['team_id','!=',11]]" domain='[["x_studio_distribuidor","=",True]]' options="{'no_create_edit': True, 'no_create': True}"/>
                                   
                                   <field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" invisible="0" domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]' />
-                                  <field name="x_studio_fecha_de_visita" string="Fecha de visita" invisible='[&quot;&amp;&quot;,["stage_id","=",1],"|","|",["team_id","=",74],["team_id","=",11],["team_id","=",8]]'/>
+                                  <field name="x_studio_fecha_de_visita" string="Fecha de visita" attrs='{"invisible": [&quot;&amp;&quot;,["stage_id","=",1],"|","|",["team_id","=",74],["team_id","=",11],["team_id","=",8]]}' />
                                   <field name="company_id" groups="base.group_multi_company" invisible="1"/>
                                   <field name="deadline" readonly="1" attrs="{'invisible': [('deadline', '=', False)]}"/>
                                   <field name="sla_id" invisible="1" readonly="1"/>
