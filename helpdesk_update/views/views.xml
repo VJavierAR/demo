@@ -277,7 +277,7 @@
                                   <field name="x_studio_field_nO7Xg" string="Solicitud" options="{'no_create_edit': True, 'no_create': True}" attrs="{'readonly': 1, 'required': 0, 'invisible': ['|',['team_id','=',74],['team_id','=',76]]}" />
                                   
                                   <!--<field name="x_studio_prueba" string="Estado" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>-->
-                                  <field name="x_studio_field_SbRz2" string="Transfer almacen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
+                                  <!--<field name="x_studio_field_SbRz2" string="Transfer almacen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>-->
                                   <field name="x_studio_field_XALSC" string="Transferir distribucion" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                                   <field name="x_transferir_surt" string="Transferir surtido" readonly="1" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
                                   
