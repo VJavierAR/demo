@@ -232,15 +232,15 @@ class StockPicking(Model):
     #def mandarTicketGuia(self):
     #    c = self.env['helpdesk.ticket'].search([('id','=',self.x_studio_idtempticket)]) 
     #    c.write({'x_studio_nmero_de_guia_1': self.carrier_tracking_ref})        
-    
+    """
     def button_validate(self):
-        #self.ensure_one()
+        self.ensure_one()
         if not self.move_lines and not self.move_line_ids:
             raise UserError(_('Please add some items to move.'))
 
         # If no lots when needed, raise error
         picking_type = self.picking_type_id
-        if(picking_type.id==2):
+        if(picking_type.id==2 and self.x_studio_evidencia_a_ticket==False):
             raise UserError(_('Se requiere la Evidencia.'))
             
         precision_digits = self.env['decimal.precision'].precision_get('Product Unit of Measure')
@@ -316,7 +316,7 @@ class StockPicking(Model):
             return self.action_generate_backorder_wizard()
         self.sudo().action_done()
         return            
-    
+    """
     #@api.one
     @api.depends('estado')
     def x_historial_ticket_actualiza(self):
