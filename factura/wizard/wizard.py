@@ -69,7 +69,8 @@ class TestReport(TransientModel):
 
     date_from = fields.Date(string='From')
     date_to = fields.Date(string='To')
-    anio= fields.Selection(get_cleinte(), string='Cliente')     
+    #anio= fields.Selection(get_cleinte(), string='Cliente')     
+    anio= fields.Selection([['2010', '2010']], string='Cliente')
 
     
     
