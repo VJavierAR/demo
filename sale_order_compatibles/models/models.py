@@ -229,7 +229,7 @@ class sale_update(models.Model):
 	def desbloquea(self):
 		self.action_cancel()
 		self.action_draft()
-		picks=self.env['stock.picking'].search([['sale_id','=',self.id]])
+		picks=self.env['stock.picking'].search([['sale_child','=',self.id]])
 		for pi in picks:
 			if(pi.origin!=self.name):
 				pi.write({'active':False})
@@ -262,14 +262,14 @@ class sale_update(models.Model):
 	    return True
 
 	def saleLinesMove(self):
-		picks=self.env['stock.picking'].search(['&',['sale_id','=',self.id],['state','!=','draft']])
+		picks=self.env['stock.picking'].search(['&',['sale_child','=',self.id],['state','!=','draft']])
 		sal=self.order_line.sorted(key='id').mapped('id')
 		cliente=self.partner_shipping_id
 		for p in picks:
 			i=0
 			for pi in p.move_ids_without_package.sorted(key='id'):
 				pi.write({'sale_line_id':sal[i]})
-				if(p.picking_type_id.code=='outgoing' and 'REFACCION' not in p.sale_id.warehouse_id.name and p.partner_id.parent_id.id!=1):
+				if(p.picking_type_id.code=='outgoing' and 'REFACCION' not in p.sale_child.warehouse_id.name and p.partner_id.parent_id.id!=1):
 					almacen=self.env['stock.warehouse'].search([['x_studio_field_E0H1Z','=',cliente.id]])
 					if(almacen.id!=False):
 						pi.write({'location_dest_id':almacen.lot_stock_id.id})
@@ -278,7 +278,7 @@ class sale_update(models.Model):
 
 	def cambio(self):
 		self.action_confirm()
-		picks=self.env['stock.picking'].search([['sale_id','=',self.id]])
+		picks=self.env['stock.picking'].search([['sale_child','=',self.id]])
 		almacen=self.env['stock.warehouse'].search([['x_studio_field_E0H1Z','=',self.partner_shipping_id.id]])
 		for pic in picks:
 			ppp=pic.copy()
@@ -327,7 +327,7 @@ class sale_update(models.Model):
 		for s in seriesRR:
 			self.env['cliente.h'].create({'localidad':self.partner_shipping_id.id,'solicitud':self.id,'contrato':self.x_studio_field_LVAj5.id,'servicio':self.x_studio_field_69Boh.id,'origen':self.partner_shipping_id.name,'destino':self.warehouse_id.name,'fecha':fecha,'serie':s.id})
 		seriesRR.write({'servicio':False,'x_studio_cliente':1,'x_studio_localidad_2':26662})
-		picks=self.env['stock.picking'].search([['sale_id','=',self.id]])
+		picks=self.env['stock.picking'].search([['sale_child','=',self.id]])
 		almacen=self.env['stock.warehouse'].search([['x_studio_field_E0H1Z','=',self.partner_shipping_id.id]])
 
 		for pic in picks:
