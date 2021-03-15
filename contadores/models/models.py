@@ -2112,7 +2112,10 @@ class lor(models.Model):
     x_studio_field_fBLGz)
     x_studio_field_jBvLz)
     x_studio_field_kgrzI)
-    x_studio_field_lMCjm)
+    """
+    x_studio_field_lMCjm = fields.Many2many(comodel_name='product.product', string='Producto', store=True)
+
+    """
     x_studio_field_lVjdA)
     x_studio_field_nXQHF)
     x_studio_field_nbkyC)
