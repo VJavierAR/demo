@@ -11,6 +11,7 @@
             <field name="ano_modelo" modifiers="{}"/>
             <field name="fecha_adquisicion" modifiers="{}"/>
         </tree>
+      </field>
     </record>
   
     <record model="ir.ui.view" id="vehiculos_form">
