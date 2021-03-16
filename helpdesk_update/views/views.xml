@@ -152,7 +152,7 @@
                       </sheet>
                   </form>
                 </field>
-
+                <field name="x_studio_equipo_por_nmero_de_serie_1" attrs="{'invisible': ['|', ['x_studio_tipo_de_vale', '!=', 'Requerimiento'], ['x_studio_tipo_de_vale', '=', false] ]}"/>
                 <!--
                 <field name="x_studio_equipo_por_nmero_de_serie_1" attrs="{'invisible': ['|', ['x_studio_tipo_de_vale', '!=', 'Requerimiento'], ['x_studio_tipo_de_vale', '=', false] ]}">
                   
