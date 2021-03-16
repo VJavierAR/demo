@@ -44,3 +44,16 @@ class compras(models.Model):
 class lots(models.Model):
     _inherit='stock.production.lot'
     x_studio_mini=fields.Boolean()
+    x_studio_ultima_ubicacin=fields.Char(compute='cambio')
+    x_studio_delegacion=fields.Char()
+    x_studio_cambio=fields.Boolean()
+
+    @api.depends('x_studio_cambio')
+    def cambio(self):
+        for r in self:
+          tam=len(r.x_studio_move_line)
+          pos=tam-1
+          if(r.x_studio_localidad_2):
+              loca=r.x_studio_localidad_2
+              r['x_studio_ultima_ubicacin'] = str(loca.display_name)
+              r['x_studio_delegacion']=str(loca.l10n_mx_edi_locality)
