@@ -252,7 +252,7 @@ class tfs(models.Model):
         if(dat!=[]):
             quants=self.sudo().env['stock.quant'].browse(dat)
         for q in quants:
-            wiz = self.env['quant.action'].create({'quant':q.id,'producto':q.product_id.id,'cantidad':q.quantity,'usuario':self.env.uid,'descripcion':'Cambio mini '+self.name,'cantidadReal':q.quantity-1})
+            wiz = self.env['quant.action'].create({'quant':q.id,'producto':q.product_id.id,'cantidad':q.quantity,'usuario':self.env.uid,'comentario':'Cambio mini '+self.name,'cantidadReal':q.quantity-1})
             wiz.confirmar()
             q.sudo().write({'quantity':q.quantity-1})
             q.actualizaRegla()
