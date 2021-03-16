@@ -1476,7 +1476,7 @@ class contadores(models.Model):
                   'type'     : 'ir.actions.act_url',
                   'target'   : 'new',
                   'url'      : url
-               }      
+               } s     
         """
         
         if self.anio and not self.csvD:
@@ -1518,8 +1518,8 @@ class contadores(models.Model):
                       rrs=self.env['dcas.dcas'].create({'contador_id': self.id
                                                        , 'x_studio_producto': a.id
                                                        , 'serie': a.id
-                                                       , 'x_studio_locacin':a.x_studio_locacion_recortada
-                                                       , 'x_studio_ubicacin':a.x_studio_centro_de_costos
+                                                       #, 'x_studio_locacin':a.x_studio_locacion_recortada
+                                                      #, 'x_studio_ubicacin':a.x_studio_centro_de_costos
                                                        #, 'x_studio_periodo':str(self.anio)+ '-'+str(valores[int(self.mes)-1][1])                                                              
                                                        , 'x_studio_fecha_texto_anio':str(valores[int(self.mes)-1][1])+' de '+ str(self.anio)
                                                        ,'x_studio_field_no6Rb':str(self.anio)+'-'+str(self.mes)
@@ -1542,8 +1542,8 @@ class contadores(models.Model):
                       currentP.write({'contador_id': self.id
                                                        , 'x_studio_producto': a.id
                                                        , 'serie': a.id
-                                                       , 'x_studio_locacin':a.x_studio_locacion_recortada
-                                                       , 'x_studio_ubicacin':a.x_studio_centro_de_costos
+                                                       #, 'x_studio_locacin':a.x_studio_locacion_recortada
+                                                       #, 'x_studio_ubicacin':a.x_studio_centro_de_costos
                                                        , 'x_studio_fecha_texto_anio':str(valores[int(self.mes)-1][1])+' de '+ str(self.anio)
                                                        , 'x_studio_field_no6Rb':str(self.anio)+'-'+str(self.mes)
                                                        #, 'x_studio_periodo':str(self.anio)+ '-'+str(valores[int(self.mes)-1][1])                                                              
@@ -1564,7 +1564,7 @@ class contadores(models.Model):
                                                        })
                 
                 i=1+i
-            retiros=self.env['sale.order'].search([('partner_id','=',self.cliente.id),('x_studio_tipo_de_solicitud', '=', 'Retiro'),('x_studio_cobrar_finiquito','=','True')])
+            """retiros=self.env['sale.order'].search([('partner_id','=',self.cliente.id),('x_studio_tipo_de_solicitud', '=', 'Retiro'),('x_studio_cobrar_finiquito','=','True')])
             
             for re in retiros:
                 #raise exceptions.ValidationError("faltan usocfdi para crear factura ")
@@ -1595,7 +1595,7 @@ class contadores(models.Model):
                                                        , 'x_studio_servicio':re.x_studio_field_69Boh.id
                                                        , 'x_studio_cliente':self.cliente.name  
                                                        })
-                
+               
                 else:
                     if re.x_studio_field_69Boh.id :
                         #raise exceptions.ValidationError("faltan usocfdi para crear factura no")
@@ -1621,7 +1621,7 @@ class contadores(models.Model):
                                                        , 'x_studio_descripcion': 'capturado Finiquito'
                                                        , 'x_studio_capturar':True                                                                                               
                                                        })
-                    
+            """        
         if self.csvD:           
            with open("a1.csv","w") as f:
                 f.write(base64.b64decode(self.csvD).decode("utf-8"))
