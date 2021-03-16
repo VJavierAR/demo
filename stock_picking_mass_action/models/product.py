@@ -23,7 +23,8 @@ class compras(models.Model):
     x_studio_color_bn=fields.Selection([["B/N","B/N"],["Color","Color"]])
     x_studio_color=fields.Selection([["Amarillo","Amarillo"],["Negro","Negro"],["Cian","Cian"],["Magenta","Magenta"]])
     x_studio_toner_compatible=fields.Many2many('product.product',relation='product_product_rel', column1='id1',column2='id2', string="Compatibles")
-
+    x_studio_rendimiento_toner=fields.Integer('Rendimiento')
+    
     def agregarCompatible(self):
         wiz = self.env['add.compatible'].create({'productoInicial':self.id})
         view = self.env.ref('stock_picking_mass_action.view_addcompatile_action_form')
