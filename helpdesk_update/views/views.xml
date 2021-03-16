@@ -428,7 +428,35 @@
             </group>
 
 
+            <group string="Diagnostico" class="text-center"></group>
+                  
+            <field name="diagnosticos" context="{'default_estadoTicket': x_studio_ultimoestado_1}" attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)]}" delete="false" />
             
+            <field name="x_studio_ultima_evidencia" widget="html" string="Ultima Evidencia"/>
+            
+            <group>
+                
+                <group name="datosTicket" string="Datos Ticket" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea">
+                    <field name="estadoAsignacion" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoAtencion" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoSolicitudDeRefaccion" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoSolicitudDeRefaccionValidada" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoResuelto" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoCotizacion" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoResueltoPorDocTecnico" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoCerrado" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoCancelado" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoSolicitudDeToner" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoSolicitudDeTonerValidar" attrs="{&quot;invisible&quot;: 0}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    <field name="estadoAbierto" attrs="{'invisible': 1}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                    
+                    <field name="contadores_anteriores" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea" />
+                    
+                </group>
+                
+            </group>
+
+
           </sheet>
 
         </form>
