@@ -1,9 +1,9 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="vehiculos_list">
-      <field name="name">vehiculos.list</field>
-      <field name="model">vehiculos.vehiculos</field>
+    <record model="ir.ui.view" id="automovil_list">
+      <field name="name">automovil.list</field>
+      <field name="model">automovil</field>
       <field name="arch" type="xml">
         <tree string="Automovil">
             <field name="name" modifiers="{}"/>
@@ -14,9 +14,9 @@
       </field>
     </record>
   
-    <record model="ir.ui.view" id="vehiculos_form">
-      <field name="name">vehiculos.form</field>
-      <field name="model">vehiculos.vehiculos</field>
+    <record model="ir.ui.view" id="automovil_form">
+      <field name="name">automovil.form</field>
+      <field name="model">automovil</field>
       <field name="arch" type="xml">
         <form>
               <sheet>
