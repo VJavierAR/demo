@@ -28,7 +28,7 @@ class factura(models.Model):
       month = fields.Selection(valores,string='Mes',default='04')
       #year = fields.Selection(get_years(), string='Año',default=2020)
       year = fields.Selection([['2010', '2036']], string='Año',default='2010')
-      periodo = fields.Char(default="Periodo")
+      #periodo = fields.Char(default="Periodo")
       #detalle =  fields.One2many('sale.order.detalle', 'account.move', string='Detalle')
       zeros =  fields.One2many('zeros.lineas', 'accountInv', string='Zeros')
       
