@@ -863,7 +863,7 @@
                       </group>
                       
                   </group>
-
+                  <!--
                   <group>
                       <group>
                           <field name="x_studio_field_cG9va" string="Línea de pedido de venta" widget="" context="" domain=""/>
@@ -872,7 +872,7 @@
                           
                       </group>
                   </group>
-                  
+                  -->
                   <group >
                       <group>
                           <field name="x_studio_realizar_visita" string="Realizar visita" attrs='{"invisible": [["ticket_type_id","!=",5]]}' widget="" context="" domain=""/>
