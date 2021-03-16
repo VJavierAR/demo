@@ -112,7 +112,16 @@ class dcas(models.Model):
     ticket_techra_texto = fields.Text(string = 'Ticket techra texto')
     creado_por_tickets_techra = fields.Boolean(string = 'Creado por ppanificador de ticket techra', default = False)
     x_studio_tiquete=fields.Many2one('helpdesk.ticket')
-   
+    x_numero_serie = fields.Char(string='Numero de serie', store=True)
+    x_studio_field_ue4Ea = fields.Many2one('stock.production.lot',string='Lote/Número de serie',store=True, compute = '_compute_x_studio_field_ue4Ea')
+
+    @api.depends('x_numero_serie')
+    def _compute_x_studio_field_ue4Ea(self):
+      for record in self:
+        if record.x_numero_serie:
+          campo = self.env['stock.production.lot'].search([['name', '=', record.x_numero_serie]])
+          if (campo != []):
+            record['x_studio_field_ue4Ea'] = campo.id
     
 
     @api.onchange('serie')             
