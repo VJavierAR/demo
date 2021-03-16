@@ -114,26 +114,84 @@
                 <h1>
                     <field name="name" class="field_name" string="Descripción del reporte" placeholder="Descripción del reporte..." widget="text" invisible="1"/>
                 </h1>
-                <!--<field name="sla_name" class="badge badge-danger oe_inline" attrs="{'invisible': [('sla_active','=',False)]}"/>-->
             </div>
 
-            <group name="tipoDeReporte">
+            <group>
                 <group name="tipoDeReporte_left">
-                    <field name="ticket_type_id" string="Tipo de vale" invisible="1" />
-                    <field name="x_studio_tipo_de_vale" string="Tipo de reporte"  />
-                    <field name="x_studio_refticket" string="ticket"  widget="html" />
                     
-                </group>
-                <group invisible='[["team_id", "!=", 8]]'>
-                    <field name='validarHastaAlmacenTicket' />
-                    <field name='validarTicket' />
-                    <field name='ponerTicketEnEspera' />
+                    <field name="x_studio_tipo_de_vale" string="Tipo de reporte"  />
+                    <field name="x_studio_refticket" string="ticket"  widget="html" invisible="1"/>
+                    
                 </group>
                 
             </group>
 
             <notebook name="studio_notebook_TaG67">
               <page name="studio_page_TaG67" string="Pedido">
+                <field name="x_studio_generar_cambio" string="Generar cambio" invisible="1"/>
+                <field name="x_studio_equipo_por_nmero_de_serie" string="Equipo por número de serie" style="width:877px" domain="[]" attrs="{'readonly': 0}" widget="" context="{'default_x_studio_esconde':'x_studio_idteam'}" options="{'no_create_edit': True, 'no_create': True}">
+                  <tree string="Lots/Serial Numbers" editable="bottom" >
+                    
+                    <field name="x_studio_esconde" string="esconde id" invisible="1"/>
+                    <field name="name" string="Serial Number" attrs="{'readonly': 1, 'invisible': 0}" required="1" />
+                     
+                  </tree>
+                  <form string="Lots/Serial Numbers">
+                      <sheet name="studio_sheet_81b1e2">
+                          <div class="oe_button_box" name="button_box">
+                              <button name="212" icon="fa-arrows" class="oe_stat_button" string="Ubicacion" type="action"/>
+                              <button name="195" icon="fa-arrow-up" class="oe_stat_button" string="Reporte de Trazabilidad" type="action"/>
+                          </div>
+                          <div class="oe_title" name="studio_div_f03e0b">
+                              <label for="name" class="oe_edit_only"/>
+                              <h1>
+                                  <field name="name" placeholder="e.g. LOT/0001/20121" attrs="{'readonly': 1}"/>
+                              </h1>
+                          </div>
+                          
+                      </sheet>
+                  </form>
+                </field>
+
+                <field name="x_studio_equipo_por_nmero_de_serie_1" attrs="{'invisible': ['|', ['x_studio_tipo_de_vale', '!=', 'Requerimiento'], ['x_studio_tipo_de_vale', '=', false] ]}">
+                  <tree>
+                    <field name="serie" string="Número de serie"/>
+                    <field name="tablahtml" string="Detalle"/>
+                  </tree>
+                  <form>
+                    <field name="name"/>
+                    <group>
+                      <group>
+                        <field name="serie"/>
+                        <field name="colorEquipo"/>
+                        <field name="ultimaUbicacion"/>
+                        <field name="equipo"/>
+                        <field name="contadorMono"/>
+                        <field name="contadorAnteriorNegro" readonly="1"/>
+                        <field name="contadorColor" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
+                        <field name="contadorAnteriorColor" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
+                        <field name="x_studio_cartuchonefro" domain="['&amp;', ('categ_id', '=', 5), ('x_studio_color', '=', 'Negro')]" /> <!-- domain="['&amp;', ('categ_id', '=', 5), ('x_studio_color', '=', 'Negro'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" -->
+                        <field name="x_studio_rendimiento_negro" readonly="1"/>
+                        <field name="porcentajeNegro"/>
+                        <field name="x_studio_cartucho_amarillo" domain="['&amp;', ('categ_id', '=', 5), ('x_studio_color', '=', 'Amarillo'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" />
+                        <field name="x_studio_rendimientoa" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
+                        <field name="porcentajeAmarillo" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
+                        <field name="x_studio_cartucho_cian_1" domain="['&amp;', ('categ_id', '=', 5), ('x_studio_color', '=', 'Cian'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" />
+                        <field name="x_studio_rendimientoc" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
+                        <field name="porcentajeCian" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
+                        <field name="x_studio_cartucho_magenta" domain="['&amp;', ('categ_id', '=', 5), ('x_studio_color', '=', 'Cian'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" />
+                        <field name="x_studio_rendimientom" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
+                        <field name="porcentajeMagenta" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
+                        <!--<field name="x_studio_field_qYMJD" invisible="0"/>-->
+
+                      </group>
+                      <group>
+                        <field name="tablahtml" string="Detalle"/>
+                      </group>
+                    </group>
+                  </form>
+                </field>
+
                 <group name="studio_group_TaG67">
                   <group name="studio_group_TaG67_left">
                       
@@ -400,33 +458,6 @@
 
 
             </notebook>
-            <group name="grupoEquipoPornNumeroDeSerieRefacciones" >
-              <field name="x_studio_generar_cambio" string="Generar cambio" invisible="1"/>
-              <field name="x_studio_equipo_por_nmero_de_serie" string="Equipo por número de serie" style="width:877px" domain="[]" attrs="{'readonly': 0}" widget="" context="{'default_x_studio_esconde':'x_studio_idteam'}" options="{'no_create_edit': True, 'no_create': True}">
-                <tree string="Lots/Serial Numbers" editable="bottom" >
-                  
-                  <field name="x_studio_esconde" string="esconde id" invisible="1"/>
-                  <field name="name" string="Serial Number" attrs="{'readonly': 1, 'invisible': 0}" required="1" />
-                   
-                </tree>
-                  <form string="Lots/Serial Numbers">
-                      <sheet name="studio_sheet_81b1e2">
-                          <div class="oe_button_box" name="button_box">
-                              <button name="212" icon="fa-arrows" class="oe_stat_button" string="Ubicacion" type="action"/>
-                              <button name="195" icon="fa-arrow-up" class="oe_stat_button" string="Reporte de Trazabilidad" type="action"/>
-                          </div>
-                          <div class="oe_title" name="studio_div_f03e0b">
-                              <label for="name" class="oe_edit_only"/>
-                              <h1>
-                                  <field name="name" placeholder="e.g. LOT/0001/20121" attrs="{'readonly': 1}"/>
-                              </h1>
-                          </div>
-                          
-                      </sheet>
-                  </form>
-              </field>
-            </group>
-
 
             <group string="Diagnostico" class="text-center"></group>
                   
