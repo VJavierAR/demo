@@ -588,7 +588,7 @@ class contadores(models.Model):
                   diario=43
                 
                 if dias==30:
-                  plazo=8 
+                  plazo=4 
                 if dias==45:
                   plazo=10
                 if dias==60:
