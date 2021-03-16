@@ -839,3 +839,6 @@ class StockPickingMoveTemp(Model):
                 i=self.env['stock.quant'].search([['product_id','=',self.producto.id],['location_id','=',di.id],['quantity','>',0]])
                 if(len(i)>0):
                     self.stock=i.id
+class PickinfType(models.Model):
+    _inherit='stock.picking.type'
+    x_studio_field_B2WwI=fields.Many2many('res.users')
