@@ -1,6 +1,5 @@
 <odoo>
   <data>
-
     <record id="helpdesk.helpdesk_ticket_view_form" model="ir.ui.view">
       <field name="model">helpdesk.ticket</field>
       <field name="arch" type="xml">
@@ -484,11 +483,5 @@
 
       </field>
     </record>
-
-
-
-
-
-
   </data>
 </odoo>
