@@ -618,7 +618,8 @@ class contadores(models.Model):
                       raise exceptions.ValidationError("faltan forma de pago para crear factura ."+str(formaPago))                    
                     
                     prefacturas=''
-                    a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'month':self.mes,'year':self.anio,'periodo':mes +' de '+str(anio) ,'company_id':id,'l10n_mx_edi_payment_method_id':formaPago,'payment_term_id':plazo,'l10n_mx_edi_usage':usoF,'journal_id':diario})
+                    #a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'month':self.mes,'year':self.anio,'periodo':mes +' de '+str(anio) ,'company_id':id,'l10n_mx_edi_payment_method_id':formaPago,'payment_term_id':plazo,'l10n_mx_edi_usage':usoF,'journal_id':diario})
+                    a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'month':self.mes,'year':self.anio,'periodo':mes +' de '+str(anio) ,'company_id':id})
                     self.env.cr.execute("insert into x_account_move_contrato_rel (account_move_id, contrato_id) values (" +str(a.id) + ", " +  str(rs.id) + ");")                        
                     #https://gnsys-corp-stam-1742347.dev.odoo.com/web#id=str(a.id)&action=325&active_id=1&model=account.invoice&view_type=form&menu_id=370
                     #prefacturas="<a href='https://gnsys-corp-stam-1742347.dev.odoo.com/web#id="+str(a.id)+"&action=325&active_id=1&model=account.invoice&view_type=form&menu_id=370' target='_blank'>"+str(a.id)+"</a>"+' '+prefacturas                
