@@ -36,18 +36,18 @@ class factura(models.Model):
       def llamado_boton_factu(self):
         #raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+self.partner_id.name)    
         for r in self:           
-          pbn=0
-          pcolor=0
-          rentaG=0
-          rentaE=0
-          spc=0
-          tfs=0
-          sm=0
-          sme=0
-          netMa=0
-          paginasbn=0
-          embeded=0
-          cuenta=0
+          pbn=2
+          pcolor=2
+          rentaG=2
+          rentaE=2
+          spc=2
+          tfs=2
+          sm=2
+          sme=2
+          netMa=2
+          paginasbn=2
+          embeded=2
+          cuenta=2
           if str(self.partner_id.razonSocial)=='1':
                pbn=11396
                cuenta=30 
