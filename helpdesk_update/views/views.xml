@@ -62,7 +62,30 @@
 
           <sheet>
             <field name="kanban_state" widget="state_selection" />
-                  
+            
+            <group>
+              <group>
+                  <field name="active" invisible="1"/>
+                  <field name="team_id"/>
+                  <field name="user_id" class="field_user_id" domain="['&amp;', ('id', 'in', domain_user_ids), ('share', '=', False)]" widget="many2one_avatar_user"/>
+                  <field name="domain_user_ids" invisible="1"/>
+                  <field name="ticket_type_id"/>
+                  <field name="priority" widget="priority"/>
+                  <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                  <field name="company_id" groups="base.group_multi_company"/>
+                  <field name="sla_deadline" attrs="{'invisible': [('sla_deadline', '=', False)]}" groups="helpdesk.group_use_sla"/>
+              </group>
+              <group>
+                  <field name="partner_id" class="field_partner_id" domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]" widget="res_partner_many2one"/>
+                  <field name="partner_name" attrs="{'invisible': [('partner_id', '!=', False)]}"/>
+                  <field name="partner_email"/>
+                  <field name="email_cc" groups="base.group_no_one"/>
+              </group>
+            </group>
+
+
+
+
             <div class="row">
                 <div class="col-sm-4">
                 </div>
@@ -108,6 +131,121 @@
                 </group>
                 
             </group>
+
+            <notebook name="studio_notebook_TaG67">
+              <page name="studio_page_TaG67" string="Pedido">
+                <group name="studio_group_TaG67">
+                  <group name="studio_group_TaG67_left">
+                      
+                      <button name="contadores_wizard" string="Capturar contadores" class="oe_highlight" type="object"  attrs="{'invisible':  ['|', '|', '|', '|', ('team_id', '=', 8), ('team_id', '=', 13), ('x_studio_equipo_por_nmero_de_serie', '=', []), ('stage_id', '=', 18), ('stage_id', '=', 4) ]}" />
+                      <button name="capturandoMesa" string="Capturar contadores" class="oe_highlight" type="object"  invisible="1" />
+                      <field name="x_studio_generar_cambio" string="Generar cambio" invisible="1"/>
+                      
+                      
+                      <field name="x_studio_a" string="a" invisible="1"/>
+                      <field name="x_studio_corte" string="Corte" attrs="{&quot;invisible&quot;: [[&quot;team_id&quot;,&quot;!=&quot;,8]]}"/>
+                      <field name='almacenes' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"  attrs="{'invisible': [('team_id', '!=', 8)]}"/> <!--domain="['&amp;', ('x_studio_cliente', '=', False), '|', ('id', '=', 1), ('id', '=', 18) ]"-->
+                      
+                      <field name="x_studio_contador_bn" string="Contador B/N" attrs="{'invisible': 1, 'readonly': 1}"/>
+                      <field name="x_studio_contador_bn_a_capturar" string="Contador B/N a capturar" attrs="{'invisible': 1, 'readonly': 1}"/>
+                      <field name="x_studio_contador_color" string="Contador color" attrs="{'invisible': 1, 'readonly': 1}"/>
+                      <field name="x_studio_contador_color_a_capturar" string="Contador color a capturar" attrs="{'invisible': 1, 'readonly': 1}"/>
+                      <field name="x_studio_tamao_lista" string="Tamaño lista equipo por nmero serie" attrs="{'invisible': 1}"/>
+                      <field name="x_studio_activar_compatibilidad" string="Activar compatibilidad" attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }"/>
+                      
+                      <field style="color:black" name="x_studio_productos" string="Productos " domain="[]" invisible='1' options="{'no_create_edit': True, 'no_create': True}" >
+                          <tree string="Product Variants"  editable="bottom" >
+                              <field name="create_uid" string="Creado por"  invisible="1" attrs="{'invisible': 1, 'readonly': 1}"/>
+                              <!--
+                              <field name="x_studio_aadido_por" string="Añadido por"  invisible="1"  attrs="{'invisible': 1, 'readonly': 0}"/>
+                              <field name="x_studio_aadido_por_1" string="Añadido por" invisible="1" attrs="{'invisible': 1, 'readonly': 0}"/>
+                              
+                              <field name="x_studio_testuse" string="Prueba" invisible="1" attrs="{'invisible': 1, 'readonly': 1}"/>
+
+                              <field name="x_studio_field_Fj4xh" string="New Texto" invisible="1" attrs="{'invisible': 1, 'readonly': 1}"/>
+                              <field name="x_studio_currentuser" string="Usuario"  readonly="1" invisible="1" attrs="{'invisible': 0, 'readonly': 1}"/>
+                              -->
+                              <field name="categ_id" attrs="{'readonly': 1}"  required="1"/>
+                              <field name="default_code" attrs="{'readonly': 1}" />
+                              <field name="name" attrs="{'readonly': 1}"  required="1"/>
+                              <!--
+                              <field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant" invisible="1"/>
+                              -->
+                              <!--
+                              <field name="lst_price" attrs="{}" readonly="1" invisible="1"/>
+
+                              <field name="standard_price" attrs="{}" readonly="1" invisible="1"/>
+
+                              <field name="type" invisible="1" required="1"/>
+                              -->
+                              <field name="price" invisible="not context.get('pricelist',False)"/>
+                              <!--
+                              <field name="qty_available" attrs="{'invisible':[('type', '!=', 'product')]}" readonly="1"/>
+                              <field name="virtual_available" attrs="{'invisible':[('type', '!=', 'product')]}" readonly="1"/>
+                              -->
+                              <!--
+                              <field name="uom_id" options="{'no_open': True, 'no_create': True}" groups="uom.group_uom" attrs="{}" readonly="1" required="1" invisible="1"/>
+                              <field name="barcode" attrs="{}" invisible="1"/>
+                              -->
+                              <!--
+                              <field name="x_studio_cantidad_pedida" string="Cantidad pedida"/>
+                              -->
+                              <!--
+                              <field name="product_tmpl_id" invisible="1" required="1"/>
+                              <field name="active" invisible="1"/>
+                              -->
+                          </tree>
+                      </field>
+                      
+                      <field name='accesorios' string='Productos' context="{'default_ticketRela': id}" attrs="{&quot;invisible&quot;: [ '|', ['team_id','=',8], ('x_studio_tipo_de_vale', '=', 'Requerimiento') ] }" options="{'no_create_edit': True, 'no_create': True}" >
+                          <tree editable='bottom'>
+                              <field name='productos' options="{'no_create_edit': True, 'no_create': True}" required='1' />
+                              <field name='cantidadPedida' />
+                          </tree>
+                      </field>
+                      
+                      
+                      
+                      <field name="x_studio_fecha_prevista" string="Fecha Prevista" />
+                      
+                      <field name="x_studio_usuario" string="Usuario" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
+                      <field name="x_studio_verificacin_de_tner" string="Verificación de tóner" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
+                      
+                      <field name="x_studio_verificacin_de_refaccin" string="Verificación de refacción" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
+                      <field name="x_studio_observaciones_adicionales_" string="" attrs="{'readonly': 0, 'required': 0, 'invisible': ['|', ['stage_id','!=',3],['team_id','!=',74]]}" />
+                      <field name="x_studio_prioridad" string="Prioridad" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
+                      <field name="x_studio_documento_de_origen" string="Documento de origen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
+                      <field name="x_studio_transferencia" string="transferencia" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
+                      
+                      <field name="activity_state" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
+                      <field name="activity_summary" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
+                      <field name="x_studio_field_nO7Xg" string="Solicitud" options="{'no_create_edit': True, 'no_create': True}" attrs="{'readonly': 1, 'required': 0, 'invisible': ['|',['team_id','=',74],['team_id','=',76]]}" />
+                      
+                      <!--<field name="x_studio_prueba" string="Estado" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>-->
+                      <!--<field name="x_studio_field_SbRz2" string="Transfer almacen" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>-->
+                      <field name="x_studio_field_XALSC" string="Transferir distribucion" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
+                      <!--<field name="x_transferir_surt" string="Transferir surtido" readonly="1" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>-->
+                      
+                      
+                      <field name="x_studio_field_up5pO" string="Estado en Almacén" attrs="{'invisible': 0, 'readonly': 1, 'required': 0}"/>
+                      <field name="x_studio_field_Le2tN" string="Estado en Distribución" attrs="{'invisible': 0, 'readonly': 1, 'required': 0}"/>
+                      
+                      
+                      <field name="x_estado_en_almacen" String="Estado en Almacén" attrs="{'readonly': 1, 'invisible': 0}"  groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+                      
+                      <field name="x_estado_en_distribucion" String="Estado en Distribución" attrs="{'readonly': 1}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+
+                      
+                      
+                      
+                      
+                  </group>
+                </group>
+              </page>
+
+            </notebook>
+
+
           </sheet>
 
         </form>
