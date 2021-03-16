@@ -2243,12 +2243,10 @@ class lor(models.Model):
     #x_studio_w)
     x_studio_zona = fields.Char(readonly=True, string='Zona')
     #x_x_studio_equipo_por_nmero_de_serie_2__helpdesk_ticket_count)
+
+
+
     
-   
-
-
-
-
     def gener_tabla_tickets(self):
       serie_name = self.mapped('name')[0]
       serie_id = self.mapped('id')[0]
