@@ -605,7 +605,7 @@
                                       </field>
                                   </group>
                                   -->
-                                  
+                                  <!--
                                   <group>
                                       
                                       <notebook name="studio_notebook_KDQio" studio-view-group-ids="29">
@@ -828,7 +828,7 @@
                                       </notebook>
                                       
                                   </group>
-                                  
+                                  -->
                                   
                               </sheet>
                           </form>

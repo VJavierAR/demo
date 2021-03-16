@@ -2099,8 +2099,9 @@ class lor(models.Model):
     x_studio_field_X8DSD)
     x_studio_field_XUPMG)
     x_studio_field_YleJ2)
-    x_studio_field_Yxv2m)
     """
+    x_studio_field_Yxv2m = fields.One2many('dcas.dcas','serie', string='New UnoAMuchos', store=True)
+    
     x_studio_field_Zi7sY = fields.Many2one('product.product',string='Producto',store=True)
 
     """
