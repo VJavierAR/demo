@@ -22,7 +22,7 @@ class compras(models.Model):
     _inherit = 'product.product'
     x_studio_color_bn=fields.Selection([["B/N","B/N"],["Color","Color"]])
     x_studio_color=fields.Selection([["Amarillo","Amarillo"],["Negro","Negro"],["Cian","Cian"],["Magenta","Magenta"]])
-    x_studio_toner_compatible=fields.Many2many('product.product',,relation='product_product_rel', column1='id1',column2='id2', string="Compatibles")
+    x_studio_toner_compatible=fields.Many2many('product.product',relation='product_product_rel', column1='id1',column2='id2', string="Compatibles")
 
     def agregarCompatible(self):
         wiz = self.env['add.compatible'].create({'productoInicial':self.id})
