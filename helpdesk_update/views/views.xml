@@ -152,21 +152,20 @@
                       </sheet>
                   </form>
                 </field>
-
+                <field name="x_studio_equipo_por_nmero_de_serie_1" attrs="{'invisible': ['|', ['x_studio_tipo_de_vale', '!=', 'Requerimiento'], ['x_studio_tipo_de_vale', '=', false] ]}"/>
+                <!--
                 <field name="x_studio_equipo_por_nmero_de_serie_1" attrs="{'invisible': ['|', ['x_studio_tipo_de_vale', '!=', 'Requerimiento'], ['x_studio_tipo_de_vale', '=', false] ]}">
+                  
                   <tree>
                     <field name="serie" string="Número de serie"/>
-                    <!--<field name="tablahtml" string="Detalle"/>-->
+                    <field name="tablahtml" string="Detalle"/>
                   </tree>
                   <form>
-                    <group>
-                      <!--<field name="name"/>-->
-                    </group>
                     <group>
                       <group>
                         <field name="serie"/>
                         <field name="colorEquipo"/>
-                        <!--
+                        
                         <field name="ultimaUbicacion"/>
                         <field name="equipo"/>
                         <field name="contadorMono"/>
@@ -185,16 +184,18 @@
                         <field name="x_studio_cartucho_magenta" domain="[('categ_id', '=', 5), ('x_studio_color', '=', 'Magenta')]" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" />
                         <field name="x_studio_rendimientom" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
                         <field name="porcentajeMagenta" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
-                        -->
+                        
                         <field name="x_studio_field_qYMJD" invisible="0"/>
 
                       </group>
                       <group>
-                        <!--<field name="tablahtml" string="Detalle"/>-->
+                        <field name="tablahtml" string="Detalle"/>
                       </group>
                     </group>
                   </form>
+                
                 </field>
+                -->
 
                 <group name="studio_group_TaG67">
                   <group name="studio_group_TaG67_left">
