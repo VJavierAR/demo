@@ -38,9 +38,79 @@ class StockPicking(Model):
     mini=fields.Boolean()
     chofer=fields.Many2one('res.users')
     surtir=fields.Boolean(default=False)
-    x_studio_toneres=fields.Char()
+    x_studio_toneres=fields.Char(compute='proHtml')
     x_studio_backorder=fields.Boolean()
     x_studio_tecnico = fields.Many2one('hr.employee','Tecnico')
+
+
+    @api.depends('move_ids_without_package')
+    def proHtml(self):
+        for record in self:
+          if(record.oculta==False):
+            record['x_studio_toneres']=''
+            f="<table class='table table-sm'><thead><tr><th>Modelo</th><th>No Parte</th><th>Existencia</th><th>Solicitado</th></tr></thead><tbody>"    
+            i=0
+            a = len(record.move_ids_without_package)
+            if a > 0:
+              for n in range(a) :
+                  d=self.env['stock.quant'].search([['location_id','=',record.move_ids_without_package[n].location_id.id],['product_id','=',record.move_ids_without_package[n].product_id.id]]).sorted(key='quantity',reverse=True)
+                  c=d[0].quantity if(len(d)>0) else 0
+                  f=f+"<tr>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_7pjpc)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_rTtwe)+"</td>"
+                  f=f+"<td>"+str(c)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].product_uom_qty)+"</td>"
+                  f=f+"</tr>"
+                  if(record.move_ids_without_package[n].product_id.categ_id.id==13):
+                    record['x_studio_equipo']=True
+              f=f+"</tbody></table>"
+              record['x_studio_toneres']= f
+          if(record.retiro):
+            record['x_studio_toneres']=''
+            f="<table class='table table-sm'><thead><tr><th>Modelo</th><th>No Parte</th><th>Existencia</th><th>Solicitado</th><th>Serie</th></tr></thead><tbody>"    
+            i=0
+            a = len(record.move_ids_without_package)
+            if a > 0:
+              for n in range(a) :
+                  d=self.env['stock.quant'].search([['location_id','=',record.move_ids_without_package[n].location_id.id],['product_id','=',record.move_ids_without_package[n].product_id.id]]).sorted(key='quantity',reverse=True)
+                  c=d[0].quantity if(len(d)>0) else 0
+                  f=f+"<tr>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_7pjpc)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_rTtwe)+"</td>"
+                  f=f+"<td>"+str(c)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].product_uom_qty)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].sale_line_id.x_studio_field_9nQhR.name)+"</td>" if(record.move_ids_without_package[n].sale_line_id.x_studio_field_9nQhR.name) else f+"<td></td>" 
+                  f=f+"</tr>"
+                  if(record.move_ids_without_package[n].product_id.categ_id.id==13):
+                    record['x_studio_equipo']=True
+              f=f+"</tbody></table>"
+              record['x_studio_toneres']= f 
+      
+  
+  else:
+    record['x_studio_toneres']=''
+    f="<table class='table table-sm'><thead><tr><th>Modelo</th><th>No Parte</th><th>Existencia</th><th>Solicitado</th><th>Estado</th><th>Serie</th><th>Modelo</th></tr></thead><tbody>"    
+    i=0
+    a = len(record.move_ids_without_package)
+    if a > 0:
+      for n in range(a) :
+          d=self.env['stock.quant'].search([['location_id','=',record.move_ids_without_package[n].location_id.id],['product_id','=',record.move_ids_without_package[n].product_id.id]]).sorted(key='quantity',reverse=True)
+          c=d[0].quantity if(len(d)>0) else 0
+          f=f+"<tr>"
+          f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_7pjpc)+"</td>"
+          f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_rTtwe)+"</td>"
+          f=f+"<td>"+str(c)+"</td>"
+          f=f+"<td>"+str(record.move_ids_without_package[n].product_uom_qty)+"</td>"
+          f=f+"<td>"+str(record.move_ids_without_package[n].sale_line_id.x_studio_estado)+"</td>" if(record.move_ids_without_package[n].sale_line_id.x_studio_estado) else f+"<td></td>" 
+          f=f+"<td>"+str(record.move_ids_without_package[n].sale_line_id.x_studio_field_9nQhR.name)+"</td>" if(record.move_ids_without_package[n].sale_line_id.x_studio_field_9nQhR.name) else f+"<td></td>" 
+          f=f+"<td>"+str(record.move_ids_without_package[n].sale_line_id.x_studio_field_9nQhR.product_id.name)+"</td>" if(record.move_ids_without_package[n].sale_line_id.x_studio_field_9nQhR.product_id.name) else f+"<td></td>" 
+          f=f+"</tr>"
+          if(record.move_ids_without_package[n].product_id.categ_id.id==13):
+            record['x_studio_equipo']=True
+      f=f+"</tbody></table>"
+      record['x_studio_toneres']= f   
+
+
 
     def devolucionT(self):
         self.ensure_one()
