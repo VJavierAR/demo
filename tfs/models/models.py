@@ -376,9 +376,9 @@ class tfs(models.Model):
                         dc2=self.env['dcas.dcas'].search([['serie','=',record.serie.id],['fuente','=','tfs.tfs'],['x_studio_toner_cian','=',1]]).sorted(key='create_date',reverse=True)
                         dc3=self.env['dcas.dcas'].search([['serie','=',record.serie.id],['fuente','=','tfs.tfs'],['x_studio_toner_magenta','=',1]]).sorted(key='create_date',reverse=True)
                         record['contadorMono'] =dc[0].id if(len(dc)>0) else 0
-                        record['contadorAmarillo'] =dc1[0].id if(len(dc1)>0) 0
-                        record['contadorCian'] =dc2[0].id if(len(dc2)>0) 0
-                        record['contadorMagenta'] =dc3[0].id if(len(dc3)>0) 0
+                        record['contadorAmarillo'] =dc1[0].id if(len(dc1)>0) else 0
+                        record['contadorCian'] =dc2[0].id if(len(dc2)>0) else 0
+                        record['contadorMagenta'] =dc3[0].id if(len(dc3)>0) else 0
         return res
         
 class evidencias(models.Model):
