@@ -1530,7 +1530,7 @@ class contadores(models.Model):
                                                        , 'contadorColor': currentP.contadorColor
                                                        , 'x_studio_lectura_anterior_color': currentPA.contadorColor                                                             
                                                        #, 'paginasProcesadasColor': colorp
-                                                       , 'x_studio_color_o_bn':a.x_studio_color_bn
+                                                       #, 'x_studio_color_o_bn':a.x_studio_color_bn
                                                        , 'x_studio_indice': i
                                                        , 'x_studio_modelo':a.product_id.name
                                                        , 'x_studio_servicio':a.servicio.id
@@ -1554,7 +1554,7 @@ class contadores(models.Model):
                                                        , 'contadorColor': currentP.contadorColor
                                                        , 'x_studio_lectura_anterior_color': currentPA.contadorColor                                                             
                                                        #, 'paginasProcesadasColor': colorp
-                                                       , 'x_studio_color_o_bn':a.x_studio_color_bn
+                                                       #, 'x_studio_color_o_bn':a.x_studio_color_bn
                                                        , 'x_studio_indice': i
                                                        , 'x_studio_modelo':a.product_id.name
                                                        , 'x_studio_servicio':a.servicio.id
