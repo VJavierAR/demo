@@ -542,18 +542,20 @@
                                           <field name="name" placeholder="e.g. LOT/0001/20121" attrs="{'readonly': 1}"/>
                                       </h1>
                                   </div>
-                                  
+                                  <!--
                                   <group name="main_group">
                                       <field name="x_studio_esconde" string="esconde id" attrs="{'invisible': 1}"/>
                                       <field name="x_studio_equipo" string="id area de atencion" attrs="{'readonly': 0, 'invisible': 1}"/>
                                       <field name="product_id" attrs="{'readonly': [('product_id', '!=', False)]}" force_save="1" help="Product this lot/serial number contains. You cannot change it anymore if it has already been moved."/>
-                                      <!--<field name="x_studio_color_bn" string="Color B/N" attrs="{'readonly': 1}"/>-->
+                                      <field name="x_studio_color_bn" string="Color B/N" attrs="{'readonly': 1}"/>
                                       <field name="ref"/>
                                       <field name="x_studio_ultimo_mantenimiento_preventivo" string="Ultimo mantenimiento preventivo"/>
                                       <field name="x_studio_contador_kit_mantenimiento" string="Contador kit mantenimiento"/>
                                       <field name="x_studio_contador_rodillo" string="Contador rodillo"/>
                                       <field name="x_studio_contador_unidad_de_imagen" string="Contador unidad de imagen" attrs="{'invisible': 1}"/>
                                   </group>
+                                -->
+                                  <!--
                                   <group name="studio_group_4ab939">
                                       <field name="sale_order_ids" widget="many2many" attrs="{'invisible': [('sale_order_ids', '=', [])], 'readonly': 1}">
                                           <tree>
@@ -590,6 +592,8 @@
                                       <field name="x_studio_contador_color" string="Contador color" attrs="{'readonly': 1, 'invisible': 1}"/>
                                       <field name="x_studio_field_3OnO2" string="DCAS primero" attrs="{'invisible': 1}"/>
                                   </group>
+                                  -->
+                                  <!--
                                   <group name="studio_group_742841">
                                       <field name="purchase_order_ids" widget="many2many" attrs="{'invisible': [('purchase_order_ids', '=', [])], 'readonly': 1}">
                                           <tree>
@@ -600,7 +604,7 @@
                                           </tree>
                                       </field>
                                   </group>
-                                  
+                                  -->
                                   
                                   <group>
                                       
