@@ -113,6 +113,10 @@ class dcas(models.Model):
     creado_por_tickets_techra = fields.Boolean(string = 'Creado por ppanificador de ticket techra', default = False)
     x_studio_tiquete=fields.Many2one('helpdesk.ticket')
     x_numero_serie = fields.Char(string='Numero de serie', store=True)
+    x_studio_toner_amarillo=fields.Integer()
+    x_studio_toner_cian=fields.Integer()
+    x_studio_toner_magenta=fields.Integer()
+    x_studio_toner_negro=fields.Integer()
     
     
 
