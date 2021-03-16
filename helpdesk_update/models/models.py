@@ -1086,6 +1086,7 @@ class helpdesk_update(models.Model):
 
     @api.depends('x_studio_equipo_por_nmero_de_serie','x_studio_equipo_por_nmero_de_serie_1', 'contactoInterno')
     def _compute_datosCliente(self):
+        datos = 'No disponible'
         for rec in self:
             
 
@@ -1107,9 +1108,9 @@ class helpdesk_update(models.Model):
                     contactoDeLocalidad = 'No disponible'
                 
 
-            estadoLocalidad = rec.x_studio_estado_de_localidad
+            estadoLocalidad = str(rec.x_studio_estado_de_localidad)
             _logger.info("estadoLocalidad: " + str(estadoLocalidad))
-            if not estadoLocalidad:
+            if estadoLocalidad == 'False':
                 estadoLocalidad = 'No disponible'
 
             zonaLocalidad = str(rec.x_studio_field_6furK)
@@ -1146,7 +1147,8 @@ class helpdesk_update(models.Model):
             datos = 'Cliente: ' + nombreCliente + ' \nLocalidad: ' + localidad + ' \nLocalidad contacto: ' + contactoDeLocalidad + ' \nEstado de localidad: ' + estadoLocalidad + '\nZona localidad: ' + zonaLocalidad + ' \nTeléfono de localidad: ' + telefonoLocalidad + ' \nMóvil localidad contacto: ' + movilLocalidad + ' \nCorreo electrónico localidad contacto: ' + correoElectronicoLocalidad
             #datos = 'Cliente: ' + nombreCliente + ' \nLocalidad: ' + localidad + ' \nLocalidad contacto: ' + contactoDeLocalidad + ' \nEstado de localidad: ' + estadoLocalidad 
 
-            rec.datosCliente = datos
+            #rec.datosCliente = datos
+        self.datosCliente = datos
 
 
 
