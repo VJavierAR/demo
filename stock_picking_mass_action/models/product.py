@@ -20,7 +20,9 @@ from xml.dom import minidom
 
 class compras(models.Model):
     _inherit = 'product.product'
-
+    x_studio_color_bn=fields.Selection([["B/N","B/N"],["Color","Color"]])
+    x_studio_color=fields.Selection([["Amarillo","Amarillo"],["Negro","Negro"],["Cian","Cian"],["Magenta","Magenta"]])
+    x_studio_toner_compatible=fields.Many2many('product.product')
 
     def agregarCompatible(self):
         wiz = self.env['add.compatible'].create({'productoInicial':self.id})
@@ -37,3 +39,7 @@ class compras(models.Model):
             'res_id': wiz.id,
             'context': self.env.context,
         }
+
+class lots(models.Model):
+    _inherit='stock.production.lot'
+    x_studio_mini=fields.Boolean()

@@ -21,6 +21,14 @@ class StockPicking(Model):
                 i.sudo().write({'x_studio_field_kUc4x':r.x_studio_field_yVDjd.id})
         return True
 
+class StockPickingLocation(Model):
+    _inherit = 'stock.inventory.line'
+    x_studio_field_yVDjd=fields.Many2one(string='Ubicación del Inventario' 'x_ubicacion_inventario')
+
+class LocationStock(Model):
+    _name='x_ubicacion_inventario'
+    x_name=fields.Char()
+    
 
 class StockPic(Model):
     _inherit = 'stock.move'
@@ -82,10 +90,12 @@ class StockWarehouse(Model):
     x_studio_tfs = fields.Many2one('res.partner', string = 'Tfs')
 
 
+
 class StockMoveLine(Model):
     _inherit = 'stock.location'
 
     x_studio_field_JoD2k = fields.Many2one('stock.warehouse', string = 'Almacén', store=True)
+    x_studio_almacn_padre= fields.Many2one('stock.warehouse', string = 'Almacén Padre', store=True)
 
 class StockMoveLine(Model):
     _inherit = 'stock.move.line'
