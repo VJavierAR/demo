@@ -13,7 +13,69 @@
         </tree>
     </record>
   
-
+    <record model="ir.ui.view" id="vehiculos_form">
+      <field name="name">vehiculos.form</field>
+      <field name="model">vehiculos.vehiculos</field>
+      <field name="arch" type="xml">
+        <form>
+              <sheet>
+        <header></header>
+        <div class="oe_button_box" name="button_box">
+            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+            </button>
+            <button class="oe_stat_button" icon="fa-file-o" type="action" name="1534">
+                <field name="x_rel_vehiculo__registro_odometro_count" string="Odometros" widget="statinfo"/>
+            </button>
+        </div>
+        <field name="imagen" widget="image" class="oe_avatar"/>
+        <div class="oe_title">
+            <label for="modelo" class="oe_edit_only"/>
+            <h1>
+                <field name="modelo" placeholder="e.g. Model S"/>
+            </h1>
+            <label for="license_plate" class="oe_edit_only"/>
+            <h2>
+                <field name="license_plate" class="oe_inline" placeholder="e.g. PAE 326"/>
+            </h2>
+        </div>
+        <group>
+            <group>
+                <field name="driver_id"/>
+                <field name="ubicacion"/>
+                <field name="vin_sn"/>
+                <field name="ano_modelo"/>
+                <field name="compania" groups="base.group_multi_company"/>
+            </group>
+            <group>
+                <label for="odometro"/>
+                <div class="o_row">
+                    <field name="odometro"/>
+                    <field name="unidad_odometro"/>
+                </div>
+                <field name="fecha_adquisicion"/>
+                <field name="valor_auto"/>
+            </group>
+        </group>
+        <group>
+            <group string="Additional Properties">
+                <field name="asientos"/>
+                <field name="puertas"/>
+                <field name="color"/>
+            </group>
+            <group string="Engine Options">
+                <field name="transmision"/>
+                <field name="fuel_type"/>
+                <field name="caballos"/>
+            </group>
+        </group>
+    </sheet>
+    <div class="oe_chatter">
+        <field name="message_follower_ids" widget="mail_followers"/>
+        <field name="message_ids" widget="mail_thread"/>
+    </div>
+        </form>
+      </field>
     <!-- actions opening views on models -->
     <!--
     <record model="ir.actions.act_window" id="vehiculos.action_window">
