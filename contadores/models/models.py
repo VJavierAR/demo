@@ -251,6 +251,7 @@ class dcas(models.Model):
 
     @api.onchange('x_studio_cartuchonefro','x_studio_cartucho_amarillo','x_studio_cartucho_cian_1','x_studio_cartucho_magenta', 'contadorMono', 'contadorColor','porcentajeCian','porcentajeNegro','porcentajeMagenta','porcentajeAmarillo')
     def vcalcula(self):
+      if self.fuente!='dcas.dcas':
         contaC=self.contadorColor                       
         cac=self.contadorAnteriorColor
         contadorM=self.contadorMono
