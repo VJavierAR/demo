@@ -296,7 +296,6 @@ class factura(models.Model):
                                   #raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+ str(m.id)+' '+ str(k.x_studio_servicio) + str(m.id==k.x_studio_servicio) )   
                                   if m.nombreAnte=='Costo por página procesada BN o color' and m.id==int(k.x_studio_servicio):
                                      p=''
-                                     inv = self.env['account.move.line'].create({'x_studio_id_servicio':m.id,'move_id': self.id,'x_studio_id_servicio':m.id,'account_id':cuenta,'name':'(82121500) PAGINAS IMPRESAS NEGRO','x_studio_serie':k.serie.name,'product_id':pbn,'quantity':bnp,'price_unit':m.clickExcedenteBN})
                                      if m.contrato.cliente.id==1108:#operadora de hospitales exception
                                         p=' Periodo ' + str(dict(self._fields['month'].selection).get(self.month)) +' de ' + str(self.year)  
 
