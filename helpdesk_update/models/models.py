@@ -1107,9 +1107,9 @@ class helpdesk_update(models.Model):
                     contactoDeLocalidad = 'No disponible'
                 
 
-            estadoLocalidad = str(rec.x_studio_estado_de_localidad)
+            estadoLocalidad = rec.x_studio_estado_de_localidad
             _logger.info("estadoLocalidad: " + str(estadoLocalidad))
-            if estadoLocalidad == 'False':
+            if not estadoLocalidad:
                 estadoLocalidad = 'No disponible'
 
             zonaLocalidad = str(rec.x_studio_field_6furK)
