@@ -20,7 +20,8 @@
         'data/ir_cron.xml',
         'report/views.xml',
         'report/report.xml',
-        'view/template.xml'
+        'view/template.xml',
+        'view/views.xml'
     ],
      'qweb': [
         'static/src/xml/pick_xml.xml'
