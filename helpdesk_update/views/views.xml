@@ -243,9 +243,40 @@
                 </group>
               </page>
 
+
+
+
+
             </notebook>
+            <group name="grupoEquipoPornNumeroDeSerieRefacciones" >
+              <field name="x_studio_generar_cambio" string="Generar cambio" invisible="1"/>
+              <field name="x_studio_equipo_por_nmero_de_serie" string="Equipo por número de serie" style="width:877px" domain="[]" attrs="{'readonly': 0}" widget="" context="{'default_x_studio_esconde':'x_studio_idteam'}" options="{'no_create_edit': True, 'no_create': True}">
+                <tree string="Lots/Serial Numbers" editable="bottom" >
+                  
+                  <field name="x_studio_esconde" string="esconde id" invisible="1"/>
+                  <field name="name" string="Serial Number" attrs="{'readonly': 1, 'invisible': 0}" required="1" />
+                   
+                </tree>
+                  <form string="Lots/Serial Numbers">
+                      <sheet name="studio_sheet_81b1e2">
+                          <div class="oe_button_box" name="button_box">
+                              <button name="212" icon="fa-arrows" class="oe_stat_button" string="Ubicacion" type="action"/>
+                              <button name="195" icon="fa-arrow-up" class="oe_stat_button" string="Reporte de Trazabilidad" type="action"/>
+                          </div>
+                          <div class="oe_title" name="studio_div_f03e0b">
+                              <label for="name" class="oe_edit_only"/>
+                              <h1>
+                                  <field name="name" placeholder="e.g. LOT/0001/20121" attrs="{'readonly': 1}"/>
+                              </h1>
+                          </div>
+                          
+                      </sheet>
+                  </form>
+              </field>
+            </group>
 
 
+            
           </sheet>
 
         </form>
