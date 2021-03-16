@@ -160,7 +160,7 @@
                   </tree>
                   <form>
                     <group>
-                      <field name="name"/>
+                      <!--<field name="name"/>-->
                     </group>
                     <group>
                       <group>
