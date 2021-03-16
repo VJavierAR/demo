@@ -59,6 +59,56 @@
           <header>
             <field name="stage_id" widget="statusbar"  attrs="{'readonly': 1}"  />      
           </header>
+
+          <sheet>
+            <field name="kanban_state" widget="state_selection" />
+                  
+            <div class="row">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="validar opciones">
+                        <button name="crearYValidarSolicitudDeToner" effect="{'message':'Exito!','fadeout':'medium'}" string="Crear y validar solicitud de tóner (Nueva forma!!!)" type="object" class="oe_highlight"  groups="studio_customization.validar_toner_d61119fe-f670-4dd0-9dee-6d2bfdd1824e" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Cmbiar de estados">
+                        <button name="cambioCotizacion" string="Cambiar estado a cotización" type="object" class="oe_highlight" groups="studio_customization.cambio_cotizacion_co_3157cb27-cdc9-4840-b19d-7f11ad51631a" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+                        
+                    </div>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Cmbiar de estados">
+                        
+                        <button name="cerrar_con_comentario_wizard" string="Cerrar ticket" type="object" icon="fa-lock" class="iconDiagnostico"  groups="studio_customization.cerrar_tickets_mesa_41c2145f-10a2-429c-b59d-4cc9ec16d613" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+                    </div>
+                </div>
+            </div>
+            <br/>
+            
+            <div class="oe_title">
+                <h1>
+                    <field name="name" class="field_name" string="Descripción del reporte" placeholder="Descripción del reporte..." widget="text" invisible="1"/>
+                </h1>
+                <!--<field name="sla_name" class="badge badge-danger oe_inline" attrs="{'invisible': [('sla_active','=',False)]}"/>-->
+            </div>
+
+            <group name="tipoDeReporte">
+                <group name="tipoDeReporte_left">
+                    <field name="ticket_type_id" string="Tipo de vale" invisible="1" />
+                    <field name="x_studio_tipo_de_vale" string="Tipo de reporte"  />
+                    <field name="x_studio_refticket" string="ticket"  widget="html" />
+                    
+                </group>
+                <group invisible='[["team_id", "!=", 8]]'>
+                    <field name='validarHastaAlmacenTicket' />
+                    <field name='validarTicket' />
+                    <field name='ponerTicketEnEspera' />
+                </group>
+                
+            </group>
+
         </form>
         
 
