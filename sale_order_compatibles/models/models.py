@@ -366,4 +366,5 @@ class sale_update(models.Model):
 		return self.env.ref('studio_customization.presupuesto_pedido_6e389c86-9862-4c69-af3d-c7021b680bab').with_context(discard_logo_check=True).report_action(self)
 class SaleLines(models.Model):
 	_inherit='sale.order.line'
-	x_studio_estado=fields.Selection(	[["Obsoleto","Obsoleto"],["Usado","Usado"],["Hueso","Hueso"],["Para reparación","Para reparación"],["Nuevo","Nuevo"],["Buenas condiciones","Buenas condiciones"],["Excelentes condiciones","Excelentes condiciones"],["Back-up","Back-up"],["Dañado","Dañado"]])
+	x_studio_estado=fields.Selection([["Obsoleto","Obsoleto"],["Usado","Usado"],["Hueso","Hueso"],["Para reparación","Para reparación"],["Nuevo","Nuevo"],["Buenas condiciones","Buenas condiciones"],["Excelentes condiciones","Excelentes condiciones"],["Back-up","Back-up"],["Dañado","Dañado"]])
+	x_studio_field_9nQhR=fields.Many2one('stock.production.lot')
