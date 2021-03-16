@@ -542,7 +542,7 @@ class factura(models.Model):
         res = super(ReportController, self).report_download()       
         raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio")    
          #return res
-
+      """
       @api.model
       def create(self,vals):
           fact = super(factura, self).create(vals)
@@ -567,7 +567,7 @@ class factura(models.Model):
               #raise exceptions.ValidationError("faltan forma de pago para crear factura"+str(fact.x_studio_field_EFIxP.partner_id.vat))
 
           return fact          
-     
+      """
       """
       #@api.multi
       def write(self, vals):
