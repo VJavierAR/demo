@@ -618,30 +618,30 @@ class contadores(models.Model):
                       raise exceptions.ValidationError("faltan forma de pago para crear factura ."+str(formaPago))                    
                     
                     prefacturas=''
-                    a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'month':self.mes,'year':self.anio,'x_studio_periodo_1':mes +' de '+str(anio) ,'company_id':id,'l10n_mx_edi_payment_method_id':formaPago,'payment_term_id':plazo,'l10n_mx_edi_usage':usoF,'journal_id':diario})
-                    self.env.cr.execute("insert into x_account_invoice_contrato_rel (account_invoice_id, contrato_id) values (" +str(a.id) + ", " +  str(rs.id) + ");")                        
+                    a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'month':self.mes,'year':self.anio,'periodo':mes +' de '+str(anio) ,'company_id':id,'l10n_mx_edi_payment_method_id':formaPago,'payment_term_id':plazo,'l10n_mx_edi_usage':usoF,'journal_id':diario})
+                    self.env.cr.execute("insert into x_account_move_contrato_rel (account_move_id, contrato_id) values (" +str(a.id) + ", " +  str(rs.id) + ");")                        
                     #https://gnsys-corp-stam-1742347.dev.odoo.com/web#id=str(a.id)&action=325&active_id=1&model=account.invoice&view_type=form&menu_id=370
                     #prefacturas="<a href='https://gnsys-corp-stam-1742347.dev.odoo.com/web#id="+str(a.id)+"&action=325&active_id=1&model=account.invoice&view_type=form&menu_id=370' target='_blank'>"+str(a.id)+"</a>"+' '+prefacturas                
                     ss=self.env['servicios'].search([('contrato', '=',rs.id)])                    
                     for sg in ss:                                        
                         if sg.nombreAnte=='SERVICIO DE PCOUNTER' or sg.nombreAnte=='SERVICIO DE PCOUNTER1' or sg.nombreAnte=='ADMINISTRACION DE DOCUMENTOS CON PCOUNTER' or sg.nombreAnte=='SERVICIO DE MANTENIMIENTO DE PCOUNTER' or sg.nombreAnte=='SERVICIO DE MANTENIMIENTO PCOUNTER' or sg.nombreAnte=='RENTA DE LICENCIAMIENTO PCOUNTER':           
-                            self.env.cr.execute("insert into x_account_invoice_servicios_rel (account_invoice_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
+                            self.env.cr.execute("insert into x_account_move_servicios_rel (account_move_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
                         if sg.nombreAnte=='SERVICIO DE TFS' or sg.nombreAnte=='OPERADOR TFS' or sg.nombreAnte=='TFS' or sg.nombreAnte=='SERVICIO DE TFS ' :                        
-                            self.env.cr.execute("insert into x_account_invoice_servicios_rel (account_invoice_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
+                            self.env.cr.execute("insert into x_account_move_servicios_rel (account_move_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
                         if sg.nombreAnte=='SERVICIO DE MANTENIMIENTO':                        
-                            self.env.cr.execute("insert into x_account_invoice_servicios_rel (account_invoice_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
+                            self.env.cr.execute("insert into x_account_move_servicios_rel (account_move_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
                         if sg.nombreAnte=='SOPORTE Y MANTENIMIENTO DE EQUIPOS':
-                            self.env.cr.execute("insert into x_account_invoice_servicios_rel (account_invoice_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
+                            self.env.cr.execute("insert into x_account_move_servicios_rel (account_move_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
                         if sg.nombreAnte=='SERVICIO DE ADMINISTRADOR KM NET MANAGER':                        
-                            self.env.cr.execute("insert into x_account_invoice_servicios_rel (account_invoice_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
+                            self.env.cr.execute("insert into x_account_move_servicios_rel (account_move_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
                         if sg.nombreAnte=='PAGINAS IMPRESAS EN BN':                        
-                            self.env.cr.execute("insert into x_account_invoice_servicios_rel (account_invoice_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
+                            self.env.cr.execute("insert into x_account_move_servicios_rel (account_move_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
                         if sg.nombreAnte=='PAPEL 350,000 HOJAS':                        
-                            self.env.cr.execute("insert into x_account_invoice_servicios_rel (account_invoice_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
+                            self.env.cr.execute("insert into x_account_move_servicios_rel (account_move_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")    
                         if sg.nombreAnte=='LECTORES DE PROXIMIDAD':                        
-                            self.env.cr.execute("insert into x_account_invoice_servicios_rel (account_invoice_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")        
+                            self.env.cr.execute("insert into x_account_move_servicios_rel (account_move_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")        
                         if sg.nombreAnte=='RENTA MENSUAL DE LICENCIA  7 EMBEDED' or sg.nombreAnte=='RENTA MENSUAL DE LICENCIA  14 EMBEDED' or  sg.nombreAnte=='RENTA MENSUAL DE LICENCIA  2 EMBEDED':
-                            self.env.cr.execute("insert into x_account_invoice_servicios_rel (account_invoice_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")        
+                            self.env.cr.execute("insert into x_account_move_servicios_rel (account_move_id, servicios_id) values (" +str(a.id) + ", " +  str(sg.id) + ");")        
                     a.llamado_boton_factu()
                 
                 if rs.x_studio_cobrar_contrato and (rs.dividirServicios or rs.dividirLocalidades or rs.dividirExcedentes):
