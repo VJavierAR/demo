@@ -1,19 +1,18 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--
     <record model="ir.ui.view" id="vehiculos.list">
       <field name="name">vehiculos list</field>
       <field name="model">vehiculos.vehiculos</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+        <tree string="Automovil">
+            <field name="name" modifiers="{}"/>
+            <field name="modelo" modifiers="{}"/>
+            <field name="ano_modelo" modifiers="{}"/>
+            <field name="fecha_adquisicion" modifiers="{}"/>
         </tree>
-      </field>
     </record>
-    -->
+  
 
     <!-- actions opening views on models -->
     <!--
