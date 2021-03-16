@@ -360,7 +360,7 @@ class tfs(models.Model):
                     if(data!=[]):
                         res['domain'] = {'productoNegro': [('id', 'in', data)]}
                         dc=self.env['dcas.dcas'].search([['serie','=',record.serie.id],['fuente','=','tfs.tfs'],['x_studio_toner_negro','=',1]]).sorted(key='create_date',reverse=True)
-                        record['contadorMono'] =dc[0].id if(len(dc)>0) else self.env['dcas.dcas'].search([['serie','=',record.serie.id]]).sorted(key='create_date',reverse=True)[0].id
+                        record['contadorMono'] =dc[0].id if(len(dc)>0) else 0
                 if(record.colorBN=="Color"):
                     negro=record.serie.product_id.x_studio_toner_compatible.filtered(lambda x: 'Toner' in x.categ_id.name and x.x_studio_color=='Negro' and x.id in prod).mapped('id')
                     cian=record.serie.product_id.x_studio_toner_compatible.filtered(lambda x: 'Toner' in x.categ_id.name and x.x_studio_color=='Cian' and x.id in prod).mapped('id')
@@ -375,10 +375,10 @@ class tfs(models.Model):
                         dc1=self.env['dcas.dcas'].search([['serie','=',record.serie.id],['fuente','=','tfs.tfs'],['x_studio_toner_amarillo','=',1]]).sorted(key='create_date',reverse=True)
                         dc2=self.env['dcas.dcas'].search([['serie','=',record.serie.id],['fuente','=','tfs.tfs'],['x_studio_toner_cian','=',1]]).sorted(key='create_date',reverse=True)
                         dc3=self.env['dcas.dcas'].search([['serie','=',record.serie.id],['fuente','=','tfs.tfs'],['x_studio_toner_magenta','=',1]]).sorted(key='create_date',reverse=True)
-                        record['contadorMono'] =dc[0].id if(len(dc)>0) else self.env['dcas.dcas'].search([['serie','=',record.serie.id]]).sorted(key='create_date',reverse=True)[0].id
-                        record['contadorAmarillo'] =dc1[0].id if(len(dc1)>0) else self.env['dcas.dcas'].search([['serie','=',record.serie.id]]).sorted(key='create_date',reverse=True)[0].id
-                        record['contadorCian'] =dc2[0].id if(len(dc2)>0) else self.env['dcas.dcas'].search([['serie','=',record.serie.id]]).sorted(key='create_date',reverse=True)[0].id
-                        record['contadorMagenta'] =dc3[0].id if(len(dc3)>0) else self.env['dcas.dcas'].search([['serie','=',record.serie.id]]).sorted(key='create_date',reverse=True)[0].id
+                        record['contadorMono'] =dc[0].id if(len(dc)>0) else 0
+                        record['contadorAmarillo'] =dc1[0].id if(len(dc1)>0) 0
+                        record['contadorCian'] =dc2[0].id if(len(dc2)>0) 0
+                        record['contadorMagenta'] =dc3[0].id if(len(dc3)>0) 0
         return res
         
 class evidencias(models.Model):
