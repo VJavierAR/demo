@@ -456,6 +456,33 @@
                 
             </group>
 
+            <group >
+              <group>
+                  <field name="x_studio_realizar_visita" string="Realizar visita" attrs='{"invisible": [["ticket_type_id","!=",5]]}' widget="" context="" domain=""/>
+                  <field name="x_studio_evidencias_filename" string="Filename for x_studio_evidencias" attrs="{'invisible': 1}" widget="" context="" domain=""/>
+                  <field name="x_studio_evidencias" string="Evidencias" attrs='{"invisible": [["stage_id","!=",13]]}' widget="" context="" domain=""/>
+                  <field name="x_studio_rango_inicial_de_visita" string="Rango inicial de visita" attrs='{"invisible": [["ticket_type_id","!=",5]]}' widget="" context="" domain=""/>
+                  <field name="x_studio_rango_final_de_visita" string="Rango final de visita" attrs='{"invisible": [["ticket_type_id","!=",5]]}' widget="" context="" domain=""/>
+              </group>
+              <group>
+                  <field name="x_studio_hte_ultima_fecha" string="Hte última fecha" attrs="{'readonly': 1, 'invisible': 1}" widget="" context="" domain=""/>
+                  <field name="x_studio_hte_ultimo_estado_ticket" string="Hte último estado ticekt" attrs="{'invisible': 1}" widget="" context="" domain=""/>
+                  <field name="x_studio_hte_ultimo_diagnostico" string="Hte último diagnóstico" attrs="{'invisible': 1}" widget="text" context="" domain=""/>
+                  <field name="x_studio_hte_ultimo_encargado" string="Hte último encargo" attrs="{'invisible': 1}" widget="" context="" domain=""/>
+                  <field name="x_studio_evidencia_filename" string="Filename for x_studio_evidencia" attrs="{'invisible': 1}" widget="" context="" domain=""/>
+                  <field name="x_studio_evidencia" string="Evidencia" attrs='{"invisible": [["stage_id","!=",17]]}' widget="" context="" domain=""/>
+              </group>
+            </group>
+            <group> 
+                
+                <group>
+                    <field name="x_studio_evidencia_1" string="Evidencia" attrs='{"invisible": [["stage_id", "!=", 3]]}'/>
+                    <field name="x_studio_evidencia_1_filename" string="Filename for x_studio_filename" attrs="{'invisible': 1}"/>    
+                </group>
+                <group>
+                </group>
+            </group>
+
 
           </sheet>
 
