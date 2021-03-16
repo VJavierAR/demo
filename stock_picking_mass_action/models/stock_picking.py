@@ -56,8 +56,8 @@ class StockPicking(Model):
                   d=self.env['stock.quant'].search([['location_id','=',record.move_ids_without_package[n].location_id.id],['product_id','=',record.move_ids_without_package[n].product_id.id]]).sorted(key='quantity',reverse=True)
                   c=d[0].quantity if(len(d)>0) else 0
                   f=f+"<tr>"
-                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_7pjpc)+"</td>"
-                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_rTtwe)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].product_id.name)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].product_id.default_code)+"</td>"
                   f=f+"<td>"+str(c)+"</td>"
                   f=f+"<td>"+str(record.move_ids_without_package[n].product_uom_qty)+"</td>"
                   f=f+"</tr>"
@@ -75,8 +75,8 @@ class StockPicking(Model):
                   d=self.env['stock.quant'].search([['location_id','=',record.move_ids_without_package[n].location_id.id],['product_id','=',record.move_ids_without_package[n].product_id.id]]).sorted(key='quantity',reverse=True)
                   c=d[0].quantity if(len(d)>0) else 0
                   f=f+"<tr>"
-                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_7pjpc)+"</td>"
-                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_rTtwe)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].product_id.name)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].product_id.default_code)+"</td>"
                   f=f+"<td>"+str(c)+"</td>"
                   f=f+"<td>"+str(record.move_ids_without_package[n].product_uom_qty)+"</td>"
                   f=f+"<td>"+str(record.move_ids_without_package[n].sale_line_id.x_studio_field_9nQhR.name)+"</td>" if(record.move_ids_without_package[n].sale_line_id.x_studio_field_9nQhR.name) else f+"<td></td>" 
@@ -97,8 +97,8 @@ class StockPicking(Model):
                   d=self.env['stock.quant'].search([['location_id','=',record.move_ids_without_package[n].location_id.id],['product_id','=',record.move_ids_without_package[n].product_id.id]]).sorted(key='quantity',reverse=True)
                   c=d[0].quantity if(len(d)>0) else 0
                   f=f+"<tr>"
-                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_7pjpc)+"</td>"
-                  f=f+"<td>"+str(record.move_ids_without_package[n].x_studio_field_rTtwe)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].product_id.name)+"</td>"
+                  f=f+"<td>"+str(record.move_ids_without_package[n].product_id.default_code)+"</td>"
                   f=f+"<td>"+str(c)+"</td>"
                   f=f+"<td>"+str(record.move_ids_without_package[n].product_uom_qty)+"</td>"
                   f=f+"<td>"+str(record.move_ids_without_package[n].sale_line_id.x_studio_estado)+"</td>" if(record.move_ids_without_package[n].sale_line_id.x_studio_estado) else f+"<td></td>" 
