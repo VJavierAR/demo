@@ -23,7 +23,7 @@
       <field name="name">creacion.ruta.form</field>
       <field name="model">creacion.ruta</field>
       <field name="arch" type="xml">
-      <form delete="false">
+      <form>
           <header>
               <button name="confirmar" type="object" string="Confirmar"  attrs="{'invisible': [['estado','=','valido']]}"></button>
               <field name="estado" widget="statusbar"></field>
@@ -48,19 +48,14 @@
                       <field name="id" invisible="1"/>
                       <field name="ruta_id" attrs="{}" invisible="1"/>
                       <field name="name" invisible="1"/>
-                      <field name="x_studio_ticket" readonly="1" string="Ticket"/>
-                      <field name="x_studio_ticket_relacionado" invisible="1"/>
                       <field name="origin" readonly="1" string="Orden"/>
                       <field name="location_dest_id" invisible="1" groups="stock.group_stock_multi_locations"/>
                       <field name="partner_id" readonly="1"/>
                       <field name="date" invisible="1"/>
                       <field name="carrier_tracking_ref" string="No. Guia"/>
-                      <field name="x_studio_comentario_1" string="Comentario" readonly="0"/>
-                      <field name="x_studio_evidencia_a_ticket" string="Evidencia"/>
                       <field name="scheduled_date" readonly="1"/>
                       <field name="group_id" invisible="1"/>
                       <field name="backorder_id" invisible="1"/>
-                      <field name="x_studio_corte" invisible="1"/>
                       <field name="x_studio_toneres" string="productos" invisible="1"/>
                       <field name="backorder" invisible="1"/>
                       <field name="ajusta" invisible="1"/>
