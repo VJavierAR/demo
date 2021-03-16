@@ -469,8 +469,11 @@
           </sheet>
 
         </form>
-        
-
+        <div class="oe_chatter" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea">
+            <field name="message_follower_ids" widget="mail_followers" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+            <field name="activity_ids" widget="mail_activity" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+            <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+        </div>
       </field>
     </record>
   </data>
