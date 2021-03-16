@@ -6,14 +6,14 @@
       <field name="model">creacion.ruta</field>
       <field name="arch" type="xml">
           <tree string="creacion.ruta" delete="false">
-              <field name="id" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
-              <field name="create_date" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+              <field name="id" />
+              <field name="create_date" />
               <field name="name" modifiers="{}"/>
               <field name="tipo"/>
               <field name="chofer"/>
               <field name="vehiculo"/>
               <field name="zona"/>
-              <field name="create_uid" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
+              <field name="create_uid"/>
               <field name="EstadoPais"/>
           </tree>
       </field>
@@ -34,8 +34,8 @@
               </h2>
               <group>
                   <group>
-                      <field name="chofer" can_create="true" can_write="true" modifiers="{}" required="1"/>
-                      <field name="vehiculo" can_create="true" can_write="true" modifiers="{}" required="1"/>
+                      <field name="chofer"  modifiers="{}" required="1"/>
+                      <field name="vehiculo" modifiers="{}" required="1"/>
                   </group>
                   <group>
                       <field name="zona" modifiers="{}" required="1"/>
@@ -52,7 +52,7 @@
                       <field name="location_dest_id" invisible="1" />
                       <field name="partner_id" readonly="1"/>
                       <field name="date" invisible="1"/>
-                      <field name="carrier_tracking_ref" string="No. Guia"/>
+                      <!--<field name="carrier_tracking_ref" string="No. Guia"/>
                       <field name="scheduled_date" readonly="1"/>
                       <field name="group_id" invisible="1"/>
                       <field name="backorder_id" invisible="1"/>
@@ -60,64 +60,23 @@
                       <field name="backorder" invisible="1"/>
                       <field name="ajusta" invisible="1"/>
                       <field name="estadoRuta" invisible="1"/>
-                      <field name="estado" readonly="1"/>
+                      <field name="estado" readonly="1"/>-->
                       <!--<button name="guia" type="object" string="Guia" attrs="{'invisible': ['|','|',['state','=','done'],['carrier_tracking_ref','!=',False],['ruta_id','=',False]]}"/>
                       <button name="comentario" type="object" string="Comentario y/o evidencia" attrs="{'invisible': ['|',['state','=','done'],['ruta_id','=',False]]}" ></button>
                       <button name="cierre" type="object" string="Cerrar" attrs="{'invisible': ['|',['state','=','done'],['ruta_id','=',False]]}"></button>
                       <button name="devolver" type="object" string="Devolver" attrs="{'invisible': ['|','|',['state','=','done'],['ruta_id','=',False]]}"></button>
                       <button  name="regresoAlmacen" type="object" string="Devolver Almacen" attrs="{'invisible': ['|','|',['state','=','done'],['ruta_id','=',False]]}"></button>-->
-                      <field name="est" invisible="1"/>
+                      <!--<field name="est" invisible="1"/>
                       <field name="state" invisible="1"/>
                       <field name="value2" attrs="{}" invisible="1"/>
                       <field name="date_done" invisible="1"/>
                       <field name="priority" invisible="1"/>
-                      <field name="picking_type_id" invisible="1"/>
+                      <field name="picking_type_id" invisible="1"/>-->
                   </tree>
               </field>
           </sheet>
       </form>
       </field>
     </record>
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="vehiculos.action_window">
-      <field name="name">vehiculos window</field>
-      <field name="res_model">vehiculos.vehiculos</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
-
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="vehiculos.action_server">
-      <field name="name">vehiculos server</field>
-      <field name="model_id" ref="model_vehiculos_vehiculos"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="vehiculos" id="vehiculos.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="vehiculos.menu_1" parent="vehiculos.menu_root"/>
-    <menuitem name="Menu 2" id="vehiculos.menu_2" parent="vehiculos.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="vehiculos.menu_1_list" parent="vehiculos.menu_1"
-              action="vehiculos.action_window"/>
-    <menuitem name="Server to list" id="vehiculos" parent="vehiculos.menu_2"
-              action="vehiculos.action_server"/>
-    -->
   </data>
 </odoo>
