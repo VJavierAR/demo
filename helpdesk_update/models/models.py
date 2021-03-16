@@ -1108,6 +1108,7 @@ class helpdesk_update(models.Model):
                 
 
             estadoLocalidad = str(rec.x_studio_estado_de_localidad)
+            _logger.info("estadoLocalidad: " + str(estadoLocalidad))
             if estadoLocalidad == 'False':
                 estadoLocalidad = 'No disponible'
 
