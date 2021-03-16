@@ -1082,7 +1082,7 @@ class helpdesk_update(models.Model):
         if self.localidadContacto:
             self.correoLocalidadContacto = self.localidadContacto.email
 
-    datosCliente = fields.Text(string="Cliente datos", compute='_compute_datosCliente')
+    datosCliente = fields.Text(string="Cliente datos", compute='_compute_datosCliente', store=True)
 
     @api.depends('x_studio_equipo_por_nmero_de_serie','x_studio_equipo_por_nmero_de_serie_1', 'contactoInterno')
     def _compute_datosCliente(self):
