@@ -2213,8 +2213,9 @@ class lor(models.Model):
     x_studio_ultimalecturam)
     x_studio_ultimo_contador_negro_toner)
     x_studio_ultimo_contador_toner)
-    x_studio_ultimo_mantenimiento_preventivo)
     """
+    x_studio_ultimo_mantenimiento_preventivo = fields.Datetime(string = 'Ultimo mantenimiento preventivo', store=True)
+    
 
     x_studio_ultma_ubicacin = fields.Char(readonly=True, string='Ultíma Ubicación', compute = '_compute_x_studio_ultma_ubicacin')
 
@@ -2236,13 +2237,13 @@ class lor(models.Model):
             r['x_studio_estado_1']=str(loca.state_id.name)
             r['x_studio_zona']=str(loca.x_studio_field_SqU5B)
 
-    """
-    x_studio_venta)
-    x_studio_w)
-    x_studio_zona)
-    x_x_studio_equipo_por_nmero_de_serie_2__helpdesk_ticket_count)
     
-    """
+    x_studio_venta = fields.Boolean(store=True, string='Venta')
+    #x_studio_w)
+    x_studio_zona = fields.Char(readonly=True, string='Zona')
+    #x_x_studio_equipo_por_nmero_de_serie_2__helpdesk_ticket_count)
+    
+   
 
 
 
