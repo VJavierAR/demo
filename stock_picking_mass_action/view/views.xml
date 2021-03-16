@@ -1,6 +1,37 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
+    <record model='ir.ui.view' id='quant_history_list'>
+      <field name='name'>quant.history.list</field>
+      <field name='model'>quant.history</field>
+      <field name='arch' type='xml'>
+        <tree string="Historico Inventario">
+            <field name="id" modifiers="{&quot;readonly&quot;: true}"/>
+            <field name="fecha"/>
+            <field name="reporte"/>
+            <field name="create_date"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model='ir.ui.view' id='quant_history_form'>
+      <field name='name'>quant.history.form</field>
+      <field name='model'>quant.history</field>
+      <field name='arch' type='xml'>
+        <form>
+            <sheet string="Historico Inventario">
+                <group col="4">
+                    <field name="fecha" modifiers="{}"/>
+                    <field name="reporte" modifiers="{}"/>
+                    <separator/>
+                </group>
+            </sheet>
+        </form>    
+      </field>
+    </record>
+
+
+
     <record model="ir.ui.view" id="creacion_ruta_list">
       <field name="name">creacion.ruta.list</field>
       <field name="model">creacion.ruta</field>
