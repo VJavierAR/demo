@@ -296,7 +296,7 @@
                       <field name="x_estado_en_almacen" String="Estado en Almacén" attrs="{'readonly': 1, 'invisible': 1}"  groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
                       
                       <field name="x_estado_en_distribucion" String="Estado en Distribución" attrs="{'readonly': 1, 'invisible': 1}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
-                      <field name="x_studio_backorder" readonly="1" />
+                      <!--<field name="x_studio_backorder" readonly="1" />-->
                       <field name="validacionesRefaccion" attrs="{'readonly': 1, 'invisible': [('x_studio_tipo_de_vale', '=', 'Requerimiento')]}" />
 
                   </group>
