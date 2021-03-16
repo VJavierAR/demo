@@ -1087,6 +1087,9 @@ class helpdesk_update(models.Model):
     @api.depends('x_studio_equipo_por_nmero_de_serie','x_studio_equipo_por_nmero_de_serie_1', 'contactoInterno')
     def _compute_datosCliente(self):
         self.x_studio_estado_de_localidad = "False"
+        self.x_studio_field_6furK = "False"
+        self.telefonoLocalidadContacto = "False"
+        self.correoLocalidadContacto = "False"
         datos = 'No disponible'
 
         for rec in self:
