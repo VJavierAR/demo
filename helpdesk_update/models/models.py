@@ -1026,21 +1026,25 @@ class helpdesk_update(models.Model):
     
     @api.depends('clienteContactos')
     def _compute_telefonoCliente(self):
+        telefonoClienteContacto = ''
         if self.clienteContactos:
-            self.telefonoClienteContacto = self.clienteContactos.phone
+            telefonoClienteContacto = self.clienteContactos.phone
+        self.telefonoClienteContacto = telefonoClienteContacto
 
     
     @api.depends('clienteContactos')
     def _compute_movilCliente(self):
+        movilClienteContacto = ''
         if self.clienteContactos:
-            self.movilClienteContacto = self.clienteContactos.mobile
-
+            movilClienteContacto = self.clienteContactos.mobile
+        self.movilClienteContacto = movilClienteContacto
     
     @api.depends('clienteContactos')
     def _compute_correoCliente(self):
+        correoClienteContacto = ''
         if self.clienteContactos:
-            self.correoClienteContacto = self.clienteContactos.email
-
+            correoClienteContacto = self.clienteContactos.email
+        self.correoClienteContacto = correoClienteContacto
 
     telefonoLocalidadContacto = fields.Text(string = 'Telefono de localidad', compute = '_compute_telefonoLocalidad')
     movilLocalidadContacto = fields.Text(string = 'Movil de localidad', compute = '_compute_movilLocalidad')
@@ -1078,20 +1082,26 @@ class helpdesk_update(models.Model):
     
     @api.depends('localidadContacto')
     def _compute_telefonoLocalidad(self):
+        telefonoLocalidadContacto = ''
         if self.localidadContacto:
-            self.telefonoLocalidadContacto = self.localidadContacto.phone
+            telefonoLocalidadContacto = self.localidadContacto.phone
+        self.telefonoLocalidadContacto = telefonoLocalidadContacto
 
     
     @api.depends('localidadContacto')
     def _compute_movilLocalidad(self):
+        movilLocalidadContacto = ''
         if self.localidadContacto:
-            self.movilLocalidadContacto = self.localidadContacto.mobile
+            movilLocalidadContacto = self.localidadContacto.mobile
+        self.movilLocalidadContacto = movilLocalidadContacto
 
     
     @api.depends('localidadContacto')
     def _compute_correoLocalidad(self):
+        correoLocalidadContacto = ''
         if self.localidadContacto:
-            self.correoLocalidadContacto = self.localidadContacto.email
+            correoLocalidadContacto = self.localidadContacto.email
+        self.correoLocalidadContacto = correoLocalidadContacto
 
     datosCliente = fields.Text(string="Cliente datos", compute='_compute_datosCliente', store=True)
 
