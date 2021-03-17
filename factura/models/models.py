@@ -32,8 +32,8 @@ class factura(models.Model):
       #detalle =  fields.One2many('sale.order.detalle', 'account.move', string='Detalle')
       zeros =  fields.One2many('zeros.lineas', 'accountInv', string='Zeros')
       
-      @api.multi
-      #api.model
+      #@api.multi
+      @api.model
       def llamado_boton_factu(self):
         #raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+self.partner_id.name)
         _logger.info('ids contrato '+str(ff)+str(r.x_studio_contrato_1.ids))
