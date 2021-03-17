@@ -47,7 +47,8 @@ class factura(models.Model):
           netMa=2
           paginasbn=2
           embeded=2
-          cuenta=59
+          cuenta=32
+          _logger.info('Entro a boton factura')
           if str(self.partner_id.razonSocial)=='1':
                pbn=11396
                cuenta=30 
