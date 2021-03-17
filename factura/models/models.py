@@ -295,6 +295,7 @@ class factura(models.Model):
                                                                           })                          
                                   #raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+ str(m.id)+' '+ str(k.x_studio_servicio) + str(m.id==k.x_studio_servicio) )   
                                   if m.nombreAnte=='Costo por página procesada BN o color' and m.id==int(k.x_studio_servicio):
+                                     _logger.info('Entro a costo por click xD')
                                      p=''
                                      if m.contrato.cliente.id==1108:#operadora de hospitales exception
                                         p=' Periodo ' + str(dict(self._fields['month'].selection).get(self.month)) +' de ' + str(self.year)  
