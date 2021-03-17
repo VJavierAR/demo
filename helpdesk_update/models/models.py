@@ -1012,9 +1012,11 @@ class helpdesk_update(models.Model):
 
     @api.depends('localidadContacto')
     def _compute_x_studio_estado_de_localidad(self):
+        edtadoDeLocalidad = ''
         for r in self:
             if r.localidadContacto and r.x_studio_empresas_relacionadas and r.x_studio_empresas_relacionadas.state_id:
-                r['x_studio_estado_de_localidad'] = r.x_studio_empresas_relacionadas.state_id.name
+                edtadoDeLocalidad = str(r.x_studio_empresas_relacionadas.state_id.name)
+        self.x_studio_estado_de_localidad = edtadoDeLocalidad
      
 
     telefonoClienteContacto = fields.Text(string = 'Telefono de contacto cliente', compute = '_compute_telefonoCliente')
