@@ -563,9 +563,11 @@ class contadores(models.Model):
     
     def carga_contadores_fac_invo(self):
         #if self.x_studio_estado_capturas=='Listo':
+            _logger.info('paso 566')
             prefacturas=''
             id=0
             for rs in self.x_studio_contratos:
+                _logger.info('paso 570')
                 rz=str(self.cliente.razonSocial)
                 dias=rs.diasCredito
                 metodoPago=rs.metodPago
