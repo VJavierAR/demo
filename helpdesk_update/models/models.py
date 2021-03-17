@@ -4528,11 +4528,11 @@ class helpdesk_update(models.Model):
               record['x_studio_movil'] = ''
               record['x_studio_empresas_relacionadas'] = ''
               if self.team_id.id == 8 or self.team_id.id == 13:
-                 record['x_studio_equipo_por_nmero_de_serie'] = ''
-                 record['x_studio_equipo_por_nmero_de_serie_1'] = ''                    
+                 record['x_studio_equipo_por_nmero_de_serie'] = False
+                 record['x_studio_equipo_por_nmero_de_serie_1'] = False                   
               if self.team_id.id != 8 and self.team_id.id != 13:
                  record['x_studio_equipo_por_nmero_de_serie'] = False
-                 record['x_studio_equipo_por_nmero_de_serie_1'] = ''   
+                 record['x_studio_equipo_por_nmero_de_serie_1'] = False
 
             if id_cliente != zero  and id_localidad != zero:
               #raise Warning('entro3')
