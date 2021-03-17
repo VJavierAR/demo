@@ -1622,7 +1622,8 @@ class helpdesk_update(models.Model):
     
     days_differenceRepartidor = fields.Integer(
                                                     compute='_compute_difference_days_repartidor',
-                                                    string='Días de atraso repatidor'
+                                                    string='Días de atraso repatidor',
+                                                    default=0
                                                 )
 
     def _compute_difference_days_repartidor(self):
