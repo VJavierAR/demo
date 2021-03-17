@@ -467,7 +467,7 @@ class detalle(models.Model):
       _description = 'Detalle Orden'
      
       saleOrder = fields.Many2one('sale.order', string='Pedido de venta')
-      accountInvoice = fields.Many2one('account.invoice', string='Factura')
+      accountInvoice = fields.Many2one('account.move', string='Factura')
      
       serieEquipo = fields.Text(string="Serie")
       producto = fields.Text(string="Producto")
