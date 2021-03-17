@@ -96,6 +96,7 @@ class factura(models.Model):
           ff=self.env['servicios'].search([('contrato.id', 'in',self.x_studio_contrato_1.ids)])                                            
           f=len(ff)
           if f>0:
+            _logger.info('paso 99')
             h=[]
             g=[]
             p=[]
@@ -134,6 +135,7 @@ class factura(models.Model):
                lenset=len(asts)
                
                servicioshtml='' 
+               _logger.info('paso 138')
                if lenset==1:
                   raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+str(serviciosd)+"aaaaa")    
                else:
@@ -164,7 +166,7 @@ class factura(models.Model):
                
             
             
-            
+            _logger.info('paso 169')
             if self.x_studio_contrato_1[0].dividirLocalidades and len(self.x_studio_detalle)>0:                
                 localidades=self.x_studio_detalle
                 loca=[]
