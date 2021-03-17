@@ -4531,7 +4531,7 @@ class helpdesk_update(models.Model):
                  record['x_studio_equipo_por_nmero_de_serie'] = ''
                  record['x_studio_equipo_por_nmero_de_serie_1'] = ''                    
               if self.team_id.id != 8 and self.team_id.id != 13:
-                 record['x_studio_equipo_por_nmero_de_serie'] = ''
+                 record['x_studio_equipo_por_nmero_de_serie'] = False
                  record['x_studio_equipo_por_nmero_de_serie_1'] = ''   
 
             if id_cliente != zero  and id_localidad != zero:
@@ -4689,7 +4689,7 @@ class helpdesk_update(models.Model):
 
     #@api.model
     #
-    @api.onchange('x_studio_equipo_por_nmero_de_serie','x_studio_equipo_por_nmero_de_serie_1.serie','x_studio_equipo_por_nmero_de_serie_1')
+    @api.onchange('x_studio_equipo_por_nmero_de_serie', 'x_studio_equipo_por_nmero_de_serie_1')
     #@api.depends('x_studio_equipo_por_nmero_de_serie')
     def actualiza_datos_cliente(self):
 
