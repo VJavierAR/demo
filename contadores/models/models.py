@@ -562,7 +562,7 @@ class contadores(models.Model):
     
     
     def carga_contadores_fac_invo(self):
-        if self.x_studio_estado_capturas=='Listo':
+        #if self.x_studio_estado_capturas=='Listo':
             prefacturas=''
             id=0
             for rs in self.x_studio_contratos:
@@ -625,7 +625,7 @@ class contadores(models.Model):
                     
                     prefacturas=''
                     #a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'month':self.mes,'year':self.anio,'periodo':mes +' de '+str(anio) ,'company_id':id,'l10n_mx_edi_payment_method_id':formaPago,'payment_term_id':plazo,'l10n_mx_edi_usage':usoF,'journal_id':diario})
-                    a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'company_id':1,'journal_id':9})
+                    a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'company_id':1,'journal_id':1})
                     self.env.cr.execute("insert into x_account_move_contrato_rel (account_move_id, contrato_id) values (" +str(a.id) + ", " +  str(rs.id) + ");")                        
                     #https://gnsys-corp-stam-1742347.dev.odoo.com/web#id=str(a.id)&action=325&active_id=1&model=account.invoice&view_type=form&menu_id=370
                     #prefacturas="<a href='https://gnsys-corp-stam-1742347.dev.odoo.com/web#id="+str(a.id)+"&action=325&active_id=1&model=account.invoice&view_type=form&menu_id=370' target='_blank'>"+str(a.id)+"</a>"+' '+prefacturas                
