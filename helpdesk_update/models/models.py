@@ -1622,11 +1622,11 @@ class helpdesk_update(models.Model):
     
     days_differenceRepartidor = fields.Integer(
                                                     compute='_compute_difference_days_repartidor',
-                                                    string='Días de atraso repatidor',
-                                                    default=0
+                                                    string='Días de atraso repatidor'
                                                 )
 
     def _compute_difference_days_repartidor(self):
+        self.days_differenceRepartidor = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_up5pO == 'waiting' and rec.x_studio_field_nO7Xg:
