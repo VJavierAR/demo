@@ -1055,12 +1055,13 @@ class helpdesk_update(models.Model):
     
     @api.depends('x_studio_empresas_relacionadas')
     def _compute_direccionLocalidad(self):
+        direccionLocalidadText = ''
         for record in self:
             #_logger.info("test: " + str(record.x_studio_empresas_relacionadas.id))
             #localidadData = self.env['res.partner'].search([['id', '=', self.x_studio_empresas_relacionadas.id]])
             #_logger.info("test: " + str(localidadData))
             if record.x_studio_empresas_relacionadas:
-                record.direccionLocalidadText = """
+                direccionLocalidadText = """
                                                 <address>
                                                     Calle: """ + str(record.x_studio_empresas_relacionadas.street_name) + """
                                                     </br>
@@ -1078,7 +1079,7 @@ class helpdesk_update(models.Model):
                                                     </br>
                                                 </address>
                                             """
-
+        self.direccionLocalidadText = direccionLocalidadText
     
     @api.depends('localidadContacto')
     def _compute_telefonoLocalidad(self):
