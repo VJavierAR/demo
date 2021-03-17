@@ -213,6 +213,7 @@ class helpdesk_update(models.Model):
 
 
     def _compute_primer_diagnostico(self):
+        self.primerDiagnosticoUsuario = ''
         for rec in self:
             diagnosticoUsuario = ''
             for diagnostico in rec.diagnosticos:
@@ -1204,6 +1205,8 @@ class helpdesk_update(models.Model):
 
     #@api.depends('x_studio_backorders')
     def _compute_backorderActivo(self):
+        self.backorderActivo = False
+        self.mensajeBackOrder = ''
         for rec in self:
             if rec.x_studio_backorder:
             #if rec.x_studio_backorders:
@@ -1384,6 +1387,7 @@ class helpdesk_update(models.Model):
     # Ticket compuatado de tiempos
 
     def _compute_difference(self):
+        self.days_difference = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #rec.days_difference = (datetime.date.today()- rec.create_date).days
@@ -1400,6 +1404,7 @@ class helpdesk_update(models.Model):
                                                 string='Horas de atraso ticket'
                                             )
     def _compute_difference_hour_ticket(self):
+        self.hour_differenceTicket = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 first_time = rec.create_date
@@ -1413,6 +1418,7 @@ class helpdesk_update(models.Model):
                                                 string='Minutos de atraso ticket'
                                             )
     def _compute_difference_minute_ticket(self):
+        self.minutes_differenceTicket = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 first_time = rec.create_date
@@ -1426,6 +1432,7 @@ class helpdesk_update(models.Model):
                                                 string='Segundos de atraso ticket'
                                             )
     def _compute_difference_second_ticket(self):
+        self.seconds_differenceTicket = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 first_time = rec.create_date
@@ -1462,6 +1469,7 @@ class helpdesk_update(models.Model):
                                                 string='Días de atraso almacén'
                                             )
     def _compute_difference_days_almacen(self):
+        self.days_differenceAlmacen = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_nO7Xg and (rec.x_studio_field_up5pO == 'confirmed' or rec.x_studio_field_up5pO == 'assigned'):
@@ -1477,6 +1485,7 @@ class helpdesk_update(models.Model):
                                                 string='Horas de atraso almacén'
                                             )
     def _compute_difference_hour_almacen(self):
+        self.hour_differenceAlmacen = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_nO7Xg and (rec.x_studio_field_up5pO == 'confirmed' or rec.x_studio_field_up5pO == 'assigned'):
@@ -1492,6 +1501,7 @@ class helpdesk_update(models.Model):
                                                 string='Minutos de atraso almacén'
                                             )
     def _compute_difference_minute_almacen(self):
+        self.minutes_differenceAlmacen = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_nO7Xg and (rec.x_studio_field_up5pO == 'confirmed' or rec.x_studio_field_up5pO == 'assigned'):
@@ -1507,6 +1517,7 @@ class helpdesk_update(models.Model):
                                                 string='Segundos de atraso almacén'
                                             )
     def _compute_difference_second_almacen(self):
+        self.seconds_differenceAlmacen = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_nO7Xg and (rec.x_studio_field_up5pO == 'confirmed' or rec.x_studio_field_up5pO == 'assigned'):
@@ -1542,6 +1553,7 @@ class helpdesk_update(models.Model):
                                                 string='Días de atraso distibución'
                                             )
     def _compute_difference_days_distribucion(self):
+        self.days_differenceDistribucion = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_nO7Xg and (rec.x_studio_field_Le2tN == 'confirmed' or rec.x_studio_field_Le2tN == 'assigned' or rec.x_studio_field_Le2tN == 'distribucion'):
@@ -1555,6 +1567,7 @@ class helpdesk_update(models.Model):
                                                 string='Horas de atraso distribución'
                                             )
     def _compute_difference_hour_distribucion(self):
+        self.hour_differenceDistribucion = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_nO7Xg and (rec.x_studio_field_Le2tN == 'confirmed' or rec.x_studio_field_Le2tN == 'assigned' or rec.x_studio_field_Le2tN == 'distribucion'):
@@ -1570,6 +1583,7 @@ class helpdesk_update(models.Model):
                                                 string='Minutos de atraso distribución'
                                             )
     def _compute_difference_minute_distribucion(self):
+        self.minutes_differenceDistribucion = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_nO7Xg and (rec.x_studio_field_Le2tN == 'confirmed' or rec.x_studio_field_Le2tN == 'assigned' or rec.x_studio_field_Le2tN == 'distribucion'):
@@ -1585,6 +1599,7 @@ class helpdesk_update(models.Model):
                                                 string='Segundos de atraso distribución'
                                             )
     def _compute_difference_second_distribucion(self):
+        self.seconds_differenceDistribucion = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_nO7Xg and (rec.x_studio_field_Le2tN == 'confirmed' or rec.x_studio_field_Le2tN == 'assigned' or rec.x_studio_field_Le2tN == 'distribucion'):
@@ -1640,6 +1655,7 @@ class helpdesk_update(models.Model):
                                                 string='Horas de atraso repartidor'
                                             )
     def _compute_difference_hour_repartidor(self):
+        self.hour_differenceRepartidor = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_up5pO == 'waiting' and rec.x_studio_field_nO7Xg:
@@ -1655,6 +1671,7 @@ class helpdesk_update(models.Model):
                                                 string='Minutos de atraso repartidor'
                                             )
     def _compute_difference_minute_repartidor(self):
+        self.minutes_differenceRepartidor = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_up5pO == 'waiting' and rec.x_studio_field_nO7Xg:
@@ -1670,6 +1687,7 @@ class helpdesk_update(models.Model):
                                                 string='Segundos de atraso repartidor'
                                             )
     def _compute_difference_second_repartidor(self):
+        self.seconds_differenceRepartidor = 0
         for rec in self:
             if rec.stage_id.id != 18 or rec.stage_id.id != 3 or rec.stage_id.id != 4:
                 #if rec.x_studio_field_up5pO == 'waiting' and rec.x_studio_field_nO7Xg:
@@ -6295,11 +6313,13 @@ class helpdesk_crearToner(models.Model):
 
     @api.depends('cliente')
     def _compute_idClienteAyuda(self):
+        self.idClienteAyuda = 0
         if self.cliente:
             self.idClienteAyuda = self.cliente.id
 
     @api.depends('localidad')
     def _compute_idLocalidadAyuda(self):
+        self.idLocalidadAyuda = 0
         if self.localidad:
             self.idLocalidadAyuda = self.localidad.id
 
