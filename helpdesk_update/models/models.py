@@ -1007,7 +1007,7 @@ class helpdesk_update(models.Model):
                     r['contadorBNWizard'] = 0
                     r['contadorColorWizard'] = 0
     """
-    """
+    
     x_studio_estado_de_localidad = fields.Char(string = 'Estado de localidad', compute= '_compute_x_studio_estado_de_localidad')
 
     @api.depends('localidadContacto')
@@ -1015,7 +1015,7 @@ class helpdesk_update(models.Model):
         for r in self:
             if r.localidadContacto and r.x_studio_empresas_relacionadas and r.x_studio_empresas_relacionadas.state_id:
                 r['x_studio_estado_de_localidad'] = r.x_studio_empresas_relacionadas.state_id.name
-    """ 
+     
 
     telefonoClienteContacto = fields.Text(string = 'Telefono de contacto cliente', compute = '_compute_telefonoCliente')
     movilClienteContacto = fields.Text(string = 'Movil de contacto cliente', compute = '_compute_movilCliente')
