@@ -96,6 +96,7 @@ class factura(models.Model):
           ff=self.env['servicios'].search([('contrato.id', 'in',r.x_studio_contrato_1.ids)])                                            
           _logger.info('ids contrato '+str(ff)+str(r.x_studio_contrato_1.ids))
           _logger.info('ids contrato 2'+str(ff)+str(self.x_studio_contrato_1.ids))
+          _logger.info('ids contrato 2'+str(ff)+str(self.x_studio_contrato_1))
           f=len(ff)
           if f>0:
             _logger.info('paso 99 ')
