@@ -624,7 +624,7 @@ class contadores(models.Model):
 
                     if not formaPago :
                       raise exceptions.ValidationError("faltan forma de pago para crear factura ."+str(formaPago))                    
-                    _logger.info('paso 627')
+                    _logger.info('paso 627 a')
                     prefacturas=''
                     #a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'month':self.mes,'year':self.anio,'periodo':mes +' de '+str(anio) ,'company_id':id,'l10n_mx_edi_payment_method_id':formaPago,'payment_term_id':plazo,'l10n_mx_edi_usage':usoF,'journal_id':diario})
                     a= self.env['account.move'].create({'x_studio_captura':self.id,'partner_id':self.cliente.id,'company_id':1,'journal_id':1,'move_type':'out_invoice'}) 

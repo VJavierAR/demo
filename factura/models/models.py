@@ -96,7 +96,7 @@ class factura(models.Model):
           ff=self.env['servicios'].search([('contrato.id', 'in',self.x_studio_contrato_1.ids)])                                            
           f=len(ff)
           if f>0:
-            _logger.info('paso 99')
+            _logger.info('paso 99 ')
             h=[]
             g=[]
             p=[]
@@ -166,7 +166,7 @@ class factura(models.Model):
                
             
             
-            _logger.info('paso 169')
+            _logger.info('paso 169 ')
             if self.x_studio_contrato_1[0].dividirLocalidades and len(self.x_studio_detalle)>0:                
                 localidades=self.x_studio_detalle
                 loca=[]
