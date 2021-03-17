@@ -93,8 +93,8 @@ class factura(models.Model):
                cuenta=12175 
           """              
           #list = ast.literal_eval(r.x_studio_contratosid)  
-          ff=self.env['servicios'].search([('contrato.id', 'in',self.x_studio_contrato_1.ids)])                                            
-          _logger.info('ids contrato '+str(ff)+str(self.x_studio_contrato_1.ids))
+          ff=self.env['servicios'].search([('contrato.id', 'in',r.x_studio_contrato_1.ids)])                                            
+          _logger.info('ids contrato '+str(ff)+str(r.x_studio_contrato_1.ids))
           f=len(ff)
           if f>0:
             _logger.info('paso 99 ')
