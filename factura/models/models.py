@@ -49,6 +49,7 @@ class factura(models.Model):
           embeded=2
           cuenta=32
           _logger.info('Entro a boton factura')
+          """
           if str(self.partner_id.razonSocial)=='1':
                pbn=11396
                cuenta=30 
@@ -90,7 +91,7 @@ class factura(models.Model):
                paginasbn=12305  
                embeded=12307
                cuenta=12175 
-                        
+          """              
           #list = ast.literal_eval(r.x_studio_contratosid)  
           ff=self.env['servicios'].search([('contrato.id', 'in',self.x_studio_contrato_1.ids)])                                            
           f=len(ff)
