@@ -36,10 +36,9 @@ class factura(models.Model):
       @api.model
       def llamado_boton_factu(self):
         #raise exceptions.ValidationError( "no se puede dividir más solo tiene un servicio"+self.partner_id.name)
-        _logger.info('ids contrato '+str(ff)+str(r.x_studio_contrato_1.ids))
-        _logger.info('ids contrato 2'+str(ff)+str(r.x_studio_contrato_1))
-        _logger.info('ids contrato 2'+str(ff)+str(self.x_studio_contrato_1.ids))
-        _logger.info('ids contrato 2'+str(ff)+str(self.x_studio_contrato_1))    
+        
+        _logger.info('ids contrato 2'+str(self.x_studio_contrato_1.ids))
+        _logger.info('ids contrato 2'+str(self.x_studio_contrato_1))    
         for r in self:           
           pbn=2
           pcolor=2
