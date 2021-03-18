@@ -105,6 +105,7 @@
     <!-- Top menu item -->
 
     <menuitem name="vehiculos" id="vehiculos.menu_root" action="automovil_action_window" web_icon="vehiculos,static/description/vehiculo.jpeg"/>
+    <menuitem name="Menu 1" id="vehiculos.menu_1" parent="vehiculos.menu_root"/>
 
     <!-- menu categories -->
     <!--
