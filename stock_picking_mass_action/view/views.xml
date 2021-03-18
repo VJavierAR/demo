@@ -116,7 +116,6 @@
     </record>
 
     <menuitem name="Distribución" id="distribucion_menu" parent="menu_stock_root"/>
-
     <menuitem name="Ruta" id="ruta.menu" parent="distribucion_menu" action="creacion_ruta_action_window" />
 
   </data>
