@@ -79,13 +79,12 @@
       </field>
     </record>
     <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="vehiculos.action_window">
-      <field name="name">vehiculos window</field>
-      <field name="res_model">vehiculos.vehiculos</field>
+
+    <record model="ir.actions.act_window" id="automovil.action_window">
+      <field name="name">automovil_window</field>
+      <field name="res_model">automovil</field>
       <field name="view_mode">tree,form</field>
     </record>
-    -->
 
     <!-- server action to the one above -->
     <!--
@@ -104,9 +103,9 @@
     -->
 
     <!-- Top menu item -->
-    <!--
-    <menuitem name="vehiculos" id="vehiculos.menu_root"/>
-    -->
+
+    <menuitem name="vehiculos" id="vehiculos.menu_root" action="automovil.action_window"/>
+
     <!-- menu categories -->
     <!--
     <menuitem name="Menu 1" id="vehiculos.menu_1" parent="vehiculos.menu_root"/>
