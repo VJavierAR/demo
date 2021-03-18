@@ -13,10 +13,10 @@
       id="mesa_menu"
       name="Mesa"
       action="mesa_action_window"
-      web_icon="helpdesk.ticket, static/description/helpdesk-icon.png"
+      web_icon="helpdesk, static/description/helpdesk-icon.png"
     />
-    <menuitem name="Menu 1" id="menu_1" parent="helpdesk.ticket.mesa_menu"/>
-    <menuitem name="Menu 2" id="menu_2" parent="helpdesk.ticket.menu_1"/>
+    <menuitem name="Menu 1" id="menu_1" parent="helpdesk.mesa_menu"/>
+    <menuitem name="Menu 2" id="menu_2" parent="helpdesk.menu_1"/>
 
     <!-- Your List View Definition -->
     <record model="ir.ui.view" id="helpdesk.view_mesa_tree">
