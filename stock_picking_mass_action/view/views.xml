@@ -109,5 +109,14 @@
       </form>
       </field>
     </record>
+    <record model="ir.actions.act_window" id="creacion_ruta_action_window">
+      <field name="name">ruta</field>
+      <field name="res_model">creacion.ruta</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Ruta" id="ruta.menu" parent="distribucion_menu" action="creacion_ruta_action_window" />
+
   </data>
 </odoo>
