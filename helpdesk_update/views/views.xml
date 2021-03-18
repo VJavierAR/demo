@@ -5,7 +5,7 @@
     <!-- Your Action Window Definition -->
     <record model="ir.actions.act_window" id="mesa_action_window">
       <field name="name">mesa</field>
-      <field name="res_model">helpdesk</field>
+      <field name="res_model">helpdesk.ticket</field>
       <field name="view_mode">tree,form</field>
     </record>
 
