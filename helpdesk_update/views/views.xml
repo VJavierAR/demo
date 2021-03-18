@@ -2,8 +2,8 @@
   <data>
 
     <menuitem
-      id="menu_test_main"
-      name="Mesa de ayuda"
+      id="mesa_de_ayuda_menu"
+      name="Mesa"
       web_icon="helpdesk_update, static/description/helpdesk-icon.png"
     />
 
