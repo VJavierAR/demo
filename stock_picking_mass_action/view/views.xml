@@ -116,7 +116,7 @@
     </record>
 
     <!--<menuitem name="Distribucion" id="distribucion_menu" parent="stock.menu_stock_root" sequence="5"/>-->
-    <menuitem name="Ruta" id="ruta.menu" parent="vehiculos.distribucion_menu" action="creacion_ruta_action_window" />
+    <menuitem name="Ruta" id="ruta_menu" parent="vehiculos.distribucion_menu" action="creacion_ruta_action_window" />
 
   </data>
 </odoo>
