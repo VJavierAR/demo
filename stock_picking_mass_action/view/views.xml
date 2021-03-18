@@ -115,7 +115,7 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Distribucion" id="distribucion_menu" parent="stock.menu_stock_root"/>
+    <menuitem name="Distribucion" id="distribucion_menu" parent="stock.menu_stock_root" sequence="36"/>
     <menuitem name="Ruta" id="ruta.menu" parent="distribucion_menu" action="creacion_ruta_action_window" />
 
   </data>
