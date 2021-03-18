@@ -104,7 +104,7 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="vehiculos" id="vehiculos.menu_root" action="automovil_action_window" web_icon="stock,static/vehiculo.jpeg"/>
+    <menuitem name="vehiculos" id="vehiculos.menu_root" action="automovil_action_window" web_icon="vehiculos,static/vehiculo.png"/>
 
     <!-- menu categories -->
     <!--
