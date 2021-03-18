@@ -19,7 +19,7 @@
     <menuitem name="Menu 2" id="menu_2" parent="menu_1"/>
 
     <!-- Your List View Definition -->
-    <record model="ir.ui.view" id="helpdesk.view_mesa_tree">
+    <record model="ir.ui.view" id="view_mesa_tree">
       <field name="name">helpdesk.mesa.tree</field>
       <field name="model">helpdesk.ticket</field>
       <field name="arch" type="xml">
@@ -33,7 +33,7 @@
     </record>
 
     <!-- Action Menu Item Related To Above Action Window -->
-    <record id="helpdesk.view_mesa_form" model="ir.ui.view">
+    <record id="view_mesa_form" model="ir.ui.view">
       <field name="name">helpdesk.mesa.form</field>
       <field name="model">helpdesk.ticket</field>
       <field name="arch" type="xml">
