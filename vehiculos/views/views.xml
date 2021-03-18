@@ -86,39 +86,14 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="vehiculos.action_server">
-      <field name="name">vehiculos server</field>
-      <field name="model_id" ref="model_vehiculos_vehiculos"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-
     <!-- Top menu item -->
+    <!--Abuelo con accion de inicio-->
+    <!--<menuitem name="vehiculos" id="vehiculos.menu_root" action="automovil_action_window" web_icon="vehiculos,static/description/vehiculo.jpeg"/>-->
+    <!--Padre sin accion relacionado con su padre-->
+    <menuitem name="Distribución" id="distribucion_menu" parent="menu_stock_root"/>
+    <!--Nieto con accion -->
+    <menuitem name="Vehiculos" id="vehiculos.menu" parent="distribucion_menu" action="automovil_action_window" />
+    <!--<menuitem name="Ruta" id="ruta.menu" parent="distribucion_menu" action="automovil_action_window" />-->
 
-    <menuitem name="vehiculos" id="vehiculos.menu_root" action="automovil_action_window" web_icon="vehiculos,static/description/vehiculo.jpeg"/>
-    <menuitem name="Menu 1" id="vehiculos.menu_1" parent="vehiculos.menu_root"/>
-    <menuitem name="Menu 2" id="vehiculos.menu_2" parent="vehiculos.menu_1" action="automovil_action_window" />
-
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="vehiculos.menu_1" parent="vehiculos.menu_root"/>
-    <menuitem name="Menu 2" id="vehiculos.menu_2" parent="vehiculos.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="vehiculos.menu_1_list" parent="vehiculos.menu_1"
-              action="vehiculos.action_window"/>
-    <menuitem name="Server to list" id="vehiculos" parent="vehiculos.menu_2"
-              action="vehiculos.action_server"/>
-    -->
   </data>
 </odoo>
