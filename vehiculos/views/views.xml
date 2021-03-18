@@ -90,7 +90,7 @@
     <!--Abuelo con accion de inicio-->
     <!--<menuitem name="vehiculos" id="vehiculos.menu_root" action="automovil_action_window" web_icon="vehiculos,static/description/vehiculo.jpeg"/>-->
     <!--Padre sin accion relacionado con su padre-->
-    <menuitem name="Distribucion" id="distribucion_menu" parent="menu_stock_root"/>
+    <menuitem name="Distribucion" id="distribucion_menu" parent="stock.menu_stock_root"/>
     <!--Nieto con accion -->
     <menuitem name="Vehiculos" id="vehiculos.menu" parent="distribucion_menu" action="automovil_action_window" />
     <!--<menuitem name="Ruta" id="ruta.menu" parent="distribucion_menu" action="automovil_action_window" />-->
