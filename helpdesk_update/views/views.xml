@@ -538,7 +538,7 @@
       <field name="name">mesa</field>
       <field name="res_model">helpdesk.ticket</field>
       <field name="view_mode">tree,form</field>
-    </record>
+    </record> 
 
     <menuitem
       id="mesa_menu"
