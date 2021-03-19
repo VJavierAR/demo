@@ -13,7 +13,7 @@
     'license': 'AGPL-3',
     'category': 'Warehouse Management',
     'depends': [
-        'stock_account',
+        'stock_account','vehiculos',
     ],
     'data': [
         'wizard/mass_action_view.xml',
