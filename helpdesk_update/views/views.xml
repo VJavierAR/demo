@@ -2,24 +2,8 @@
   <data>
 
     
-    <!-- Your Action Window Definition -->
-    <record model="ir.actions.act_window" id="mesa_action_window">
-      <field name="name">mesa</field>
-      <field name="res_model">helpdesk.ticket</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <menuitem
-      id="mesa_menu"
-      name="Mesa"
-      action="mesa_action_window"
-      web_icon="helpdesk_update, static/description/helpdesk-icon.png"
-    />
-    <menuitem name="Menu 1" id="menu_1" parent="mesa_menu"/>
-    <menuitem name="Menu 2" id="menu_2" parent="menu_1"/>
-
     <!-- Your List View Definition -->
-    <record model="ir.ui.view" id="helpdesk.view_mesa_tree">
+    <record model="ir.ui.view" id="view_mesa_tree">
       <field name="name">helpdesk.mesa.tree</field>
       <field name="model">helpdesk.ticket</field>
       <field name="arch" type="xml">
@@ -33,8 +17,8 @@
     </record>
 
     <!-- Action Menu Item Related To Above Action Window -->
-    <record id="helpdesk.view_mesa_form" model="ir.ui.view">
-      <field name="name">helpdesk.mesa.form</field>
+    <record id="helpdesk.helpdesk_ticket_view_form" model="ir.ui.view">
+      <field name="name">helpdesk.ticket</field>
       <field name="model">helpdesk.ticket</field>
       <field name="arch" type="xml">
         <!--vitsa original de odoo 14 
@@ -548,5 +532,22 @@
         </div>
       </field>
     </record>
+
+    <!-- Your Action Window Definition -->
+    <record model="ir.actions.act_window" id="mesa_action_window">
+      <field name="name">mesa</field>
+      <field name="res_model">helpdesk.ticket</field>
+      <field name="view_mode">tree,form</field>
+    </record> 
+
+    <menuitem
+      id="mesa_menu"
+      name="Mesa"
+      action="mesa_action_window"
+      web_icon="helpdesk_update, static/description/helpdesk-icon.png"
+    />
+    <menuitem name="Menu 1" id="menu_1" parent="helpdesk_update.mesa_menu"/>
+    <menuitem name="Menu 2" id="menu_2" parent="menu_1"/>
+
   </data>
 </odoo>
