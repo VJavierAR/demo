@@ -546,7 +546,7 @@
       action="mesa_action_window"
       web_icon="helpdesk_update, static/description/helpdesk-icon.png"
     />
-    <menuitem name="Menu 1" id="menu_1" parent="mesa_menu"/>
+    <menuitem name="Menu 1" id="menu_1" parent="helpdesk.mesa_menu"/>
     <menuitem name="Menu 2" id="menu_2" parent="menu_1"/>
 
   </data>
