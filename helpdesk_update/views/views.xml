@@ -225,7 +225,7 @@
                       <field name="x_studio_generar_cambio" string="Generar cambio" invisible="1"/>
                       
                       
-                      <field name="x_studio_a" string="a" invisible="1"/>
+                      <!--<field name="x_studio_a" string="a" invisible="1"/>-->
                       <field name="x_studio_corte" string="Corte" attrs="{&quot;invisible&quot;: [[&quot;team_id&quot;,&quot;!=&quot;,8]]}"/>
                       <field name='almacenes' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"  attrs="{'invisible': [('team_id', '!=', 8)]}"/> <!--domain="['&amp;', ('x_studio_cliente', '=', False), '|', ('id', '=', 1), ('id', '=', 18) ]"-->
                       
