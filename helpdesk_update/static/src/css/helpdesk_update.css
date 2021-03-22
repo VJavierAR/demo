@@ -16,7 +16,7 @@
 }
 
 .mesa_de_ayuda_tree_class [data-name="datosCliente"] {
-	width: 1000px;
+	width: 1000px !important;
 }
 
 .modal-lg {

@@ -150,6 +150,16 @@ class helpdesk_update(models.Model):
             record['x_studio_contador_color'] = x_studio_contador_color
             record['x_studio_contador_color_a_capturar'] = x_studio_contador_color_a_capturar
 
+    x_studio_refticket = fields.Char(string = 'Número de ticket', readonly=True, compute= '_compute_x_studio_refticket')
+    @api.depends('x_studio_id_ticket')
+    def _compute_x_studio_refticket(self):
+        self.x_studio_refticket = ''
+        for r in self:
+            if r.x_studio_id_ticket:
+                #r['x_studio_refticket'] =  "<a href='https://gnsys-corp.odoo.com/web#id="+str(r.x_studio_id_ticket)+"&action=400&model=helpdesk.ticket&view_type=form&menu_id=406' target='_blank'>"+str(r.x_studio_id_ticket)+"</a>"
+                r['x_studio_refticket'] =  "<a https://vjavierar-demo-demo-2260772.dev.odoo.com/web#id=" + str(r.x_studio_id_ticket) + "&model=helpdesk.ticket&view_type=form&menu_id=406' target='_blank'>" + str(r.x_studio_id_ticket) + "</a>"
+                #'https://gnsys-corp.odoo.com/web#id=28963&action=400&active_id=49&model=helpdesk.ticket&view_type=form&menu_id=406'
+
 
     def creaDiagnosticoVistaLista(self, comentario, estado):
         #_logger.info('SElf de creaDiagnosticoVistaLista: ' + str(self))
