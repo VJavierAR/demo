@@ -97,7 +97,13 @@
      
       </field>
     </record>
-            
+          <record model="ir.actions.act_window" id="tfs_action_window">
+      <field name="name">tfs</field>
+      <field name="res_model">tfs.tfs</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="TFS" id="tfs_menu" parent="stock.menu_stock_root" sequence="6"/>
+    <menuitem name="Cambio en Mini Almacen" id="tfs_tfs_menu" parent="tfs_menu" action="tfs_action_window" />      
       
   </data>
 </odoo>
