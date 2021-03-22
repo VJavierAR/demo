@@ -150,7 +150,7 @@ class helpdesk_update(models.Model):
             record['x_studio_contador_color'] = x_studio_contador_color
             record['x_studio_contador_color_a_capturar'] = x_studio_contador_color_a_capturar
 
-    x_studio_id_ticket = fields.Integer(string = "Número de ticket", store=True, readonly=True, compute="_compute_x_studio_id_ticket")
+    x_studio_id_ticket = fields.Integer(string = "Número de ticket", store=True, readonly=True, compute="_compute_x_studio_refticket")
     @api.depends('name')
     def _compute_x_studio_refticket(self):
         self.x_studio_id_ticket = 0
