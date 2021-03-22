@@ -289,6 +289,7 @@ class helpdesk_update(models.Model):
     x_studio_field_Le2tN = fields.Selection([['draft', 'Borrador'], ['waiting', 'Esperando otra operación'], ['confirmed', 'En espera'], ['assigned', 'Preparado'], ['done', 'Hecho'], ['cancel', 'Cancelado']], track_visibility='onchange', store=True, readonly=True, string="Distibución")
     x_studio_activar_compatibilidad = fields.Boolean(string='Activar compatibilidad', default = False, store=True)
     x_studio_documento_de_origen = fields.Char(string='Documento de origen', store=True)
+    x_estado_en_almacen = fields.Char(string='Estado en Almacén', store=False)
     x_studio_equipo_por_nmero_de_serie = fields.Many2many('stock.production.lot', store=True, track_visibility='onchange')
     x_studio_equipo_por_nmero_de_serie_1 = fields.One2many('dcas.dcas', 'x_studio_tiquete', store=True, track_visibility='onchange')
     #x_studio_equipo_por_nmero_de_serieRel = fields.Many2one('stock.production.lot', store=True)
