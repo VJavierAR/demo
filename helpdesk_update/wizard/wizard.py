@@ -6849,14 +6849,17 @@ class HelpDeskDatosMesa(TransientModel):
             self.solicitud = self.ticket_id.x_studio_field_nO7Xg.id
 
     def _compute_area_atencion(self):
+        self.areaAtencion = False
         if self.ticket_id.team_id:
             self.areaAtencion = self.ticket_id.team_id.id
 
     def _compute_ejecutivo(self):
+        self.ejecutivo = False
         if self.ticket_id.user_id:
             self.ejecutivo = self.ticket_id.user_id.id
 
     def _compute_encargado_area(self):
+        self.encargadoArea = False
         if self.ticket_id.x_studio_responsable_de_equipo:
             self.encargadoArea = self.ticket_id.x_studio_responsable_de_equipo.id
 
