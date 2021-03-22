@@ -25,7 +25,7 @@
           <field name='datos_ticket_info' groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea" />
           
           
-          <button name="detalle_mesa_wizard" string="Más información" icon="fa-arrows-alt" class="iconDiagnostico" type="object"  />
+          <button name="detalle_mesa_wizard" icon="fa-arrows-alt" class="iconDiagnostico" type="object"  />
           
           <button name="cambioEstadoAtencion" string="Poner en atención a ticket cerrado o cancelado" icon="fa-unlock-alt" type="object" class="iconDiagnostico" groups="studio_customization.grupo pasa atencion" attrs="{'invisible': [ ('stage_id', '!=', 18), ('stage_id', '!=', 4)] }" />
           
@@ -107,8 +107,8 @@
           
           <field name='x_accesorios_text' attrs="{'readonly': True }" widget='html' />
           
-          <button name="agregar_productos_wizard" string="Agregar refacciones o accesorios" type="object" icon="fa-tools" class="iconDiagnostico" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }"/>
-          <button name="cambioEstadoSolicitudRefaccion" string="Solicitud de refacción" type="object" icon="fa-cart-arrow-down" class="iconDiagnostico" attrs="{'invisible': ['|','|', ['x_studio_field_nO7Xg', '!=', False], ['stage_id','=',18], ['stage_id','=',4] ]}" />
+          <button name="agregar_productos_wizard" type="object" icon="fa-tools" class="iconDiagnostico" attrs="{'invisible': [ '|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }"/>
+          <button name="cambioEstadoSolicitudRefaccion" type="object" icon="fa-cart-arrow-down" class="iconDiagnostico" attrs="{'invisible': ['|','|', ['x_studio_field_nO7Xg', '!=', False], ['stage_id','=',18], ['stage_id','=',4] ]}" />
           
           <!--<button name="helpdesk_confirmar_validar_refacciones_wizard" string="Crear y validar solicitud" type="object" class="oe_highlight" groups='studio_customization.validar_refaccion_96aa2d5c-a884-4b4d-972a-a4d9c5fdbdd8' attrs="{'invisible': [('x_studio_field_nO7Xg', '!=', False)]}"/>-->
           
