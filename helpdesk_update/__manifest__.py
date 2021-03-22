@@ -31,7 +31,7 @@
         'security/helpdesk_security.xml',
         'views/views.xml',
         'views/templates.xml',
-        #'wizard/wizard.xml'
+        'wizard/wizard.xml'
     ],
     'qweb': [
         'static/src/xml/tree_view_button.xml'
