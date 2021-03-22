@@ -121,6 +121,8 @@ class sale_update(models.Model):
         ('entregado', 'Entregado'),
         ('cancel', 'Cancelled'),
         ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', track_sequence=3, default='draft')
+	x_studio_field_RnhKr=fields.Many2one('res.partner','Contacto')
+
 	def Reporte(self):
 	    fecha=datetime.datetime.now().date()
 	    sa=self.search([['x_studio_tipo_de_solicitud','in',('Demostración','Préstamo')],['state','in',('sale','assign')]])
