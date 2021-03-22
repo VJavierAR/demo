@@ -938,7 +938,7 @@
         <!--<field name="view_type">form</field>-->
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="groups_id" eval="[(6,0,[ref('helpdes_update.group_helpdesk_valida_toner')])]"></field>
+        <!--<field name="groups_id" eval="[(6,0,[ref('helpdes_update.group_helpdesk_valida_toner')])]"></field>-->
         <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket" />
     </record>
     <record id="view_activar_toner_form" model="ir.ui.view">
@@ -967,7 +967,7 @@
         <!--<field name="view_type">form</field>-->
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="groups_id" eval="[(6,0,[ref('helpdes_update.group_helpdesk_cambio_a_cerrado')])]"></field>
+        <!--<field name="groups_id" eval="[(6,0,[ref('helpdes_update.group_helpdesk_cambio_a_cerrado')])]"></field>-->
         <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket" />
     </record>
     <record id="view_cerrar_mesa_form" model="ir.ui.view">
@@ -992,7 +992,7 @@
         <!--<field name="view_type">form</field>-->
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="groups_id" eval="[(6,0,[ref('helpdes_update.group_helpdesk_valida_toner')])]"></field>
+        <!--<field name="groups_id" eval="[(6,0,[ref('helpdes_update.group_helpdesk_valida_toner')])]"></field>-->
         <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket" />
     </record>
     <record id="view_cancelar_toner_form" model="ir.ui.view">
@@ -1021,7 +1021,7 @@
         <!--<field name="view_type">form</field>-->
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="groups_id" eval="[(6,0,[ref('helpdes_update.group_helpdesk_valida_toner')])]"></field>
+        <!--<field name="groups_id" eval="[(6,0,[ref('helpdes_update.group_helpdesk_valida_toner')])]"></field>-->
         <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket" />
     </record>
     <record id="view_validar_toner_form" model="ir.ui.view">
