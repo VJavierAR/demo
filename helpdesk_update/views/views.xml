@@ -69,7 +69,7 @@
           <field name="contadores_anteriores" widget="html" string="Contadores Anteriores" readonly="1" force_save = "1"/>
           <button name="contadores_wizard" string="Contadores" type="object" icon='fa-clock-o' class="iconDiagnostico" attrs='{"invisible": [ "|", "|", "|", ["x_studio_equipo_por_nmero_de_serie","=",[]], ["contadores_anteriores", "=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ] }'/>
           <button name="editar_contadores_wizard" string="Editar contadores" type="object" icon='fa-edit' class="iconDiagnostico" groups='studio_customization.editar_contadores_mesa' attrs="{'invisible': [ '|', '|', ['x_studio_equipo_por_nmero_de_serie','=',[]], ['stage_id', '=', 18], ['stage_id', '=', 4] ]}" />
-          <field name="datosCliente" style="width:1000px !important; text-align: left !important" />
+          <field name="datosCliente"  />
           
           <field name="x_studio_ultima_nota" widget="html" string="Ultima nota"/>
           <field name="x_studio_ultima_evidencia"  widget="html" string="Ultima Evidencia"/>
