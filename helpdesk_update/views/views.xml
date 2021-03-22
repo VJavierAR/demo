@@ -27,9 +27,9 @@
           
           <button name="detalle_mesa_wizard" icon="fa-arrows-alt" class="iconDiagnostico" type="object"  />
           
-          <button name="cambioEstadoAtencion" string="Poner en atención a ticket cerrado o cancelado" icon="fa-unlock-alt" type="object" class="iconDiagnostico" groups="helpdesk_update.group_helpdesk_cambio_a_atencion" attrs="{'invisible': [ ('stage_id', '!=', 18), ('stage_id', '!=', 4)] }" />
+          <button name="cambioEstadoAtencion" icon="fa-unlock-alt" type="object" class="iconDiagnostico" groups="helpdesk_update.group_helpdesk_cambio_a_atencion" attrs="{'invisible': [ ('stage_id', '!=', 18), ('stage_id', '!=', 4)] }" />
           
-          <button name="helpdesk_confirmar_validar_refacciones_wizard" string="Crear y validar solicitud" type="object" icon="fa-thumbs-o-up" class="iconDiagnostico" groups='helpdesk_update.group_helpdesk_valida_refaccion' attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+          <button name="helpdesk_confirmar_validar_refacciones_wizard" type="object" icon="fa-thumbs-o-up" class="iconDiagnostico" groups='helpdesk_update.group_helpdesk_valida_refaccion' attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
           
           
           <field name="create_date" string="Fecha de creación" />
