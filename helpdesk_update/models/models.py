@@ -287,6 +287,7 @@ class helpdesk_update(models.Model):
     priority = fields.Selection([('0','Todas'),('1','Baja'),('2','Media'),('3','Alta'),('4','Critica')], track_visibility='onchange')
     x_studio_corte = fields.Selection([["1ero","1ero"],["2do","2do"],["3ro","3ro"],["4to","4to"]], track_visibility='onchange', store=True)
     x_studio_activar_compatibilidad = fields.Boolean('Activar compatibilidad', default = False, store=True)
+    x_studio_documento_de_origen = fields.Char(string='Documento de origen', store=True)
     x_studio_equipo_por_nmero_de_serie = fields.Many2many('stock.production.lot', store=True, track_visibility='onchange')
     x_studio_equipo_por_nmero_de_serie_1 = fields.One2many('dcas.dcas', 'x_studio_tiquete', store=True, track_visibility='onchange')
     #x_studio_equipo_por_nmero_de_serieRel = fields.Many2one('stock.production.lot', store=True)
