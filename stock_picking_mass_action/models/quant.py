@@ -56,7 +56,7 @@ class StockQuan(Model):
         almacenes=self.env['stock.warehouse'].search([['x_studio_cliente','=',False]])
         r=self.search([['location_id','in',almacenes.mapped('lot_stock_id.id')]])
         r[0].write({'x_studio_arreglo':str(r.mapped('id'))})
-        pdf=self.env.ref('stock_picking_mass_action.quant_xlsx').render_xlsx(data=r[0],docids=r[0].id)[0]
+        pdf=self.env.ref('stock_picking_mass_action.quant_xlsx')._render_xlsx(data=r[0],docids=r[0].id)[0]
         reporte = base64.encodestring(pdf)
         self.env['quant.history'].create({'reporte':reporte,'fecha':datetime.datetime.now().date()})
     
