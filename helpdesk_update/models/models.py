@@ -122,7 +122,7 @@ class helpdesk_update(models.Model):
         for record in self:
             parrafos = ''
             for refaccion in record.accesorios:
-            parrafos = parrafos +  """<p>""" + str(refaccion.productos.display_name)  + """<p>"""
+                parrafos = parrafos +  """<p>""" + str(refaccion.productos.display_name)  + """<p>"""
             texto = """
                     <div class='row'>
                       <div class='col-sm-12'>
