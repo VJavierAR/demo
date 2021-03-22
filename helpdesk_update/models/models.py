@@ -5617,9 +5617,9 @@ class helpdesk_update(models.Model):
         #if self.diagnosticos:
         #    wiz.diagnostico_id = [(6, 0, self.diagnosticos.ids)]
 
-        idExternoToner = 'studio_customization.tiquete_del_servicio_e501a40f-0bd7-4726-b219-50085c31c177'
-        pdf = self.env.ref(idExternoToner).sudo().render_qweb_pdf([self.id])[0]
-        wiz.pdfToner = base64.encodestring(pdf)
+        #idExternoToner = 'studio_customization.tiquete_del_servicio_e501a40f-0bd7-4726-b219-50085c31c177'
+        #pdf = self.env.ref(idExternoToner).sudo().render_qweb_pdf([self.id])[0]
+        #wiz.pdfToner = base64.encodestring(pdf)
         view = self.env.ref('helpdesk_update.view_helpdesk_detalle_mesa')
         return {
             'name': _('Más información'),
