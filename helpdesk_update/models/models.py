@@ -113,6 +113,7 @@ class helpdesk_update(models.Model):
         _logger.info('3312: ' + str(cambiaTipoDeVale(self.team_id.id)))
         return cambiaTipoDeVale(self.team_id.id)
     """
+    x_studio_tcnico = fields.Many2one('hr.employee', store=True, track_visibility='onchange', string='Técnico')
 
 
     def creaDiagnosticoVistaLista(self, comentario, estado):
