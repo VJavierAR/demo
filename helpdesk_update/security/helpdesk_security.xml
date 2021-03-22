@@ -75,8 +75,8 @@
                 <field name="name">Agregar contadores(DCAS)</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>
             </record>
-            <record id="group_helpdesk_mesa_de_servicio" model="res.groups">
-                <field name="name">Mesa de servicio</field>
+            <record id="group_helpdesk_mas_detalle_mesa_de_servicio" model="res.groups">
+                <field name="name">Más detalle mesa de servicio</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>
             </record>
         </data>
