@@ -114,10 +114,18 @@
       <field name="res_model">creacion.ruta</field>
       <field name="view_mode">tree,form</field>
     </record>
+    <record model="ir.actions.act_window" id="tfs_action_window">
+      <field name="name">tfs</field>
+      <field name="res_model">tfs.tfs</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
     <!--<menuitem name="Distribucion" id="distribucion_menu" parent="stock.menu_stock_root" sequence="5"/>-->
     <menuitem name="Ruta" id="ruta_menu" parent="vehiculos.distribucion_menu" action="creacion_ruta_action_window" />
-    <menuitem name="Distribucion" id="distribucion_menu" parent="stock.menu_stock_root" sequence="5"/>
+    <menuitem name="TFS" id="tfs_menu" parent="stock.menu_stock_root" sequence="6"/>
+    <menuitem name="Cambio en Mini Almacen" id="tfs_tfs_menu" parent="tfs_menu" action="tfs_action_window" />
+
+
 
   </data>
 </odoo>
