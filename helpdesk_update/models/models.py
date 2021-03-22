@@ -5288,7 +5288,7 @@ class helpdesk_update(models.Model):
             'view_type': 'form',
             'view_mode': 'form',
             'res_model': 'helpdesk.comentario',
-            'views': [(view.id, 'form')],
+            #'views': [(view.id, 'form')],
             'view_id': view.id,
             'target': 'new',
             'res_id': wiz.id,
