@@ -43,7 +43,6 @@
                 <field name="name">Cambia a cancelado</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>
             </record>
-
             <record id="group_helpdesk_cambio_a_atencion_ticket_cerrado" model="res.groups">
                 <field name="name">Cambia a atención ticket cerrado</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>
