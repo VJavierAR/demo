@@ -136,11 +136,19 @@ class helpdesk_update(models.Model):
     @api.depends('x_studio_equipo_por_nmero_de_serie')
     def _compute_x_studio_contador_bn(self):
         for record in self:
+            x_studio_contador_bn = 0
+            x_studio_contador_bn_a_capturar = 0
+            x_studio_contador_color = 0
+            x_studio_contador_color_a_capturar = 0
             if record.x_studio_equipo_por_nmero_de_serie:
-                record['x_studio_contador_bn'] = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_bn
-                record['x_studio_contador_bn_a_capturar'] = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_bn_a_capturar
-                record['x_studio_contador_color'] = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_color
-                record['x_studio_contador_color_a_capturar'] = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_color_a_capturar
+                x_studio_contador_bn = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_bn
+                x_studio_contador_bn_a_capturar = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_bn_a_capturar
+                x_studio_contador_color = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_color
+                x_studio_contador_color_a_capturar = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_color_a_capturar
+            record['x_studio_contador_bn'] = x_studio_contador_bn
+            record['x_studio_contador_bn_a_capturar'] = x_studio_contador_bn_a_capturar
+            record['x_studio_contador_color'] = x_studio_contador_color
+            record['x_studio_contador_color_a_capturar'] = x_studio_contador_color_a_capturar
 
 
     def creaDiagnosticoVistaLista(self, comentario, estado):
