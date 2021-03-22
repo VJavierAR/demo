@@ -6842,7 +6842,7 @@ class HelpDeskDatosMesa(TransientModel):
         self.diagnostico_id = self.ticket_id.diagnosticos.ids
 
     def _compute_solicitud(self):
-        if self.ticket_id.x_studio_field_nO7Xg:
+        if self.ticket_id and self.ticket_id.x_studio_field_nO7Xg:
             self.solicitud = self.ticket_id.x_studio_field_nO7Xg.id
 
     def _compute_area_atencion(self):
