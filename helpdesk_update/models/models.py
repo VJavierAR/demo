@@ -114,6 +114,23 @@ class helpdesk_update(models.Model):
         return cambiaTipoDeVale(self.team_id.id)
     """
     x_studio_tcnico = fields.Many2one('hr.employee', store=True, track_visibility='onchange', string='Técnico')
+    x_accesorios_text = fields.Text(string = 'Refacciones y/o accesorios', compute= '_compute_x_accesorios_text')
+
+    @api.depends('accesorios')
+    def _compute_x_accesorios_text(self):
+        self.x_accesorios_text = ''
+        for record in self:
+            parrafos = ''
+            for refaccion in record.accesorios:
+            parrafos = parrafos +  """<p>""" + str(refaccion.productos.display_name)  + """<p>"""
+            texto = """
+                    <div class='row'>
+                      <div class='col-sm-12'>
+                      """ + parrafos + """
+                      </div>
+                    </div>
+                    """
+            record['x_accesorios_text'] = texto
 
 
     def creaDiagnosticoVistaLista(self, comentario, estado):
