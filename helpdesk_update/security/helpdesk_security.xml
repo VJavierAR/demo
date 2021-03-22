@@ -19,14 +19,19 @@
                 <field name="description">Permisos para mesa de ayuda</field>
             </record>
 
-            <record id="group_helpdesk_cambio_a_cotizacion" model="res.groups">
-                <field name="name">Cambia a cotización</field>
-                <field name="category_id" ref="module_category_helpdesk_update"/>
-            </record>
             <record id="group_helpdesk_solo_ve_administrador" model="res.groups">
                 <field name="name">Solo ve administrador</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>
             </record>
+            <record id="group_helpdesk_cambio_a_cotizacion" model="res.groups">
+                <field name="name">Cambia a cotización</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
+            <record id="group_helpdesk_cambio_a_atencion" model="res.groups">
+                <field name="name">Cambia a atención</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
+            
 
         </data>
     </openerp>

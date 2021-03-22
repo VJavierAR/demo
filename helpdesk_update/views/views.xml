@@ -19,15 +19,15 @@
           -->
 
           
-          <button name="cambioCotizacion" groups='studio_customization.cambio_cotizacion_co_3157cb27-cdc9-4840-b19d-7f11ad51631a' string="Cotización" type="object" icon="fa-calculator" class="iconDiagnostico" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
-          <field name='x_todas_las_zonas' groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"  />
+          <button name="cambioCotizacion" groups='helpdesk_update.group_helpdesk_cambio_a_cotizacion' string="Cotización" type="object" icon="fa-calculator" class="iconDiagnostico" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+          <field name='x_todas_las_zonas' groups="helpdesk_update.group_helpdesk_solo_ve_administrador"  />
           
-          <field name='datos_ticket_info' groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea" />
+          <field name='datos_ticket_info' groups="helpdesk_update.group_helpdesk_solo_ve_administrador" />
           
           
           <button name="detalle_mesa_wizard" icon="fa-arrows-alt" class="iconDiagnostico" type="object"  />
           
-          <button name="cambioEstadoAtencion" string="Poner en atención a ticket cerrado o cancelado" icon="fa-unlock-alt" type="object" class="iconDiagnostico" groups="studio_customization.grupo pasa atencion" attrs="{'invisible': [ ('stage_id', '!=', 18), ('stage_id', '!=', 4)] }" />
+          <button name="cambioEstadoAtencion" string="Poner en atención a ticket cerrado o cancelado" icon="fa-unlock-alt" type="object" class="iconDiagnostico" groups="helpdesk_update.group_helpdesk_cambio_a_atencion" attrs="{'invisible': [ ('stage_id', '!=', 18), ('stage_id', '!=', 4)] }" />
           
           <button name="helpdesk_confirmar_validar_refacciones_wizard" string="Crear y validar solicitud" type="object" icon="fa-thumbs-o-up" class="iconDiagnostico" groups='studio_customization.validar_refaccion_96aa2d5c-a884-4b4d-972a-a4d9c5fdbdd8' attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
           
