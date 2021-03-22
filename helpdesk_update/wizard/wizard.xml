@@ -935,7 +935,7 @@
     <record id="action_activar_toner" model="ir.actions.act_window">
         <field name="name">Activar tickets de tóner</field>
         <field name="res_model">helpdesk.activar.cancelado.toner</field>
-        <field name="view_type">form</field>
+        <!--<field name="view_type">form</field>-->
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="groups">studio_customization.validar_toner_d61119fe-f670-4dd0-9dee-6d2bfdd1824e</field>
@@ -964,7 +964,7 @@
     <record id="action_cerrar_mesa" model="ir.actions.act_window">
         <field name="name">Cerrar  tickets de mesa</field>
         <field name="res_model">helpdesk.cerrar.tickets.mesa</field>
-        <field name="view_type">form</field>
+        <!--<field name="view_type">form</field>-->
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="groups">studio_customization.cerrar_tickets_mesa_41c2145f-10a2-429c-b59d-4cc9ec16d613</field>
@@ -989,7 +989,7 @@
     <record id="action_cancelar_toner" model="ir.actions.act_window">
         <field name="name">Cancelar tickets de tóner</field>
         <field name="res_model">helpdesk.cancelar.tickets.toner</field>
-        <field name="view_type">form</field>
+        <!--<field name="view_type">form</field>-->
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="groups">studio_customization.validar_toner_d61119fe-f670-4dd0-9dee-6d2bfdd1824e</field>
@@ -1018,7 +1018,7 @@
     <record id="action_validar_toner" model="ir.actions.act_window" >
         <field name="name">Crear y validar toner</field>
         <field name="res_model">helpdesk.validar.toner</field>
-        <field name="view_type">form</field>
+        <!--<field name="view_type">form</field>-->
         <field name="view_mode">form</field>
         <field name="target">new</field>
         <field name="groups">studio_customization.validar_toner_d61119fe-f670-4dd0-9dee-6d2bfdd1824e</field>
