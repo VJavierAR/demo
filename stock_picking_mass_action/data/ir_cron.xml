@@ -20,7 +20,7 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field eval="False" name="doall"/>
-        <field eval="False" name="active"/>
+        <field eval="True" name="active"/>
         <field name="model_id" ref="stock.model_stock_quant" />
         <field name="state">code</field>
         <field name="code">model.archivaReporte()</field>
