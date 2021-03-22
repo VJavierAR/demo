@@ -132,6 +132,16 @@ class helpdesk_update(models.Model):
                     """
             record['x_accesorios_text'] = texto
 
+    x_studio_contador_bn = fields.Integer(string = 'Contador B/N', readonly=True, compute = '_compute_x_studio_contador_bn')
+    @api.depends('x_studio_equipo_por_nmero_de_serie')
+    def _compute_x_studio_contador_bn(self):
+        for record in self:
+            if record.x_studio_equipo_por_nmero_de_serie:
+                record['x_studio_contador_bn'] = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_bn
+                record['x_studio_contador_bn_a_capturar'] = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_bn_a_capturar
+                record['x_studio_contador_color'] = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_color
+                record['x_studio_contador_color_a_capturar'] = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_color_a_capturar
+
 
     def creaDiagnosticoVistaLista(self, comentario, estado):
         #_logger.info('SElf de creaDiagnosticoVistaLista: ' + str(self))
