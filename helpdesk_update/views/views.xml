@@ -7,7 +7,7 @@
       <field name="name">helpdesk.mesa.tree</field>
       <field name="model">helpdesk.ticket</field>
       <field name="arch" type="xml">
-        <tree string="Mesa">
+        <tree string="Mesa" class="mesa_de_ayuda_tree_class">
             
           <!--
               Grupo con el cual los campos solo son visibles para el usuario administrator

@@ -15,7 +15,7 @@
 	width: 100px;
 }
 
-.mesa_de_ayuda_tree_class {
+.mesa_de_ayuda_tree_class [data-name="datosCliente"] {
 	width: 1000px;
 }
 
