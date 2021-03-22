@@ -114,10 +114,16 @@
       <field name="res_model">creacion.ruta</field>
       <field name="view_mode">tree,form</field>
     </record>
+    <record model="ir.actions.act_window" id="quant_history_action_window">
+      <field name="name">Historico de Inventario</field>
+      <field name="res_model">quant.history</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
     <!--<menuitem name="Distribucion" id="distribucion_menu" parent="stock.menu_stock_root" sequence="5"/>-->
     <menuitem name="Ruta" id="ruta_menu" parent="vehiculos.distribucion_menu" action="creacion_ruta_action_window" />
 
+    <menuitem name="Historico de Inventario" id="quant_history_menu" parent="stock.menu_warehouse_report" action="creacion_ruta_action_window" />
 
 
   </data>
