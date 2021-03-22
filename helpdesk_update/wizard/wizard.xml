@@ -75,7 +75,7 @@
                                 <field name="categ_id" attrs="{}" readonly="1" required="1"/>
                                 <field name="default_code" attrs="{}" readonly="1"/>
                                 <field name="name" attrs="{}" readonly="1" required="1"/>
-                                <field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant" invisible="1"/>
+                                <!--<field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant" invisible="1"/>-->
                                 <field name="lst_price" attrs="{}" readonly="1" invisible="1"/>
                                 <field name="standard_price" attrs="{}" readonly="1" invisible="1"/>
                                 <field name="type" invisible="1" required="1"/>
