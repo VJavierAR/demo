@@ -152,7 +152,7 @@ class helpdesk_update(models.Model):
 
     x_studio_id_ticket = fields.Integer(string = "Número de ticket", store=True, readonly=True, compute="_compute_x_studio_id_ticket")
     @api.depends('name')
-    def _compute_x_studio_refticket(self):
+    def _compute_x_studio_id_ticket(self):
         self.x_studio_id_ticket = 0
         for record in self:
             if(record.id):
