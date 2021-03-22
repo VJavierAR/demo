@@ -624,7 +624,7 @@
                         </group>
                         <group>
                             <group>
-                                <button name="contacto_toner_wizard" string="Añadir contcto a localidad" icon="fa-user-plus" class="iconDiagnostico" type="object"  attrs='{"invisible": [["localidad","=", False]]}' groups=""/>
+                                <!--<button name="contacto_toner_wizard" string="Añadir contcto a localidad" icon="fa-user-plus" class="iconDiagnostico" type="object"  attrs='{"invisible": [["localidad","=", False]]}' groups=""/>-->
                             </group>
                         </group>
 
