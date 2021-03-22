@@ -31,10 +31,38 @@
                 <field name="name">Cambia a atención</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>
             </record>
+            <record id="group_helpdesk_cambio_a_resuelto" model="res.groups">
+                <field name="name">Cambia a resuelto</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
+            <record id="group_helpdesk_cambio_a_cerrado" model="res.groups">
+                <field name="name">Cambia a cerrado</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
+            <record id="group_helpdesk_cambio_a_cancelado" model="res.groups">
+                <field name="name">Cambia a cancelado</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
+
+            <record id="group_helpdesk_cambio_a_atencion_ticket_cerrado" model="res.groups">
+                <field name="name">Cambia a atención ticket cerrado</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
             <record id="group_helpdesk_valida_refaccion" model="res.groups">
                 <field name="name">Valida refacción</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>
             </record>
-
+            <record id="group_helpdesk_editar_contadores" model="res.groups">
+                <field name="name">Editar contadores</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
+            <record id="group_helpdesk_agregar_diagnostico" model="res.groups">
+                <field name="name">Agregar diagnostico</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
+            <record id="group_helpdesk_agregar_y_editar_contacto" model="res.groups">
+                <field name="name">Agregar y editar contactos</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
         </data>
     </openerp>

@@ -27,7 +27,7 @@
           
           <button name="detalle_mesa_wizard" icon="fa-arrows-alt" class="iconDiagnostico" type="object"  />
           
-          <button name="cambioEstadoAtencion" icon="fa-unlock-alt" type="object" class="iconDiagnostico" groups="helpdesk_update.group_helpdesk_cambio_a_atencion" attrs="{'invisible': [ ('stage_id', '!=', 18), ('stage_id', '!=', 4)] }" />
+          <button name="cambioEstadoAtencion" icon="fa-unlock-alt" type="object" class="iconDiagnostico" groups="helpdesk_update.group_helpdesk_cambio_a_atencion_ticket_cerrado" attrs="{'invisible': [ ('stage_id', '!=', 18), ('stage_id', '!=', 4)] }" />
           
           <button name="helpdesk_confirmar_validar_refacciones_wizard" type="object" icon="fa-thumbs-o-up" class="iconDiagnostico" groups='helpdesk_update.group_helpdesk_valida_refaccion' attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
           
@@ -39,8 +39,8 @@
           
           
           <field name="abiertoPor" invisible="0" readonly="1"/>
-          <field name="write_date" string="Fecha de último cambio" invisible="1" groups='studio_customization.solo_mesa_de_servici_1076a541-66a3-41d1-a510-e0af0097df85' />
-          <field name="write_uid" string="Ultima escritura" invisible="1" groups='studio_customization.solo_mesa_de_servici_1076a541-66a3-41d1-a510-e0af0097df85'/>
+          <field name="write_date" string="Fecha de último cambio" invisible="1" />
+          <field name="write_uid" string="Ultima escritura" invisible="1" />
           
           <field name='ultimoDiagnosticoFecha' readonly='1' />
           <field name='ultimoDiagnosticoUsuario' readonly='1' />
@@ -68,7 +68,7 @@
           <field name="x_studio_contadores" widget="html" string="Contadores Anteriores" readonly="1" force_save = "1" invisible="1"/>
           <field name="contadores_anteriores" widget="html" string="Contadores Anteriores" readonly="1" force_save = "1"/>
           <button name="contadores_wizard" string="Contadores" type="object" icon='fa-clock-o' class="iconDiagnostico" attrs='{"invisible": [ "|", "|", "|", ["x_studio_equipo_por_nmero_de_serie","=",[]], ["contadores_anteriores", "=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ] }'/>
-          <button name="editar_contadores_wizard" string="Editar contadores" type="object" icon='fa-edit' class="iconDiagnostico" groups='studio_customization.editar_contadores_mesa' attrs="{'invisible': [ '|', '|', ['x_studio_equipo_por_nmero_de_serie','=',[]], ['stage_id', '=', 18], ['stage_id', '=', 4] ]}" />
+          <button name="editar_contadores_wizard" string="Editar contadores" type="object" icon='fa-edit' class="iconDiagnostico" groups='helpdesk_update.group_helpdesk_editar_contadores' attrs="{'invisible': [ '|', '|', ['x_studio_equipo_por_nmero_de_serie','=',[]], ['stage_id', '=', 18], ['stage_id', '=', 4] ]}" />
           <field name="datosCliente"  />
           
           <field name="x_studio_ultima_nota" widget="html" string="Ultima nota"/>
@@ -81,7 +81,7 @@
           <field name="stage_id" string="Etapa" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
           <field name="x_studio_empresas_relacionadas" invisible="1" />
           <!--attrs='{"invisible": [["stage_id","=",18]]}'-->
-          <button name="cambio_wizard" string="Diagnostico" icon="fa-user-md" class="iconDiagnostico" type="object" groups="studio_customization.solo_mesa_de_servici_1076a541-66a3-41d1-a510-e0af0097df85" />
+          <button name="cambio_wizard" icon="fa-user-md" class="iconDiagnostico" type="object" groups="helpdesk_update.group_helpdesk_agregar_diagnostico" />
           
           <field name="idLocalidadAyuda" invisible="1"/>
           <field name="localidadContacto" options='{"no_create_edit": True, "no_create": True, "no_open": True}' attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }"/>
@@ -94,7 +94,7 @@
           <!--
           <button name="contacto_wizard" string="Añadir contcto a localidad" icon="fa-user-plus" class="iconDiagnostico" type="object"  attrs='{"invisible": [ "|", "|", ["x_studio_empresas_relacionadas","=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ]}' groups="studio_customization.solo_mesa_de_servici_1076a541-66a3-41d1-a510-e0af0097df85"/>
           -->
-          <button name="contacto_wizard" string="Añadir contcto a localidad" icon="fa-user-plus" class="iconDiagnostico" type="object"  attrs='{"invisible": [ "|", "|", ["x_studio_empresas_relacionadas","=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ]}' groups="studio_customization.agregar_y_editar_contactos_desde_ticket"/>
+          <button name="contacto_wizard" icon="fa-user-plus" class="iconDiagnostico" type="object"  attrs='{"invisible": [ "|", "|", ["x_studio_empresas_relacionadas","=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ]}' groups="helpdesk_update.group_helpdesk_agregar_y_editar_contacto"/>
           
           <!--<field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" attrs="{'invisible': [('team_id','!=',81)], 'readonly': 0 }" domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]'  />-->
           <field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" invisible='1' domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]'  />
@@ -132,12 +132,12 @@
           <!--<field name="documentosTecnico" string="Evidencias ticket" attrs="{'invisible': 0, 'readonly': 0, 'required': 0}" widget="many2many_binary"/>-->
           <!--<button name="open_to_form_view" type="object" icon="fa-folder-open" string="abrir" />-->
           
-          <button name="cambioEstadoAtencionAccion" string="Cambiar al estado atención" type="object" icon="fa-phone" class="iconDiagnostico" groups="studio_customization.atencion_tickets_mesa" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+          <button name="cambioEstadoAtencionAccion" type="object" icon="fa-phone" class="iconDiagnostico" groups="helpdesk_update.group_helpdesk_cambio_a_atencion" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
           
-          <button name="cambioResuelto" string="Cambiar al estado resuelto" type="object" icon="fa-check" class="iconDiagnostico" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" groups='studio_customization.resuelto_ticket_mesa' />
-          <button name="cerrar_con_comentario_wizard" string="Cerrar ticket" type="object" icon="fa-lock" class="iconDiagnostico"  groups="studio_customization.cerrar_tickets_mesa_41c2145f-10a2-429c-b59d-4cc9ec16d613" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+          <button name="cambioResuelto" type="object" icon="fa-check" class="iconDiagnostico" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" groups='helpdesk_update.group_helpdesk_cambio_a_resuelto' />
+          <button name="cerrar_con_comentario_wizard" type="object" icon="fa-lock" class="iconDiagnostico"  groups="helpdesk_update.group_helpdesk_cambio_a_cerrado" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
           <!--cambioCerrado-->
-          <button name="cancelar_con_comentario_wizard" string="Cancelar ticket" type="object" icon="fa-ban" class="iconDiagnostico" groups="studio_customization.cancelar_tickets_mesa" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+          <button name="cancelar_con_comentario_wizard" type="object" icon="fa-ban" class="iconDiagnostico" groups="helpdesk_update.group_helpdesk_cambio_a_cancelado" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
           
           
           
