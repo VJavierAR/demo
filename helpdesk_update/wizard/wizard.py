@@ -6841,7 +6841,7 @@ class HelpDeskDatosMesa(TransientModel):
     def _compute_diagnosticos(self):
         self.diagnostico_id = False
         if self.ticket_id.diagnosticos:
-        self.diagnostico_id = self.ticket_id.diagnosticos.ids
+            self.diagnostico_id = self.ticket_id.diagnosticos.ids
 
     def _compute_solicitud(self):
         self.solicitud = False
