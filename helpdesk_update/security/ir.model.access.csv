@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_helpdesk_ticket,helpdesk.ticket,model_helpdesk_ticket,base.group_user,1,1,1,1
-access_helpdesk_refacciones,access.helpdesk.refacciones,model_helpdesk.refacciones,group_helpdesk_agregar_refacciones,1,1,1,1
-access_helpdesk_refacciones,access.helpdesk.refacciones,model_helpdesk.diagnostico,group_helpdesk_agregar_diagnostico,1,1,1,1
+access_helpdesk_refacciones,access.helpdesk.refacciones,helpdesk_update.model_helpdesk_refacciones,group_helpdesk_agregar_refacciones,1,1,1,1
+access_helpdesk_refacciones,access.helpdesk.refacciones,helpdesk_update.model_helpdesk_diagnostico,group_helpdesk_agregar_diagnostico,1,1,1,1
