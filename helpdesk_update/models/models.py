@@ -290,6 +290,7 @@ class helpdesk_update(models.Model):
     x_studio_activar_compatibilidad = fields.Boolean(string='Activar compatibilidad', default = False, store=True)
     x_studio_documento_de_origen = fields.Char(string='Documento de origen', store=True)
     x_estado_en_almacen = fields.Char(string='Estado en Almacén', store=False)
+
     x_studio_equipo_por_nmero_de_serie = fields.Many2many('stock.production.lot', store=True, track_visibility='onchange')
     x_studio_equipo_por_nmero_de_serie_1 = fields.One2many('dcas.dcas', 'x_studio_tiquete', store=True, track_visibility='onchange')
     #x_studio_equipo_por_nmero_de_serieRel = fields.Many2one('stock.production.lot', store=True)
@@ -336,7 +337,29 @@ class helpdesk_update(models.Model):
     x_studio_field_XALSC = fields.Many2one('stock.picking', string = 'Transferir dis')
     
 
-    
+    x_estado_en_distribucion = fields.Char(string = 'Estado en distribución', readonly=True, compute= '_compute_x_estado_en_distribucion')
+    @api.depends('x_studio_field_Le2tN')
+    def _compute_x_estado_en_distribucion(self):
+        self.x_estado_en_distribucion = ''
+        for record in self:
+            #estadoAlmacen = str(record.x_studio_field_up5pO)
+            estadoDistribucion = str(record.x_studio_field_Le2tN)
+            #if estadoAlmacen == 'False' and estadoDistribucion != 'False':
+            #  record['x_estado_en_distribucion'] = 'Almacén valido su proceso.'
+            if estadoDistribucion == 'False':
+                record['x_estado_en_distribucion'] = 'No disponible.'
+            elif estadoDistribucion == 'waiting':
+                record['x_estado_en_distribucion'] = 'En espera de que Almacén valido su proceso.'
+            elif estadoDistribucion == 'confirmed':
+                record['x_estado_en_distribucion'] = 'No se cuenta con el stock del producto. Personal de distribución verificando.'
+            elif estadoDistribucion == 'assigned':
+                record['x_estado_en_distribucion'] = 'Se cuenta con el stock del producto. Pendiente por validar.'
+            elif estadoDistribucion == 'done':
+                record['x_estado_en_distribucion'] = 'Distribución valido su proceso.'
+            elif estadoDistribucion == 'cancel':
+                record['x_estado_en_distribucion'] = 'Proceso de distribución cancelado.'
+            elif estadoDistribucion == 'distribucion':
+                record['x_estado_en_distribucion'] = 'Almacén valido el inicio del proceso de distribución.'
 
     
     def _get_dominio_localida_contacto(self):
