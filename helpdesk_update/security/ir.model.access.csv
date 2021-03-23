@@ -6,3 +6,5 @@ access_helpdesk_dcas,access.helpdesk.dcas.dcas,contadores.model_dcas_dcas,group_
 access_helpdesk_mas_detalle_mesa_de_servicio,access.helpdesk.mas.detalle.mesa.servicio,helpdesk_update.model_helpdesk_datos_mesa,group_helpdesk_mas_detalle_mesa_de_servicio,1,1,1,1
 access_helpdesk_comentario,access.helpdesk.comentario,helpdesk_update.model_helpdesk_comentario,group_helpdesk_agregar_diagnostico,1,1,1,1
 access_helpdesk_alerta,access.helpdesk.alerta,helpdesk_update.model_helpdesk_alerta,,1,1,1,1
+access_helpdesk_comentario_cerrar,access.helpdesk.comentario.cerrar,helpdesk_update.model_helpdesk_comentario_cerrar,group_helpdesk_cambio_a_cerrado,1,1,1,1
+access_helpdesk_comentario_cancelar,access.helpdesk.comentario.cancelar,helpdesk_update.model_helpdesk_comentario_cancelar,group_helpdesk_cambio_a_cancelado,1,1,1,1
