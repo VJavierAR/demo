@@ -13,28 +13,28 @@ _logger = logging.getLogger(__name__)
 
 
 class HistoricoC(models.Model):
-    _name='x_studio_historico_de_componentes'
-    _description='Historio de componentes'
-    x_fecha_de_entrega_text=fields.Text()
-    x_robot=fields.Text()
-    x_serieTexto=fields.Text()
-    x_tipo=fields.Text()
-    x_relacion_refacciones=fields.Many2one('helpdesk.confirmar.validar.refacciones')
-    x_studio_field_MH4DO=fields.Many2one('stock.production.lot')
-    x_studio_field_gKQ9k=fields.Many2one('product.product')
-    x_studio_cantidad=fields.Integer()
-    x_studio_contador_bn=fields.Integer()
-    x_studio_contador_color=fields.Integer()
-    x_studio_fecha_de_entrega=fields.Datetime()
-    x_studio_fecha_de_uso=fields.Datetime()
-    x_name=fields.Char()
-    x_studio_field_yS42B=fields.Char()
-    x_studio_modelo=fields.Char()
-    x_studio_numero_de_parte=fields.Char()
-    x_studio_ticket=fields.Char()
-    x_esRefaccionDeTechra=fields.Boolean()
-    x_studio_creado_por_script=fields.Boolean()
-    x_ultimaCargaRefacciones=fields.Boolean()
+    _name = 'x_studio_historico_de_componentes'
+    _description = 'Historio de componentes'
+    x_fecha_de_entrega_text = fields.Text(string='Fecha de entrega texto', store=True, copied=True)
+    x_robot = fields.Text(string='Robot', store=True, copied=True)
+    x_serieTexto = fields.Text(string='Serie texto', store=True, copied=True)
+    x_tipo = fields.Text(string='Tipo', store=True, copied=True)
+    x_relacion_refacciones = fields.Many2one('helpdesk.confirmar.validar.refacciones', string='Relación refacciones', store=True, copied=True)
+    x_studio_field_MH4DO = fields.Many2one('stock.production.lot', string='Lote/Número de serie', store=True, copied=True)
+    x_studio_field_gKQ9k = fields.Many2one('product.product', string='Producto', store=True)
+    x_studio_cantidad = fields.Integer(string='Cantidad', store=True)
+    x_studio_contador_bn = fields.Integer(string='Contador BN', store=True)
+    x_studio_contador_color = fields.Integer(string='Contador Color', store=True)
+    x_studio_fecha_de_entrega = fields.Datetime(string='Fecha de entrega', store=True)
+    x_studio_fecha_de_uso = fields.Datetime(string='Fecha de uso', store=True)
+    x_name = fields.Char(string='Name', store=True)
+    x_studio_field_yS42B = fields.Char(string='New Campo relacionado', readonly=True)
+    x_studio_modelo = fields.Char(string='Modelo', store=True)
+    x_studio_numero_de_parte = fields.Char(string='Número de parte', store=True)
+    x_studio_ticket = fields.Char(string='Ticket', store=True)
+    x_esRefaccionDeTechra = fields.Boolean(string='Refaccion cargada de techra', store=True, copied=True)
+    x_studio_creado_por_script = fields.Boolean(string='Creado por script', store=True)
+    x_ultimaCargaRefacciones = fields.Boolean(string='Ultima carga al día 22/09/2020', store=True, copied=True)
 
 
 
