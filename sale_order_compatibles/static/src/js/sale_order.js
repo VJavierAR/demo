@@ -8,7 +8,7 @@ odoo.define('sale.action_button', function (require) {
     var _t = core._t;
 
     ListController.include({
-        renderButtons1: function($node) {
+        renderButtons: function($node) {
         this._super.apply(this, arguments);
             if (this.$buttons) {
                 if (typeof this.actionViews !== 'undefined' && this.actionViews.length > 0) {
