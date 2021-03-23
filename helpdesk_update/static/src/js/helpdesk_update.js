@@ -21,7 +21,7 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
 	var session = require('web.session');
 	var _t = core._t;
 
-    var idVistaMesaDeServicio = 2315;
+    idVistaMesaDeServicio = 2315;
 
 
 	ListController.include({
@@ -32,8 +32,9 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
 			//console.log(arguments)
 			if (this.$buttons) {
 				//console.log(this);
-		    	//console.log("Test: " + this.actionViews[0].viewID);
+		    	
 		    	if (typeof this.actionViews !== 'undefined' && this.actionViews.length > 0) {
+                    console.log("Test: " + this.actionViews[0].viewID);
 			    	if (this.actionViews[0].viewID == idVistaMesaDeServicio || this.actionViews[0].viewID == 3085 || this.actionViews[0].viewID == 3080 || this.actionViews[0].viewID == 3113) {
                         console.log("Entre para vista de mesa de servicio")
 			    		this.$buttons.find('.o_button_import').hide();
