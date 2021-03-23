@@ -79,5 +79,9 @@
                 <field name="name">Más detalle mesa de servicio</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>
             </record>
+            <record id="group_helpdesk_crear_con_serie_mesa_de_servicio" model="res.groups">
+                <field name="name">Crear con serie para mesa de servicio</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
         </data>
     </openerp>
