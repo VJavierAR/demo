@@ -13,4 +13,3 @@ access_helpdesk_validar_refacciones,access.helpdesk.validar.refacciones,helpdesk
 access_helpdesk_historico_componentes,access.helpdesk.historico.componentes,helpdesk_update.model_x_studio_historico_de_componentes,group_helpdesk_valida_refaccion,1,1,1,1
 access_helpdesk_validacion_so,access.helpdesk.validacion.so,helpdesk_update.model_helpdesk_validacion_so,,1,1,1,1
 access_helpdesk_crearconserie,access.helpdesk.crearconserie,helpdesk_update.model_helpdesk_crearconserie,group_helpdesk_crear_con_serie_mesa_de_servicio,1,1,1,1
-helpdesk.crearconserie
