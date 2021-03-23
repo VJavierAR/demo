@@ -161,7 +161,9 @@ class HelpDeskComentario(TransientModel):
         self.estado = self.ticket_id.stage_id.name
 
     def _compute_diagnosticos(self):
-        self.diagnostico_id = self.ticket_id.diagnosticos.ids
+        self.diagnostico_id = False
+        if self.ticket_id.diagnosticos:
+            self.diagnostico_id = self.ticket_id.diagnosticos.ids
 
 
 
