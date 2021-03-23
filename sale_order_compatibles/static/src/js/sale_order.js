@@ -1,4 +1,4 @@
-odoo.define('invoice.action_button', function (require) {
+odoo.define('sale.action_button', function (require) {
 "use strict";
 
     var core = require('web.core');
@@ -8,7 +8,7 @@ odoo.define('invoice.action_button', function (require) {
     var _t = core._t;
 
     ListController.include({
-        renderButtons: function($node) {
+        renderButtons1: function($node) {
         this._super.apply(this, arguments);
             if (this.$buttons) {
                 if (typeof this.actionViews !== 'undefined' && this.actionViews.length > 0) {
