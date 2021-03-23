@@ -27,3 +27,29 @@ class AgregadosOdisminucion(TransientModel):
     	else:
     		self.sale.x_studio_field_69Boh.write({'bolsaCambio':float(self.sale.x_studio_field_69Boh.rentaMensual)+self.bolsa,'montoCambio':float(self.sale.x_studio_field_69Boh.rentaMensual)+self.monto,'fechaAplicacion':self.periodo})
     		self.sale.preparaSolicitud()
+
+class SaleOrderMassAction(TransientModel):
+    _name = 'sale.order.action'
+    _description = 'Reporte de Solicitudes'
+    fechaInicial=fields.Datetime()
+    fechaFinal=fields.Datetime()
+    tipo=fields.Selection([["Cambio","Cambio"],["Arrendamiento","Arrendamiento"],["Venta","Venta"],["Backup","Backup"],["Demostración","Demostración"],["Retiro","Retiro"],["Préstamo","Préstamo"]])
+    def report(self):
+        i=[]
+        d=[]
+        if(self.fechaInicial):
+            m=['confirmation_date','>=',self.fechaInicial]
+            i.append(m)
+        if(self.fechaFinal):
+            m=['confirmation_date','<=',self.fechaFinal]
+            i.append(m)
+        if(self.tipo):
+            m=['x_studio_tipo_de_solicitud','=',self.tipo]
+            i.append(m)
+        i.append(['x_studio_field_bxHgp','=',False])
+        d=self.env['sale.order'].search(i,order='confirmation_date asc').filtered(lambda x:x.origin==False and x.x_studio_factura==False)
+        if(len(d)>0):
+            d[0].write({'x_studio_arreglo':str(d.mapped('id'))})
+            return self.env.ref('stock_picking_mass_action.sale_xlsx').report_action(d[0])
+        if(len(d)==0):
+            raise UserError(_("No hay registros para la selecion actual"))
