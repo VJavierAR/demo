@@ -830,7 +830,7 @@
                         <field name='serie' widget='many2many_tags' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" force_save = "1"/>
                     </group>
                     <group string='Buscar por cliente y localidad'>
-                        <field name='clienteRelacion' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" domain='[["x_studio_activo_1", "=", True]]' force_save = "1" widget="res_partner_many2one" />
+                        <field name='clienteRelacion' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" force_save = "1" widget="res_partner_many2one" /><!-- domain='[["x_studio_activo_1", "=", True]]' -->
                         <field name='localidadRelacion' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" domain='[["parent_id.id","=",idCliente],["type","=","delivery"]]' force_save = "1"/>
                         <field name='contactoInterno' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" domain='["&amp;","|",["parent_id.id", "=", idLocaliidad], ["parent_id.id", "=", idCliente],["type", "=", "contact"]]' attrs='{"invisible": [["localidad","!=","Genesis Agrícola"]]}' force_save = '1'/>
                         <!--<field name='localidadRelacion' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" domain='[["parent_id.id","=",idCliente],"|",["type","=","delivery"], ["type","=","contact"]]' force_save = "1"/>-->
