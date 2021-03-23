@@ -10,7 +10,7 @@ function test() {
     
 }
 */
-
+var idVistaMesaDeServicio = 2315;
 
 odoo.define('invoice.action_button_helpdesk', function (require) {
 "use strict";
@@ -21,9 +21,7 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
 	var session = require('web.session');
 	var _t = core._t;
 
-    idVistaMesaDeServicio = 2315;
-
-
+    
 	ListController.include({
 		renderButtons: function($node) {
 		this._super.apply(this, arguments);
