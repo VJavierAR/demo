@@ -29,8 +29,8 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
 			//console.log(this)
 			//console.log(arguments)
 			if (this.$buttons) {
-				//console.log(this);
-		    	
+				console.log(this);
+		    	console.log("Test: " + this.actionViews);
 		    	if (typeof this.actionViews !== 'undefined' && this.actionViews.length > 0) {
                     console.log("Test: " + this.actionViews[0].viewID);
 			    	if (this.actionViews[0].viewID == idVistaMesaDeServicio || this.actionViews[0].viewID == 3085 || this.actionViews[0].viewID == 3080 || this.actionViews[0].viewID == 3113) {
