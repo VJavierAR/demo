@@ -32,30 +32,30 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
 				console.log(this);
 		    	console.log("Test: " + this.actionViews);
 		    	if (typeof this.actionViews !== 'undefined' && this.actionViews.length > 0) {
-                    console.log("Test: " + this.actionViews[0].viewID);
-			    	if (this.actionViews[0].viewID == idVistaMesaDeServicio || this.actionViews[0].viewID == 3085 || this.actionViews[0].viewID == 3080 || this.actionViews[0].viewID == 3113) {
+                    console.log("id vista: " + this.actionViews.viewId);
+                    var idVista = this.actionViews.viewId;
+			    	if (idVista == idVistaMesaDeServicio || idVista == 3085 || idVista == 3080 || idVista == 3113) {
                         console.log("Entre para vista de mesa de servicio")
 			    		this.$buttons.find('.o_button_import').hide();
 			    		this.$buttons.find('.o_list_button_add').hide();
                         this.$buttons.find('.oe_action_button_ticket_reporte').hide();
 			    		this.$buttons.find('.oe_action_button_helpdesk').click(this.proxy('action_def'));
-			    	} else if (this.actionViews[0].viewID == 956) {
+			    	} else if (idVista == 956) {
                         console.log("Entre para vista de toner")
                         this.$buttons.find('.o_button_import').hide();
                         //this.$buttons.find('.o_list_button_add').hide();
                         this.$buttons.find('.oe_action_button_ticket_reporte').hide();
                         this.$buttons.find('.oe_action_button_helpdesk').hide();
                         this.$buttons.find('.oe_action_button_helpdesk').click(this.proxy('action_def_toner'));
-                    } else if (this.actionViews[0].viewID == 3079) {
+                    } else if (idVista == 3079) {
                         console.log("Entre para vista de todos los tickets")
                         this.$buttons.find('.oe_action_button_helpdesk').hide();
                         this.$buttons.find('.o_list_button_add').hide();
                         this.$buttons.find('.oe_action_button_ticket_reporte').click(this.proxy('action_def_reporte'));
-                    } else if (this.actionViews[0].viewID == 828) {
+                    } else if (idVista == 828) {
                         console.log("Entre para vista de acount invoice")
                         this.$buttons.find('.oe_action_button_ticket_reporte2').click(this.proxy('action_def_reporte_2'));
-                    }  
-                    else {
+                    } else {
                         console.log("Entre porque no fue ninguna")
 			    		this.$buttons.find('.o_list_button_add').show();
 			    		this.$buttons.find('.oe_action_button_helpdesk').hide();
