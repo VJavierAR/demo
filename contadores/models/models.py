@@ -2051,19 +2051,21 @@ class lor(models.Model):
 
     @api.depends('dca')
     def _compute_x_studio_fecha_lectura_actual(self):
-      for record in self:
-        if len(record.dca) > 0:
-          fecha = str(record.dca[len(record.dca) - 2].create_date)
-          record['x_studio_fecha_lectura_actual'] = fecha
+        self.x_studio_fecha_lectura_actual = ''
+        for record in self:
+            if len(record.dca) > 0:
+                fecha = str(record.dca[len(record.dca) - 2].create_date)
+                record['x_studio_fecha_lectura_actual'] = fecha
 
     x_studio_fecha_ultima_lectura = fields.Char(readonly=True, store=True, string='Fecha última lectura', compute = '_compute_x_studio_fecha_ultima_lectura')
 
     @api.depends('dca')
     def _compute_x_studio_fecha_ultima_lectura(self):
-      for record in self:
-        if len(record.dca) > 0:
-          fecha = str(record.dca[len(record.dca) - 1].create_date)
-          record['x_studio_fecha_ultima_lectura'] = fecha
+        self.x_studio_fecha_ultima_lectura = ''
+        for record in self:
+            if len(record.dca) > 0:
+                fecha = str(record.dca[len(record.dca) - 1].create_date)
+                record['x_studio_fecha_ultima_lectura'] = fecha
 
     x_studio_field_06Xvu = fields.Integer(store=True, string='New Número entero')
     #x_studio_field_17hqX = fields.Integer(store=True, readonly=True, related='x_studio_field_a9oR8.id', string='New Related Field')
@@ -2086,13 +2088,15 @@ class lor(models.Model):
 
     @api.depends('x_studio_toner_compatible')
     def _compute_x_studio_field_A6PR9(self):
-      for record in self:
-        record['x_studio_field_A6PR9'] = record.x_studio_toner_compatible.x_studio_color
+        self.x_studio_field_A6PR9 = ''
+        for record in self:
+            record['x_studio_field_A6PR9'] = record.x_studio_toner_compatible.x_studio_color
 
     x_studio_contrato = fields.Char(readonly=True, store=False, string='Contrato', compute = '_compute_x_studio_contrato')
 
     @api.depends('servicio')
     def _compute_x_studio_contrato(self):
+        self.x_studio_contrato = ''
         for r in self:
             if r.servicio:
                 r['x_studio_contrato']=str(r.servicio.contrato.idTechraRef)
