@@ -27,6 +27,7 @@
                             <field name="product_uom_id" readonly="1" groups="uom.group_uom"/>
                         </div>
                         <field name="ref"/>
+                        <field name="x_studio_mini"/>
                         <field name="company_id" groups="base.group_multi_company"/>
                     </group>
                     <group></group>
