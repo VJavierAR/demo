@@ -33,6 +33,7 @@
                 <notebook attrs="{'invisible': [('display_complete', '=', False)]}">
                     <page string="Description" name="description">
                         <field name="note"/>
+                        <field name="x_studio_mini"/>
                     </page>
                 </notebook>
                 </sheet>
