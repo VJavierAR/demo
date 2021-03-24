@@ -2464,7 +2464,7 @@ class lor(models.Model):
             self.x_studio_zona = ''
             tam=len(r.x_studio_move_line)
             pos=tam-1
-            if(r.x_studio_localidad_2):
+            if(r.x_studio_localidad_2.id):
                 loca=r.x_studio_localidad_2
                 r['x_studio_ultma_ubicacin'] = str(loca.display_name)
                 r['x_studio_delegacion']=str(loca.l10n_mx_edi_locality)
