@@ -245,28 +245,28 @@ class sale_update(models.Model):
 				for ss in s.x_studio_field_9nQhR.x_studio_histrico_de_componentes:
 					d={'x_studio_field_mqSKO':ss.x_studio_field_gKQ9k.id,'product_id':ss.x_studio_field_gKQ9k.id,'name':ss.x_studio_field_gKQ9k.name,'product_uom_qty':ss.x_studio_cantidad,'product_uom':ss.x_studio_field_gKQ9k.uom_id.id,'price_unit':0.00}
 					self.order_line=[d]
-	
 
-    def action_confirm(self):
-        if self._get_forbidden_state_confirm() & set(self.mapped('state')):
-            raise UserError(_(
-                'It is not allowed to confirm an order in the following states: %s'
-            ) % (', '.join(self._get_forbidden_state_confirm())))
 
-        for order in self.filtered(lambda order: order.partner_id not in order.message_partner_ids):
-            order.message_subscribe([order.partner_id.id])
-        self.write(self._prepare_confirmation_values())
+	def action_confirm(self):
+	    if self._get_forbidden_state_confirm() & set(self.mapped('state')):
+	        raise UserError(_(
+	            'It is not allowed to confirm an order in the following states: %s'
+	        ) % (', '.join(self._get_forbidden_state_confirm())))
 
-        # Context key 'default_name' is sometimes propagated up to here.
-        # We don't need it and it creates issues in the creation of linked records.
-        context = self._context.copy()
-        context.pop('default_name', None)
+	    for order in self.filtered(lambda order: order.partner_id not in order.message_partner_ids):
+	        order.message_subscribe([order.partner_id.id])
+	    self.write(self._prepare_confirmation_values())
 
-        self.with_context(context)._action_confirm()
-        if self.env.user.has_group('sale.group_auto_done_setting'):
-            self.action_done()
-        self.saleLinesMove()
-        return True
+	    # Context key 'default_name' is sometimes propagated up to here.
+	    # We don't need it and it creates issues in the creation of linked records.
+	    context = self._context.copy()
+	    context.pop('default_name', None)
+
+	    self.with_context(context)._action_confirm()
+	    if self.env.user.has_group('sale.group_auto_done_setting'):
+	        self.action_done()
+	    self.saleLinesMove()
+	    return True
 
 	def saleLinesMove(self):
 		picks=self.env['stock.picking'].search(['&',['sale_child','=',self.id],['state','!=','draft']])
