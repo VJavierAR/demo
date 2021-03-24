@@ -2229,6 +2229,34 @@ class lor(models.Model):
         for r in self:
             r['x_studio_pg_proc']=r.x_studio_ultimalecturam-r.x_studio_lec_ant_bn
 
+    x_studio_ultimalecturacolor = fields.Integer(readonly=True, store=False, string='ultimalecturaColor', compute = '_compute_x_studio_ultimalecturacolor')
+
+    @api.depends('x_studio_field_PYss4')
+    def _compute_x_studio_ultimalecturacolor(self):
+        for record in self:
+            t=len(record.x_studio_field_PYss4)
+            h=[]
+            sc=[]
+            d=''
+            f=0
+            if t > 0:
+                for a in record.x_studio_field_PYss4 :
+                    h.append(a.contadorColor)
+                if len(h)==0:
+                    f=0
+                fo=len(h)  
+                if fo>3:
+                    f=max(h)
+                    sc=h
+                    sc.sort() 
+                    record['x_studio_lec_ant_color']=sc[fo-2]
+                if len(h)==1:
+                    f=h[0]  
+                record['x_studio_ultimalecturacolor'] = f
+            else:
+                record['x_studio_ultimalecturacolor'] = 0
+
+
     x_studio_pg_proc_color = fields.Integer(readonly=True, store=False, string='Pág. Proc. color', compute = '_compute_x_studio_pg_proc_color')
 
     @api.depends('x_studio_field_PYss4')
@@ -2275,7 +2303,7 @@ class lor(models.Model):
     x_studio_ubicaciontest)
     )
     x_studio_ultimafuente)
-    x_studio_ultimalecturacolor
+    
     """
     x_studio_ultimalecturam = fields.Integer(readonly=True, string='ultimaLecturaM', compute = '_compute_x_studio_ultimalecturam')
 
