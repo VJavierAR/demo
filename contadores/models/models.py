@@ -2450,7 +2450,7 @@ class lor(models.Model):
     x_studio_ultma_ubicacin = fields.Char(readonly=True, string='Ultíma Ubicación', compute = '_compute_x_studio_ultma_ubicacin')
 
     @api.depends('x_studio_cambio')
-    def _compute_x_studio_fecha_lectura_actual(self):
+    def _compute_x_studio_ultma_ubicacin(self):
         self.x_studio_ultma_ubicacin = ''
         self.x_studio_delegacion = ''
         self.x_studio_calle = ''
