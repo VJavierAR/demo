@@ -92,7 +92,7 @@
                         </field>
                     </page>
                     <page string="Historico de componentes" name="componentes">
-                        <field name="x_studio_historico_de_componentes">
+                        <field name="x_studio_histrico_de_componentes">
                             <tree>
                                 <field name="create_date"/>
                                 <field name="write_uid"/>
