@@ -2222,8 +2222,46 @@ class lor(models.Model):
     x_studio_ubicaciontest)
     x_studio_ultima_ubicacin)
     x_studio_ultimafuente)
-    x_studio_ultimalecturacolor)
-    x_studio_ultimalecturam)
+    x_studio_ultimalecturacolor
+    """
+    x_studio_ultimalecturam = fields.Integer(readonly=True, string='ultimaLecturaM', compute = '_compute_x_studio_ultimalecturam')
+
+    @api.depends('x_studio_field_PYss4')
+    def _compute_x_studio_ultimalecturam(self):
+        for record in self:
+            t=len(record.x_studio_field_PYss4)
+            h=[]
+            s=[]
+            d=''
+            f=0
+            index=0
+            if t > 0:
+                for a in record.x_studio_field_PYss4 :
+                    h.append(a.contadorMono)
+                if len(h)==0:
+                    f=0
+                if len(h)==2:
+                    f=max(h)
+                    s=h
+                    s.sort() 
+                    index = h.index(max(h))
+                    record['x_studio_lec_ant_bn']=s[1]
+                if len(h)>3:
+                    f=max(h)
+                    s=h
+                    s.sort() 
+                    index = h.index(max(h))
+                    record['x_studio_lec_ant_bn']=s[t-2]  
+                if len(h)==1:
+                    f=h[0]  
+                record['x_studio_ultimalecturam'] = f
+                record['x_studio_periodo'] = str(record.x_studio_field_PYss4[index].x_studio_field_no6Rb)
+                #record['x_studio_periodo'] = str(len(h))
+            else:
+                record['x_studio_ultimalecturam'] = 0
+                record['x_studio_periodo'] = 'sin lecturas'
+
+    """
     x_studio_ultimo_contador_negro_toner)
     x_studio_ultimo_contador_toner)
     """
