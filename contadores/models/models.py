@@ -2158,12 +2158,37 @@ class lor(models.Model):
     x_studio_impresiones_tner)
     x_studio_instalado)
     x_studio_interior)
-    x_studio_lec_ant_bn)
-    x_studio_lec_ant_color)
-    x_studio_locacion_recortada)
-    x_studio_localidad)
-    x_studio_localidad_1)
     """
+    x_studio_lec_ant_bn = fields.Integer(string='Lec. Ant. BN', readonly=True)
+    
+    x_studio_lec_ant_color = fields.Integer(string='Lec. Ant. color', readonly=True)
+    x_studio_ultima_ubicacin = fields.Char(readonly=True, store=False, string='Ultima Ubicación', compute = '_compute_x_studio_ultima_ubicacin')
+
+    @api.depends('x_studio_cambio')
+    def _compute_x_studio_ultima_ubicacin(self):
+        for r in self:
+            tam=len(r.x_studio_move_line)
+            pos=tam-1
+            if(r.x_studio_localidad_2):
+                loca=r.x_studio_localidad_2
+                r['x_studio_ultima_ubicacin'] = str(loca.display_name)
+                r['x_studio_delegacion']=str(loca.l10n_mx_edi_locality)
+
+
+    x_studio_locacion_recortada = fields.Char(readonly=True, store=False, string='Locación', compute = '_compute_x_studio_locacion_recortada')
+
+    @api.depends('x_studio_ultima_ubicacin')
+    def _compute_x_studio_locacion_recortada(self):
+        for record in self:
+            if record.x_studio_ultima_ubicacin:
+                if(len(str(record.x_studio_ultima_ubicacin).rsplit(',',1))>=2):
+                    record['x_studio_locacion_recortada'] = str(record.x_studio_ultima_ubicacin).rsplit(',',1)[1]
+
+
+    x_studio_localidad = fields.Char(store=False, string='Localidad')
+    x_studio_localidad_1 = fields.Many2one('res.users',string='Localidad',store=True)
+
+    
     x_studio_localidad_2 = fields.Many2one('res.partner',string='Localidad',store=True, track_visibility='onchange')
 
     """
@@ -2220,7 +2245,7 @@ class lor(models.Model):
     x_studio_ubicacin)
     x_studio_ubicacion_id)
     x_studio_ubicaciontest)
-    x_studio_ultima_ubicacin)
+    )
     x_studio_ultimafuente)
     x_studio_ultimalecturacolor
     """
