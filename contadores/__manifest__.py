@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','portal','stock', 'x_studio_historico_de_componentes'],
+    'depends': ['base','portal','stock', 'helpdesk_update'],
 
     # always loaded
     'data': [
