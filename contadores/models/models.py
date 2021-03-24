@@ -2200,15 +2200,43 @@ class lor(models.Model):
     """
     x_studio_move_line = fields.One2many('stock.move.line','lot_id', string='Movimientos')
 
-    """
-    x_studio_negro)
-    x_studio_negro_anterior)
-    x_studio_numero_de_serie)
-    x_studio_pais)
-    x_studio_periodo)
-    x_studio_pg_proc)
-    x_studio_pg_proc_color)
-    """
+    
+    x_studio_negro = fields.Char(store=False, string='Negro', compute = '_compute_x_studio_negro')
+
+    @api.depends('dca')
+    def _compute_x_studio_negro(self):
+        for record in self:
+        if len(record.dca) > 0:
+            cont_color = str(record.dca[len(record.dca) - 1].porcentajeNegro)
+            record['x_studio_negro'] = str(cont_color) 
+
+    x_studio_negro_anterior = fields.Char(readonly=True, store=False, string='Negro Anterior', compute = '_compute_x_studio_negro_anterior')
+
+    @api.depends('dca')
+    def _compute_x_studio_negro_anterior(self):
+        for record in self:
+        if len(record.dca) > 0:
+            cont_color = str(record.dca[len(record.dca) - 2].porcentajeNegro)
+            record['x_studio_negro_anterior'] = str(cont_color)
+
+    x_studio_numero_de_serie = fields.Many2one('stock.production.lot',string='Numero de serie',store=True, readonly=True, related="x_studio_field_3OnO2.serie")
+    x_studio_pais = fields.Char(store=False, string='País')
+    x_studio_periodo = fields.Char(readonly=False, string='periodo')
+    x_studio_pg_proc = fields.Integer(readonly=True, store=False, string='Pág. Proc', compute = '_compute_x_studio_pg_proc')
+
+    @api.depends('x_studio_field_PYss4')
+    def _compute_x_studio_pg_proc(self):
+        for r in self:
+            r['x_studio_pg_proc']=r.x_studio_ultimalecturam-r.x_studio_lec_ant_bn
+
+    x_studio_pg_proc_color = fields.Integer(readonly=True, store=False, string='Pág. Proc. color', compute = '_compute_x_studio_pg_proc_color')
+
+    @api.depends('x_studio_field_PYss4')
+    def _compute_x_studio_pg_proc_color(self):
+        for r in self:
+            r['x_studio_pg_proc_color']=r.x_studio_ultimalecturacolor-r.x_studio_lec_ant_color
+
+    
     x_studio_producto_temp = fields.Many2one('product.product',string='producto temp',store=True, readonly=True, related='x_studio_field_Zi7sY')
 
     """
