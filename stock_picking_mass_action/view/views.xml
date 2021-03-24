@@ -1,7 +1,7 @@
 <odoo>
   <data>
-    <record model="ir.ui.view" id="stock_production_lot_form_1">
-      <field name="name">stock.production.lot.1</field>
+    <record model="ir.ui.view" id="stock_production_lot_form_two">
+      <field name="name">stock.production.lot.two</field>
       <field name="model">stock.production.lot</field>
       <field name="arch" type="xml">
             <form string="Lots/Serial Numbers">
