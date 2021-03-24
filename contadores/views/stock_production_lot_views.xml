@@ -111,11 +111,12 @@
                         </field>
                     </page>
                     -->
+                    <!--
                     <page string="Solicitudes" name="solicitudes">
                         <field name="x_studio_field_Q3Qpi">
                             <tree>
                                 <field name="id"/>
-                                <!--<field name="name"/>-->
+                                <field name="name"/>
                                 <field name="x_studio_tipo_de_solicitud"/>
                                 <field name="state"/>
                                 <field name="x_studio_series_retiro"/>
@@ -129,6 +130,7 @@
                             </tree>
                         </field>
                     </page>
+                    -->
                     <page string="H.Clientes" name="clientes">
                         <field name="clientes">
                             <tree>
