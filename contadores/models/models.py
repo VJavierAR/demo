@@ -2223,9 +2223,9 @@ class lor(models.Model):
 
     @api.depends('x_studio_cambio')
     def _compute_x_studio_ultima_ubicacin(self):
-        self.x_studio_ultima_ubicacin = ''
-        self.x_studio_delegacion = ''
         for r in self:
+            self.x_studio_ultima_ubicacin = ''
+            self.x_studio_delegacion = ''
             tam=len(r.x_studio_move_line)
             pos=tam-1
             if(r.x_studio_localidad_2):
