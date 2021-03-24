@@ -2164,12 +2164,16 @@ class lor(models.Model):
             if r.servicio:
                 r['x_studio_idreal']=str(r.servicio.idtec)
 
+    """
+    x_studio_suscripcion = 
+
     x_studio_idservicio = fields.Char(string='idservicio', readonly=True, compute='_compute_x_studio_idservicio')
 
     @api.depends('x_studio_suscripcion')
     def _compute_x_studio_idservicio(self):
         for r in self:
             r['x_studio_idservicio']=str(r.x_studio_suscripcion.id)
+    """
 
     #x_studio_idticket = fields.Integer(string='idticket', readonly=True, store=True, related='x_studio_field_a9oR8.x_studio_id_ticket')
     x_studio_idtoner = fields.Char(string='idservicio', readonly=True, store=True, compute='_compute_x_studio_idtoner')
@@ -2332,7 +2336,7 @@ class lor(models.Model):
     x_studio_solicitar_tner_bn)
     x_studio_solicitar_tner_cian_1)
     x_studio_solicitar_tner_magenta)
-    x_studio_suscripcion)
+    )
     x_studio_tamdca)
     x_studio_test)
     x_studio_ticketactual)
