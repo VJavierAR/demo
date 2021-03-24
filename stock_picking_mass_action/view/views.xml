@@ -185,7 +185,7 @@
                    eval="[(5, 0, 0),
                           (0, 0, {'view_mode': 'tree', 'view_id': ref('stock.view_production_lot_tree')}),
                           (0, 0, {'view_mode': 'form', 'view_id': ref('stock_production_lot_form_two')})]"/>
-        <field name="search_view_id" ref="search_product_lot_filter"/>
+        <field name="search_view_id" ref="stock.search_product_lot_filter"/>
         <field name="context">{'search_default_group_by_product': 1, 'display_complete': True, 'default_company_id': allowed_company_ids[0]}</field>
         <field name="help" type="html">
           <p class="o_view_nocontent_smiling_face">
