@@ -2088,7 +2088,7 @@ class lor(models.Model):
       for record in self:
         record['x_studio_field_A6PR9'] = record.x_studio_toner_compatible.x_studio_color
 
-    
+
     
     #x_studio_field_B7uLt = fields.One2many('x_dcas','x_studio_field_ue4Ea', string='DCAS')
     """
@@ -2151,19 +2151,46 @@ class lor(models.Model):
     x_studio_helpdesk_team_id)
     """
     #x_studio_histrico_de_componentes = fields.One2many('x_studio_historico_de_componentes','x_studio_field_MH4DO', string='Histórico De Componentes ', store=True, domain='["|",("x_ultimaCargaRefacciones","=",True),("x_studio_modelo","like","Refacción y/o accesorio:")]')
+    
+    x_studio_idotrosistmp = fields.Char(string='idotrosistmp', store=True)
+    x_studio_idreal = fields.Char(string='idreal', readonly=True, compute='_compute_x_studio_idreal')
+
+    @api.depends('servicio')
+    def _compute_x_studio_idreal(self):
+        for r in self:
+            if r.servicio:
+                r['x_studio_idreal']=str(r.servicio.idtec)
+
+    x_studio_idservicio = fields.Char(string='idservicio', readonly=True, compute='_compute_x_studio_idservicio')
+
+    @api.depends('x_studio_suscripcion')
+    def _compute_x_studio_idservicio(self):
+        for r in self:
+            r['x_studio_idservicio']=str(r.x_studio_suscripcion.id)
+
+    x_studio_idticket = fields.Integer(string='idticket', readonly=True, store=True, related='x_studio_field_a9oR8.x_studio_id_ticket')
+    x_studio_idtoner = fields.Char(string='idservicio', readonly=True, store=True, compute='_compute_x_studio_idtoner')
+
+    @api.depends('x_studio_toner_compatible')
+    def _compute_x_studio_idtoner(self):
+        for record in self:
+            record['x_studio_idtoner'] = record.x_studio_toner_compatible.id
+
+    x_studio_impresiones = fields.Integer(string='Impresiones Facturación', readonly=True, compute='_compute_x_studio_impresiones')
+
+    @api.depends('dca')
+    def _compute_x_studio_impresiones(self):
+        for record in self:
+            record['x_studio_impresiones']=0
     """
-    x_studio_idotrosistmp)
-    x_studio_idreal)
-    x_studio_idservicio)
-    x_studio_idticket)
-    x_studio_idtoner)
-    x_studio_impresiones)
-    x_studio_impresiones_color)
+    x_studio_impresiones_color
     x_studio_impresiones_color_mesa)
     x_studio_impresiones_color_mesa_1)
     x_studio_impresiones_mesa)
     x_studio_impresiones_tner)
-    x_studio_instalado)
+    """
+    x_studio_instalado = fields.Boolean(string='Instalado', store=True)
+    """
     x_studio_interior)
     """
     x_studio_lec_ant_bn = fields.Integer(string='Lec. Ant. BN', readonly=True)
