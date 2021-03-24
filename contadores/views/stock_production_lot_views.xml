@@ -131,6 +131,7 @@
                         </field>
                     </page>
                     -->
+                    <!--
                     <page string="H.Clientes" name="clientes">
                         <field name="clientes">
                             <tree>
@@ -147,6 +148,7 @@
                             </tree>
                         </field>
                     </page>
+                -->
                     <page string="Cliente" name="cliente">
                         <group>
                             <group>

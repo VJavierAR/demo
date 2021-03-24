@@ -2087,6 +2087,8 @@ class lor(models.Model):
     def _compute_x_studio_field_A6PR9(self):
       for record in self:
         record['x_studio_field_A6PR9'] = record.x_studio_toner_compatible.x_studio_color
+
+    
     
     #x_studio_field_B7uLt = fields.One2many('x_dcas','x_studio_field_ue4Ea', string='DCAS')
     """
@@ -2103,7 +2105,6 @@ class lor(models.Model):
     x_studio_field_PwHLb)
     """
     x_studio_field_Q3Qpi = fields.Many2many('sale.order', relation ='x_sale_order_stock_production_lot_rel', column1='stock_production_lot_id', column2='sale_order_id', string='Pedido de venta', store=True)
-    
     """
     x_studio_field_QwAZL)
     x_studio_field_RJsuy)
