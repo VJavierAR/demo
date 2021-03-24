@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <record model="ir.ui.view" id="stock_production_lot_form_two">
+    <!--<record model="ir.ui.view" id="stock_production_lot_form_two">
       <field name="name">stock.production.lot.two</field>
       <field name="model">stock.production.lot</field>
       <field name="arch" type="xml">
@@ -44,7 +44,7 @@
                 </div>
             </form>
       </field>
-    </record>
+    </record>-->
 
 
 
