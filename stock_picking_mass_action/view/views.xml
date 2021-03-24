@@ -4,12 +4,13 @@
       <field name="name">stock.production.lot.1</field>
       <field name="model">stock.production.lot</field>
       <field name="arch" type="xml">
-      <form string="Lots/Serial Numbers">
+            <form string="Lots/Serial Numbers">
                 <sheet>
                 <field name="display_complete" invisible="1"/>
-                <div class="oe_button_box" name="button_box" attrs="{'invisible': [('display_complete', '=', False)]}">
+                <div class="oe_button_box" name="button_box"
+                     attrs="{'invisible': [('display_complete', '=', False)]}">
                         <button name="action_lot_open_quants" icon="fa-arrows" class="oe_stat_button" string="Location" type="object"/>
-                        <!--<button name="372" icon="fa-arrow-up" class="oe_stat_button" string="Traceability" type="action"/>-->
+                        <button name="%(action_stock_report)d" icon="fa-arrow-up" class="oe_stat_button" string="Traceability" type="action"/>
                 </div>
                 <div class="oe_title">
                     <label for="name" class="oe_edit_only"/>
@@ -28,12 +29,11 @@
                         <field name="ref"/>
                         <field name="company_id" groups="base.group_multi_company"/>
                     </group>
-                    <group/>
+                    <group></group>
                 </group>
                 <notebook attrs="{'invisible': [('display_complete', '=', False)]}">
                     <page string="Description" name="description">
                         <field name="note"/>
-                        <field name="x_studio_mini"/>
                     </page>
                 </notebook>
                 </sheet>
