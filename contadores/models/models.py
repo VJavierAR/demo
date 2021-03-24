@@ -2155,6 +2155,7 @@ class lor(models.Model):
     #x_studio_histrico_de_componentes = fields.One2many('x_studio_historico_de_componentes','x_studio_field_MH4DO', string='Histórico De Componentes ', store=True, domain='["|",("x_ultimaCargaRefacciones","=",True),("x_studio_modelo","like","Refacción y/o accesorio:")]')
     
     x_studio_idotrosistmp = fields.Char(string='idotrosistmp', store=True)
+    servicio = fields.Many2one('servicios',string='Servicio serie',store=True, copied=True)
     x_studio_idreal = fields.Char(string='idreal', readonly=True, compute='_compute_x_studio_idreal')
 
     @api.depends('servicio')
