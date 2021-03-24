@@ -175,7 +175,7 @@
                         <field name="x_studio_etapa"/>
                         <field name="id" readonly="1"/>
                         <field name="product_id" domain="[('type', 'in', ['product', 'consu'])]"/>
-                        <field name="x_studio_color_bn"/>
+                        <!--<field name="x_studio_color_bn"/>-->
                         <field name="x_studio_demo"/>
                         <field name="x_studio_mini"/>
                         <field name="x_studio_cambio"/>
