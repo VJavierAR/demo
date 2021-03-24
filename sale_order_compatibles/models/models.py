@@ -267,7 +267,7 @@ class sale_update(models.Model):
 	    return True
 
 	def saleLinesMove(self):
-		picks=self.env['stock.picking'].search(['&',['sale_child','=',self.id],['state','!=','draft']])
+		picks=self.env['stock.picking'].search(['&',['sale_id','=',self.id],['state','!=','draft']])
 		_logger.info(len(picks))
 		sal=self.order_line.sorted(key='id').mapped('id')
 		cliente=self.partner_shipping_id
