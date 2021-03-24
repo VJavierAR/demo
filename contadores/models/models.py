@@ -1851,7 +1851,7 @@ class lor(models.Model):
     x_studio_cliente = fields.Many2one('res.partner',string='Cliente',store=True, track_visibility = 'onchange')
     x_studio_colonia = fields.Char(readonly=True, string='Colonia')
 
-    #x_studio_color_bn = fields.Selection([['B/N', 'B/N'], ['Color', 'Color']], related='product_id.x_studio_color_bn')
+    x_studio_color_bn = fields.Selection([['B/N', 'B/N'], ['Color', 'Color']], string='Color B/N', related='product_id.x_studio_color_bn')
     x_studio_colorestoner = fields.Char(readonly=True, store=True, string='colorestoner', track_visibility = 'onchange')
     x_studio_comentario = fields.Text(string = 'Comentario', store = True)
     x_studio_contador_bn = fields.Char(readonly=True, string='Contador B/N', compute = '_compute_x_studio_contador_bn')
@@ -2081,6 +2081,7 @@ class lor(models.Model):
     x_studio_field_8tSxH = fields.Selection([['SOPORTE Y MANTENIMIENTO DE EQUIPOS', 'SOPORTE Y MANTENIMIENTO DE EQUIPOS'], ['SERVICIO DE ADMINISTRADOR KM NET MANAGER', 'SERVICIO DE ADMINISTRADOR KM NET MANAGER'], ['Costo por página procesada BN o color', 'Costo por página procesada BN o color'], ['RENTA MENSUAL DE LICENCIA EMBEDED', 'RENTA MENSUAL DE LICENCIA EMBEDED'], ['Renta base con ML incluidas BN o color + ML. excedentes', 'Renta base con ML incluidas BN o color + ML. excedentes'], ['TFS', 'TFS'], ['SERVICIO DE PCOUNTER', 'SERVICIO DE PCOUNTER'], ['Renta global + costo de página procesada BN o color', 'Renta global + costo de página procesada BN o color'], ['Renta global con páginas incluidas BN o color + pag. Excedentes', 'Renta global con páginas incluidas BN o color + pag. Excedentes'], ['Renta base + costo de página procesada BN o color', 'Renta base + costo de página procesada BN o color'], ['PAGINAS IMPRESAS EN BN', 'PAGINAS IMPRESAS EN BN']], store=True, readonly=True, string = 'New Campo relacionado', track_visibility = 'always')
     
     
+
     x_studio_field_A6PR9 = fields.Char(readonly=True, store=False, string='Color Tóner', compute = '_compute_x_studio_field_A6PR9')
 
     @api.depends('x_studio_toner_compatible')
