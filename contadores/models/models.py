@@ -2305,8 +2305,9 @@ class lor(models.Model):
     x_studio_tner_compatible_amarrillo)
     x_studio_tner_compatible_magenta)
     x_studio_toner)
-    x_studio_toner_1)
     """
+    x_studio_toner_1 = fields.One2many('dcas.dcas','serie', store=True, string='Historico de toner', domain='[["fuente","=","helpdesk.ticket"]]')
+    
     x_studio_toner_compatible = fields.Many2one('product.product',string='Tóner Compatible BN',store=True, copied=True)
 
     """
