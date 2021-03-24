@@ -2451,17 +2451,17 @@ class lor(models.Model):
 
     @api.depends('x_studio_cambio')
     def _compute_x_studio_ultma_ubicacin(self):
-        self.x_studio_ultma_ubicacin = ''
-        self.x_studio_delegacion = ''
-        self.x_studio_calle = ''
-        self.x_studio_cp = ''
-        self.x_studio_interior = ''
-        self.x_studio_exterior = ''
-        self.x_studio_colonia = ''
-        self.x_studio_ciudad = ''
-        self.x_studio_estado_1 = ''
-        self.x_studio_zona = ''
         for r in self:
+            self.x_studio_ultma_ubicacin = ''
+            self.x_studio_delegacion = ''
+            self.x_studio_calle = ''
+            self.x_studio_cp = ''
+            self.x_studio_interior = ''
+            self.x_studio_exterior = ''
+            self.x_studio_colonia = ''
+            self.x_studio_ciudad = ''
+            self.x_studio_estado_1 = ''
+            self.x_studio_zona = ''
             tam=len(r.x_studio_move_line)
             pos=tam-1
             if(r.x_studio_localidad_2):
