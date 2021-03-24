@@ -179,7 +179,7 @@
                         <field name="x_studio_demo"/>
                         <field name="x_studio_mini"/>
                         <field name="x_studio_cambio"/>
-                        <field name="x_studip_categoria_de_producto"/>
+                        <field name="x_studio_categoria_de_producto"/>
                         <field name="x_studio_estado"/>
                         <field name="x_studio_test" readonly="1"/>
                         <field name="x_studio_venta"/>
