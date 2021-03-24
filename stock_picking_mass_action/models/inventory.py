@@ -32,7 +32,6 @@ class LocationStock(Model):
 
 class StockPic(Model):
     _inherit = 'stock.move'
-
     def _action_confirm(self, merge=True, merge_into=False):
         """ Confirms stock move or put it in waiting if it's linked to another move.
         :param: merge: According to this boolean, a newly confirmed move will be merged
@@ -44,6 +43,8 @@ class StockPic(Model):
 
         to_assign = {}
         for move in self:
+            if move.state != 'draft':
+                continue
             # if the move is preceeded, then it's waiting (if preceeding move is done, then action_assign has been called already and its state is already available)
             if move.move_orig_ids:
                 move_waiting |= move
@@ -59,11 +60,15 @@ class StockPic(Model):
                 to_assign[key] |= move
 
         # create procurements for make to order moves
+        procurement_requests = []
         for move in move_create_proc:
             values = move._prepare_procurement_values()
             origin = (move.group_id and move.group_id.name or (move.origin or move.picking_id.name or "/"))
-            self.env['procurement.group'].run(move.product_id, move.product_uom_qty, move.product_uom, move.location_id, move.rule_id and move.rule_id.name or "/", origin,
-                                              values)
+            procurement_requests.append(self.env['procurement.group'].Procurement(
+                move.product_id, move.product_uom_qty, move.product_uom,
+                move.location_id, move.rule_id and move.rule_id.name or "/",
+                origin, move.company_id, values))
+        self.env['procurement.group'].run(procurement_requests, raise_user_error=not self.env.context.get('from_orderpoint'))
 
         move_to_confirm.write({'state': 'confirmed'})
         (move_waiting | move_create_proc).write({'state': 'waiting'})
@@ -72,9 +77,14 @@ class StockPic(Model):
         for moves in to_assign.values():
             moves._assign_picking()
         self._push_apply()
+        self._check_company()
+        moves = self
         #if merge:
-         #   return self._merge_moves(merge_into=merge_into)
-        return self
+        #    moves = self._merge_moves(merge_into=merge_into)
+        # call `_action_assign` on every confirmed move which location_id bypasses the reservation
+        moves.filtered(lambda move: not move.picking_id.immediate_transfer and move._should_bypass_reservation() and move.state == 'confirmed')._action_assign()
+        return moves
+
 
 
 class StockWarehouse(Model):
