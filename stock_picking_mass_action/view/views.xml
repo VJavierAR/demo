@@ -177,7 +177,7 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="action_production_lot_form" model="ir.actions.act_window">
+    <record id="stock.action_production_lot_form" model="ir.actions.act_window">
         <field name="name">Lots/Serial Numbers</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">stock.production.lot</field>
@@ -195,7 +195,7 @@
             From their traceability report you will see the full history of their use, as well as their composition.
           </p>
         </field>
-    </record>
+    </record> 
 
     <!--<menuitem name="Distribucion" id="distribucion_menu" parent="stock.menu_stock_root" sequence="5"/>-->
     <menuitem name="Ruta" id="ruta_menu" parent="vehiculos.distribucion_menu" action="creacion_ruta_action_window" />
