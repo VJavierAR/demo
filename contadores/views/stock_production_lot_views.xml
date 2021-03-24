@@ -49,6 +49,25 @@
                         <field name="name" placeholder="e.g. LOT/0001/20121"/>
                     </h1>
                 </div>
+                <group name="main_group">
+                    <group>
+                        <field name="product_id" context="{'default_type': 'product'}" readonly="context.get('set_product_readonly', False)" force_save="1" help="Product this lot/serial number contains. You cannot change it anymore if it has already been moved."/>
+                        <label for="product_qty" attrs="{'invisible': [('display_complete', '=', False)]}"/>
+                        <div class="o_row" attrs="{'invisible': [('display_complete', '=', False)]}">
+                            <field name="product_qty"/>
+                            <field name="product_uom_id" readonly="1" groups="uom.group_uom"/>
+                        </div>
+                        <field name="ref"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <group/>
+                </group>
+                <notebook attrs="{'invisible': [('display_complete', '=', False)]}">
+                    <page string="Description" name="description">
+                        <field name="note"/>
+                    </page>
+                </notebook>
+
                 <notebook>
                     <page string="Tickets" name="tickets">
                         <field name="html" widget="html"/>
