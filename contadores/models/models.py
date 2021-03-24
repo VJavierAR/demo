@@ -120,6 +120,7 @@ class dcas(models.Model):
     x_studio_contador_color_anterior=fields.Integer()
     x_studio_contador_mono_anterior=fields.Integer()
     x_studio_contador_mono_anterior_1=fields.Integer()
+    x_studio_descripcion = fields.Char(string='Descripción', store=True)
 
     @api.onchange('serie')             
     def ultimosContadoresNACM(self):
