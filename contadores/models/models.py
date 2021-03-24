@@ -2088,7 +2088,13 @@ class lor(models.Model):
       for record in self:
         record['x_studio_field_A6PR9'] = record.x_studio_toner_compatible.x_studio_color
 
+    x_studio_contrato = fields.Char(readonly=True, store=False, string='Contrato', compute = '_compute_x_studio_contrato')
 
+    @api.depends('servicio')
+    def _compute_x_studio_contrato(self):
+        for r in self:
+            if r.servicio:
+                r['x_studio_contrato']=str(r.servicio.contrato.idTechraRef)
     
     #x_studio_field_B7uLt = fields.One2many('x_dcas','x_studio_field_ue4Ea', string='DCAS')
     """
