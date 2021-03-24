@@ -2124,7 +2124,7 @@ class lor(models.Model):
     """
     x_studio_field_ZwQ81)
     """
-    x_studio_field_a9oR8 = fields.Many2one('helpdesk.ticket',string='Tiquete del Servicio de Asistencia',store=True)
+    #x_studio_field_a9oR8 = fields.Many2one('helpdesk.ticket',string='Tiquete del Servicio de Asistencia',store=True)
     """
     x_studio_field_alFCw_filename)
     x_studio_field_bh9t3)
@@ -2170,7 +2170,7 @@ class lor(models.Model):
         for r in self:
             r['x_studio_idservicio']=str(r.x_studio_suscripcion.id)
 
-    x_studio_idticket = fields.Integer(string='idticket', readonly=True, store=True, related='x_studio_field_a9oR8.x_studio_id_ticket')
+    #x_studio_idticket = fields.Integer(string='idticket', readonly=True, store=True, related='x_studio_field_a9oR8.x_studio_id_ticket')
     x_studio_idtoner = fields.Char(string='idservicio', readonly=True, store=True, compute='_compute_x_studio_idtoner')
 
     @api.depends('x_studio_toner_compatible')
