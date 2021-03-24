@@ -51,7 +51,7 @@
                     <page string="Lecturas" name="lecturas">
                         <group>
                             <group>
-                                <field name="x_studio_PYss4">
+                                <field name="x_studio_field_PYss4">
                                     <tree>
                                         <field name="contadorMono"/>
                                         <field name="contadorColor"/>

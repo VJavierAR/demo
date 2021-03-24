@@ -2096,7 +2096,9 @@ class lor(models.Model):
     x_studio_field_LV0Ls)
     x_studio_field_OLXDH)
     x_studio_field_OnbMI)
-    x_studio_field_PYss4)
+    """
+    x_studio_field_PYss4 = fields.One2many('dcas.dcas','serie', string='Lecturas', store=True, domain='[["fuente","=","dcas.dcas"]]')
+    """
     x_studio_field_PwHLb)
     x_studio_field_Q3Qpi)
     x_studio_field_QwAZL)
