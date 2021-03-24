@@ -1665,7 +1665,7 @@ class helpdesk_crearconserie(TransientModel):
 
     @api.onchange('localidadRelacion')
     def cambia_localidad(self):
-      if self.localidadRelacion:
+      if self.localidadRelacion.id:
         self.cliente = self.clienteRelacion.name
         self.localidad = self.localidadRelacion.name
         self.zonaLocalidad = self.localidadRelacion.x_studio_field_SqU5B
@@ -1730,7 +1730,7 @@ class helpdesk_crearconserie(TransientModel):
         
     @api.onchange('clienteRelacion')
     def cambia_cliente(self):
-        if not self.clienteRelacion:
+        if not self.clienteRelacion.id:
             self.localidadRelacion = False
             self.serie = [(5,0,0)]
 
@@ -1785,8 +1785,7 @@ class helpdesk_crearconserie(TransientModel):
     
     @api.onchange('serie')
     def cambia_serie(self):
-        _logger.info("****self.serie:" + str(self.serie.id))
-        if self.serie:
+        if self.serie.id:
             _my_object = self.env['helpdesk.crearconserie']
             if len(self.serie) > 1:
                 mensajeTitulo = "Alerta!!!"
