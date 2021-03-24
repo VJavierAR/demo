@@ -26,6 +26,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
+        'views/stock_production_lot_views.xml',
         'views/templates.xml',
         'wizard/wizard.xml'
     ],
