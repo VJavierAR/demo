@@ -1783,7 +1783,7 @@ class helpdesk_crearconserie(TransientModel):
 
     
     
-    @api.depends('serie')
+    @api.onchange('serie')
     def cambia_serie(self):
         _logger.info("****self.serie:" + str(self.serie.id))
         if self.serie:
