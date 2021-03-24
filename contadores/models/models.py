@@ -2168,7 +2168,7 @@ class lor(models.Model):
     @api.depends('servicio')
     def _compute_x_studio_idreal(self):
         for r in self:
-            if r.servicio:
+            if r.servicio.id:
                 r['x_studio_idreal']=str(r.servicio.idtec)
 
     
@@ -2179,7 +2179,8 @@ class lor(models.Model):
     @api.depends('x_studio_suscripcion')
     def _compute_x_studio_idservicio(self):
         for r in self:
-            r['x_studio_idservicio']=str(r.x_studio_suscripcion.id)
+            if r.x_studio_suscripcion.id:
+                r['x_studio_idservicio']=str(r.x_studio_suscripcion.id)
     
 
     #x_studio_idticket = fields.Integer(string='idticket', readonly=True, store=True, related='x_studio_field_a9oR8.x_studio_id_ticket')
@@ -2188,14 +2189,15 @@ class lor(models.Model):
     @api.depends('x_studio_toner_compatible')
     def _compute_x_studio_idtoner(self):
         for record in self:
-            record['x_studio_idtoner'] = record.x_studio_toner_compatible.id
+            if record.x_studio_toner_compatible.id:
+                record['x_studio_idtoner'] = record.x_studio_toner_compatible.id
 
     x_studio_impresiones = fields.Integer(string='Impresiones Facturación', readonly=True, compute='_compute_x_studio_impresiones')
 
     @api.depends('dca')
     def _compute_x_studio_impresiones(self):
         for record in self:
-            record['x_studio_impresiones']=0
+            record['x_studio_impresiones'] = 0
     """
     x_studio_impresiones_color
     x_studio_impresiones_color_mesa)
