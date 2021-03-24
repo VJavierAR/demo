@@ -70,7 +70,7 @@
                                 <field name="x_studio_periodo"/>
                             </group>
                         </group>
-                        <field name=""/>
+                        
                     </page>
                     <page string="Toner" name="toner">
                         <field name="x_studio_toner_1">

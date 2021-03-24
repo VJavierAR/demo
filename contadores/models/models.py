@@ -2191,13 +2191,29 @@ class lor(models.Model):
     
     x_studio_localidad_2 = fields.Many2one('res.partner',string='Localidad',store=True, track_visibility='onchange')
 
-    """
-    x_studio_magenta)
-    x_studio_magenta_anterior)
-    x_studio_mini)
-    x_studio_ml)
-    x_studio_modelo_equipo)
-    """
+    
+    x_studio_magenta = fields.Char(readonly=True, store=True, string='Magenta', compute = '_compute_x_studio_magenta')
+
+    @api.depends('dca')
+    def _compute_x_studio_magenta(self):
+        for record in self:
+            if len(record.dca) > 0:
+                cont_color = str(record.dca[len(record.dca) - 1].porcentajeMagenta)
+                record['x_studio_magenta'] = str(cont_color) 
+
+    x_studio_magenta_anterior = fields.Char(readonly=True, store=True, string='Magenta Anterior', compute = '_compute_x_studio_magenta_anterior')
+
+    @api.depends('dca')
+    def _compute_x_studio_magenta_anterior(self):
+        for record in self:
+            if len(record.dca) > 0:
+                cont_color = str(record.dca[len(record.dca) - 2].porcentajeMagenta)
+                record['x_studio_magenta_anterior'] = str(cont_color) 
+
+    x_studio_mini = fields.Boolean(string='Mini', store=True, track_visibility='onchange')
+    #x_studio_ml)
+    x_studio_modelo_equipo = fields.Char(readonly=True, store=False, string='Modelo Equipo', related='product_id.name')
+    
     x_studio_move_line = fields.One2many('stock.move.line','lot_id', string='Movimientos')
 
     
