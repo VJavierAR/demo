@@ -2146,7 +2146,7 @@ class lor(models.Model):
     
     x_studio_helpdesk_team_id)
     """
-    x_studio_histrico_de_componentes = fields.One2many('x_studio_historico_de_componentes','x_studio_field_MH4DO', string='Histórico De Componentes ', store=True, domain='["|",("x_ultimaCargaRefacciones","=",True),("x_studio_modelo","like","Refacción y/o accesorio:")]')
+    #x_studio_histrico_de_componentes = fields.One2many('x_studio_historico_de_componentes','x_studio_field_MH4DO', string='Histórico De Componentes ', store=True, domain='["|",("x_ultimaCargaRefacciones","=",True),("x_studio_modelo","like","Refacción y/o accesorio:")]')
     """
     x_studio_idotrosistmp)
     x_studio_idreal)
