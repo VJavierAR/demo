@@ -1599,7 +1599,7 @@ class helpdesk_crearconserie(TransientModel):
 
     @api.onchange('contactoInterno')
     def actualiza_datos_contacto_interno(self):
-        if not self.contactoInterno:
+        if not self.contactoInterno.id:
             self.nombreContactoLocalidad = ''
             self.telefonoContactoLocalidad = ''
             self.movilContactoLocalidad = ''
@@ -1657,9 +1657,10 @@ class helpdesk_crearconserie(TransientModel):
             return action
         else:
           _logger.info("Entre porque no existe: " + str(self.clienteRelacion) + ' loc: ' + str(self.localidadRelacion))
-          dominio = [('x_studio_categoria_de_producto_3.name', '=', 'Equipo')]
-          action = {'domain':{'serie': dominio}}
-          return action
+          self.serie.filtered(lambda r: r.x_studio_categoria_de_producto_3.name == 'Equipo')
+          #dominio = [('x_studio_categoria_de_producto_3.name', '=', 'Equipo')]
+          #action = {'domain':{'serie': dominio}}
+          #return action
 
     
 
