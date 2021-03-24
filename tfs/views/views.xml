@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-        <record id="sequence_self_service" model="ir.sequence">
+        <record id="sequence_self_tfs" model="ir.sequence">
    <field name="name">tfs</field>
    <field name="code">tfs</field>
     <field name="prefix">REMPLAZO</field>
