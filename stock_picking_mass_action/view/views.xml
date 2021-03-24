@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <!--<record model="ir.ui.view" id="stock_production_lot_form_two">
+    <record model="ir.ui.view" id="stock_production_lot_form_two">
       <field name="name">stock.production.lot.two</field>
       <field name="model">stock.production.lot</field>
       <field name="arch" type="xml">
@@ -10,7 +10,7 @@
                 <div class="oe_button_box" name="button_box"
                      attrs="{'invisible': [('display_complete', '=', False)]}">
                         <button name="action_lot_open_quants" icon="fa-arrows" class="oe_stat_button" string="Location" type="object"/>
-                        <button name="%(action_stock_report)d" icon="fa-arrow-up" class="oe_stat_button" string="Traceability" type="action"/>
+                        <button name="%(stock.action_stock_report)d" icon="fa-arrow-up" class="oe_stat_button" string="Traceability" type="action"/>
                 </div>
                 <div class="oe_title">
                     <label for="name" class="oe_edit_only"/>
@@ -44,7 +44,7 @@
                 </div>
             </form>
       </field>
-    </record>-->
+    </record>
 
 
 
