@@ -62,6 +62,31 @@ class ContactosCes(models.Model):
     def busquedaContac(self):
         return {'domain':{'child_ids': [('name', 'ilike', self.busqueda)]}}
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        if self.env.context.get('import_file'):
+            self._check_import_consistency(vals_list)
+        for vals in vals_list:
+            if vals.get('website'):
+                vals['website'] = self._clean_website(vals['website'])
+            if vals.get('parent_id'):
+                vals['company_name'] = False
+        partners = super(Partner, self).create(vals_list)
+
+        if self.env.context.get('_partners_skip_fields_sync'):
+            return partners
+
+        for partner, vals in zip(partners, vals_list):
+            if(partner.type=='delivery'):
+                cod=self.env['ir.sequence'].next_by_code('almacenes')
+                self.env['stock.warehouse'].sudo().create({'name':partner.display_name,'code':cod,'x_studio_cliente':True,'x_studio_field_E0H1Z':partner.id})
+            partner._fields_sync(vals)
+            partner._handle_first_contact_creation()
+        return partners
+
+
+
+
     """            
     @api.model_create_multi
     def create(self, vals_list):
@@ -79,9 +104,6 @@ class ContactosCes(models.Model):
             if self.env.context.get('_partners_skip_fields_sync'):
                 return partners
             for partner in partners:
-                if(partner.type=='delivery'):
-                    cod=self.env['ir.sequence'].next_by_code('almacenes')
-                    self.env['stock.warehouse'].sudo().create({'name':partner.display_name,'code':cod,'x_studio_cliente':True,'x_studio_field_E0H1Z':partner.id})
             for partner, vals in pycompat.izip(partners, vals_list):
                 partner._fields_sync(vals)
                 partner._handle_first_contact_creation()
