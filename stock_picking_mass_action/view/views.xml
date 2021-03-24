@@ -1,5 +1,53 @@
 <odoo>
   <data>
+    <record model="ir.ui.view" id="stock_production_lot_form_1">
+      <field name="name">stock.production.lot.1</field>
+      <field name="model">stock.production.lot</field>
+      <field name="arch" type="xml">
+      <form string="Lots/Serial Numbers">
+                <sheet>
+                <field name="display_complete" invisible="1"/>
+                <div class="oe_button_box" name="button_box" attrs="{'invisible': [('display_complete', '=', False)]}">
+                        <button name="action_lot_open_quants" icon="fa-arrows" class="oe_stat_button" string="Location" type="object"/>
+                        <button name="372" icon="fa-arrow-up" class="oe_stat_button" string="Traceability" type="action"/>
+                </div>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name" placeholder="e.g. LOT/0001/20121"/>
+                    </h1>
+                </div>
+                <group name="main_group">
+                    <group>
+                        <field name="product_id" context="{'default_type': 'product'}" readonly="context.get('set_product_readonly', False)" force_save="1" help="Product this lot/serial number contains. You cannot change it anymore if it has already been moved."/>
+                        <label for="product_qty" attrs="{'invisible': [('display_complete', '=', False)]}"/>
+                        <div class="o_row" attrs="{'invisible': [('display_complete', '=', False)]}">
+                            <field name="product_qty"/>
+                            <field name="product_uom_id" readonly="1" groups="uom.group_uom"/>
+                        </div>
+                        <field name="ref"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <group/>
+                </group>
+                <notebook attrs="{'invisible': [('display_complete', '=', False)]}">
+                    <page string="Description" name="description">
+                        <field name="note"/>
+                    </page>
+                </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+      </field>
+
+    </record>
+
+
+
     <record id="sequence_self_ruta" model="ir.sequence">
    <field name="name">seq_ruta</field>
    <field name="code">ruta</field>
@@ -126,6 +174,13 @@
     <record model="ir.actions.act_window" id="quant_history_action_window">
       <field name="name">Historico de Inventario</field>
       <field name="res_model">quant.history</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="lot_view1_window">
+      <field name="name">lot view1</field>
+      <field name="view_id" ref="stock.action_production_lot_form">stock_production_lot_form_1</field>
+      <field name="res_model">stock.production.lot</field>
       <field name="view_mode">tree,form</field>
     </record>
 
