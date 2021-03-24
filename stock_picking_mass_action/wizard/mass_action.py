@@ -264,7 +264,7 @@ class StockPickingMassAction(TransientModel):
             b.process()
             c=self.env['stock.backorder.confirmation'].create({'pick_ids':[(6,0,mini.mapped('id'))]})
             c.process_cancel_backorder()
-        assigned_picking_lst.action_done()
+        assigned_picking_lst._action_done()
         return assigned_picking_lst
 
     
