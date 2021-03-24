@@ -2123,7 +2123,9 @@ class lor(models.Model):
 
     """
     x_studio_field_ZwQ81)
-    x_studio_field_a9oR8)
+    """
+    x_studio_field_a9oR8 = fields.Many2one('helpdesk.ticket',string='Tiquete del Servicio de Asistencia',store=True)
+    """
     x_studio_field_alFCw_filename)
     x_studio_field_bh9t3)
     x_studio_field_dyZzv)
