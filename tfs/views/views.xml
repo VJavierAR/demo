@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
+        <record id="sequence_self_service" model="ir.sequence">
+   <field name="name">tfs</field>
+   <field name="code">tfs</field>
+    <field name="prefix">REMPLAZO</field>
+
+   <field name="active">TRUE</field>
+   <field name="padding">6</field>
+   <field name="number_next">1</field>
+   <field name="number_increment">1</field>
+</record>
     <record model="ir.ui.view" id="tfs_list">
       <field name="name">tfs.form</field>
       <field name="model">tfs.tfs</field>
