@@ -263,7 +263,7 @@ class sale_update(models.Model):
 	    self.with_context(context)._action_confirm()
 	    if self.env.user.has_group('sale.group_auto_done_setting'):
 	        self.action_done()
-	    #self.saleLinesMove()
+	    self.saleLinesMove()
 	    return True
 
 	def saleLinesMove(self):
