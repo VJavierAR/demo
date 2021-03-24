@@ -1657,7 +1657,9 @@ class helpdesk_crearconserie(TransientModel):
             return action
         else:
           _logger.info("Entre porque no existe: " + str(self.clienteRelacion) + ' loc: ' + str(self.localidadRelacion))
-          self.serie.filtered(lambda r: r.x_studio_categoria_de_producto_3.name == 'Equipo')
+          ids = self.serie.filtered(lambda r: r.x_studio_categoria_de_producto_3.name == 'Equipo')
+          _logger.info("self.serie.filtered: " + str(ids))
+          self.serie = [(6,0,ids)]
           #dominio = [('x_studio_categoria_de_producto_3.name', '=', 'Equipo')]
           #action = {'domain':{'serie': dominio}}
           #return action
