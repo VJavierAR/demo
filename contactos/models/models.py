@@ -71,7 +71,7 @@ class ContactosCes(models.Model):
                 vals['website'] = self._clean_website(vals['website'])
             if vals.get('parent_id'):
                 vals['company_name'] = False
-        partners = super(Partner, self).create(vals_list)
+        partners = super(ContactosCes, self).create(vals_list)
 
         if self.env.context.get('_partners_skip_fields_sync'):
             return partners
