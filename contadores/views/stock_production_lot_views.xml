@@ -192,7 +192,8 @@
                         <field name="x_studio_calle"/>
                         <field name="x_studio_cp"/>
                         <field name="x_studio_interior"/>
-                        <field name="x_studio_exteriorx_studio_colonia"/>
+                        <field name="x_studio_exterior"/>
+                        <field name="x_studio_colonia"/>
                         <field name="x_studio_ciudad"/>
                         <field name="x_studio_estado_1"/>
                         <field name="x_studio_centro_de_costos"/>

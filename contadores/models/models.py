@@ -2171,16 +2171,16 @@ class lor(models.Model):
             if r.servicio:
                 r['x_studio_idreal']=str(r.servicio.idtec)
 
-    """
-    x_studio_suscripcion = 
-
+    
+    x_studio_suscripcion = fields.Many2one('_unknown', string='Suscripción', store=True)
+    
     x_studio_idservicio = fields.Char(string='idservicio', readonly=True, compute='_compute_x_studio_idservicio')
 
     @api.depends('x_studio_suscripcion')
     def _compute_x_studio_idservicio(self):
         for r in self:
             r['x_studio_idservicio']=str(r.x_studio_suscripcion.id)
-    """
+    
 
     #x_studio_idticket = fields.Integer(string='idticket', readonly=True, store=True, related='x_studio_field_a9oR8.x_studio_id_ticket')
     x_studio_idtoner = fields.Char(string='idservicio', readonly=True, store=True, compute='_compute_x_studio_idtoner')
@@ -2204,9 +2204,9 @@ class lor(models.Model):
     x_studio_impresiones_tner)
     """
     x_studio_instalado = fields.Boolean(string='Instalado', store=True)
-    """
-    x_studio_interior)
-    """
+    
+    x_studio_interior = fields.Char(string='Interior', readonly=True)
+    
     x_studio_lec_ant_bn = fields.Integer(string='Lec. Ant. BN', readonly=True)
     
     x_studio_lec_ant_color = fields.Integer(string='Lec. Ant. color', readonly=True)
@@ -2345,7 +2345,9 @@ class lor(models.Model):
     x_studio_solicitar_tner_magenta)
     )
     x_studio_tamdca)
-    x_studio_test)
+    """
+    x_studio_test = fields.Char(string='test', readonly=True)
+    """
     x_studio_ticketactual)
     x_studio_tickttmp)
     x_studio_tmp_char)
@@ -2364,9 +2366,18 @@ class lor(models.Model):
     x_studio_toner_compatible_nombre)
     x_studio_toner_compatibles)
     x_studio_ubicacin)
-    x_studio_ubicacion_id)
-    x_studio_ubicaciontest)
-    )
+    """
+    x_studio_ubicacion_id = fields.Integer(string='ubicacion_id', store=True)
+    
+    x_studio_ubicaciontest = fields.Char(string='Cliente', readonly=True, compute='_compute_x_studio_ubicaciontest')
+
+    @api.depends('x_studio_ultma_ubicacin')
+    def _compute_x_studio_ubicaciontest(self):
+        for record in self:
+            if record.x_studio_ultma_ubicacin:
+                record['x_studio_ubicaciontest'] = str(record.x_studio_ultma_ubicacin).rsplit(',',1)[0]
+
+    """
     x_studio_ultimafuente)
     
     """
