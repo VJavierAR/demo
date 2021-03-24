@@ -2102,7 +2102,8 @@ class lor(models.Model):
     """
     x_studio_field_PwHLb)
     """
-    x_studio_field_Q3Qpi = fields.Many2many('sale.order', relation ='x_sale_order_stock_production_lot_rel', column1='stock_production_lot_id', column2='sale_order_id', string='Pedido de venta', store=True)
+    #x_studio_field_Q3Qpi = fields.Many2many('sale.order', relation ='x_sale_order_stock_production_lot_rel', column1='stock_production_lot_id', column2='sale_order_id', string='Pedido de venta', store=True)
+    x_studio_field_Q3Qpi = fields.Many2many('sale.order', string='Pedido de venta', store=True)
     """
     x_studio_field_QwAZL)
     x_studio_field_RJsuy)
