@@ -2206,18 +2206,18 @@ class lor(models.Model):
     @api.depends('dca')
     def _compute_x_studio_negro(self):
         for record in self:
-        if len(record.dca) > 0:
-            cont_color = str(record.dca[len(record.dca) - 1].porcentajeNegro)
-            record['x_studio_negro'] = str(cont_color) 
+            if len(record.dca) > 0:
+                cont_color = str(record.dca[len(record.dca) - 1].porcentajeNegro)
+                record['x_studio_negro'] = str(cont_color) 
 
     x_studio_negro_anterior = fields.Char(readonly=True, store=False, string='Negro Anterior', compute = '_compute_x_studio_negro_anterior')
 
     @api.depends('dca')
     def _compute_x_studio_negro_anterior(self):
         for record in self:
-        if len(record.dca) > 0:
-            cont_color = str(record.dca[len(record.dca) - 2].porcentajeNegro)
-            record['x_studio_negro_anterior'] = str(cont_color)
+            if len(record.dca) > 0:
+                cont_color = str(record.dca[len(record.dca) - 2].porcentajeNegro)
+                record['x_studio_negro_anterior'] = str(cont_color)
 
     x_studio_numero_de_serie = fields.Many2one('stock.production.lot',string='Numero de serie',store=True, readonly=True, related="x_studio_field_3OnO2.serie")
     x_studio_pais = fields.Char(store=False, string='País')
