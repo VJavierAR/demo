@@ -2240,6 +2240,7 @@ class lor(models.Model):
     @api.depends('x_studio_ultima_ubicacin')
     def _compute_x_studio_locacion_recortada(self):
         self.x_studio_locacion_recortada = ''
+        self.x_studio_ultima_ubicacin = ''
         for record in self:
             if record.x_studio_ultima_ubicacin:
                 if(len(str(record.x_studio_ultima_ubicacin).rsplit(',',1))>=2):
