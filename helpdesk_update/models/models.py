@@ -310,6 +310,8 @@ class helpdesk_update(models.Model):
     x_studio_prioridad = fields.Selection([["0","Todos"],["1","Regular"],["2","Media"],["3","Urgente"]], string = 'Prioridad', store = True)
     x_studio_transferencia = fields.Many2one('stock.picking', store=True, string='transferencia')
     x_studio_field_up5pO = fields.Selection([['draft', 'Borrador'], ['waiting', 'Esperando otra operación'], ['confirmed', 'En espera'], ['assigned', 'Preparado'], ['done', 'Hecho'], ['cancel', 'Cancelado']], string = 'almacen', track_visibility = 'onchange')
+    x_studio_nivel_del_cliente = fields.Selection([["A","A"],["B","B"],["C","C"],["OTRO","D"],["VIP","VIP"]], string = 'Nivel del cliente', store = True, track_visibility='onchange')
+
 
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
