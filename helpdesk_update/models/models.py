@@ -322,7 +322,7 @@ class helpdesk_update(models.Model):
             record['x_studio_id_ayuda'] = record.partner_id
 
     x_studio_valor_categria_de_producto = fields.Integer(string='valor categria de producto ', store=True, readonly=True, compute='_compute_x_studio_valor_categria_de_producto')
-    @api.depends('ticket_type_id, x_studio_tipo_de_incidencia, x_studio_tipo_de_requerimiento')
+    @api.depends('ticket_type_id', 'x_studio_tipo_de_incidencia', 'x_studio_tipo_de_requerimiento')
     def _compute_x_studio_valor_categria_de_producto(self):
         self.x_studio_valor_categria_de_producto = 0
 
