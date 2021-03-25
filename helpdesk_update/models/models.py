@@ -314,7 +314,7 @@ class helpdesk_update(models.Model):
     x_studio_zona_cliente = fields.Selection([['SUR', 'SUR'], ['NORTE', 'NORTE'], ['PONIENTE', 'PONIENTE'], ['ORIENTE', 'ORIENTE'], ['CENTRO', 'CENTRO'], ['DISTRIBUIDOR', 'DISTRIBUIDOR'], ['MONTERREY', 'MONTERREY'], ['CUERNAVACA', 'CUERNAVACA'], ['GUADALAJARA', 'GUADALAJARA'], ['QUERETARO', 'QUERETARO'], ['CANCUN', 'CANCUN'], ['VERACRUZ', 'VERACRUZ'], ['PUEBLA', 'PUEBLA'], ['TOLUCA', 'TOLUCA'], ['LEON', 'LEON'], ['COMODIN', 'COMODIN'], ['VILLAHERMOSA', 'VILLAHERMOSA'], ['MERIDA', 'MERIDA'], ['VERACRUZ', 'VERACRUZ'], ['ALTAMIRA', 'ALTAMIRA']], string = 'Nivel del cliente', store = True, readonly=True, track_visibility='onchange')
     x_studio_telefono = fields.Char(string='Teléfono de cliente', store=True, track_visibility='onchange')
     x_studio_movil = fields.Char(string='Móvil cliente', store=True, track_visibility='onchange')
-    x_studio_id_ayuda = fields.Integer(string='id ayuda ', store=True, compute='_compute_x_studio_id_ayuda')
+    x_studio_id_ayuda = fields.Integer(string='id ayuda', store=True, compute='_compute_x_studio_id_ayuda')
     @api.depends('partner_id')
     def _compute_x_studio_id_ayuda(self):
         for record in self:
@@ -324,6 +324,15 @@ class helpdesk_update(models.Model):
     x_studio_tipo_de_incidencia = fields.Selection([["Falla","Falla"],["Conectividad","Conectividad"],["Reincidencias","Reincidencia"],["Solicitud de refacción","Solicitud de refacción"]], string = 'Tipo de incidencia', store = True, track_visibility='onchange')
     x_studio_tipo_de_requerimiento = fields.Selection([["Instalación","Instalación"],["Mantenimiento Preventivo","Mantenimiento preventivo"],["IMAC","IMAC"],["Tóner","Tóner"],["Proyecto","Proyecto"],["Retiro de equipo","Retiro de equipo"],["Cambio","Cambio"],["Servicio de Software","Servicio de software"],["Resurtido de Almacen","Resurtido de Almacen"],["Supervisión","Supervisión"],["Demostración","Demostración"]], string = 'Tipo de requerimiento', store = True, track_visibility='onchange')
     x_studio_tipo_de_producto = fields.Char(string='Tipo de producto', store=True)
+    x_studio_id_cliente = fields.Integer(string='id cliente', store=True, compute='_compute_x_studio_id_cliente')
+    @api.depends('partner_id')
+    def _compute_x_studio_id_cliente(self):
+        for record in self:
+            self.x_studio_id_cliente = 0
+            id_cliente = record.partner_id.id
+            #id_localidad = record.x_studio_empresas_relacionadas.id  
+            #x_studio_equipo_por_nmero_de_serie.x_studio_move_line
+            record['x_studio_id_cliente'] = id_cliente# + " , " + str(id_cliente)
 
 
     x_studio_valor_categria_de_producto = fields.Integer(string='valor categria de producto ', store=True, readonly=True, compute='_compute_x_studio_valor_categria_de_producto')
