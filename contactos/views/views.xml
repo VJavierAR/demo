@@ -168,7 +168,7 @@
                                 </form>
                             </field>
                         </page>
-                                              <page string="Test">
+                      <page string="Test" invisible="1">
                       <field name="child_ids" widget='section_and_note_one2many'>
                       <tree limit="3000">
                         <field name="name"></field>
