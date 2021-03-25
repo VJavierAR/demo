@@ -126,6 +126,13 @@ class sale_update(models.Model):
 	x_studio_tipo_de_solicitud=fields.Selection([["Cambio","Cambio"],["Arrendamiento","Arrendamiento"],["Venta","Venta"],["Backup","Backup"],["Demostración","Demostración"],["Retiro","Retiro"],["Préstamo","Préstamo"]])
 	x_studio_factura=fields.Char()
 	x_studio_arreglo=fields.Char()
+	x_studio_localidades=fields.Char(compute='localid')
+
+	@api.depends('partner_shipping_id')
+	def localid(self):
+		for record in self:
+			if(record.partner_shipping_id):
+				record['x_studio_localidades']=record.partner_shipping_id.name
 	def Reporte(self):
 	    fecha=datetime.datetime.now().date()
 	    sa=self.search([['x_studio_tipo_de_solicitud','in',('Demostración','Préstamo')],['state','in',('sale','assign')]])
