@@ -121,6 +121,9 @@ class sale_update(models.Model):
         ('entregado', 'Entregado'),
         ('cancel', 'Cancelled'),
         ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', track_sequence=3, default='draft')
+	x_studio_field_RnhKr=fields.Many2one('res.partner','Contacto')
+	x_studio_field_bxHgp=fields.Many2one('helpdesk.ticket','Ticket')
+	x_studio_tipo_de_solicitud=fields.Selection([["Cambio","Cambio"],["Arrendamiento","Arrendamiento"],["Venta","Venta"],["Backup","Backup"],["Demostración","Demostración"],["Retiro","Retiro"],["Préstamo","Préstamo"]])
 	def Reporte(self):
 	    fecha=datetime.datetime.now().date()
 	    sa=self.search([['x_studio_tipo_de_solicitud','in',('Demostración','Préstamo')],['state','in',('sale','assign')]])
@@ -242,7 +245,6 @@ class sale_update(models.Model):
 				for ss in s.x_studio_field_9nQhR.x_studio_histrico_de_componentes:
 					d={'x_studio_field_mqSKO':ss.x_studio_field_gKQ9k.id,'product_id':ss.x_studio_field_gKQ9k.id,'name':ss.x_studio_field_gKQ9k.name,'product_uom_qty':ss.x_studio_cantidad,'product_uom':ss.x_studio_field_gKQ9k.uom_id.id,'price_unit':0.00}
 					self.order_line=[d]
-	
 	def action_confirm(self):
 	    if self._get_forbidden_state_confirm() & set(self.mapped('state')):
 	        raise UserError(_(
@@ -251,25 +253,29 @@ class sale_update(models.Model):
 
 	    for order in self.filtered(lambda order: order.partner_id not in order.message_partner_ids):
 	        order.message_subscribe([order.partner_id.id])
-	    self.write({
-	        'state': 'sale',
-	        #'confirmation_date': fields.Datetime.now()
-	    })
-	    self._action_confirm()
-	    if self.env['ir.config_parameter'].sudo().get_param('sale.auto_done_setting'):
+	    self.write(self._prepare_confirmation_values())
+
+	    # Context key 'default_name' is sometimes propagated up to here.
+	    # We don't need it and it creates issues in the creation of linked records.
+	    context = self._context.copy()
+	    context.pop('default_name', None)
+
+	    self.with_context(context)._action_confirm()
+	    if self.env.user.has_group('sale.group_auto_done_setting'):
 	        self.action_done()
 	    self.saleLinesMove()
 	    return True
 
 	def saleLinesMove(self):
-		picks=self.env['stock.picking'].search(['&',['sale_child','=',self.id],['state','!=','draft']])
+		picks=self.env['stock.picking'].search(['&',['sale_id','=',self.id],['state','!=','draft']])
+		_logger.info(len(picks))
 		sal=self.order_line.sorted(key='id').mapped('id')
 		cliente=self.partner_shipping_id
 		for p in picks:
 			i=0
 			for pi in p.move_ids_without_package.sorted(key='id'):
 				pi.write({'sale_line_id':sal[i]})
-				if(p.picking_type_id.code=='outgoing' and 'REFACCION' not in p.sale_child.warehouse_id.name and p.partner_id.parent_id.id!=1):
+				if(p.picking_type_id.code=='outgoing'):
 					almacen=self.env['stock.warehouse'].search([['x_studio_field_E0H1Z','=',cliente.id]])
 					if(almacen.id!=False):
 						pi.write({'location_dest_id':almacen.lot_stock_id.id})

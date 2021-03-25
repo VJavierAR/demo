@@ -36,8 +36,8 @@
         'wizard/wizard.xml',
     ],
     # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
+    'qweb': [
+        'static/src/xml/pick_xml.xml'
     ],
         'installable': True,
     'application': True,
