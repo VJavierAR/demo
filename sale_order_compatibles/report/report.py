@@ -14,7 +14,8 @@ class SolicitudesXlsx(models.AbstractModel):
         d=[]
         if(len(sale)==1 and sale.x_studio_arreglo!='/' and sale.x_studio_arreglo!=False):
             copia=sale
-            sale=self.env['sale.order'].browse(eval(sale.x_studio_arreglo)).filtered(lambda x:x.x_area_atencion==True) 
+            #sale=self.env['sale.order'].browse(eval(sale.x_studio_arreglo)).filtered(lambda x:x.x_area_atencion==True)
+            sale=self.env['sale.order'].browse(eval(sale.x_studio_arreglo)) 
             copia.write({'x_studio_arreglo':'/'})
         merge_format = workbook.add_format({'bold': 1,'border': 1,'align': 'center','valign': 'vcenter','fg_color': 'blue'})
         report_name = 'Solicitudes'
