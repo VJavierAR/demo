@@ -303,6 +303,8 @@ class helpdesk_update(models.Model):
             self.x_studio_tamao_lista = 0
             record['x_studio_tamao_lista'] = len(record.x_studio_equipo_por_nmero_de_serie)
 
+    x_studio_usuario = fields.Char(string='usuario', readonly=True, copied=True)
+
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True, compute= '_compute_x_studio_ultima_nota')
