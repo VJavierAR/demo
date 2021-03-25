@@ -314,6 +314,12 @@ class helpdesk_update(models.Model):
     x_studio_zona_cliente = fields.Selection([['SUR', 'SUR'], ['NORTE', 'NORTE'], ['PONIENTE', 'PONIENTE'], ['ORIENTE', 'ORIENTE'], ['CENTRO', 'CENTRO'], ['DISTRIBUIDOR', 'DISTRIBUIDOR'], ['MONTERREY', 'MONTERREY'], ['CUERNAVACA', 'CUERNAVACA'], ['GUADALAJARA', 'GUADALAJARA'], ['QUERETARO', 'QUERETARO'], ['CANCUN', 'CANCUN'], ['VERACRUZ', 'VERACRUZ'], ['PUEBLA', 'PUEBLA'], ['TOLUCA', 'TOLUCA'], ['LEON', 'LEON'], ['COMODIN', 'COMODIN'], ['VILLAHERMOSA', 'VILLAHERMOSA'], ['MERIDA', 'MERIDA'], ['VERACRUZ', 'VERACRUZ'], ['ALTAMIRA', 'ALTAMIRA']], string = 'Nivel del cliente', store = True, readonly=True, track_visibility='onchange')
     x_studio_telefono = fields.Char(string='Teléfono de cliente', store=True, track_visibility='onchange')
     x_studio_movil = fields.Char(string='Móvil cliente', store=True, track_visibility='onchange')
+    x_studio_id_ayuda = fields.Integer(string='id ayuda ', store=True, compute='_compute_x_studio_id_ayuda')
+     @api.depends('partner_id')
+    def _compute_x_studio_id_ayuda(self):
+        for record in self:
+            self.x_studio_id_ayuda = 0
+            record['x_studio_id_ayuda'] = record.partner_id
 
 
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
