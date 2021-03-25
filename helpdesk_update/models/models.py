@@ -339,6 +339,22 @@ class helpdesk_update(models.Model):
     x_studio_telefono_localidad = fields.Char(string='Teléfono localidad', store=True, copied=True, track_visibility='onchange')
     x_studio_movil_localidad = fields.Char(string='Móvil localidad', store=True, copied=True, track_visibility='onchange')
 
+    x_studio_nombretmp = fields.Char(string='NombreTMP', readonly=True, compute='_compute_x_studio_nombretmp')
+    @api.depends('x_studio_equipo_por_nmero_de_serie')
+    def _compute_x_studio_nombretmp(self):
+        for record in self:
+          self.x_studio_nombretmp = ''
+          a = len(record.x_studio_equipo_por_nmero_de_serie)
+          if a > 0:
+            #raise exceptions.ValidationError("test " + str(a))
+            f=[]
+            for n in range(a) :
+                f.append(record.x_studio_equipo_por_nmero_de_serie[n].product_id.id)
+            record['x_studio_nombretmp']= f    
+          else:
+            record['x_studio_nombretmp'] = None
+
+
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
     Falta migrar a odoo 14
