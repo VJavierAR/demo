@@ -62,7 +62,7 @@
                     </group>
                     <group/>
                 </group>
-                <notebook attrs="{'invisible': [('display_complete', '=', False)]}">
+                <notebook invisible="1"><!-- attrs="{'invisible': [('display_complete', '=', False)]}" -->
                     <page string="Description" name="description">
                         <field name="note"/>
                     </page>
