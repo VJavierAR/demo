@@ -292,14 +292,6 @@ class helpdesk_update(models.Model):
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True, compute= '_compute_x_studio_ultima_nota')
     @api.depends('historialCuatro.create_date')
     def _compute_x_studio_ultima_nota(self):
-        #for record in self:
-        #  historial = record.historialCuatro
-        #  ultimaFila = len(historial) - 1
-        #  if ultimaFila >= 0:
-        #    record['x_studio_ultima_nota'] = str(historial[ultimaFila].x_disgnostico)
-        #    record['x_studio_fecha_nota'] = str(historial[ultimaFila].create_date)
-        #    record['x_studio_tecnico'] = str(historial[ultimaFila].x_persona) ultimoEvidencia
-
         for record in self:
           self.x_studio_ultima_nota = ''
           historial = record.diagnosticos
