@@ -68,7 +68,7 @@
                     </group>
                     <notebook colspan="4">
                       <page string="Test">
-                      <field name="child_ids" widget='section_and_note_one2many' context="{'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_supplier': supplier, 'default_customer': customer, 'default_lang': lang, 'default_user_id': user_id}">
+                      <field name="child_ids" widget='section_and_note_one2many' context="{'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_lang': None, 'default_user_id': user_id, 'default_type': 'other'}">
                         <tree limit="3000">
                         <field name="name"></field>
                         <button string="Edit" class="fa fa-pencil-square-o" type="object" name="open_child_form" title="Open full form" >
