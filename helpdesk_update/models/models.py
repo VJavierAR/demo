@@ -368,7 +368,7 @@ class helpdesk_update(models.Model):
           else:
             record['x_studio_series2'] = None
 
-    x_studio_idteam = fields.Char(string='idteam', readonly=True, track_visibility='onchange' compute='_compute_x_studio_idteam')
+    x_studio_idteam = fields.Char(string='idteam', readonly=True, track_visibility='onchange', compute='_compute_x_studio_idteam')
     @api.depends('team_id')
     def _compute_x_studio_idteam(self):
         self.x_studio_idteam = ''
