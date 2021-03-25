@@ -124,6 +124,7 @@ class dcas(models.Model):
     x_studio_field_no6Rb = fields.Char(string='Fecha mes/año', store=True)
     x_studio_fecha_texto_anio = fields.Char(string='Fecha texto año', store=True)
     x_studio_tickett = fields.Char(string='Ticket Techra', store=True)
+    x_studio_fecha_techra = fields.Date(string='Fecha techra', store=True)
 
 
     @api.onchange('serie')             
