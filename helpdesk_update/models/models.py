@@ -322,7 +322,10 @@ class helpdesk_update(models.Model):
             record['x_studio_id_ayuda'] = record.partner_id
 
     x_studio_tipo_de_incidencia = fields.Selection([["Falla","Falla"],["Conectividad","Conectividad"],["Reincidencias","Reincidencia"],["Solicitud de refacción","Solicitud de refacción"]], string = 'Tipo de incidencia', store = True, track_visibility='onchange')
+    x_studio_tipo_de_requerimiento = fields.Selection([["Instalación","Instalación"],["Mantenimiento Preventivo","Mantenimiento preventivo"],["IMAC","IMAC"],["Tóner","Tóner"],["Proyecto","Proyecto"],["Retiro de equipo","Retiro de equipo"],["Cambio","Cambio"],["Servicio de Software","Servicio de software"],["Resurtido de Almacen","Resurtido de Almacen"],["Supervisión","Supervisión"],["Demostración","Demostración"]], string = 'Tipo de requerimiento', store = True, track_visibility='onchange')
+    
 
+    
     x_studio_valor_categria_de_producto = fields.Integer(string='valor categria de producto ', store=True, readonly=True, compute='_compute_x_studio_valor_categria_de_producto')
     @api.depends('ticket_type_id', 'x_studio_tipo_de_incidencia', 'x_studio_tipo_de_requerimiento')
     def _compute_x_studio_valor_categria_de_producto(self):
