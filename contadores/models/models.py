@@ -122,6 +122,7 @@ class dcas(models.Model):
     x_studio_contador_mono_anterior_1=fields.Integer()
     x_studio_descripcion = fields.Char(string='Descripción', store=True)
     x_studio_field_no6Rb = fields.Char(string='Fecha mes/año', store=True)
+    x_studio_fecha_texto_anio = fields.Char(string='Fecha texto año', store=True)
 
 
     @api.onchange('serie')             
