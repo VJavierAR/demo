@@ -127,7 +127,13 @@ class sale_update(models.Model):
 	x_studio_factura=fields.Char()
 	x_studio_arreglo=fields.Char()
 	x_studio_localidades=fields.Char(compute='localid')
+	x_studio_usuario_creacion_1=fields.Char(compute='us')
 
+	@api.depends('create_uid')
+	def us(self):
+		for record in self:
+			record['x_studio_usuario_creacion_1']=record.create_uid.name
+	
 	@api.depends('partner_shipping_id')
 	def localid(self):
 		for record in self:
