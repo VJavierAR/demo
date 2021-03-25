@@ -281,7 +281,13 @@ class helpdesk_update(models.Model):
 
     x_todas_las_zonas = fields.Text(string='Todas las zonas', store=True, readonly=True)
     x_studio_nmero_de_ticket_cliente = fields.Char(string='Número de ticket cliente', store=True, track_visibility='onchange')
-
+    x_studio_namedes = fields.Char(string = 'nameDes', readonly=True, compute= '_compute_x_studio_namedes')
+    @api.depends('name')
+    def _compute_x_studio_namedes(self):
+        for r in self:
+            self.x_studio_namedes = ''
+            if r.name:
+                r['x_studio_namedes'] = "<textarea rows='5' cols='100' disabled >"+str(r.name)+" </textarea>"
 
     #priority = fields.Selection([('all','Todas'),('baja','Baja'),('media','Media'),('alta','Alta'),('critica','Critica')])
     x_studio_field_6furK = fields.Selection([('CHIHUAHUA','CHIHUAHUA'), ('SUR','SUR'),('NORTE','NORTE'),('PONIENTE','PONIENTE'),('ORIENTE','ORIENTE'),('CENTRO','CENTRO'),('DISTRIBUIDOR','DISTRIBUIDOR'),('MONTERREY','MONTERREY'),('CUERNAVACA','CUERNAVACA'),('GUADALAJARA','GUADALAJARA'),('QUERETARO','QUERETARO'),('CANCUN','CANCUN'),('VERACRUZ','VERACRUZ'),('PUEBLA','PUEBLA'),('TOLUCA','TOLUCA'),('LEON','LEON'),('COMODIN','COMODIN'),('VILLAHERMOSA','VILLAHERMOSA'),('MERIDA','MERIDA'),('ALTAMIRA','ALTAMIRA'),('COMODIN','COMODIN'),('DF00','DF00'),('SAN LP','SAN LP'),('ESTADO DE MÉXICO','ESTADO DE MÉXICO'),('Foraneo Norte','Foraneo Norte'),('Foraneo Sur','Foraneo Sur')], string = 'Zona localidad', store = True, track_visibility='onchange')
