@@ -289,6 +289,8 @@ class helpdesk_update(models.Model):
             if r.name:
                 r['x_studio_namedes'] = "<textarea rows='5' cols='100' disabled >"+str(r.name)+" </textarea>"
 
+    x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
+    """
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True, compute= '_compute_x_studio_ultima_nota')
     @api.depends('historialCuatro.create_date')
     def _compute_x_studio_ultima_nota(self):
@@ -349,7 +351,7 @@ class helpdesk_update(models.Model):
             record['x_studio_fecha_nota'] = None
             record['x_studio_tecnico'] = None
             #record['x_studio_adjunto_ultima_nota'] = f[ultimaFila].evidencia
-
+    """
 
     #priority = fields.Selection([('all','Todas'),('baja','Baja'),('media','Media'),('alta','Alta'),('critica','Critica')])
     x_studio_field_6furK = fields.Selection([('CHIHUAHUA','CHIHUAHUA'), ('SUR','SUR'),('NORTE','NORTE'),('PONIENTE','PONIENTE'),('ORIENTE','ORIENTE'),('CENTRO','CENTRO'),('DISTRIBUIDOR','DISTRIBUIDOR'),('MONTERREY','MONTERREY'),('CUERNAVACA','CUERNAVACA'),('GUADALAJARA','GUADALAJARA'),('QUERETARO','QUERETARO'),('CANCUN','CANCUN'),('VERACRUZ','VERACRUZ'),('PUEBLA','PUEBLA'),('TOLUCA','TOLUCA'),('LEON','LEON'),('COMODIN','COMODIN'),('VILLAHERMOSA','VILLAHERMOSA'),('MERIDA','MERIDA'),('ALTAMIRA','ALTAMIRA'),('COMODIN','COMODIN'),('DF00','DF00'),('SAN LP','SAN LP'),('ESTADO DE MÉXICO','ESTADO DE MÉXICO'),('Foraneo Norte','Foraneo Norte'),('Foraneo Sur','Foraneo Sur')], string = 'Zona localidad', store = True, track_visibility='onchange')
