@@ -296,6 +296,12 @@ class helpdesk_update(models.Model):
     x_studio_contador_bn_a_capturar = fields.Integer(string='Contador B/N actual', readonly=True)
     x_studio_contador_color = fields.Integer(string='Contador color', readonly=True)
     x_studio_contador_color_a_capturar = fields.Integer(string='Contador color actual', readonly=True)
+    x_studio_tamao_lista = fields.Integer(string='Tamaño lista', readonly=True, store=True, compute='_compute_x_studio_tamao_lista')
+    @api.depends('x_studio_equipo_por_nmero_de_serie')
+    def _compute_x_studio_tamao_lista(self):
+        for record in self:
+            self.x_studio_tamao_lista = 0
+            record['x_studio_tamao_lista'] = len(record.x_studio_equipo_por_nmero_de_serie)
 
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
