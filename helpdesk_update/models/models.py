@@ -391,6 +391,7 @@ class helpdesk_update(models.Model):
           else:
             record['x_studio_nombretmp'] = None
 
+    x_studio_numero_de_ticket_cliente = fields.Integer(string='Número de ticket cliente', store=True)
 
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
