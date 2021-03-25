@@ -125,6 +125,7 @@ class sale_update(models.Model):
 	x_studio_field_bxHgp=fields.Many2one('helpdesk.ticket','Ticket')
 	x_studio_tipo_de_solicitud=fields.Selection([["Cambio","Cambio"],["Arrendamiento","Arrendamiento"],["Venta","Venta"],["Backup","Backup"],["Demostración","Demostración"],["Retiro","Retiro"],["Préstamo","Préstamo"]])
 	x_studio_factura=fields.Char()
+	x_studio_arreglo=fields.Char()
 	def Reporte(self):
 	    fecha=datetime.datetime.now().date()
 	    sa=self.search([['x_studio_tipo_de_solicitud','in',('Demostración','Préstamo')],['state','in',('sale','assign')]])
