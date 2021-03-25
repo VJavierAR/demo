@@ -394,6 +394,7 @@ class helpdesk_update(models.Model):
     x_studio_numero_de_ticket_cliente = fields.Integer(string='Número de ticket cliente', store=True)
     x_studio_responsable_de_equipo = fields.Many2one('hr.employee', store=True, string='Encargado de área', track_visibility='onchange')
     x_studio_field_wK7RR = fields.Many2one('res.partner', store=True, string='Contactos foráneos', track_visibility='onchange')
+    x_studio_fecha_de_visita = fields.Date(string='Fecha de visita', store=True)
 
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
