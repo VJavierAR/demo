@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
+        <record id="sequence_self_tfs" model="ir.sequence">
+   <field name="name">tfs</field>
+   <field name="code">tfs</field>
+    <field name="prefix">REMPLAZO</field>
+
+   <field name="active">TRUE</field>
+   <field name="padding">6</field>
+   <field name="number_next">1</field>
+   <field name="number_increment">1</field>
+</record>
     <record model="ir.ui.view" id="tfs_list">
       <field name="name">tfs.form</field>
       <field name="model">tfs.tfs</field>
@@ -97,7 +107,13 @@
      
       </field>
     </record>
-            
+          <record model="ir.actions.act_window" id="tfs_action_window">
+      <field name="name">tfs</field>
+      <field name="res_model">tfs.tfs</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="TFS" id="tfs_menu" parent="stock.menu_stock_root" sequence="6"/>
+    <menuitem name="Cambio en Mini Almacen" id="tfs_tfs_menu" parent="tfs_menu" action="tfs_action_window" />      
       
   </data>
 </odoo>

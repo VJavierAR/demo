@@ -1,4 +1,3 @@
-
 odoo.define('invoice.action_button', function (require) {
 "use strict";
 
@@ -46,7 +45,6 @@ odoo.define('invoice.action_button', function (require) {
                         this.$buttons.find('.oe_action_button_lot_serial').click(this.proxy('action_inter14')); 
                         this.$buttons.find('.oe_action_button_helpdesk_detalle').hide();
                         this.$buttons.find('.oe_action_button_purchase_order').click(this.proxy('action_inter8')); 
-                        this.$buttons.find('.oe_action_button_sale_report').click(this.proxy('action_inter4')); 
                         this.$buttons.find('.oe_action_button_ticket_report').hide();
                         this.$buttons.find('.o_button_import').hide();
                         this.$buttons.find('.oe_action_button').hide();
@@ -240,21 +238,6 @@ odoo.define('invoice.action_button', function (require) {
                 view_type: 'form',
                 view_mode: 'form',
                 view_id: 'view_helpdesk_ticket_action_form',
-                views: [[false, 'form']],
-                target: 'new',
-            
-            });
-        },
-        action_inter4: function (e) {
-            var self = this
-            var user = session.uid;
-            self.do_action({
-                name: _t('Solicitudes'),
-                type : 'ir.actions.act_window',
-                res_model: 'sale.order.action',
-                view_type: 'form',
-                view_mode: 'form',
-                view_id: 'view_sale_order_action_form',
                 views: [[false, 'form']],
                 target: 'new',
             

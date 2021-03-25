@@ -116,28 +116,29 @@ class StockPickingMassAction(TransientModel):
                 
     def retiro_mass_action(self,c):
         tipo=self.picking_ids.mapped('sale_id.x_studio_tipo_de_solicitud')
-        if('Retiro' in tipo):
-            if(c==0):
-                for pickis in self.picking_ids:
-                    for move in pickis.move_ids_without_package:
-                        serie=move.sale_line_id.x_studio_field_9nQhR.id
-                        if(serie):
-                            qu1=self.env['stock.quant'].search([['location_id','=',move.location_id.id],['product_id','=',move.product_id.id],['lot_id','=',serie]])
-                            if(qu1.id==False):
-                                qu1=self.env['stock.quant'].create({'location_id':move.location_id.id,'product_id':move.product_id.id,'quantity':1,'lot_id':serie})
-            if(c!=0):
-                for pickis in self.picking_ids:
-                    for move in pickis.move_ids_without_package:
-                        serie=move.sale_line_id.x_studio_field_9nQhR.id
-                        if(serie):
-                            d=self.env['stock.move.line'].search([['move_id','=',move.id]])
-                            qu1=self.env['stock.quant'].search([['location_id','=',move.location_id.id],['product_id','=',move.product_id.id],['lot_id','=',serie]])
-                            qu=self.env['stock.quant'].search([['location_id','=',move.location_id.id],['product_id','=',move.product_id.id],['lot_id','=',d.lot_id.id]])
-                            self.env.cr.execute("update stock_quant set reserved_quantity=1 where id="+str(qu1.id)+";")
-                            if(qu.id):            
-                                self.env.cr.execute("update stock_quant set reserved_quantity=0 where id="+str(qu.id)+";")
-                            if(d.id):
-                                self.env.cr.execute("update stock_move_line set lot_id="+str(serie)+"where id="+str(d.id)+";")
+        if(tipo!=[]):    
+            if('Retiro' in tipo):
+                if(c==0):
+                    for pickis in self.picking_ids:
+                        for move in pickis.move_ids_without_package:
+                            serie=move.sale_line_id.x_studio_field_9nQhR.id
+                            if(serie):
+                                qu1=self.env['stock.quant'].search([['location_id','=',move.location_id.id],['product_id','=',move.product_id.id],['lot_id','=',serie]])
+                                if(qu1.id==False):
+                                    qu1=self.env['stock.quant'].create({'location_id':move.location_id.id,'product_id':move.product_id.id,'quantity':1,'lot_id':serie})
+                if(c!=0):
+                    for pickis in self.picking_ids:
+                        for move in pickis.move_ids_without_package:
+                            serie=move.sale_line_id.x_studio_field_9nQhR.id
+                            if(serie):
+                                d=self.env['stock.move.line'].search([['move_id','=',move.id]])
+                                qu1=self.env['stock.quant'].search([['location_id','=',move.location_id.id],['product_id','=',move.product_id.id],['lot_id','=',serie]])
+                                qu=self.env['stock.quant'].search([['location_id','=',move.location_id.id],['product_id','=',move.product_id.id],['lot_id','=',d.lot_id.id]])
+                                self.env.cr.execute("update stock_quant set reserved_quantity=1 where id="+str(qu1.id)+";")
+                                if(qu.id):            
+                                    self.env.cr.execute("update stock_quant set reserved_quantity=0 where id="+str(qu.id)+";")
+                                if(d.id):
+                                    self.env.cr.execute("update stock_move_line set lot_id="+str(serie)+"where id="+str(d.id)+";")
             return True
         else:
             return True
@@ -263,7 +264,7 @@ class StockPickingMassAction(TransientModel):
             b.process()
             c=self.env['stock.backorder.confirmation'].create({'pick_ids':[(6,0,mini.mapped('id'))]})
             c.process_cancel_backorder()
-        assigned_picking_lst.action_done()
+        assigned_picking_lst._action_done()
         return assigned_picking_lst
 
     
@@ -1020,32 +1021,6 @@ class StockQuantMassAction(TransientModel):
                 return self.env.ref('stock_picking_mass_action.quant_xlsx').report_action(data[0])        
             if(len(data)==0):
                 raise UserError(_("No hay registros para la selecion actual"))
-
-class SaleOrderMassAction(TransientModel):
-    _name = 'sale.order.action'
-    _description = 'Reporte de Solicitudes'
-    fechaInicial=fields.Datetime()
-    fechaFinal=fields.Datetime()
-    tipo=fields.Selection([["Cambio","Cambio"],["Arrendamiento","Arrendamiento"],["Venta","Venta"],["Backup","Backup"],["Demostración","Demostración"],["Retiro","Retiro"],["Préstamo","Préstamo"]])
-    def report(self):
-        i=[]
-        d=[]
-        if(self.fechaInicial):
-            m=['confirmation_date','>=',self.fechaInicial]
-            i.append(m)
-        if(self.fechaFinal):
-            m=['confirmation_date','<=',self.fechaFinal]
-            i.append(m)
-        if(self.tipo):
-            m=['x_studio_tipo_de_solicitud','=',self.tipo]
-            i.append(m)
-        i.append(['x_studio_field_bxHgp','=',False])
-        d=self.env['sale.order'].search(i,order='confirmation_date asc').filtered(lambda x:x.origin==False and x.x_studio_factura==False)
-        if(len(d)>0):
-            d[0].write({'x_studio_arreglo':str(d.mapped('id'))})
-            return self.env.ref('stock_picking_mass_action.sale_xlsx').report_action(d[0])
-        if(len(d)==0):
-            raise UserError(_("No hay registros para la selecion actual"))
 
 class HelpdeskTicketMassAction(TransientModel):
     _name = 'helpdesk.ticket.action'

@@ -13,7 +13,8 @@ class StockQuan(Model):
     quants_registro=fields.One2many('stock.quant.line','quant_id')
     regla=fields.Many2one('stock.warehouse.orderpoint')
     x_studio_field_kUc4x=fields.Many2one('x_ubicacion_inventario')
-    
+    x_studio_arreglo=fields.Char()
+    x_studio_almacn=fields.Many2one('stock.warehouse')
     @api.model
     def _unlink_zero_quants(self):
         """ _update_available_quantity may leave quants with no
@@ -56,7 +57,7 @@ class StockQuan(Model):
         almacenes=self.env['stock.warehouse'].search([['x_studio_cliente','=',False]])
         r=self.search([['location_id','in',almacenes.mapped('lot_stock_id.id')]])
         r[0].write({'x_studio_arreglo':str(r.mapped('id'))})
-        pdf=self.env.ref('stock_picking_mass_action.quant_xlsx').sudo().render_xlsx(data=r[0],docids=r[0].id)[0]
+        pdf=self.env.ref('stock_picking_mass_action.quant_xlsx')._render_xlsx(data=r[0],docids=r[0].id)[0]
         reporte = base64.encodestring(pdf)
         self.env['quant.history'].create({'reporte':reporte,'fecha':datetime.datetime.now().date()})
     
