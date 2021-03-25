@@ -338,6 +338,20 @@ class helpdesk_update(models.Model):
     x_studio_correo_electrnico_de_localidad = fields.Char(string='Correo electrónico localidad', store=True, copied=True)
     x_studio_telefono_localidad = fields.Char(string='Teléfono localidad', store=True, copied=True, track_visibility='onchange')
     x_studio_movil_localidad = fields.Char(string='Móvil localidad', store=True, copied=True, track_visibility='onchange')
+    x_studio_series = fields.Char(string='series', readonly=True, compute='_compute_x_studio_series')
+    @api.depends('x_studio_equipo_por_nmero_de_serie_1')
+    def _compute_x_studio_series(self):
+        for record in self:
+          self.x_studio_series = ''
+          a = len(record.x_studio_equipo_por_nmero_de_serie_1)
+          if a > 0:
+            #raise exceptions.ValidationError("test " + str(a))
+            f=[]
+            for n in range(a) :
+                f.append(record.x_studio_equipo_por_nmero_de_serie_1[n].serie.name)
+            record['x_studio_series']= f    
+          else:
+            record['x_studio_series'] = None
 
     x_studio_nombretmp = fields.Char(string='NombreTMP', readonly=True, compute='_compute_x_studio_nombretmp')
     @api.depends('x_studio_equipo_por_nmero_de_serie')
