@@ -289,6 +289,76 @@ class helpdesk_update(models.Model):
             if r.name:
                 r['x_studio_namedes'] = "<textarea rows='5' cols='100' disabled >"+str(r.name)+" </textarea>"
 
+    x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True, compute= '_compute_x_studio_ultima_nota')
+    @api.depends('historialCuatro.create_date')
+    def _compute_x_studio_ultima_nota(self):
+        #for record in self:
+        #  historial = record.historialCuatro
+        #  ultimaFila = len(historial) - 1
+        #  if ultimaFila >= 0:
+        #    record['x_studio_ultima_nota'] = str(historial[ultimaFila].x_disgnostico)
+        #    record['x_studio_fecha_nota'] = str(historial[ultimaFila].create_date)
+        #    record['x_studio_tecnico'] = str(historial[ultimaFila].x_persona) ultimoEvidencia
+
+        for record in self:
+          self.x_studio_ultima_nota = ''
+          historial = record.diagnosticos
+          i = 0
+          ultimaFila = -1
+          for registro in historial:
+            if not registro.creadoPorSistema and registro.comentario != False:
+              ultimaFila = i
+            i = i + 1 
+          if ultimaFila == -1:
+            ultimaFila = len(historial) - 1
+          #ultimaFila = len(historial) - 1
+          numElem = len(historial)
+          f = []
+          a=''
+          if ultimaFila >= 0:
+            for n in range(numElem):
+                f.append(historial[n])
+            if str(f[ultimaFila].comentario) == 'False':
+              record['x_studio_ultima_nota'] = 'no se a documentado'
+            else:
+              record['x_studio_ultima_nota'] = str(f[ultimaFila].comentario)  
+              
+            if str(f[ultimaFila].create_date) == False:
+              record['x_studio_fecha_nota'] = ''
+            else:
+              if f[ultimaFila].create_date:
+                #record['x_studio_fecha_nota'] = str(f[ultimaFila].create_date.strftime('%d-%m-%Y %H:%M:%S'))
+                record['x_studio_fecha_nota'] = str((f[ultimaFila].create_date-datetime.timedelta(hours=5)).strftime('%d-%m-%Y %H:%M:%S'))
+              #record['x_studio_fecha_nota'] = str(f[ultimaFila].create_date)
+            
+            if str(f[ultimaFila].create_uid) == False:
+              record['x_studio_tecnico'] = None
+            else:
+              record['x_studio_tecnico'] = str(f[ultimaFila].create_uid.name)
+            if f[ultimaFila].evidencia:
+              #record['x_studio_adjunto_ultima_nota'] = f[ultimaFila].evidencia
+              if len(f[ultimaFila].evidencia)>0:
+                for y in f[ultimaFila].evidencia:
+                    a = "<br><a href='https://gnsys-corp.odoo.com/web/content/"+str(y.id)+"?download=true'   target='_blank'> "+str(y.name)+"  </a></br>"+ a 
+                record['x_studio_ultima_evidencia']=a
+              #if len(f[ultimaFila].evidencia)==1:
+              #  record['x_studio_ultima_evidencia'] = "<a href='https://gnsys-corp.odoo.com/web/content/"+str(f[ultimaFila].evidencia.id)+"?download=true'>"+str(f[ultimaFila].evidencia.name)+"</a>"
+            else:
+              ultima_evidencia_real = ""
+              for diag in record.diagnosticos:
+                if len(diag.evidencia) > 0:
+                  ultima_evidencia_real = ""
+                  for evidencia_liga in diag.evidencia:
+                    ultima_evidencia_real = "<br><a href='https://gnsys-corp.odoo.com/web/content/"+str(evidencia_liga.id)+"?download=true'   target='_blank'> "+str(evidencia_liga.name)+"  </a></br>" + ultima_evidencia_real
+              if ultima_evidencia_real:
+                record['x_studio_ultima_evidencia'] = ultima_evidencia_real
+          else:
+            record['x_studio_ultima_nota'] = ''
+            record['x_studio_fecha_nota'] = None
+            record['x_studio_tecnico'] = None
+            #record['x_studio_adjunto_ultima_nota'] = f[ultimaFila].evidencia
+
+
     #priority = fields.Selection([('all','Todas'),('baja','Baja'),('media','Media'),('alta','Alta'),('critica','Critica')])
     x_studio_field_6furK = fields.Selection([('CHIHUAHUA','CHIHUAHUA'), ('SUR','SUR'),('NORTE','NORTE'),('PONIENTE','PONIENTE'),('ORIENTE','ORIENTE'),('CENTRO','CENTRO'),('DISTRIBUIDOR','DISTRIBUIDOR'),('MONTERREY','MONTERREY'),('CUERNAVACA','CUERNAVACA'),('GUADALAJARA','GUADALAJARA'),('QUERETARO','QUERETARO'),('CANCUN','CANCUN'),('VERACRUZ','VERACRUZ'),('PUEBLA','PUEBLA'),('TOLUCA','TOLUCA'),('LEON','LEON'),('COMODIN','COMODIN'),('VILLAHERMOSA','VILLAHERMOSA'),('MERIDA','MERIDA'),('ALTAMIRA','ALTAMIRA'),('COMODIN','COMODIN'),('DF00','DF00'),('SAN LP','SAN LP'),('ESTADO DE MÉXICO','ESTADO DE MÉXICO'),('Foraneo Norte','Foraneo Norte'),('Foraneo Sur','Foraneo Sur')], string = 'Zona localidad', store = True, track_visibility='onchange')
     x_studio_zona = fields.Selection([('SUR','SUR'),('NORTE','NORTE'),('PONIENTE','PONIENTE'),('ORIENTE','ORIENTE'),('CENTRO','CENTRO'),('DISTRIBUIDOR','DISTRIBUIDOR'),('MONTERREY','MONTERREY'),('CUERNAVACA','CUERNAVACA'),('GUADALAJARA','GUADALAJARA'),('QUERETARO','QUERETARO'),('CANCUN','CANCUN'),('VERACRUZ','VERACRUZ'),('PUEBLA','PUEBLA'),('TOLUCA','TOLUCA'),('LEON','LEON'),('COMODIN','COMODIN'),('VILLAHERMOSA','VILLAHERMOSA'),('MERIDA','MERIDA'),('ALTAMIRA','ALTAMIRA'),('COMODIN','COMODIN'),('DF00','DF00'),('SAN LP','SAN LP'),('ESTADO DE MÉXICO','ESTADO DE MÉXICO'),('Foraneo Norte','Foraneo Norte'),('Foraneo Sur','Foraneo Sur'),('CHIHUAHUA','CHIHUAHUA')], string = 'Zona', store = True, track_visibility='onchange')
