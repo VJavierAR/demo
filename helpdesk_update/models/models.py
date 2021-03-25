@@ -334,6 +334,19 @@ class helpdesk_update(models.Model):
             #x_studio_equipo_por_nmero_de_serie.x_studio_move_line
             record['x_studio_id_cliente'] = id_cliente# + " , " + str(id_cliente)
 
+    x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True, compute='_compute_x_studio_filtro_numeros_de_serie')
+    @api.depends('x_studio_empresas_relacionadas')
+    def _compute_x_studio_filtro_numeros_de_serie(self):
+        for record in self:
+            self.x_studio_filtro_numeros_de_serie = 0
+            #id_cliente = record.partner_id.id
+            id_localidad = self.env['stock.warehouse'].search([['x_studio_field_E0H1Z','=',record.x_studio_empresas_relacionadas.id]])
+            #x_studio_equipo_por_nmero_de_serie.x_studio_move_line
+            if(len(id_localidad)==1):
+                record['x_studio_filtro_numeros_de_serie'] = id_localidad.lot_stock_id.id
+            if(len(id_localidad)==0):
+                record['x_studio_filtro_numeros_de_serie'] = False
+
 
     x_studio_valor_categria_de_producto = fields.Integer(string='valor categria de producto ', store=True, readonly=True, compute='_compute_x_studio_valor_categria_de_producto')
     @api.depends('ticket_type_id', 'x_studio_tipo_de_incidencia', 'x_studio_tipo_de_requerimiento')
