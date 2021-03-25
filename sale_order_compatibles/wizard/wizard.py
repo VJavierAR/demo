@@ -38,16 +38,16 @@ class SaleOrderMassAction(TransientModel):
         i=[]
         d=[]
         if(self.fechaInicial):
-            m=['confirmation_date','>=',self.fechaInicial]
+            m=['date_order','>=',self.fechaInicial]
             i.append(m)
         if(self.fechaFinal):
-            m=['confirmation_date','<=',self.fechaFinal]
+            m=['date_order','<=',self.fechaFinal]
             i.append(m)
         if(self.tipo):
             m=['x_studio_tipo_de_solicitud','=',self.tipo]
             i.append(m)
         i.append(['x_studio_field_bxHgp','=',False])
-        d=self.env['sale.order'].search(i,order='confirmation_date asc').filtered(lambda x:x.origin==False and x.x_studio_factura==False)
+        d=self.env['sale.order'].search(i,order='date_order asc').filtered(lambda x:x.origin==False and x.x_studio_factura==False)
         if(len(d)>0):
             d[0].write({'x_studio_arreglo':str(d.mapped('id'))})
             return self.env.ref('stock_picking_mass_action.sale_xlsx').report_action(d[0])
