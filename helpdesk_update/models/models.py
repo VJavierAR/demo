@@ -289,6 +289,8 @@ class helpdesk_update(models.Model):
             if r.name:
                 r['x_studio_namedes'] = "<textarea rows='5' cols='100' disabled >"+str(r.name)+" </textarea>"
 
+    x_studio_ultima_evidencia = fields.Char(string = 'ultima evidencia', readonly=True)
+
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True, compute= '_compute_x_studio_ultima_nota')
