@@ -353,6 +353,21 @@ class helpdesk_update(models.Model):
           else:
             record['x_studio_series'] = None
 
+    x_studio_series2 = fields.Char(string='series', store=True, copied=True, compute='_compute_x_studio_series2')
+    @api.depends('x_studio_equipo_por_nmero_de_serie')
+    def _compute_x_studio_series2(self):
+        self.x_studio_series2 = ''
+        for record in self:
+          a = len(record.x_studio_equipo_por_nmero_de_serie)
+          if a > 0:
+            #raise exceptions.ValidationError("test " + str(a))
+            f=[]
+            for n in range(a) :
+                f.append(record.x_studio_equipo_por_nmero_de_serie[n].name)
+            record['x_studio_series2']= f    
+          else:
+            record['x_studio_series2'] = None
+
     x_studio_nombretmp = fields.Char(string='NombreTMP', readonly=True, compute='_compute_x_studio_nombretmp')
     @api.depends('x_studio_equipo_por_nmero_de_serie')
     def _compute_x_studio_nombretmp(self):
