@@ -428,6 +428,8 @@ class helpdesk_update(models.Model):
           else:
             record['x_studio_nombre_equipo'] = None
 
+    x_studio_evidencia_1 = fields.Binary(string='Evidencia', store=True)
+
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
     Falta migrar a odoo 14
