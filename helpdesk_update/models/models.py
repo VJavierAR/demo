@@ -398,6 +398,12 @@ class helpdesk_update(models.Model):
     x_studio_nmero_ticket_distribuidor_1 = fields.Char(string='Número ticket distribuidor', store=True, track_visibility='onchange')
     x_studio_evidencia_distribuidor_filename = fields.Char(string='Filename for x_studio_evidencia_distribuidor', store=True)
     x_studio_evidencia_distribuidor = fields.Binary(string='Evidencia Distribuidor', store=True, track_visibility='onchange')
+    x_studio_ultimoestado_1 = fields.Char(string='ultimoEstado', readonly=True, compute='_compute_x_studio_ultimoestado_1')
+    @api.depends('stage_id')
+    def _compute_x_studio_ultimoestado_1(self):
+        self.x_studio_ultimoestado_1 = ''
+        for r in self :
+            r['x_studio_ultimoestado_1']=str(r.stage_id.name)
 
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
