@@ -307,6 +307,7 @@ class helpdesk_update(models.Model):
     x_studio_verificacin_de_tner = fields.Boolean(string='Verificación de tóner', store=True)
     x_studio_verificacin_de_refaccin = fields.Boolean(string='Verificación de refacción', store=True)
     x_studio_observaciones_adicionales_ = fields.Char(string='Observaciones adicionales', store=True)
+    x_studio_prioridad = fields.Selection([["0","Todos"],["1","Regular"],["2","Media"],["3","Urgente"]], string = 'Prioridad', store = True)
 
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
