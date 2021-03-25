@@ -418,6 +418,16 @@ class helpdesk_update(models.Model):
           else:
             record['x_studio_numero_serie_text'] = None
 
+    x_studio_nombre_equipo = fields.Char(string='nombre equipo', readonly=True, store=True, compute='_compute_x_studio_nombre_equipo')
+    @api.depends('x_studio_equipo_por_nmero_de_serie')
+    def _compute_x_studio_nombre_equipo(self):
+        self.x_studio_nombre_equipo = ''
+        for record in self:
+          if len(record.x_studio_equipo_por_nmero_de_serie) > 0:
+            record['x_studio_nombre_equipo'] = record.x_studio_equipo_por_nmero_de_serie[0].product_id.name
+          else:
+            record['x_studio_nombre_equipo'] = None
+
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
     Falta migrar a odoo 14
