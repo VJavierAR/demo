@@ -49,7 +49,7 @@
                         <field name="name" placeholder="e.g. LOT/0001/20121"/>
                     </h1>
                 </div>
-                <group name="main_group">
+                <group name="main_group" invisible="1">
                     <group>
                         <field name="product_id" context="{'default_type': 'product'}" readonly="context.get('set_product_readonly', False)" force_save="1" help="Product this lot/serial number contains. You cannot change it anymore if it has already been moved."/>
                         <label for="product_qty" attrs="{'invisible': [('display_complete', '=', False)]}"/>
@@ -182,11 +182,7 @@
                         </group>
                     </page>
                     <page string="Quants" name="quants">
-                        <group>
-                            <group>
-                                <field name="quant_ids"/>
-                            </group>
-                        </group>
+                        <field name="quant_ids"/>
                     </page>
                 </notebook>
                 <group>
