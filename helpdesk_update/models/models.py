@@ -321,6 +321,64 @@ class helpdesk_update(models.Model):
             self.x_studio_id_ayuda = 0
             record['x_studio_id_ayuda'] = record.partner_id
 
+    x_studio_valor_categria_de_producto = fields.Integer(string='valor categria de producto ', store=True, readonly=True, compute='_compute_x_studio_valor_categria_de_producto')
+    @api.depends('ticket_type_id, x_studio_tipo_de_incidencia, x_studio_tipo_de_requerimiento')
+    def _compute_x_studio_valor_categria_de_producto(self):
+        self.x_studio_valor_categria_de_producto = 0
+
+        #Id's de tipos de ticket
+        pregunta = 1
+        incidencia = 2
+        requerimiento = 3
+        problema = 7
+
+        #Tipos de Incidencias
+        falla = "Falla"
+        conectividad = "Conectividad"
+        reincidencia = "Reincidencia"
+        solicitud_de_refaccion = "Solicitud de refacción"
+
+        #Tipos de requerimientos
+        instalación = "Instalación"
+        mantenimiento_preventivo = "Mantenimiento preventivo"
+        IMAC = "IMAC"
+        toner_requerimiento = "Tóner"
+        proyecto = "Proyecto"
+        retiro_de_equipo = "Retiro de equipo"
+        cambio = "Cambio"
+        servicio_de_software = "Servicio de software"
+
+        #Id's de categorias de producto
+        toner = 5
+        servicio = 6
+        refaccion = 7
+        kit_mantenimiento = 9
+        conectivity = 10
+        accesorio = 11
+        software = 12
+        equipo = 13
+
+        for record in self:
+          #variables para hacer filtrado de los productos
+          tipo_ticket = record.ticket_type_id.id
+          tipo_incidencia = record.x_studio_tipo_de_incidencia
+          tipo_de_requerimiento = record.x_studio_tipo_de_requerimiento
+          #record['x_studio_test'] = tipo_incidencia
+          
+          #record['x_studio_test'] =  record.partner_id#.company_id.id
+          
+          if tipo_ticket == incidencia and tipo_incidencia == solicitud_de_refaccion: 
+            
+            record['x_studio_valor_categria_de_producto'] = refaccion
+            #record['x_studio_field_tLWzF.x_studio_valor_categria_de_producto_rel'] = refaccion
+            #record['x_studio_field_tLWzF.categ_id'] = refaccion
+          
+          if tipo_ticket == requerimiento and tipo_de_requerimiento == toner_requerimiento:
+            record['x_studio_valor_categria_de_producto'] = toner
+            
+          if tipo_ticket == requerimiento and tipo_de_requerimiento == cambio:
+            record['x_studio_valor_categria_de_producto'] = equipo
+        
 
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
