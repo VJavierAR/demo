@@ -312,6 +312,8 @@ class helpdesk_update(models.Model):
     x_studio_field_up5pO = fields.Selection([['draft', 'Borrador'], ['waiting', 'Esperando otra operación'], ['confirmed', 'En espera'], ['assigned', 'Preparado'], ['done', 'Hecho'], ['cancel', 'Cancelado']], string = 'almacen', track_visibility = 'onchange')
     x_studio_nivel_del_cliente = fields.Selection([["A","A"],["B","B"],["C","C"],["OTRO","D"],["VIP","VIP"]], string = 'Nivel del cliente', store = True, track_visibility='onchange')
     x_studio_zona_cliente = fields.Selection([['SUR', 'SUR'], ['NORTE', 'NORTE'], ['PONIENTE', 'PONIENTE'], ['ORIENTE', 'ORIENTE'], ['CENTRO', 'CENTRO'], ['DISTRIBUIDOR', 'DISTRIBUIDOR'], ['MONTERREY', 'MONTERREY'], ['CUERNAVACA', 'CUERNAVACA'], ['GUADALAJARA', 'GUADALAJARA'], ['QUERETARO', 'QUERETARO'], ['CANCUN', 'CANCUN'], ['VERACRUZ', 'VERACRUZ'], ['PUEBLA', 'PUEBLA'], ['TOLUCA', 'TOLUCA'], ['LEON', 'LEON'], ['COMODIN', 'COMODIN'], ['VILLAHERMOSA', 'VILLAHERMOSA'], ['MERIDA', 'MERIDA'], ['VERACRUZ', 'VERACRUZ'], ['ALTAMIRA', 'ALTAMIRA']], string = 'Nivel del cliente', store = True, readonly=True, track_visibility='onchange')
+    x_studio_telefono = fields.Char(string='Teléfono de cliente', store=True, track_visibility='onchange')
+
 
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
