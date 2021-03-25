@@ -315,7 +315,7 @@ class helpdesk_update(models.Model):
     x_studio_telefono = fields.Char(string='Teléfono de cliente', store=True, track_visibility='onchange')
     x_studio_movil = fields.Char(string='Móvil cliente', store=True, track_visibility='onchange')
     x_studio_id_ayuda = fields.Integer(string='id ayuda ', store=True, compute='_compute_x_studio_id_ayuda')
-     @api.depends('partner_id')
+    @api.depends('partner_id')
     def _compute_x_studio_id_ayuda(self):
         for record in self:
             self.x_studio_id_ayuda = 0
