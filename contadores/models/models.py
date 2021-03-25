@@ -1797,6 +1797,8 @@ class lor(models.Model):
     instalado_el = fields.Datetime(string = 'Fecha de instalación', store=True)
     html = fields.Text(string = 'Tickets', compute = 'gener_tabla_tickets')
 
+    x_studio_field_no6Rb = fields.Char(string='Fecha mes/año', store=True)
+
     x_studio_estado = fields.Selection([["Obsoleto","Obsoleto"],["Usado","Usado"],["Hueso","Hueso"],["Para reparación","Para reparación"],["Nuevo","Nuevo"],["Buenas condiciones","Buenas condiciones"],["Excelentes condiciones","Excelentes condiciones"],["Back-up","Back-up"],["Dañado","Dañado"]], store=True, track_visibility='onchange')
     x_studio__amarrillo = fields.Integer(store=True, string='% Amarrillo')
     x_studio__cian = fields.Integer(store=True, string='& cian')
