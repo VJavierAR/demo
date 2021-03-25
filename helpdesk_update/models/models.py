@@ -336,6 +336,7 @@ class helpdesk_update(models.Model):
 
     x_studio_localidad_id = fields.Char(string='localidad_id', store=True)
     x_studio_correo_electrnico_de_localidad = fields.Char(string='Correo electrónico localidad', store=True, copied=True)
+    x_studio_telefono_localidad = fields.Char(string='Teléfono localidad', store=True, copied=True, track_visibility='onchange')
 
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
