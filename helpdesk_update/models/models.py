@@ -392,6 +392,7 @@ class helpdesk_update(models.Model):
             record['x_studio_nombretmp'] = None
 
     x_studio_numero_de_ticket_cliente = fields.Integer(string='Número de ticket cliente', store=True)
+    x_studio_responsable_de_equipo = fields.Many2one('hr.employee', store=True, string='Encargado de área', track_visibility='onchange')
 
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
