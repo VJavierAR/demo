@@ -5,9 +5,10 @@
       <field name="model">stock.production.lot</field>
       <field name="arch" type="xml">
             <form string="Lots/Serial Numbers">
-              <sheet>
+                <sheet>
                 <field name="display_complete" invisible="1"/>
-                <div class="oe_button_box" name="button_box" attrs="{'invisible': [('display_complete', '=', False)]}">
+                <div class="oe_button_box" name="button_box"
+                     attrs="{'invisible': [('display_complete', '=', False)]}">
                         <button name="action_lot_open_quants" icon="fa-arrows" class="oe_stat_button" string="Location" type="object"/>
                         <button name="%(stock.action_stock_report)d" icon="fa-arrow-up" class="oe_stat_button" string="Traceability" type="action"/>
                 </div>
@@ -17,7 +18,7 @@
                         <field name="name" placeholder="e.g. LOT/0001/20121"/>
                     </h1>
                 </div>
-                <group name="main_group" invisible="1">
+                <group name="main_group">
                     <group>
                         <field name="product_id" context="{'default_type': 'product'}" readonly="context.get('set_product_readonly', False)" force_save="1" help="Product this lot/serial number contains. You cannot change it anymore if it has already been moved."/>
                         <label for="product_qty" attrs="{'invisible': [('display_complete', '=', False)]}"/>
@@ -26,125 +27,22 @@
                             <field name="product_uom_id" readonly="1" groups="uom.group_uom"/>
                         </div>
                         <field name="ref"/>
+                        <field name="x_studio_mini"/>
                         <field name="company_id" groups="base.group_multi_company"/>
                     </group>
-                    <group/>
+                    <group></group>
                 </group>
-                <notebook invisible="1">
+                <notebook attrs="{'invisible': [('display_complete', '=', False)]}">
                     <page string="Description" name="description">
                         <field name="note"/>
                     </page>
                 </notebook>
-
-                <notebook>
-                    <page string="Tickets" name="tickets">
-                        <field name="html" widget="html"/>
-                    </page>
-                    <page string="Lecturas" name="lecturas">
-                        <group>
-                            <group>
-                                <field name="x_studio_field_PYss4">
-                                    <tree>
-                                        <field name="contadorMono"/>
-                                        <field name="contadorColor"/>
-                                        <field name="x_studio_field_no6Rb"/>
-                                        <field name="x_studio_fecha_texto_anio"/>
-                                    </tree>
-                                </field>
-                            </group>
-                            <group>
-                                <field name="x_studio_ultimalecturam"/>
-                                <field name="x_studio_lec_ant_bn"/>
-                                <field name="x_studio_pg_proc"/>
-                                <field name="x_studio_ultimalecturacolor"/>
-                                <field name="x_studio_lec_ant_color"/>
-                                <field name="x_studio_pg_proc_color"/>
-                                <field name="x_studio_periodo"/>
-                            </group>
-                        </group>
-                        
-                    </page>
-                    <page string="Toner" name="toner">
-                        <field name="x_studio_toner_1">
-                            <tree>
-                                <field name="x_studio_descripcion"/>
-                                <field name="contadorMono"/>
-                                <field name="contadorColor"/>
-                                <field name="porcentajeNegro"/>
-                                <field name="porcentajeAmarillo"/>
-                                <field name="porcentajeCian"/>
-                                <field name="porcentajeMagenta"/>
-                                <field name="x_studio_toner_negro"/>
-                                <field name="x_studio_toner_amarillo"/>
-                                <field name="x_studio_toner_cian"/>
-                                <field name="x_studio_toner_magenta"/>
-                                <field name="create_date"/>
-                                <field name="x_studio_fecha"/>
-                            </tree>
-                        </field>
-                    </page>
-                    <page string="Cliente" name="cliente">
-                        <group>
-                            <group>
-                                <field name="x_studio_localidad_2"/>
-                                <field name="x_studio_cliente"/>
-                            </group>
-                        </group>
-                    </page>
-                    <page string="Quants" name="quants">
-                        <field name="quant_ids"/>
-                    </page>
-                </notebook>
-                <group>
-                    <group>
-                        <field name="product_qty" readonly="1"/>
-                        <field name="x_studio_categoria_de_producto_3"/>
-                        <field name="x_studio_idotrosistmp"/>
-                        <field name="x_studio_idreal" readonly="1"/>
-                        <field name="x_studio_contrato" readonly="1"/>
-                        <field name="x_studio_etapa"/>
-                        <field name="id" readonly="1"/>
-                        <field name="product_id" domain="[('type', 'in', ['product', 'consu'])]"/>
-                        <field name="x_studio_demo"/>
-                        <field name="x_studio_mini"/>
-                        <field name="x_studio_cambio"/>
-                        <field name="x_studio_categoria_de_producto"/>
-                        <field name="x_studio_estado"/>
-                        <field name="x_studio_test" readonly="1"/>
-                        <field name="x_studio_venta"/>
-                        <field name="x_studio_ubicacion_id"/>
-                        <field name="x_studio_ultma_ubicacin"/>
-                        <field name="x_studio_ubicaciontest"/>
-                        <field name="x_studio_delegacion"/>
-                        <field name="x_studio_calle"/>
-                        <field name="x_studio_cp"/>
-                        <field name="x_studio_interior"/>
-                        <field name="x_studio_exterior"/>
-                        <field name="x_studio_colonia"/>
-                        <field name="x_studio_ciudad"/>
-                        <field name="x_studio_estado_1"/>
-                        <field name="x_studio_centro_de_costos"/>
-                        <field name="x_studio_zona"/>
-                        <field name="x_studio_pais"/>
-                        <field name="x_studio_d_envio"/>
-                        <field name="ref"/>
-                        <field name="x_studio_ultimo_mantenimiento_preventivo"/>
-                        <field name="x_studio_contador_kit_mantenimiento"/>
-                        <field name="x_studio_contador_rodillo"/>
-                        <field name="x_studio_contador_unidad_de_imagen"/>
-                        <field name="servicio"/>
-                        <field name="x_studio_activo"/>
-                        <field name="x_studio_idservicio"/>
-                        <field name="x_studio_instalado"/>
-                        <field name="x_studio_localidad"/>
-                    </group>
-                </group>
-            </sheet>
-            <div class="oe_chatter">
-                <field name="message_follower_ids"/>
-                <field name="activity_ids"/>
-                <field name="message_ids"/>
-            </div>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
       </field>
     </record>
