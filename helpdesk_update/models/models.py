@@ -396,6 +396,7 @@ class helpdesk_update(models.Model):
     x_studio_field_wK7RR = fields.Many2one('res.partner', store=True, string='Contactos foráneos', track_visibility='onchange')
     x_studio_fecha_de_visita = fields.Date(string='Fecha de visita', store=True)
     x_studio_nmero_ticket_distribuidor_1 = fields.Char(string='Número ticket distribuidor', store=True, track_visibility='onchange')
+    x_studio_evidencia_distribuidor_filename = fields.Char(string='Filename for x_studio_evidencia_distribuidor', store=True)
 
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
