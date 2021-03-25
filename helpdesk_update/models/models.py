@@ -295,6 +295,7 @@ class helpdesk_update(models.Model):
     x_studio_generar_cambio = fields.Boolean(string='Generar cambio', store=True)
     x_studio_contador_bn_a_capturar = fields.Integer(string='Contador B/N actual', readonly=True)
     x_studio_contador_color = fields.Integer(string='Contador color', readonly=True)
+    x_studio_contador_color_a_capturar = fields.Integer(string='Contador color actual', readonly=True)
 
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
