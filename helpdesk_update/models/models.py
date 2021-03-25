@@ -334,8 +334,11 @@ class helpdesk_update(models.Model):
             #x_studio_equipo_por_nmero_de_serie.x_studio_move_line
             record['x_studio_id_cliente'] = id_cliente# + " , " + str(id_cliente)
 
+    x_studio_localidad_id = fields.Char(string='localidad_id', store=True)
+
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True)
     """
+    Falta migrar a odoo 14
     x_studio_filtro_numeros_de_serie = fields.Integer(string='id localidad', store=True, readonly=True, compute='_compute_x_studio_filtro_numeros_de_serie')
     @api.depends('x_studio_empresas_relacionadas')
     def _compute_x_studio_filtro_numeros_de_serie(self):
@@ -411,6 +414,7 @@ class helpdesk_update(models.Model):
 
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
+    Falta migrar a odoo 14
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True, compute= '_compute_x_studio_ultima_nota')
     @api.depends('historialCuatro.create_date')
     def _compute_x_studio_ultima_nota(self):
