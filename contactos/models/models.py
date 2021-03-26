@@ -20,6 +20,7 @@ class contactos(models.Model):
     email = fields.Char(string = 'Correo electrónico', track_visibility = 'onchange')
     comment = fields.Text(string = 'Notas', track_visibility = 'onchange')
     street_name = fields.Char(string = 'Calle', track_visibility = 'onchange', store = True)
+    x_studio_ciudad = fields.Char(string = 'Ciudad', track_visibility = 'onchange', store=True)
 
 class zonaDistribuidor(models.Model):
 	_name='zona.distribuidor'
