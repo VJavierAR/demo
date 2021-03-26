@@ -1919,10 +1919,11 @@ class lor(models.Model):
           record['x_studio_contador_bn_mesa'] = 0
 
     x_studio_contador_bn_mesa__1 = fields.Integer(store=True, string='Contador BN Mesa')
-    x_studio_contador_color = fields.Char(readonly=True, string='Contador Color', compute = '_compute_x_studio_contador_color')
+    x_studio_contador_color = fields.Char(default=0, readonly=True, string='Contador Color', compute = '_compute_x_studio_contador_color')
 
     @api.depends('dca')
     def _compute_x_studio_contador_color(self):
+      self.x_studio_contador_color = 0
       for record in self:
         t=len(record.dca)
         h=[]
