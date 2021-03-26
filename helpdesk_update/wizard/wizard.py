@@ -2118,13 +2118,28 @@ class helpdesk_crearconserie(TransientModel):
                         }
             ticket._compute_datosCliente()
             ticket.actualiza_serie_texto()
-            query = "select h.id from helpdesk_ticket_stock_production_lot_rel s, helpdesk_ticket h where h.id=s.helpdesk_ticket_id and h.id!=" + str(ticket.x_studio_id_ticket) + "  and h.stage_id!=18 and h.team_id!=8 and  h.active='t' and stock_production_lot_id = " +  str(ticket.x_studio_equipo_por_nmero_de_serie[0].id) + " limit 1;"
+            query = """
+                    select 
+                        h.id 
+                    from 
+                        helpdesk_ticket_stock_production_lot_rel s, 
+                        helpdesk_ticket h 
+                    where 
+                        h.id=s.helpdesk_ticket_id and 
+                        h.id!=""" + str(ticket.x_studio_id_ticket) + """ and 
+                        h.stage_id!=18 and 
+                        h.stage_id!=4 and 
+                        h.team_id!=8 and 
+                        h.active='t' and 
+                        stock_production_lot_id = """ + str(ticket.x_studio_equipo_por_nmero_de_serie[0].id) + """ 
+                        limit 1;
+                    """
             self.env.cr.execute(query)                        
             informacion = self.env.cr.fetchall()
             wiz = ''
             mensajeTitulo = "Ticket generado!!!"
             if len(informacion) > 0:
-                mensajeCuerpo = ('Se creo un ticket que esta en proceso con la serie "' + self.serie.name + '" seleccionada. \n Ticket existente: ' + str(informacion[0][0]) + '\n ')
+                mensajeCuerpo = ('Se creo un ticket que esta en proceso con la serie "' + self.serie.name + '" seleccionada.\nNuevo ticket: ' + str(ticket.id) + '\nTicket existente: ' + str(informacion[0][0]) + '\n ')
                 wiz = self.env['helpdesk.alerta.series'].create({'ticket_id': ticket.id, 'ticket_id_existente': informacion[0][0], 'mensaje': mensajeCuerpo})
             else:
                 mensajeCuerpo = "Se creo el ticket '" + str(ticket.id) + "' con el número de serie " + self.serie.name + "\n\n"
