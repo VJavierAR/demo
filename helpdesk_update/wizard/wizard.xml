@@ -827,7 +827,16 @@
                 </group>
                 <group attrs='{"invisible": [["esProspecto", "=", True]] } '>
                     <group string='Buscar por serie'>
-                        <field name='serie' widget='many2many_tags' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" force_save = "1"/>
+                        <field name='serie' widget='many2many_tags' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" force_save = "1">
+                            <tree>
+                                <field name='id' />
+                                <field name='name' />
+                            </tree>
+                            <form>
+                                <field name='id' />
+                                <field name='name' />
+                            </form>
+                        </field>
                     </group>
                     <group string='Buscar por cliente y localidad'>
                         <field name='clienteRelacion' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" force_save = "1" widget="res_partner_many2one" /><!-- domain='[["x_studio_activo_1", "=", True]]' -->
