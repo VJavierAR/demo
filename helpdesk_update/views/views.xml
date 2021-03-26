@@ -67,8 +67,10 @@
           <!--<button name="detalle_serie_wizard" type="object" string="Bitacoras" icon="fa-clipboard-list" class="iconDiagnostico" attrs='{"invisible": ["|",["stage_id", "=", 1],["x_studio_equipo_por_nmero_de_serie","=",[]]]}'/>-->
           <field name="x_studio_contadores" widget="html" string="Contadores Anteriores" readonly="1" force_save = "1" invisible="1"/>
           <field name="contadores_anteriores" widget="html" string="Contadores Anteriores" readonly="1" force_save = "1"/>
-          <button name="contadores_wizard" string="Contadores" type="object" icon='fa-clock-o' class="iconDiagnostico" attrs='{"invisible": [ "|", "|", "|", ["x_studio_equipo_por_nmero_de_serie","=",[]], ["contadores_anteriores", "=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ] }'/>
-          <button name="editar_contadores_wizard" string="Editar contadores" type="object" icon='fa-edit' class="iconDiagnostico" groups='helpdesk_update.group_helpdesk_editar_contadores' attrs="{'invisible': [ '|', '|', ['x_studio_equipo_por_nmero_de_serie','=',[]], ['stage_id', '=', 18], ['stage_id', '=', 4] ]}" />
+          <button name="contadores_wizard" type="object" icon='fa-clock-o' class="iconDiagnostico" attrs='{"invisible": [ "|", "|", "|", ["x_studio_equipo_por_nmero_de_serie","=",[]], ["contadores_anteriores", "=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ] }'/>
+          <!--
+          <button name="editar_contadores_wizard" type="object" icon='fa-edit' class="iconDiagnostico" groups='helpdesk_update.group_helpdesk_editar_contadores' attrs="{'invisible': [ '|', '|', ['x_studio_equipo_por_nmero_de_serie','=',[]], ['stage_id', '=', 18], ['stage_id', '=', 4] ]}" />
+          -->
           <field name="datosCliente"  />
           
           <field name="x_studio_ultima_nota" widget="html" string="Ultima nota"/>
