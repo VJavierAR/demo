@@ -670,14 +670,15 @@
       <field name="view_mode">tree,form</field>
     </record> 
 
-    <menuitem
-      id="mesa_menu"
-      name="Mesa"
-      action="mesa_action_window"
-      web_icon="helpdesk_update, static/description/helpdesk-icon.png"
+    <menuitem id="mesa_root"
+              name="Mesa"
+              web_icon="helpdesk_update, static/description/helpdesk-icon.png"
     />
-    <menuitem name="Menu 1" id="menu_1" parent="helpdesk_update.mesa_menu"/>
-    <menuitem name="Menu 2" id="menu_2" parent="menu_1"/>
+    <menuitem id="mesa_de_servicio"
+              name="Mesa de servicio"
+              parent="mesa_root"
+              sequence="0"
+              action="mesa_action_window"/>
 
   </data>
 </odoo>
