@@ -1707,7 +1707,7 @@ class helpdesk_crearconserie(TransientModel):
                 textoHtml.append("<h2>Es distribuidor, favor de verificar la dirección del cliente para evitar problemas de visitas erroneas.</h2>")
                 self.textoDistribuidor = ''.join(textoHtml)
       else:
-        self.serie = [(5,0,0)]
+        self.serie = False
 
         self.cliente = ''
         self.localidad = ''
@@ -1735,7 +1735,7 @@ class helpdesk_crearconserie(TransientModel):
     def cambia_cliente(self):
         if not self.clienteRelacion.id:
             self.localidadRelacion = False
-            self.serie = [(5,0,0)]
+            self.serie = False
 
             self.cliente = ''
             self.localidad = ''
@@ -1788,10 +1788,9 @@ class helpdesk_crearconserie(TransientModel):
     
     @api.onchange('serie')
     def cambia_serie(self):
-        for r in self:
-            _logger.info("r.serie: " + str(r.serie))
-            _logger.info("r.serie.id: " + str(r.serie.ids))
         
+        _logger.info("self.serie: " + str(self.serie))
+        _logger.info("self.serie.id: " + str(self.serie.id))
         if self.serie.id:
             _my_object = self.env['helpdesk.crearconserie']
             if len(self.serie) > 1:
