@@ -21,6 +21,7 @@ class contactos(models.Model):
     comment = fields.Text(string = 'Notas', track_visibility = 'onchange')
     street_name = fields.Char(string = 'Calle', track_visibility = 'onchange', store = True)
     x_studio_ciudad = fields.Char(string = 'Ciudad', track_visibility = 'onchange', store=True)
+    x_studio_field_SqU5B = fields.Selection([["SUR","SUR"],["NORTE","NORTE"],["PONIENTE","PONIENTE"],["ORIENTE","ORIENTE"],["CENTRO","CENTRO"],["DISTRIBUIDOR","DISTRIBUIDOR"],["MONTERREY","MONTERREY"],["CUERNAVACA","CUERNAVACA"],["GUADALAJARA","GUADALAJARA"],["QUERETARO","QUERETARO"],["CANCUN","CANCUN"],["VERACRUZ","VERACRUZ"],["PUEBLA","PUEBLA"],["TOLUCA","TOLUCA"],["LEON","LEON"],["COMODIN","COMODIN"],["VILLAHERMOSA","VILLAHERMOSA"],["MERIDA","MERIDA"],["VERACRUZ","VERACRUZ"],["ALTAMIRA","ALTAMIRA"],["DF00","DF00"],["SAN LP","SAN LP"],["ESTADO DE MÉXICO","ESTADO DE MÉXICO"],["Foraneo Norte","Foraneo Norte"],["Foraneo Sur","Foraneo Sur"],["CHIHUAHUA","CHIHUAHUA"]], string='Zona', store=True, track_visibility='onchange')
 
 class zonaDistribuidor(models.Model):
 	_name='zona.distribuidor'
