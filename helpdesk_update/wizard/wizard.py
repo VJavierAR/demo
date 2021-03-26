@@ -1806,7 +1806,20 @@ class helpdesk_crearconserie(TransientModel):
                 mensajeCuerpo = "No puede capturar más de una serie."
                 raise exceptions.Warning(mensajeCuerpo)
             else:
-                query = "select h.id from helpdesk_ticket_stock_production_lot_rel s, helpdesk_ticket h where h.id=s.helpdesk_ticket_id and h.stage_id!=18 and h.stage_id!=4 and h.team_id!=8 and  h.active='t' and stock_production_lot_id = " +  str(self.serie[0]._origin.id) + " limit 1;"
+                query = """
+                        select 
+                            h.id 
+                        from 
+                            helpdesk_ticket_stock_production_lot_rel s, 
+                            helpdesk_ticket h 
+                        where 
+                            h.id=s.helpdesk_ticket_id and 
+                            (h.stage_id!=18 or h.stage_id!=4) and 
+                            h.team_id!=8 and  
+                            h.active='t' and 
+                            stock_production_lot_id = """ +  str(self.serie[0]._origin.id) + """ 
+                            limit 1;
+                        """
                 _logger.info("test query: " + str(query))
                 #query = "select h.id from helpdesk_ticket_stock_production_lot_rel s, helpdesk_ticket h where h.id=s.helpdesk_ticket_id and h.id!=" + str(ticket.x_studio_id_ticket) + "  and h.stage_id!=18 and h.team_id!=8 and  h.active='t' and stock_production_lot_id = " +  str(self.serie[0].id) + " limit 1;"
                 self.env.cr.execute(query)
