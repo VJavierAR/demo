@@ -95,15 +95,16 @@
       		<field name="res_model">contrato</field>
       		<field name="view_mode">form</field>
     	</record>
-
+    	<!--
     	<menuitem id="contrato_root"
 			      name="Contrato"
 			      
 			      web_icon="servicios_gnsys, static/description/contrato.png"
     	/>
+    -->
     	<menuitem id="contrato_contrato"
     			  name="Contrato incio"
-				  parent="contrato_root"
+				  parent="account_accountant.menu_accounting"
 				  action="contrato_action_window"
     	/>
 
