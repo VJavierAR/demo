@@ -93,7 +93,7 @@
       		<field name="name">Contrato</field>
       		<!--<field name="type">ir.action.act_window</field>-->
       		<field name="res_model">contrato</field>
-      		<field name="view_mode">form</field>
+      		<field name="view_mode">tree,form</field>
     	</record>
     	<!--
     	<menuitem id="contrato_root"
@@ -103,7 +103,8 @@
     	/>
     -->
     	<menuitem id="contrato_contrato"
-    			  name="Contrato incio"
+    			  name="Contrato"
+    			  sequence="40"
 				  parent="account_accountant.menu_accounting"
 				  action="contrato_action_window"
     	/>
