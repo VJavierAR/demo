@@ -99,6 +99,7 @@
       			<p class="o_view_nocontent_smiling_face">
       				Crea contrato
       			</p>
+      		</field>
     	</record>
 
     	<menuitem id="contrato_root"
