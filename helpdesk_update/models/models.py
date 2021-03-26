@@ -135,11 +135,11 @@ class helpdesk_update(models.Model):
     x_studio_contador_bn = fields.Integer(string = 'Contador B/N', readonly=True, compute = '_compute_x_studio_contador_bn')
     @api.depends('x_studio_equipo_por_nmero_de_serie')
     def _compute_x_studio_contador_bn(self):
+        self.x_studio_contador_bn = 0
+        self.x_studio_contador_bn_a_capturar = 0
+        self.x_studio_contador_color = 0
+        self.x_studio_contador_color_a_capturar = 0
         for record in self:
-            x_studio_contador_bn = 0
-            x_studio_contador_bn_a_capturar = 0
-            x_studio_contador_color = 0
-            x_studio_contador_color_a_capturar = 0
             if record.x_studio_equipo_por_nmero_de_serie:
                 x_studio_contador_bn = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_bn
                 x_studio_contador_bn_a_capturar = record.x_studio_equipo_por_nmero_de_serie[0].x_studio_contador_bn_a_capturar
