@@ -105,7 +105,7 @@
     	<menuitem id="contrato_root"
 			      name="Contrato"
 			      sequence="0"
-			      web_icon="factura, static/description/contrato.png"
+			      web_icon="servicios_gnsys, static/description/contrato.png"
     	/>
     	<menuitem id="contrato_contrato"
     			  name="Contrato"

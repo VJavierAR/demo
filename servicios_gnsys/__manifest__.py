@@ -29,6 +29,7 @@
     'data': [
         #'security/ir.model.access.csv',
         #'security/servicios_security.xml',
+        'views/contratos_view.xml',
         'views/views.xml',
         'views/templates.xml',
     ],
