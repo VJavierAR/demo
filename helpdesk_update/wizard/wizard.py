@@ -1814,7 +1814,8 @@ class helpdesk_crearconserie(TransientModel):
                             helpdesk_ticket h 
                         where 
                             h.id=s.helpdesk_ticket_id and 
-                            (h.stage_id!=18 or h.stage_id!=4) and 
+                            h.stage_id!=18 and 
+                            h.stage_id!=4 and 
                             h.team_id!=8 and  
                             h.active='t' and 
                             stock_production_lot_id = """ +  str(self.serie[0]._origin.id) + """ 
