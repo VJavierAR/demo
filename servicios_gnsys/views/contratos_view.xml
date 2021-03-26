@@ -93,21 +93,16 @@
       		<field name="name">Contrato</field>
       		<!--<field name="type">ir.action.act_window</field>-->
       		<field name="res_model">contrato</field>
-      		<field name="view_mode">tree,form</field>
-      		<field name="help" type="html">
-      			<p class="o_view_nocontent_smiling_face">
-      				Crea contrato
-      			</p>
-      		</field>
+      		<field name="view_mode">form</field>
     	</record>
 
     	<menuitem id="contrato_root"
 			      name="Contrato"
-			      sequence="0"
+			      
 			      web_icon="servicios_gnsys, static/description/contrato.png"
     	/>
     	<menuitem id="contrato_contrato"
-    			  name="Contrato"
+    			  name="Contrato incio"
 				  parent="contrato_root"
 				  action="contrato_action_window"
     	/>
