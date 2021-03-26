@@ -91,7 +91,7 @@
 
 		<record id="contrato_action_window" model="ir.actions.act_window">
       		<field name="name">Contrato</field>
-      		<field name="type">ir.action.act_window</field>
+      		<!--<field name="type">ir.action.act_window</field>-->
       		<field name="res_model">contrato</field>
       		<field name="view_mode">tree,form</field>
       		<field name="help" type="html">
