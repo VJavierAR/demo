@@ -2,7 +2,7 @@
 	<data>
 
 		
-		<record id="contrato.view_contrato_form" model="ir.ui.view">
+		<record id="view_contrato_form" model="ir.ui.view">
       		<field name="name">contrato.form</field>
       		<field name="model">contrato</field>
       		<field name="arch" type="xml">
