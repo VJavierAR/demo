@@ -1790,7 +1790,7 @@ class helpdesk_crearconserie(TransientModel):
     def cambia_serie(self):
         for r in self:
             _logger.info("r.serie: " + str(r.serie))
-            _logger.info("r.serie.id: " + str(r.serie.id))
+            _logger.info("r.serie.id: " + str(r.serie.ids))
         
         if self.serie.id:
             _my_object = self.env['helpdesk.crearconserie']
