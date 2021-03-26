@@ -87,7 +87,7 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
             rpc.query({
                 model: 'helpdesk.ticket',
                 method: 'cambio_wizard',
-                args: [[user],{'id':user}],
+                //args: [[user],{'id':user}],
             });
         },
 
@@ -115,7 +115,7 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
             rpc.query({
                 model: 'helpdesk.ticket',
                 method: 'cambio_wizard',
-                args: [[user],{'id':user}],
+                //args: [[user],{'id':user}],
             });
         },
 
@@ -141,7 +141,7 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
             rpc.query({
                 model: 'helpdesk.ticket',
                 method: 'cambio_wizard',
-                args: [[user],{'id':user}],
+                //args: [[user],{'id':user}],
             });
         },
 
@@ -151,7 +151,7 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
             rpc.query({
                 model: 'helpdesk.ticket',
                 method: 'cambio_wizard',
-                args: [[user],{'id':user}],
+                //args: [[user],{'id':user}],
                 }).then(function (e) {
                     self.do_action({
                         name: _t('action_invoices'),
