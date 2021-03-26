@@ -1791,14 +1791,14 @@ class helpdesk_crearconserie(TransientModel):
         
         _logger.info("self.serie: " + str(self.serie._origin))
         _logger.info("self.serie.id: " + str(self.serie._origin.id))
-        if self.serie.id:
+        if self.serie._origin.id:
             _my_object = self.env['helpdesk.crearconserie']
-            if len(self.serie) > 1:
+            if len(self.serie._origin) > 1:
                 mensajeTitulo = "Alerta!!!"
                 mensajeCuerpo = "No puede capturar más de una serie."
                 raise exceptions.Warning(mensajeCuerpo)
             else:
-                query = "select h.id from helpdesk_ticket_stock_production_lot_rel s, helpdesk_ticket h where h.id=s.helpdesk_ticket_id and h.stage_id!=18 and h.team_id!=8 and  h.active='t' and stock_production_lot_id = " +  str(self.serie[0].id) + " limit 1;"
+                query = "select h.id from helpdesk_ticket_stock_production_lot_rel s, helpdesk_ticket h where h.id=s.helpdesk_ticket_id and h.stage_id!=18 and h.team_id!=8 and  h.active='t' and stock_production_lot_id = " +  str(self.serie[0]._origin.id) + " limit 1;"
                 _logger.info("test query: " + str(query))
                 #query = "select h.id from helpdesk_ticket_stock_production_lot_rel s, helpdesk_ticket h where h.id=s.helpdesk_ticket_id and h.id!=" + str(ticket.x_studio_id_ticket) + "  and h.stage_id!=18 and h.team_id!=8 and  h.active='t' and stock_production_lot_id = " +  str(self.serie[0].id) + " limit 1;"
                 self.env.cr.execute(query)
@@ -1809,11 +1809,11 @@ class helpdesk_crearconserie(TransientModel):
                 noTieneServicio = False
                 mensajeCuerpo = 'No se puede crear un ticket de un equipo sin servicio.\nLos equipos que no tienen servicio son:\n'
                 
-                for equipo in self.serie:
+                for equipo in self.serie._origin:
                   if not equipo.servicio and str(equipo.x_studio_ultma_ubicacin) != "GN SYS CORPORATIVO S.A. DE C.V., TALLER":
                     mensajeCuerpo = mensajeCuerpo + '\nEquipo: ' + str(equipo.product_id.name) + ' Serie: ' + str(equipo.name) + ''
                     noTieneServicio = True
-                    self.serie = ''
+                    self.serie = False
                     mensajeTitulo = "Alerta!!!"
                     warning = {'title': _(mensajeTitulo)
                             , 'message': _(mensajeCuerpo),
@@ -1824,7 +1824,7 @@ class helpdesk_crearconserie(TransientModel):
                     mensajeCuerpo = 'No se puede crear un ticket de un equipo de tipo venta directa.\nLos equipos en venta directa son:\n'
                     mensajeCuerpo = mensajeCuerpo + '\nEquipo: ' + str(equipo.product_id.name) + ' Serie: ' + str(equipo.name) + ''
                     noTieneServicio = True
-                    self.serie = ''
+                    self.serie = False
                     mensajeTitulo = "Alerta!!!"
                     warning = {'title': _(mensajeTitulo)
                             , 'message': _(mensajeCuerpo),
@@ -1920,10 +1920,10 @@ class helpdesk_crearconserie(TransientModel):
                 #_logger.info("test serie reverse: " + str(self.serie[0].x_studio_move_line))
 
                 #if self.serie[0].x_studio_move_line:
-                if self.serie[0].x_studio_localidad_2 and self.serie[0].x_studio_cliente:
+                if self.serie[0]._origin.x_studio_localidad_2 and self.serie[0]._origin.x_studio_cliente:
                     #moveLineOrdenado = self.serie[0].x_studio_move_line.sorted(key="date", reverse=True)
-                    moveLineOrdenado = self.serie[0].x_studio_cliente
-                    loc = self.serie[0].x_studio_localidad_2
+                    moveLineOrdenado = self.serie[0]._origin.x_studio_cliente
+                    loc = self.serie[0]._origin.x_studio_localidad_2
                     #_logger.info("test dato: " + str(moveLineOrdenado[0].location_dest_id.x_studio_field_JoD2k.x_studio_field_E0H1Z.parent_id))
                     #_logger.info("test dato: " + str(moveLineOrdenado[0].location_dest_id.x_studio_field_JoD2k.x_studio_field_E0H1Z.parent_id.name))
                     _logger.info("test loc: " + str(loc))
