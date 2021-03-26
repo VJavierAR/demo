@@ -10,7 +10,7 @@ function test() {
     
 }
 */
-var idVistaMesaDeServicio = 2315;
+var idVistaMesaDeServicio = 2127;
 
 odoo.define('invoice.action_button_helpdesk', function (require) {
 "use strict";
