@@ -515,7 +515,7 @@ class helpdesk_update(models.Model):
     Falta migrar a odoo 14
     """
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True, compute= '_compute_x_studio_ultima_nota')
-    @api.depends('historialCuatro.create_date')
+    @api.depends('diagnosticos')
     def _compute_x_studio_ultima_nota(self):
         self.x_studio_ultima_nota = ''
         self.x_studio_fecha_nota = ''
