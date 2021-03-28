@@ -510,6 +510,7 @@ class helpdesk_update(models.Model):
             record['x_studio_valor_categria_de_producto'] = equipo
         
 
+    x_studio_tecnico = fields.Char(string = 'Técnico', readonly = True)
     #x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
     """
     Falta migrar a odoo 14
@@ -520,7 +521,7 @@ class helpdesk_update(models.Model):
         self.x_studio_ultima_nota = ''
         self.x_studio_fecha_nota = ''
         self.x_studio_ultima_evidencia = ''
-        self.x_studio_tecnico = False
+        self.x_studio_tecnico = ''
 
         for record in self:
           historial = record.diagnosticos
