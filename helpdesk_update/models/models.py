@@ -5811,7 +5811,7 @@ class helpdesk_update(models.Model):
                                             <td>""" + str(self.x_studio_equipo_por_nmero_de_serie[0].name) + """</td>
                                             <td>""" + str(self.x_studio_equipo_por_nmero_de_serie[0].product_id.display_name) + """</td>
                                             <td>""" + str(self.x_studio_equipo_por_nmero_de_serie[0].x_studio_ultima_ubicacin) + """</td>
-                                            <td>""" + str(self.x_studio_equipo_por_nmero_de_serie[0].x_studio_color_bn) + """</td>
+                                            <td>""" + str(self.x_studio_equipo_por_nmero_de_serie[0].product_id.x_studio_color_bn) + """</td>
                                         </tr>
                                     """
                 #if serieTextoInicial:

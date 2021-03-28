@@ -1859,6 +1859,7 @@ class lor(models.Model):
     x_studio_cliente = fields.Many2one('res.partner',string='Cliente',store=True, track_visibility = 'onchange')
     x_studio_colonia = fields.Char(readonly=True, string='Colonia')
 
+    """
     x_studio_color_bn = fields.Selection([['B/N', 'B/N'], ['Color', 'Color']], readonly=True, store=True, string='Color B/N', compute='_compute_x_studio_color_bn')
     @api.depends('product_id')
     def _compute_x_studio_color_bn(self):
@@ -1866,6 +1867,7 @@ class lor(models.Model):
         for record in self:
             if record.product_id.id:
                 record['x_studio_color_bn'] = record.product_id.x_studio_color_bn
+    """
 
     x_studio_colorestoner = fields.Char(readonly=True, store=True, string='colorestoner', track_visibility = 'onchange')
     x_studio_comentario = fields.Text(string = 'Comentario', store = True)
