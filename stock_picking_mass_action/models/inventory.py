@@ -98,6 +98,7 @@ class StockWarehouse(Model):
     x_studio_mini = fields.Boolean(string = 'Mini')
     x_studio_techra = fields.Char(string = 'techra')
     x_studio_tfs = fields.Many2one('res.partner', string = 'Tfs')
+    x_studio_field_E0H1Z = fields.Many2one('res.partner', string = 'Ubicación', store=True)
 
 
 
