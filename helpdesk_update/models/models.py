@@ -508,10 +508,7 @@ class helpdesk_update(models.Model):
         
 
     x_studio_tecnico = fields.Char(string = 'Técnico', readonly = True)
-    #x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True)
-    """
-    Falta migrar a odoo 14
-    """
+    
     x_studio_ultima_nota = fields.Char(string = 'Ultima Nota.', readonly=True, compute= '_compute_x_studio_ultima_nota')
     @api.depends('diagnosticos')
     def _compute_x_studio_ultima_nota(self):
