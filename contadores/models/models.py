@@ -1864,7 +1864,8 @@ class lor(models.Model):
     def _compute_x_studio_color_bn(self):
         self.x_studio_color_bn = None
         for record in self:
-            record['x_studio_color_bn'] = record.product_id.x_studio_color_bn
+            if record.product_id.id:
+                record['x_studio_color_bn'] = record.product_id.x_studio_color_bn
 
     x_studio_colorestoner = fields.Char(readonly=True, store=True, string='colorestoner', track_visibility = 'onchange')
     x_studio_comentario = fields.Text(string = 'Comentario', store = True)
