@@ -15,3 +15,4 @@ access_helpdesk_validacion_so,access.helpdesk.validacion.so,helpdesk_update.mode
 access_helpdesk_crearconserie,access.helpdesk.crearconserie,helpdesk_update.model_helpdesk_crearconserie,group_helpdesk_crear_con_serie_mesa_de_servicio,1,1,1,1
 access_helpdesk_alerta_series,access.helpdesk.alerta.series,helpdesk_update.model_helpdesk_alerta_series,,1,1,1,1
 access_helpdesk_contadores,access.helpdesk.contadores,helpdesk_update.model_helpdesk_contadores,,1,1,1,1
+access_helpdesk_refacciones,access.helpdesk.refacciones,helpdesk_update.model_helpdesk_refacciones,,1,1,1,1
