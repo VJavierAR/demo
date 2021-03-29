@@ -2356,7 +2356,7 @@ class helpdesk_update(models.Model):
                 #ss = self._origin.env.cr.execute(query)
                 self._origin.write({'stage_id': 2})
 
-                comentarioGenerico = 'Cambio de estado al seleccionar ' + self._origin.team_id.name + ' como área de atención. Seleccion realizada por ' + str(self.env.user.name) +'.'
+                comentarioGenerico = 'Cambio de estado al seleccionar ' + self.team_id.name + ' como área de atención. Seleccion realizada por ' + str(self.env.user.name) +'.'
                 estado = 'Asignado'
                 _logger.info('self que envio a funcion creaDiagnosticoVistaLista: ' + str(self._origin))
                 #self._origin.creaDiagnosticoVistaLista(comentarioGenerico, estado)
@@ -2381,7 +2381,7 @@ class helpdesk_update(models.Model):
                 listaDiagnosticos = [(5, 0, 0)]
                 listaDeFechas = []
                 listaDeUsuariosCreadores = []
-                for diagnostico in self._origin.sudo().diagnosticos:
+                for diagnostico in self.sudo().diagnosticos:
                     listaDiagnosticos.append((0, 0, {
                                                         'ticketRelacion': int(diagnostico.ticketRelacion.x_studio_id_ticket),
                                                         'estadoTicket': diagnostico.estadoTicket,
