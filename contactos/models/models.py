@@ -24,6 +24,7 @@ class contactos(models.Model):
     x_studio_field_SqU5B = fields.Selection([["SUR","SUR"],["NORTE","NORTE"],["PONIENTE","PONIENTE"],["ORIENTE","ORIENTE"],["CENTRO","CENTRO"],["DISTRIBUIDOR","DISTRIBUIDOR"],["MONTERREY","MONTERREY"],["CUERNAVACA","CUERNAVACA"],["GUADALAJARA","GUADALAJARA"],["QUERETARO","QUERETARO"],["CANCUN","CANCUN"],["VERACRUZ","VERACRUZ"],["PUEBLA","PUEBLA"],["TOLUCA","TOLUCA"],["LEON","LEON"],["COMODIN","COMODIN"],["VILLAHERMOSA","VILLAHERMOSA"],["MERIDA","MERIDA"],["VERACRUZ","VERACRUZ"],["ALTAMIRA","ALTAMIRA"],["DF00","DF00"],["SAN LP","SAN LP"],["ESTADO DE MÉXICO","ESTADO DE MÉXICO"],["Foraneo Norte","Foraneo Norte"],["Foraneo Sur","Foraneo Sur"],["CHIHUAHUA","CHIHUAHUA"]], string='Zona', store=True, track_visibility='onchange')
     x_studio_ultimo_contacto = fields.Boolean(default = True, store=True, track_visibility = 'onchange', string='Ultimo Contacto')
     x_studio_moroso = fields.Boolean(default = False, store=True, track_visibility = 'onchange', string='Moroso')
+    x_studio_cobranza_o_facturacin = fields.Selection([["Cobranza","Cobranza"],["Facturación","Facturación"],["Ambos","Ambos"]], string='Cobranza o facturación', store=True, track_visibility='onchange')
 
 class zonaDistribuidor(models.Model):
 	_name='zona.distribuidor'
