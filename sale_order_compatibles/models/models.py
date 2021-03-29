@@ -128,6 +128,15 @@ class sale_update(models.Model):
 	x_studio_arreglo=fields.Char()
 	x_studio_localidades=fields.Char(compute='localid')
 	x_studio_usuario_creacion_1=fields.Char(compute='us')
+	x_studio_requiere_instalacin = fields.Boolean(string = 'Requiere instalación', store=True, compute='_compute_x_studio_requiere_instalacin')
+	@api.depends('order_line')
+	def _compute_x_studio_requiere_instalacin(self):
+		self.x_studio_requiere_instalacin = False
+		for record in self:
+		  	for p in record.order_line:
+		    	if (p.product_id.qty_available <= 0):
+		      		i=0
+
 
 	@api.depends('create_uid')
 	def us(self):
