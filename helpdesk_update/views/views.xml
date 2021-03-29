@@ -456,26 +456,28 @@
                       
                       <field name="x_estado_en_distribucion" String="Estado en Distribución" attrs="{'readonly': 1, 'invisible': 1}" groups="studio_customization.solo_ve_administrado_cdc8f213-5aa2-4d44-bfab-99a7efd7f7ea"/>
                       <!--<field name="x_studio_backorder" readonly="1" />-->
-                      <field name="validacionesRefaccion" attrs="{'readonly': 1, 'invisible': [('x_studio_tipo_de_vale', '=', 'Requerimiento')]}" >
-                        <tree>
-                          <field name="id"/>
-                          <field name="fechaDeValidacionSo"/>
-                          <field name="refaccionesValidadas" widget="html"/>
-                        </tree>
-                        <form>
-                          <group>
-                            <group>
-                              <field name="id"/>
-                            </group>
-                            <group>
-                              <field name="fechaDeValidacionSo"/>
-                            </group>
-                          </group>
-                          <field name="refaccionesValidadas" widget="html"/>
-                        </form>
-                      </field>
+
                   </group>
                 </group>
+                <group string="Refacciones validadas" class="text-center"></group>
+                <field name="validacionesRefaccion" attrs="{'readonly': 1, 'invisible': [('x_studio_tipo_de_vale', '=', 'Requerimiento')]}" >
+                  <tree>
+                    <field name="id"/>
+                    <field name="fechaDeValidacionSo"/>
+                    <field name="refaccionesValidadas" widget="html"/>
+                  </tree>
+                  <form>
+                    <group>
+                      <group>
+                        <field name="id"/>
+                      </group>
+                      <group>
+                        <field name="fechaDeValidacionSo"/>
+                      </group>
+                    </group>
+                    <field name="refaccionesValidadas" widget="html"/>
+                  </form>
+                </field>
               </page>
               <page name="studio_page_TaG67" string="Cliente">
                 <group name="studio_group_TaG67">
