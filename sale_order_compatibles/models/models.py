@@ -133,9 +133,9 @@ class sale_update(models.Model):
 	def _compute_x_studio_requiere_instalacin(self):
 		self.x_studio_requiere_instalacin = False
 		for record in self:
-		  	for p in record.order_line:
-		    	if (p.product_id.qty_available <= 0):
-		      		i=0
+			for p in record.order_line:
+				if (p.product_id.qty_available <= 0):
+					i=0
 
 
 	@api.depends('create_uid')
