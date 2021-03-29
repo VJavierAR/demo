@@ -2382,7 +2382,7 @@ class helpdesk_update(models.Model):
                 listaDeFechas = []
                 listaDeUsuariosCreadores = []
                 for diagnostico in self._origin.sudo().diagnosticos:
-                    if diagnostico:
+                    if diagnostico.id:
                         listaDiagnosticos.append((0, 0, {
                                                             'ticketRelacion': int(diagnostico.ticketRelacion.x_studio_id_ticket),
                                                             'estadoTicket': diagnostico.estadoTicket,
