@@ -1277,6 +1277,7 @@ class helpdesk_contadores(TransientModel):
     # 
     @api.depends('contadorBNActual', 'contadorColorActual')
     def _compute_textoInformativo(self):
+      self.textoInformativo = ''
       for record in self:
         if record.bnColor == "B/N":
           if record.contadorBNActual != 0 or record.contadorBNActual != False:
