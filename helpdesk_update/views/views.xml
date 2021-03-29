@@ -99,7 +99,7 @@
           <button name="contacto_wizard" icon="fa-user-plus" class="iconDiagnostico" type="object"  attrs='{"invisible": [ "|", "|", ["x_studio_empresas_relacionadas","=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ]}' groups="helpdesk_update.group_helpdesk_agregar_y_editar_contacto"/>
           
           <!--<field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" attrs="{'invisible': [('team_id','!=',81)], 'readonly': 0 }" domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]'  />-->
-          <field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" invisible='0' domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]'  />
+          <field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" invisible='0'   /> <!-- domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]' -->
           
           
           
