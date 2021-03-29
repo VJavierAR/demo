@@ -1392,6 +1392,7 @@ class helpdesk_contadores(TransientModel):
             """
 
     def _compute_actualizaColor(self):
+        self.bnColor = ''
         if self.ticket_id.x_studio_equipo_por_nmero_de_serie:
             dominio_ultimo_contador = [('serie', '=', self.ticket_id.x_studio_equipo_por_nmero_de_serie[0].id), ('x_studio_robot', '=', False), ('fuente', '!=', 'dcas.dcas'), ('creado_por_tickets_techra', '!=', True)]
             ultimo_contador_odoo = self.env['dcas.dcas'].search(dominio_ultimo_contador, order = 'create_date desc', limit = 1)
