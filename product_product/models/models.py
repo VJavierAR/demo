@@ -10,6 +10,10 @@ _logger = logging.getLogger(__name__)
 
 class DcasUpdate(models.Model):
 	_inherit = 'product.product'
-	
+	x_studio_color_bn = fields.Selection([('B/N','B/N'),('Color','Color')], string = 'Color - B/N', store = True)
+
+class ProductTemplate(models.Model):
+	_inherit = 'product.template'
+	x_studio_color_bn = fields.Selection([('B/N','B/N'),('Color','Color')], string = 'Color - B/N', store = True)
 
      
