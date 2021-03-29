@@ -3248,7 +3248,7 @@ class helpdesk_update(models.Model):
                                                                                         'x_studio_requiere_instalacin': True,
                                                                                         'x_studio_field_RnhKr': contacto_de_localidad_id[0],
                                                                                         'partner_shipping_id': localidad_id[0],
-                                                                                        'warehouse_id': 5865,   ##Id GENESIS AGRICOLA REFACCIONES  stock.warehouse
+                                                                                        'warehouse_id': 1,   ##Id GENESIS AGRICOLA REFACCIONES  stock.warehouse
                                                                                         'team_id': 1,
                                                                                         'x_studio_field_bxHgp': ticket_id[0]
                         })
