@@ -1876,6 +1876,7 @@ class lor(models.Model):
                 record['x_studio_color_bn'] = record.product_id.x_studio_color_bn
     
 
+    
     x_studio_colorestoner = fields.Char(readonly=True, store=True, string='colorestoner', track_visibility = 'onchange')
     x_studio_comentario = fields.Text(string = 'Comentario', store = True)
     x_studio_contador_bn = fields.Char(readonly=True, string='Contador B/N', compute = '_compute_x_studio_contador_bn')
