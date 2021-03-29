@@ -1394,6 +1394,10 @@ class helpdesk_contadores(TransientModel):
 
     def _compute_actualizaColor(self):
         self.bnColor = ''
+        if self.ticket_id.x_studio_equipo_por_nmero_de_serie.ids and self.ticket_id.x_studio_equipo_por_nmero_de_serie.product_id.id:
+            self.bnColor = self.ticket_id.x_studio_equipo_por_nmero_de_serie.product_id.x_studio_color_bn
+
+        """
         if self.ticket_id.x_studio_equipo_por_nmero_de_serie:
             dominio_ultimo_contador = [('serie', '=', self.ticket_id.x_studio_equipo_por_nmero_de_serie[0].id), ('x_studio_robot', '=', False), ('fuente', '!=', 'dcas.dcas'), ('creado_por_tickets_techra', '!=', True)]
             ultimo_contador_odoo = self.env['dcas.dcas'].search(dominio_ultimo_contador, order = 'create_date desc', limit = 1)
@@ -1404,31 +1408,13 @@ class helpdesk_contadores(TransientModel):
             if ultimo_contador_techra and ultimo_contador_odoo:
                 if ultimo_contador_techra.x_studio_fecha > ultimo_contador_odoo.create_date:
                     self.bnColor = ultimo_contador_techra.x_studio_color_o_bn
-                    #if str(ultimo_contador_techra.x_studio_color_o_bn) == 'Color':
-                    #    return 'Equipo B/N o Color: ' + str(ultimo_contador_techra.x_studio_color_o_bn) + '</br>Contador B/N: ' + str(ultimo_contador_techra.contadorMono) + '</br>Contador Color: ' + str(ultimo_contador_techra.contadorColor)
-                    #if str(ultimo_contador_techra.x_studio_color_o_bn) == 'B/N':
-                    #    return 'Equipo B/N o Color: ' + str(ultimo_contador_techra.x_studio_color_o_bn) + '</br>Contador B/N: ' + str(ultimo_contador_techra.contadorMono)
                 else:
                     self.bnColor = ultimo_contador_odoo.x_studio_color_o_bn
-                    #if str(ultimo_contador_odoo.x_studio_color_o_bn) == 'Color':
-                    #    return 'Equipo B/N o Color: ' + str(ultimo_contador_odoo.x_studio_color_o_bn) + '</br>Contador B/N: ' + str(ultimo_contador_odoo.contadorMono) + '</br>Contador Color: ' + str(ultimo_contador_odoo.contadorColor)
-                    #if str(ultimo_contador_odoo.x_studio_color_o_bn) == 'B/N':
-                    #    return 'Equipo B/N o Color: ' + str(ultimo_contador_odoo.x_studio_color_o_bn) + '</br>Contador B/N: ' + str(ultimo_contador_odoo.contadorMono)
             elif ultimo_contador_techra and not ultimo_contador_odoo:
                 self.bnColor = ultimo_contador_techra.x_studio_color_o_bn
-                #if str(ultimo_contador_techra.x_studio_color_o_bn) == 'Color':
-                #        return 'Equipo B/N o Color: ' + str(ultimo_contador_techra.x_studio_color_o_bn) + '</br>Contador B/N: ' + str(ultimo_contador_techra.contadorMono) + '</br>Contador Color: ' + str(ultimo_contador_techra.contadorColor)
-                #if str(ultimo_contador_techra.x_studio_color_o_bn) == 'B/N':
-                #    return 'Equipo B/N o Color: ' + str(ultimo_contador_techra.x_studio_color_o_bn) + '</br>Contador B/N: ' + str(ultimo_contador_techra.contadorMono)
             elif ultimo_contador_odoo and not ultimo_contador_techra:
                 self.bnColor = ultimo_contador_odoo.x_studio_color_o_bn
-
-            """
-            fuente = 'stock.production.lot'
-            ultimoDcaStockProductionLot = self.env['dcas.dcas'].search([['fuente', '=', fuente],['serie', '=', self.ticket_id.x_studio_equipo_por_nmero_de_serie[0].id]], order='create_date desc', limit=1)
-            if ultimoDcaStockProductionLot:
-                self.bnColor = ultimoDcaStockProductionLot.x_studio_color_o_bn
-            """
+        """
 
     def _compute_actualizaContadorColorMesa(self):
         self.contadorColorMesa = 0
