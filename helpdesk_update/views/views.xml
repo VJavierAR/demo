@@ -418,7 +418,7 @@
                           </tree>
                       </field>
                       
-                      <field name='accesorios' string='Productos' context="{'default_ticketRela': id}" attrs="{&quot;invisible&quot;: [ '|', ['team_id','=',8], ('x_studio_tipo_de_vale', '=', 'Requerimiento') ], readonly: ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" options="{'no_create_edit': True, 'no_create': True}" >
+                      <field name='accesorios' string='Productos' context="{'default_ticketRela': id}" attrs="{&quot;invisible&quot;: [ '|', ['team_id','=',8], ('x_studio_tipo_de_vale', '=', 'Requerimiento') ], 'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" options="{'no_create_edit': True, 'no_create': True}" >
                           <tree editable='bottom'>
                               <field name='productos' options="{'no_create_edit': True, 'no_create': True}" required='1' />
                               <field name='cantidadPedida' />
