@@ -1346,6 +1346,7 @@ class helpdesk_contadores(TransientModel):
     
     @api.depends('ticket_id')
     def _compute_contadorBNMesa(self):
+        self.contadorBNMesa = 0
         if self.ticket_id.x_studio_equipo_por_nmero_de_serie:
             dominio_ultimo_contador = [('serie', '=', self.ticket_id.x_studio_equipo_por_nmero_de_serie[0].id), ('x_studio_robot', '=', False), ('fuente', '!=', 'dcas.dcas'), ('creado_por_tickets_techra', '!=', True)]
             ultimo_contador_odoo = self.env['dcas.dcas'].search(dominio_ultimo_contador, order = 'create_date desc', limit = 1)
@@ -1430,6 +1431,7 @@ class helpdesk_contadores(TransientModel):
             """
 
     def _compute_actualizaContadorColorMesa(self):
+        self.contadorColorMesa = 0
         if self.ticket_id.x_studio_equipo_por_nmero_de_serie:
             dominio_ultimo_contador = [('serie', '=', self.ticket_id.x_studio_equipo_por_nmero_de_serie[0].id), ('x_studio_robot', '=', False), ('fuente', '!=', 'dcas.dcas'), ('creado_por_tickets_techra', '!=', True)]
             ultimo_contador_odoo = self.env['dcas.dcas'].search(dominio_ultimo_contador, order = 'create_date desc', limit = 1)
