@@ -2381,20 +2381,21 @@ class helpdesk_update(models.Model):
                 listaDiagnosticos = [(5, 0, 0)]
                 listaDeFechas = []
                 listaDeUsuariosCreadores = []
-                for diagnostico in self.sudo().diagnosticos:
-                    listaDiagnosticos.append((0, 0, {
-                                                        'ticketRelacion': int(diagnostico.ticketRelacion.x_studio_id_ticket),
-                                                        'estadoTicket': diagnostico.estadoTicket,
-                                                        'evidencia': [(6, 0, diagnostico.evidencia.ids)],
-                                                        'mostrarComentario': diagnostico.mostrarComentario,
-                                                        'write_uid':  diagnostico.write_uid.id,
-                                                        'comentario': str(diagnostico.comentario),
-                                                        'create_date': diagnostico.create_date,
-                                                        'create_uid': diagnostico.create_uid.id,
-                                                        'creadoPorSistema': diagnostico.creadoPorSistema
-                                                    }))
-                    listaDeFechas.append(diagnostico.create_date)
-                    listaDeUsuariosCreadores.append(diagnostico.create_uid.id)
+                for diagnostico in self._origin.sudo().diagnosticos:
+                    if diagnostico:
+                        listaDiagnosticos.append((0, 0, {
+                                                            'ticketRelacion': int(diagnostico.ticketRelacion.x_studio_id_ticket),
+                                                            'estadoTicket': diagnostico.estadoTicket,
+                                                            'evidencia': [(6, 0, diagnostico.evidencia.ids)],
+                                                            'mostrarComentario': diagnostico.mostrarComentario,
+                                                            'write_uid':  diagnostico.write_uid.id,
+                                                            'comentario': str(diagnostico.comentario),
+                                                            'create_date': diagnostico.create_date,
+                                                            'create_uid': diagnostico.create_uid.id,
+                                                            'creadoPorSistema': diagnostico.creadoPorSistema
+                                                        }))
+                        listaDeFechas.append(diagnostico.create_date)
+                        listaDeUsuariosCreadores.append(diagnostico.create_uid.id)
                 self._origin.sudo().write({'diagnosticos': listaDiagnosticos})
                 if listaDeFechas:
                     i = 0
