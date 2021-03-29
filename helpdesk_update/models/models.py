@@ -2398,6 +2398,7 @@ class helpdesk_update(models.Model):
                 self._origin.sudo().write({'diagnosticos': listaDiagnosticos})
                 if listaDeFechas:
                     i = 0
+                    _logger.info("listaDeFechas: " + str(listaDeFechas))
                     for fecha in listaDeFechas:
                         query = "update helpdesk_diagnostico set create_date = '" + str(fecha.strftime('%Y-%m-%d %H:%M:%S')) + "' where id = " + str(self._origin.sudo().diagnosticos[i].id) + ";"
                         self._origin.env.cr.execute(query)
