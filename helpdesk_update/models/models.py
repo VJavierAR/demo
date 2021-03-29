@@ -3267,8 +3267,8 @@ class helpdesk_update(models.Model):
                                 'price_unit': 0
                             }
                             #Si es foraneo-localidad o foranero-distribuidor
-                            if area_de_atencion_id[0] == 10 or area_de_atencion_id[0] == 11:
-                                vals['route_id'] = 22548
+                            #if area_de_atencion_id[0] == 10 or area_de_atencion_id[0] == 11:
+                            #    vals['route_id'] = 22548
                             self.env['sale.order.line'].sudo().create(vals)
                             #self.env.cr.execute("update sale_order set x_studio_tipo_de_solicitud = 'Venta' where  id = " + str(sale.id) + ";")
                         if nuevo_pedido_de_venta or productos_ids:
