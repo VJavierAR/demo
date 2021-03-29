@@ -2401,14 +2401,15 @@ class helpdesk_update(models.Model):
                     _logger.info("listaDeFechas: " + str(listaDeFechas))
                     for fecha in listaDeFechas:
                         _logger.info("fecha: " + str(fecha))
-                        query = "update helpdesk_diagnostico set create_date = '" + str(fecha.strftime('%Y-%m-%d %H:%M:%S')) + "' where id = " + str(self._origin.sudo().diagnosticos[i].id) + ";"
-                        self._origin.env.cr.execute(query)
-                        query = "update helpdesk_diagnostico set create_uid = " + str(listaDeUsuariosCreadores[i]) + " where id = " + str(self._origin.sudo().diagnosticos[i].id) + ";"
-                        self._origin.env.cr.execute(query)
-                        #query = "update helpdesk_diagnostico set \"creadoPorSistema\" = '" + 't' + "' where id = " + str(objTicket.diagnosticos[i].id) + ";"
-                        #self.env.cr.execute(query)
-                        self._origin.sudo().diagnosticos[i].create_date = fecha
-                        i = i + 1
+                        if fecha:
+                            query = "update helpdesk_diagnostico set create_date = '" + str(fecha.strftime('%Y-%m-%d %H:%M:%S')) + "' where id = " + str(self._origin.sudo().diagnosticos[i].id) + ";"
+                            self._origin.env.cr.execute(query)
+                            query = "update helpdesk_diagnostico set create_uid = " + str(listaDeUsuariosCreadores[i]) + " where id = " + str(self._origin.sudo().diagnosticos[i].id) + ";"
+                            self._origin.env.cr.execute(query)
+                            #query = "update helpdesk_diagnostico set \"creadoPorSistema\" = '" + 't' + "' where id = " + str(objTicket.diagnosticos[i].id) + ";"
+                            #self.env.cr.execute(query)
+                            self._origin.sudo().diagnosticos[i].create_date = fecha
+                            i = i + 1
                 
                 self._origin.obten_ulimo_diagnostico_fecha_usuario()
                 #for diagnostico in self._origin.sudo().diagnosticos:
