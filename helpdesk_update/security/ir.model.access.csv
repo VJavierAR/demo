@@ -17,4 +17,4 @@ access_helpdesk_alerta_series,access.helpdesk.alerta.series,helpdesk_update.mode
 access_helpdesk_contadores,access.helpdesk.contadores,helpdesk_update.model_helpdesk_contadores,,1,1,1,1
 access_helpdesk_refacciones,access.helpdesk.refacciones,helpdesk_update.model_helpdesk_refacciones,,1,1,1,1
 access_helpdesk_ticket_techra,access.helpdesk.ticket.techra,helpdesk_update.model_helpdesk_ticket_techra,,1,1,1,1
-access_helpdesk_contacto,access.helpdesk.contacto,helpdesk_update.model_helpdesk_ticket_contacto,group_helpdesk_agregar_contacto,1,1,1,1
+access_helpdesk_contacto,access.helpdesk.contacto,helpdesk_update.model_helpdesk_contacto,group_helpdesk_agregar_contacto,1,1,1,1
