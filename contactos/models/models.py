@@ -26,6 +26,7 @@ class contactos(models.Model):
     x_studio_moroso = fields.Boolean(default = False, store=True, track_visibility = 'onchange', string='Moroso')
     x_studio_cobranza_o_facturacin = fields.Selection([["Cobranza","Cobranza"],["Facturación","Facturación"],["Ambos","Ambos"]], string='Cobranza o facturación', store=True, track_visibility='onchange')
     x_studio_distribuidor = fields.Boolean(string = 'Distribuidor foráneo', store=True)
+    x_studio_activo_1 = fields.Boolean(string = 'Activo final', store=True, track_visibility='onchange')
 
 class zonaDistribuidor(models.Model):
 	_name='zona.distribuidor'
