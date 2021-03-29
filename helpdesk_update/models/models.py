@@ -440,12 +440,14 @@ class helpdesk_update(models.Model):
     def _compute_x_studio_filtro_numeros_de_serie(self):
         self.x_studio_filtro_numeros_de_serie = 0
         for record in self:
+            """
             id_localidad = self.env['stock.warehouse'].search([['x_studio_field_E0H1Z','=',record.x_studio_empresas_relacionadas.id]])
             
             if(len(id_localidad)==1):
                 record['x_studio_filtro_numeros_de_serie'] = id_localidad.lot_stock_id.id
             if(len(id_localidad)==0):
                 record['x_studio_filtro_numeros_de_serie'] = False
+            """
      
 
     x_studio_valor_categria_de_producto = fields.Integer(string='valor categria de producto ', store=True, readonly=True, compute='_compute_x_studio_valor_categria_de_producto')
