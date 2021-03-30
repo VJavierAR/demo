@@ -280,7 +280,15 @@
               <page name="studio_page_TaG67" string="Pedido">
                 <field name="x_studio_generar_cambio" string="Generar cambio" invisible="1"/>
                 <button name="contadores_wizard" string="Capturar contadores" class="oe_highlight" type="object"  attrs="{'invisible':  ['|', '|', '|', '|', ('x_studio_tipo_de_vale', '!=', 'Requerimiento'), ('team_id', '=', 13), ('x_studio_equipo_por_nmero_de_serie', '=', []), ('stage_id', '=', 18), ('stage_id', '=', 4) ]}" />
-                <field name="x_studio_equipo_por_nmero_de_serie" string="Equipo por número de serie" style="width:877px" domain="[]" attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)]}" widget="" context="{'default_x_studio_esconde':'x_studio_idteam'}" options="{'no_create_edit': True, 'no_create': True}">
+                <field name="x_studio_equipo_por_nmero_de_serie" 
+                       string="Equipo por número de serie" 
+                       style="width:877px" 
+                       domain="[]" 
+                       attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)], 'invisible': [('x_studio_tipo_de_vale', '=', 'Requerimiento')]}" 
+                       widget="" 
+                       context="{'default_x_studio_esconde':'x_studio_idteam'}" 
+                       options="{'no_create_edit': True, 'no_create': True}"
+                       >
                   <tree string="Lots/Serial Numbers" editable="bottom" >
                     
                     <field name="x_studio_esconde" string="esconde id" invisible="1"/>
@@ -313,12 +321,12 @@
                   </form>
                 </field>
 
-                <!--
+                
                 <field name="x_studio_equipo_por_nmero_de_serie_1" attrs="{'invisible': ['|', ['x_studio_tipo_de_vale', '!=', 'Requerimiento'], ['x_studio_tipo_de_vale', '=', false] ]}">
                   
                   <tree>
                     <field name="serie" string="Número de serie"/>
-                    <field name="tablahtml" string="Detalle"/>
+                    <field name="tablahtml" string="Detalle" widget="html"/>
                   </tree>
                   <form>
                     <group>
@@ -355,7 +363,7 @@
                   </form>
                 
                 </field>
-                -->
+                
 
                 <group name="studio_group_TaG67">
                   <group name="studio_group_TaG67_left">
