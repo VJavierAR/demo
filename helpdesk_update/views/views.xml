@@ -646,6 +646,7 @@
                   
             <field name="diagnosticos" context="{'default_estadoTicket': x_studio_ultimoestado_1}" attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)]}" delete="false" edit="0">
               <tree>
+                <field name="id"/>
                 <field name="create_date"/>
                 <field name="estadoTicket"/>
                 <field name="comentario"/>
