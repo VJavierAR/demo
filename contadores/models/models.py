@@ -126,6 +126,7 @@ class dcas(models.Model):
     x_studio_tickett = fields.Char(string='Ticket Techra', store=True)
     x_studio_fecha_techra = fields.Date(string='Fecha techra', store=True)
     x_studio_robot = fields.Boolean(string='Robot', default=False, store=True)
+    x_studio_cartuchonefro = fields.Many2one('product.product', string='Cartucho negro', store=True)
     x_studio_color_o_bn = fields.Char(string='Equipo B/N o Color', readonly=True, compute='_compute_x_studio_color_o_bn')
     @api.depends('serie')
     def _compute_x_studio_color_o_bn(self):
