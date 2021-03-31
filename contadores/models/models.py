@@ -127,7 +127,7 @@ class dcas(models.Model):
     x_studio_fecha_techra = fields.Date(string='Fecha techra', store=True)
     x_studio_robot = fields.Boolean(string='Robot', default=False, store=True)
 
-    x_studio_field_qYMJD = Integer(string="Id producto", readonly=True, compute="_compute_x_studio_field_qYMJD")
+    x_studio_field_qYMJD = fields.Integer(string="Id producto", readonly=True, compute="_compute_x_studio_field_qYMJD")
 
     @api.depends('serie')
     def _compute_x_studio_field_qYMJD(self):
