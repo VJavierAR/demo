@@ -284,10 +284,13 @@ class dcas(models.Model):
 
       #if self.fuente == 'helpdesk.ticket' or self.fuente == 'tfs.tfs':
         if self.serie.id:
-            bn_c=self.env['stock.production.lot'].search([['id','=',self.serie.id]])        
-            self.colorEquipo=bn_c.x_studio_color_bn
-            self.ultimaUbicacion=bn_c.x_studio_ultima_ubicacin
-            self.equipo=bn_c.product_id.name
+            bn_c = self.env['stock.production.lot'].search([['id','=',self.serie.id]])
+            if bn_c.id and bn_c.x_studio_color_bn:
+                self.colorEquipo = bn_c.x_studio_color_bn
+            if bn_c.id and bn_c.x_studio_ultima_ubicacin:
+                self.ultimaUbicacion = bn_c.x_studio_ultima_ubicacin
+            if bn_c.id and bn_c.product_id.id:
+                self.equipo = bn_c.product_id.name
             if self.colorEquipo=='B/N':
                 n=self.env['dcas.dcas'].search([['serie','=',self.serie.id],['x_studio_toner_negro','=',1],['fuente','=','helpdesk.ticket'],['contadorMono','!=',0]],order='x_studio_fecha desc',limit=1)
             else:
