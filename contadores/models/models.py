@@ -142,7 +142,7 @@ class dcas(models.Model):
         domain = [('id', '=', -1)]
         compatibles_list = []
         productos = self.env['product.product'].search([])
-        productos = productos.filtered(lambda x:  x.categ_id.id == 5 and x.x_studio_color == 'Negro' and self.x_studio_field_qYMJD in x.x_studio_toner_compatible.ids)
+        productos = productos.sudo().filtered(lambda x:  x.categ_id.id == 5 and x.x_studio_color == 'Negro' and self.x_studio_field_qYMJD in x.x_studio_toner_compatible.ids)
         _logger.info('productos' + str(productos))
         if productos:
             domain = [('id', 'in', productos.ids)]
