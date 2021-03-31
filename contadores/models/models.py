@@ -277,6 +277,11 @@ class dcas(models.Model):
 
     @api.onchange('serie')             
     def ultimosContadoresNACM(self):
+        #inicializando valores
+        self.ultimaUbicacion = ''
+
+
+
       #if self.fuente == 'helpdesk.ticket' or self.fuente == 'tfs.tfs':
         if self.serie :
             bn_c=self.env['stock.production.lot'].search([['id','=',self.serie.id]])        
