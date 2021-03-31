@@ -136,7 +136,6 @@ class dcas(models.Model):
             if r.serie.id and r.serie.product_id.id:
             r['x_studio_field_qYMJD'] = r.serie.product_id.id
 
-    x_studio_cartuchonefro = fields.Many2one('product.product', string='Cartucho negro', store=True, domain=_get_compatibles_negro)
 
     def _get_compatibles_negro(self):
         #domain = [('categ_id', '=', 5), ('x_studio_color', '=', 'Negro'), ('x_studio_toner_compatible.id', '=', self.x_studio_field_qYMJD)]
@@ -150,8 +149,8 @@ class dcas(models.Model):
             return domain
         return domain
 
+    x_studio_cartuchonefro = fields.Many2one('product.product', string='Cartucho negro', store=True, domain=_get_compatibles_negro)
 
-        
     x_studio_color_o_bn = fields.Char(string='Equipo B/N o Color', readonly=True, compute='_compute_x_studio_color_o_bn')
     @api.depends('serie')
     def _compute_x_studio_color_o_bn(self):
