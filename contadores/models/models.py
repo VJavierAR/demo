@@ -283,7 +283,7 @@ class dcas(models.Model):
 
 
       #if self.fuente == 'helpdesk.ticket' or self.fuente == 'tfs.tfs':
-        if self.serie :
+        if self.serie.id:
             bn_c=self.env['stock.production.lot'].search([['id','=',self.serie.id]])        
             self.colorEquipo=bn_c.x_studio_color_bn
             self.ultimaUbicacion=bn_c.x_studio_ultima_ubicacin
