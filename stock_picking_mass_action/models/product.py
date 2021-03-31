@@ -21,7 +21,7 @@ from xml.dom import minidom
 class compras(models.Model):
     _inherit = 'product.product'
     x_studio_color_bn = fields.Selection([('B/N','B/N'),('Color','Color')], string = 'Color - B/N', store = True)
-    x_studio_color=fields.Selection([["Amarillo","Amarillo"],["Negro","Negro"],["Cian","Cian"],["Magenta","Magenta"]])
+    x_studio_color=fields.Selection([["Amarillo","Amarillo"],["Negro","Negro"],["Cian","Cian"],["Magenta","Magenta"]], store=True, string="Color")
     x_studio_toner_compatible=fields.Many2many('product.product',relation='product_product_rel', column1='id1',column2='id2', string="Compatibles")
     x_studio_rendimiento_toner=fields.Integer('Rendimiento')
     
