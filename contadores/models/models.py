@@ -126,6 +126,8 @@ class dcas(models.Model):
     x_studio_tickett = fields.Char(string='Ticket Techra', store=True)
     x_studio_fecha_techra = fields.Date(string='Fecha techra', store=True)
     x_studio_robot = fields.Boolean(string='Robot', default=False, store=True)
+    x_studio_lectura_anterior_color = fields.Integer(string='Lectura anterior color', store=True)
+
     
     x_studio_field_qYMJD = fields.Integer(string="Id producto", readonly=True, compute="_compute_x_studio_field_qYMJD")
 
