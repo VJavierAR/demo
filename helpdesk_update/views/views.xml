@@ -359,7 +359,7 @@
                         
                       </group>
                       <group>
-                        <field name="tablahtml" string="Detalle"/>
+                        <field name="tablahtml" string="Detalle" widget="html"/>
                       </group>
                     </group>
                   </form>
