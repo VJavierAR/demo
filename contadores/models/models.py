@@ -126,7 +126,32 @@ class dcas(models.Model):
     x_studio_tickett = fields.Char(string='Ticket Techra', store=True)
     x_studio_fecha_techra = fields.Date(string='Fecha techra', store=True)
     x_studio_robot = fields.Boolean(string='Robot', default=False, store=True)
-    x_studio_cartuchonefro = fields.Many2one('product.product', string='Cartucho negro', store=True, domain="[('categ_id', '=', 5), ('x_studio_color', '=', 'Negro'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]")
+
+    x_studio_field_qYMJD = Integer(string="Id producto", readonly=True, compute="_compute_x_studio_field_qYMJD")
+
+    @api.depends('serie')
+    def _compute_x_studio_field_qYMJD(self):
+        self.x_studio_field_qYMJD = 0
+        for r in self:
+            if r.serie.id and r.serie.product_id.id:
+            r['x_studio_field_qYMJD'] = r.serie.product_id.id
+
+    x_studio_cartuchonefro = fields.Many2one('product.product', string='Cartucho negro', store=True, domain=_get_compatibles_negro)
+
+    def _get_compatibles_negro(self):
+        #domain = [('categ_id', '=', 5), ('x_studio_color', '=', 'Negro'), ('x_studio_toner_compatible.id', '=', self.x_studio_field_qYMJD)]
+        domain = [('id', '=', -1)]
+        compatibles_list = []
+        productos = self.env['product.product'].search([[]])
+        productos = productos.filtered(lambda x:  x.categ_id.id == 5 and x.x_studio_color == 'Negro' and self.x_studio_field_qYMJD in x.x_studio_toner_compatible.ids).ids
+        _logger.info('productos' + str(productos))
+        if productos:
+            domain = [('id', 'in', productos)]
+            return domain
+        return domain
+
+
+        
     x_studio_color_o_bn = fields.Char(string='Equipo B/N o Color', readonly=True, compute='_compute_x_studio_color_o_bn')
     @api.depends('serie')
     def _compute_x_studio_color_o_bn(self):
