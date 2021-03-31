@@ -136,7 +136,7 @@ class dcas(models.Model):
             if r.serie.id and r.serie.product_id.id:
                 r['x_studio_field_qYMJD'] = r.serie.product_id.id
 
-    @api.onchange('serie')
+    #@api.onchange('serie')
     def _get_compatibles_negro(self):
         #domain = [('categ_id', '=', 5), ('x_studio_color', '=', 'Negro'), ('x_studio_toner_compatible.id', '=', self.x_studio_field_qYMJD)]
         domain = [('id', '=', -1)]
@@ -165,7 +165,7 @@ class dcas(models.Model):
             if r.x_studio_cartuchonefro:
                 r['x_studio_rendimiento_negro'] = str(r.x_studio_cartuchonefro.x_studio_rendimiento_toner)
 
-    @api.onchange('serie')
+    #@api.onchange('serie')
     def _get_compatibles_amarillo(self):
         #domain = [('categ_id', '=', 5), ('x_studio_color', '=', 'Amarillo'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]
         domain = [('id', '=', -1)]
@@ -196,7 +196,7 @@ class dcas(models.Model):
                 r['x_studio_rendimientoa'] = str(r.x_studio_cartucho_amarillo.x_studio_rendimiento_toner)
 
 
-    @api.onchange('serie')
+    #@api.onchange('serie')
     def _get_compatibles_cian(self):
         #domain = [('categ_id', '=', 5), ('x_studio_color', '=', 'Cian'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]
         domain = [('id', '=', -1)]
@@ -225,7 +225,7 @@ class dcas(models.Model):
             if r.x_studio_cartucho_cian_1:
                 r['x_studio_rendimientoc'] = str(r.x_studio_cartucho_cian_1.x_studio_rendimiento_toner)
 
-    @api.onchange('serie')
+    #@api.onchange('serie')
     def _get_compatibles_magenta(self):
         #domain = [('categ_id', '=', 5), ('x_studio_color', '=', 'Magenta'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]
         domain = [('id', '=', -1)]
