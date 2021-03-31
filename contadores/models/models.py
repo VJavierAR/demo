@@ -145,8 +145,10 @@ class dcas(models.Model):
         #productos = productos.sudo().filtered(lambda x:  x.categ_id.id == 5 and x.x_studio_color == 'Negro' and self.x_studio_field_qYMJD in x.x_studio_toner_compatible.ids)
         productos = productos.filtered(lambda x:  x.categ_id.name.lower() == 'toner')
         _logger.info('productos: ' + str(productos.ids))
+        for producto in productos:
+            compatibles_list.append(producto.id)
         if productos:
-            domain = [('id', 'in', productos)] 
+            domain = [('id', 'in', compatibles_list)] 
             return domain
         return domain
 
@@ -168,8 +170,10 @@ class dcas(models.Model):
         #productos = productos.sudo().filtered(lambda x:  x.categ_id.id == 5 and x.x_studio_color == 'Amarillo' and self.x_studio_field_qYMJD in x.x_studio_toner_compatible.ids)
         productos = productos.filtered(lambda x:  x.categ_id.name.lower() == 'toner')
         _logger.info('productos: ' + str(productos.ids))
+        for producto in productos:
+            compatibles_list.append(producto.id)
         if productos:
-            domain = [('id', 'in', productos)] 
+            domain = [('id', 'in', compatibles_list)] 
             return domain
         return domain
 
@@ -193,8 +197,10 @@ class dcas(models.Model):
         #productos = productos.sudo().filtered(lambda x:  x.categ_id.id == 5 and x.x_studio_color == 'Cian' and self.x_studio_field_qYMJD in x.x_studio_toner_compatible.ids)
         productos = productos.filtered(lambda x:  x.categ_id.name.lower() == 'toner')
         _logger.info('productos: ' + str(productos.ids))
+        for producto in productos:
+            compatibles_list.append(producto.id)
         if productos:
-            domain = [('id', 'in', productos)] 
+            domain = [('id', 'in', compatibles_list)] 
             return domain
         return domain
 
@@ -216,8 +222,10 @@ class dcas(models.Model):
         #productos = productos.sudo().filtered(lambda x:  x.categ_id.id == 5 and x.x_studio_color == 'Magenta' and self.x_studio_field_qYMJD in x.x_studio_toner_compatible.ids)
         productos = productos.filtered(lambda x:  x.categ_id.name.lower() == 'toner')
         _logger.info('productos: ' + str(productos.ids))
+        for producto in productos:
+            compatibles_list.append(producto.id)
         if productos:
-            domain = [('id', 'in', productos)] 
+            domain = [('id', 'in', compatibles_list)] 
             return domain
         return domain
 
