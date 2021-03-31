@@ -322,7 +322,7 @@
                 </field>
 
                 
-                <field name="x_studio_equipo_por_nmero_de_serie_1" attrs="{'invisible': ['|', ['x_studio_tipo_de_vale', '!=', 'Requerimiento'], ['x_studio_tipo_de_vale', '=', false] ]}">
+                <field name="x_studio_equipo_por_nmero_de_serie_1" >
                   
                   <tree>
                     <field name="serie" string="Número de serie"/>
@@ -338,6 +338,26 @@
                         
                         <field name="ultimaUbicacion"/>
                         <field name="equipo"/>
+                        <field name="contadorMono"/>
+                        <field name="contadorAnteriorNegro" readonly="1"/>
+                        <field name="contadorColor" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
+                        <field name="contadorAnteriorColor" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
+
+                        <field name="x_studio_cartuchonefro" /> 
+                        <field name="x_studio_rendimiento_negro" readonly="1"/>
+                        <field name="porcentajeNegro"/>
+                        
+                        <field name="x_studio_cartucho_amarillo" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" /> 
+                        <field name="x_studio_rendimientoa" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
+                        <field name="porcentajeAmarillo" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
+                        <field name="x_studio_cartucho_cian_1" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" /> 
+                        <field name="x_studio_rendimientoc" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
+                        <field name="porcentajeCian" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
+                        <field name="x_studio_cartucho_magenta" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" /> 
+                        <field name="x_studio_rendimientom" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
+                        <field name="porcentajeMagenta" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
+                        
+                        <field name="x_studio_field_qYMJD" invisible="0"/>
                         
                       </group>
                       <group>
