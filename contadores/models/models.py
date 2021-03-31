@@ -288,7 +288,7 @@ class dcas(models.Model):
             if bn_c.id and bn_c.x_studio_color_bn:
                 self.colorEquipo = bn_c.x_studio_color_bn
             if bn_c.id and bn_c.x_studio_ultima_ubicacin:
-                self.ultimaUbicacion = bn_c.x_studio_ultima_ubicacin
+                self.ultimaUbicacion = str(bn_c.x_studio_ultima_ubicacin)
             if bn_c.id and bn_c.product_id.id:
                 self.equipo = bn_c.product_id.name
             if self.colorEquipo=='B/N':
