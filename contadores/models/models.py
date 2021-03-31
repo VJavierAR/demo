@@ -146,7 +146,7 @@ class dcas(models.Model):
         productos = productos.filtered(lambda x:  x.categ_id.name.lower() == 'toner')
         _logger.info('productos' + str(productos))
         if productos:
-            domain = [('id', 'in', productos.ids)]
+            domain = [('id', 'in', productos.ids)] 
             return domain
         return domain
 
