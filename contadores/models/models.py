@@ -149,10 +149,13 @@ class dcas(models.Model):
             compatibles_list.append(producto.id)
         if productos:
             domain = [('id', 'in', compatibles_list)] 
-            return str(domain)
-        return str(domain)
+            #return str(domain)
+        #return str(domain)
+        return {
+            'domain': {'x_studio_cartuchonefro': domain}
+        }
 
-    x_studio_cartuchonefro = fields.Many2one('product.product', string='Cartucho negro', store=True, domain=_get_compatibles_negro)
+    x_studio_cartuchonefro = fields.Many2one('product.product', string='Cartucho negro', store=True, )#domain=_get_compatibles_negro
 
     x_studio_rendimiento_negro = fields.Char(string='Rendimiento Negro', readonly=True, compute="_compute_x_studio_rendimiento_negro")
     @api.depends('x_studio_cartuchonefro')
@@ -174,10 +177,14 @@ class dcas(models.Model):
             compatibles_list.append(producto.id)
         if productos:
             domain = [('id', 'in', compatibles_list)] 
-            return str(domain)
-        return str(domain)
+            #return str(domain)
+        #return str(domain)
+        return {
+            'domain': {'x_studio_cartucho_amarillo': domain}
+        }
 
-    x_studio_cartucho_amarillo = fields.Many2one('product.product', string='Cartucho amarillo', store=True, domain=_get_compatibles_amarillo)
+
+    x_studio_cartucho_amarillo = fields.Many2one('product.product', string='Cartucho amarillo', store=True, )#domain=_get_compatibles_amarillo
 
     x_studio_rendimientoa = fields.Char(string='Rendimiento amarillo', readonly=True, compute="_compute_x_studio_rendimientoa")
     @api.depends('x_studio_cartucho_amarillo')
@@ -201,10 +208,13 @@ class dcas(models.Model):
             compatibles_list.append(producto.id)
         if productos:
             domain = [('id', 'in', compatibles_list)] 
-            return str(domain)
-        return str(domain)
+            #return str(domain)
+        #return str(domain)
+        return {
+            'domain': {'x_studio_cartucho_cian_1': domain}
+        }
 
-    x_studio_cartucho_cian_1 = fields.Many2one('product.product', string='Cartucho cian', store=True, domain=_get_compatibles_cian)
+    x_studio_cartucho_cian_1 = fields.Many2one('product.product', string='Cartucho cian', store=True, ) #domain=_get_compatibles_cian
 
     x_studio_rendimientoc = fields.Char(string='Rendimiento cian', readonly=True, compute="_compute_x_studio_rendimientoc")
     @api.depends('x_studio_cartucho_cian_1')
@@ -214,6 +224,7 @@ class dcas(models.Model):
             if r.x_studio_cartucho_cian_1:
                 r['x_studio_rendimientoc'] = str(r.x_studio_cartucho_cian_1.x_studio_rendimiento_toner)
 
+    @api.onchange('serie')
     def _get_compatibles_magenta(self):
         #domain = [('categ_id', '=', 5), ('x_studio_color', '=', 'Magenta'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]
         domain = [('id', '=', -1)]
@@ -227,11 +238,14 @@ class dcas(models.Model):
         if productos:
             domain = [('id', 'in', compatibles_list)] 
             _logger.info('productos: ' + str(domain))
-            return str(domain)
-        return str(domain)
+            #return str(domain)
+        #return str(domain)
+        return {
+            'domain': {'x_studio_cartucho_magenta': domain}
+        }
 
 
-    x_studio_cartucho_magenta = fields.Many2one('product.product', string='Cartucho magenta', store=True, domain=_get_compatibles_magenta)
+    x_studio_cartucho_magenta = fields.Many2one('product.product', string='Cartucho magenta', store=True, ) #domain=_get_compatibles_magenta
 
     x_studio_rendimientom = fields.Char(string='Rendimiento magenta', readonly=True, compute="_compute_x_studio_rendimientom")
     @api.depends('x_studio_cartucho_magenta')
