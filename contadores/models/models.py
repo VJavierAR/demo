@@ -134,7 +134,7 @@ class dcas(models.Model):
         self.x_studio_field_qYMJD = 0
         for r in self:
             if r.serie.id and r.serie.product_id.id:
-            r['x_studio_field_qYMJD'] = r.serie.product_id.id
+                r['x_studio_field_qYMJD'] = r.serie.product_id.id
 
 
     def _get_compatibles_negro(self):
