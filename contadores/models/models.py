@@ -160,6 +160,21 @@ class dcas(models.Model):
             if r.x_studio_cartuchonefro:
                 r['x_studio_rendimiento_negro'] = str(r.x_studio_cartuchonefro.x_studio_rendimiento_toner)
 
+    x_studio_cartucho_amarillo = fields.Many2one('product.product', string='Cartucho amarillo', store=True)
+
+    def _get_compatibles_amarillo(self):
+        #domain = [('categ_id', '=', 5), ('x_studio_color', '=', 'Amarillo'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]
+        domain = [('id', '=', -1)]
+        compatibles_list = []
+        productos = self.sudo().env['product.product'].search([])
+        #productos = productos.sudo().filtered(lambda x:  x.categ_id.id == 5 and x.x_studio_color == 'Amarillo' and self.x_studio_field_qYMJD in x.x_studio_toner_compatible.ids)
+        productos = productos.filtered(lambda x:  x.categ_id.name.lower() == 'toner')
+        _logger.info('productos' + str(productos))
+        if productos:
+            domain = [('id', 'in', productos.ids)] 
+            return domain
+        return domain
+
     x_studio_color_o_bn = fields.Char(string='Equipo B/N o Color', readonly=True, compute='_compute_x_studio_color_o_bn')
     @api.depends('serie')
     def _compute_x_studio_color_o_bn(self):
