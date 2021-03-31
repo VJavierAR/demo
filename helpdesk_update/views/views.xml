@@ -343,13 +343,13 @@
                         <field name="x_studio_cartuchonefro"  /> <!-- domain="[('categ_id', '=', 5), ('x_studio_color', '=', 'Negro'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" -->
                         <field name="x_studio_rendimiento_negro" readonly="1"/>
                         <field name="porcentajeNegro"/>
-                        <field name="x_studio_cartucho_amarillo" domain="[('categ_id', '=', 5), ('x_studio_color', '=', 'Amarillo'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" />
+                        <field name="x_studio_cartucho_amarillo"  attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" /> <!-- domain="[('categ_id', '=', 5), ('x_studio_color', '=', 'Amarillo'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" -->
                         <field name="x_studio_rendimientoa" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
                         <field name="porcentajeAmarillo" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
-                        <field name="x_studio_cartucho_cian_1" domain="[('categ_id', '=', 5), ('x_studio_color', '=', 'Cian'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" />
+                        <field name="x_studio_cartucho_cian_1" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" /> <!-- domain="[('categ_id', '=', 5), ('x_studio_color', '=', 'Cian'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" -->
                         <field name="x_studio_rendimientoc" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
                         <field name="porcentajeCian" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
-                        <field name="x_studio_cartucho_magenta" domain="[('categ_id', '=', 5), ('x_studio_color', '=', 'Magenta'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" />
+                        <field name="x_studio_cartucho_magenta" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}" /> <!-- domain="[('categ_id', '=', 5), ('x_studio_color', '=', 'Magenta'), ('x_studio_toner_compatible.id', '=', x_studio_field_qYMJD)]" -->
                         <field name="x_studio_rendimientom" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
                         <field name="porcentajeMagenta" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
                         
