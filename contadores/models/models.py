@@ -126,7 +126,7 @@ class dcas(models.Model):
     x_studio_tickett = fields.Char(string='Ticket Techra', store=True)
     x_studio_fecha_techra = fields.Date(string='Fecha techra', store=True)
     x_studio_robot = fields.Boolean(string='Robot', default=False, store=True)
-
+    
     x_studio_field_qYMJD = fields.Integer(string="Id producto", readonly=True, compute="_compute_x_studio_field_qYMJD")
 
     @api.depends('serie')
@@ -151,6 +151,14 @@ class dcas(models.Model):
         return domain
 
     x_studio_cartuchonefro = fields.Many2one('product.product', string='Cartucho negro', store=True, domain=_get_compatibles_negro)
+
+    x_studio_rendimiento_negro = fields.Char(string='Rendimiento Negro', readonly=True, compute="_compute_x_studio_rendimiento_negro")
+    @api.depends('x_studio_cartuchonefro')
+    def _compute_x_studio_rendimiento_negro(self):
+        self.x_studio_rendimiento_negro = ''
+        for r in self:
+            if r.x_studio_cartuchonefro:
+                r['x_studio_rendimiento_negro'] = str(r.x_studio_cartuchonefro.x_studio_rendimiento_toner)
 
     x_studio_color_o_bn = fields.Char(string='Equipo B/N o Color', readonly=True, compute='_compute_x_studio_color_o_bn')
     @api.depends('serie')
