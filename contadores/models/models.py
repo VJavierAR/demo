@@ -149,8 +149,8 @@ class dcas(models.Model):
             compatibles_list.append(producto.id)
         if productos:
             domain = [('id', 'in', compatibles_list)] 
-            return domain
-        return domain
+            return str(domain)
+        return str(domain)
 
     x_studio_cartuchonefro = fields.Many2one('product.product', string='Cartucho negro', store=True, domain=_get_compatibles_negro)
 
@@ -174,8 +174,8 @@ class dcas(models.Model):
             compatibles_list.append(producto.id)
         if productos:
             domain = [('id', 'in', compatibles_list)] 
-            return domain
-        return domain
+            return str(domain)
+        return str(domain)
 
     x_studio_cartucho_amarillo = fields.Many2one('product.product', string='Cartucho amarillo', store=True, domain=_get_compatibles_amarillo)
 
@@ -201,8 +201,8 @@ class dcas(models.Model):
             compatibles_list.append(producto.id)
         if productos:
             domain = [('id', 'in', compatibles_list)] 
-            return domain
-        return domain
+            return str(domain)
+        return str(domain)
 
     x_studio_cartucho_cian_1 = fields.Many2one('product.product', string='Cartucho cian', store=True, domain=_get_compatibles_cian)
 
@@ -226,8 +226,8 @@ class dcas(models.Model):
             compatibles_list.append(producto.id)
         if productos:
             domain = [('id', 'in', compatibles_list)] 
-            return domain
-        return domain
+            return str(domain)
+        return str(domain)
 
     x_studio_cartucho_magenta = fields.Many2one('product.product', string='Cartucho magenta', store=True, domain=_get_compatibles_magenta)
 
