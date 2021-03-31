@@ -357,7 +357,9 @@
 
                       </group>
                       <group>
+                        <!--
                         <field name="tablahtml" string="Detalle"/>
+                      -->
                       </group>
                     </group>
                   </form>
