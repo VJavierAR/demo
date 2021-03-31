@@ -226,8 +226,10 @@ class dcas(models.Model):
             compatibles_list.append(producto.id)
         if productos:
             domain = [('id', 'in', compatibles_list)] 
+            _logger.info('productos: ' + str(domain))
             return str(domain)
         return str(domain)
+
 
     x_studio_cartucho_magenta = fields.Many2one('product.product', string='Cartucho magenta', store=True, domain=_get_compatibles_magenta)
 
