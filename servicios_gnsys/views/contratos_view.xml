@@ -102,13 +102,14 @@
 			      web_icon="servicios_gnsys, static/description/contrato.png"
     	/>
     -->
+    	<!--
     	<menuitem id="contrato_contrato"
     			  name="Contrato"
     			  sequence="40"
 				  parent="account_accountant.menu_accounting"
 				  action="contrato_action_window"
     	/>
-
+		-->
 
 	</data>
 </odoo>
