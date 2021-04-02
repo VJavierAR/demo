@@ -287,8 +287,9 @@ class dcas(models.Model):
             bn_c = self.env['stock.production.lot'].search([['id','=',self.serie.id]])
             if bn_c.id and bn_c.x_studio_color_bn:
                 self.colorEquipo = bn_c.x_studio_color_bn
-            _logger.info("bn_c.x_studio_ultima_ubicacin: " + str(bn_c.x_studio_ultima_ubicacin))
+            _logger.info("bn_c: " + str(bn_c))    
             _logger.info("bn_c.id: " + str(bn_c.id))
+            _logger.info("bn_c.x_studio_ultima_ubicacin: " + str(bn_c.x_studio_ultima_ubicacin))
             if bn_c.id and bn_c.x_studio_ultima_ubicacin:
                 self.ultimaUbicacion = str(bn_c.x_studio_ultima_ubicacin)
             if bn_c.id and bn_c.product_id.id:
