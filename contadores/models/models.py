@@ -2023,7 +2023,7 @@ class lor(models.Model):
     x_studio_color_bn = fields.Selection([['B/N', 'B/N'], ['Color', 'Color']], readonly=True, store=True, string='Color B/N', compute='_compute_x_studio_color_bn')
     @api.depends('product_id')
     def _compute_x_studio_color_bn(self):
-        self.x_studio_color_bn = None
+        #self.x_studio_color_bn = None
         for record in self:
             if record.product_id.id:
                 record['x_studio_color_bn'] = record.product_id.x_studio_color_bn
