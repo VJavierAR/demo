@@ -2581,7 +2581,7 @@ class CrearYValidarSolTonerMassAction(TransientModel):
                             else:
                              c.write({'porcentajeNegro':c.porcentajeNegro})    
                              c.write({'x_studio_toner_negro':1})
-                            pro = self.env['product.product'].search([['name','=',c.x_studio_cartuchonefro.name],['categ_id','=',5]])
+                            pro = self.env['product.product'].search([['name','=',c.x_studio_cartuchonefro.name],['categ_id.name','=','Toner']])
                             gen = pro.sorted(key='qty_available',reverse=True)[0]
                             weirtihgone = c.x_studio_cartuchonefro.id if(len(gen)==0) else gen.id
                             datos={'name': ' '
