@@ -644,8 +644,7 @@ class helpdesk_update(models.Model):
     x_studio_field_nO7Xg = fields.Many2one('sale.order', string="Pedido de venta")
 
     x_studio_field_SbRz2 = fields.Many2one("stock.picking", string="Transfer alm", readonly=True, store=True, compute="_compute_x_studio_field_SbRz2")
-    #@api.depends('x_studio_field_nO7Xg.delivery_count')
-    @api.depends('x_studio_field_nO7Xg')
+    @api.depends('x_studio_field_nO7Xg.delivery_count')
     def _compute_x_studio_field_SbRz2(self):
         self.x_studio_field_SbRz2 = None
         self.x_studio_field_nO7Xg = None
