@@ -42,6 +42,7 @@ class StockPicking(Model):
     x_studio_backorder=fields.Boolean()
     x_studio_tecnico = fields.Many2one('hr.employee','Tecnico')
     x_studio_ticket=fields.Char()
+    x_studio_corte = fields.Char(string="Corte", store=True, readonly=True, related="sale_id.x_studio_corte")
 
     @api.depends('move_ids_without_package')
     def proHtml(self):
