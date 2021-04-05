@@ -2722,7 +2722,7 @@ class CrearYValidarSolTonerMassAction(TransientModel):
                                     requisicion[0].product_rel=[{'cliente':sale.partner_shipping_id.id,'ticket':sale.x_studio_field_bxHgp.id,'cantidad':int(lineas.product_uom_qty),'product':lineas.product_id.id,'costo':0.00}]
                         """
 
-                        
+
                         sale.action_confirm()
                         _logger.info('3312: existe picking? ' + str(sale.picking_ids))
                         estadoActual = ticket.stage_id.name
@@ -3051,7 +3051,8 @@ class HelpDeskDatosToner(TransientModel):
             self.corte = self.ticket_id.x_studio_corte
 
     def _compute_solicitud(self):
-        if self.ticket_id.x_studio_field_nO7Xg:
+        self.solicitud = None
+        if self.ticket_id.x_studio_field_nO7Xg.id:
             self.solicitud = self.ticket_id.x_studio_field_nO7Xg.id
 
     #def _compute_backorder(self):
