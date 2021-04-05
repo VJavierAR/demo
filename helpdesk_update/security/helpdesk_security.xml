@@ -51,6 +51,10 @@
                 <field name="name">Valida refacción</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>
             </record>
+            <record id="group_helpdesk_valida_toner" model="res.groups">
+                <field name="name">Valida tóner</field>
+                <field name="category_id" ref="module_category_helpdesk_update"/>
+            </record>
             <record id="group_helpdesk_editar_contadores" model="res.groups">
                 <field name="name">Editar contadores</field>
                 <field name="category_id" ref="module_category_helpdesk_update"/>

@@ -11,6 +11,7 @@ function test() {
 }
 */
 var idVistaMesaDeServicio = 1699;
+var idVistaToner = 2168;
 
 odoo.define('invoice.action_button_helpdesk', function (require) {
 "use strict";
@@ -40,7 +41,7 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
 			    		this.$buttons.find('.o_list_button_add').hide();
                         this.$buttons.find('.oe_action_button_ticket_reporte').hide();
 			    		this.$buttons.find('.oe_action_button_helpdesk').click(this.proxy('action_def'));
-			    	} else if (idVista == 956) {
+			    	} else if (idVista == idVistaToner) {
                         console.log("Entre para vista de toner")
                         this.$buttons.find('.o_button_import').hide();
                         //this.$buttons.find('.o_list_button_add').hide();
