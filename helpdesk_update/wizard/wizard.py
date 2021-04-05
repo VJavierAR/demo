@@ -2704,6 +2704,7 @@ class CrearYValidarSolTonerMassAction(TransientModel):
                                x = 115
                                _logger.info('3312: x Queretaro: ' + str(x))
                         
+                        """
                         for lineas in sale.order_line:
                             st=self.env['stock.quant'].search([['location_id','=',x],['product_id','=',lineas.product_id.id]]).sorted(key='quantity',reverse=True)
                             requisicion=False
@@ -2719,6 +2720,9 @@ class CrearYValidarSolTonerMassAction(TransientModel):
                                     re.product_rel=[{'cliente':sale.partner_shipping_id.id,'ticket':sale.x_studio_field_bxHgp.id,'cantidad':int(lineas.product_uom_qty),'product':lineas.product_id.id,'costo':0.00}]
                                 if(len(requisicion)>0):
                                     requisicion[0].product_rel=[{'cliente':sale.partner_shipping_id.id,'ticket':sale.x_studio_field_bxHgp.id,'cantidad':int(lineas.product_uom_qty),'product':lineas.product_id.id,'costo':0.00}]
+                        """
+
+                        
                         sale.action_confirm()
                         _logger.info('3312: existe picking? ' + str(sale.picking_ids))
                         estadoActual = ticket.stage_id.name
