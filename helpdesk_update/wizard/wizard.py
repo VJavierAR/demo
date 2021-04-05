@@ -3043,10 +3043,12 @@ class HelpDeskDatosToner(TransientModel):
 
 
     def _compute_series(self):
-        if self.ticket_id.x_studio_equipo_por_nmero_de_serie_1:
+        self.series = None
+        if self.ticket_id.x_studio_equipo_por_nmero_de_serie_1.ids:
             self.series = self.ticket_id.x_studio_equipo_por_nmero_de_serie_1.ids
 
     def _compute_corte(self):
+        self.corte = None
         if self.ticket_id.x_studio_corte:
             self.corte = self.ticket_id.x_studio_corte
 
@@ -3060,6 +3062,7 @@ class HelpDeskDatosToner(TransientModel):
     #        self.backorder = self.ticket_id.x_studio_backorder.ids
 
     def _compute_cliente(self):
+        self.cliente = None
         if self.ticket_id.partner_id:
             self.cliente = self.ticket_id.partner_id.id
     
@@ -3069,94 +3072,117 @@ class HelpDeskDatosToner(TransientModel):
             self.tipoCliente = self.ticket_id.x_studio_nivel_del_cliente
 
     def _compute_localidad(self):
-        if self.ticket_id.x_studio_empresas_relacionadas:
+        self.localidad = None
+        if self.ticket_id.x_studio_empresas_relacionadas.id:
             self.localidad = self.ticket_id.x_studio_empresas_relacionadas.id
 
     def _compute_zona_localidad(self):
+        self.zonaLocalidad = None
         if self.ticket_id.x_studio_field_6furK:
             self.zonaLocalidad = self.ticket_id.x_studio_field_6furK
 
     def _compute_localidad_contacto(self):
-        if self.ticket_id.localidadContacto:
+        self.localidadContacto = None
+        if self.ticket_id.localidadContacto.id:
             self.localidadContacto = self.ticket_id.localidadContacto.id
 
     def _compute_estado_localidad(self):
+        self.estadoLocalidad = ''
         if self.ticket_id.x_studio_estado_de_localidad:
             self.estadoLocalidad = self.ticket_id.x_studio_estado_de_localidad
 
     def _compute_telefono_localidad(self):
+        self.telefonoContactoLocalidad = ''
         if self.ticket_id.telefonoLocalidadContacto:
             self.telefonoContactoLocalidad = self.ticket_id.telefonoLocalidadContacto
 
     def _compute_movil_localidad(self):
+        self.movilContactoLocalidad = ''
         if self.ticket_id.movilLocalidadContacto:
             self.movilContactoLocalidad = self.ticket_id.movilLocalidadContacto
 
     def _compute_correo_localidad(self):
+        self.correoContactoLocalidad = ''
         if self.ticket_id.correoLocalidadContacto:
             self.correoContactoLocalidad = self.ticket_id.correoLocalidadContacto
 
     def _compute_direccion_localidad(self):
+        self.direccionLocalidad = ''
         if self.ticket_id.direccionLocalidadText:
             self.direccionLocalidad = self.ticket_id.direccionLocalidadText
 
     def _compute_creado_el(self):
+        self.creadoEl = ''
         if self.ticket_id.create_date:
             self.creadoEl = str(self.ticket_id.create_date)
 
     def _compute_area_atencion(self):
-        if self.ticket_id.team_id:
+        self.areaAtencion = None
+        if self.ticket_id.team_id.id:
             self.areaAtencion = self.ticket_id.team_id.id
 
     def _compute_ejecutivo(self):
-        if self.ticket_id.user_id:
+        self.ejecutivo = None
+        if self.ticket_id.user_id.id:
             self.ejecutivo = self.ticket_id.user_id.id
 
     def _compute_encargado_area(self):
-        if self.ticket_id.x_studio_responsable_de_equipo:
+        self.encargadoArea = None
+        if self.ticket_id.x_studio_responsable_de_equipo.id:
             self.encargadoArea = self.ticket_id.x_studio_responsable_de_equipo.id
 
     def _compute_dias_atraso(self):
+        self.diasAtraso = 0
         if self.ticket_id.days_difference:
             self.diasAtraso = self.ticket_id.days_difference
 
     def _compute_prioridad(self):
+        self.prioridad = None
         if self.ticket_id.priority:
             self.prioridad = self.ticket_id.priority
 
     def _compute_zona(self):
+        self.zona = None
         if self.ticket_id.x_studio_zona:
             self.zona = self.ticket_id.x_studio_zona
 
     def _compute_zona_estados(self):
+        self.zonaEstados = None
         if self.ticket_id.zona_estados:
             self.zonaEstados = self.ticket_id.zona_estados
 
     def _compute_numero_ticket_cliente(self):
+        self.numeroTicketCliente = ''
         if self.ticket_id.x_studio_nmero_de_ticket_cliente:
             self.numeroTicketCliente = self.ticket_id.x_studio_nmero_de_ticket_cliente
 
     def _compute_numero_ticket_distribuidor(self):
+        self.numeroTicketDistribuidor = ''
         if self.ticket_id.x_studio_nmero_ticket_distribuidor_1:
             self.numeroTicketDistribuidor = self.ticket_id.x_studio_nmero_ticket_distribuidor_1
     
     def _compute_numero_ticket_guia(self):
+        self.numeroTicketGuia = ''
         if self.ticket_id.x_studio_nmero_de_guia_1:
             self.numeroTicketGuia = self.ticket_id.x_studio_nmero_de_guia_1
 
     def _compute_comentario_localidad(self):
+        self.comentarioLocalidad = ''
         if self.ticket_id.x_studio_comentarios_de_localidad:
             self.comentarioLocalidad = self.ticket_id.x_studio_comentarios_de_localidad
     
     def _compute_tiempo_ticket(self):
+        self.tiempoAtrasoTicket = ''
         if self.ticket_id.tiempoDeAtrasoTicket:
             self.tiempoAtrasoTicket = self.ticket_id.tiempoDeAtrasoTicket
 
     def _compute_tiempo_almacen(self):
+        self.tiempoAtrasoAlmacen = ''
         if self.ticket_id.tiempoDeAtrasoAlmacen:
             self.tiempoAtrasoAlmacen = self.ticket_id.tiempoDeAtrasoAlmacen
 
     def _compute_tiempo_distribucion(self):
+        self.tiempoAtrasoDistribucion = ''
         if self.ticket_id.tiempoDeAtrasoDistribucion:
             self.tiempoAtrasoDistribucion = self.ticket_id.tiempoDeAtrasoDistribucion
 
