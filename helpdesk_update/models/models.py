@@ -5412,7 +5412,7 @@ class helpdesk_update(models.Model):
                 if not equipo.serie.servicio:
                     mensajeCuerpo = mensajeCuerpo + 'Equipo: ' + str(equipo.serie.product_id.name) + ' Serie: ' + str(equipo.serie.name) + '\n'
                     equipoSinServicio = True
-                    self.x_studio_equipo_por_nmero_de_serie_1 = ''
+                    self.x_studio_equipo_por_nmero_de_serie_1 = None
             if equipoSinServicio:
                 mensajeTitulo = 'Alerta ticket sin servicio creado'
                 todasLasAlertas = todasLasAlertas + '\n\n' + mensajeCuerpo
@@ -5424,7 +5424,7 @@ class helpdesk_update(models.Model):
                 if not equipo.servicio:
                     mensajeCuerpo = mensajeCuerpo + 'Equipo: ' + str(equipo.product_id.name) + ' Serie: ' + str(equipo.name) + '\n'
                     equipoSinServicio = True
-                    self.x_studio_equipo_por_nmero_de_serie = ''
+                    self.x_studio_equipo_por_nmero_de_serie = None
             if equipoSinServicio:
                 mensajeTitulo = 'Alerta ticket sin servicio creado'
                 todasLasAlertas = todasLasAlertas + '\n\n' + mensajeCuerpo
@@ -5439,7 +5439,7 @@ class helpdesk_update(models.Model):
                 if equipo.serie.x_studio_venta:
                     mensajeCuerpo = mensajeCuerpo + 'Equipo: ' + str(equipo.serie.product_id.name) + ' Serie: ' + str(equipo.serie.name) + '\n'
                     equipoSinServicio = True
-                    self.x_studio_equipo_por_nmero_de_serie_1 = ''
+                    self.x_studio_equipo_por_nmero_de_serie_1 = None
             if equipoSinServicio:
                 mensajeTitulo = 'Alerta ticket sin servicio creado'
                 todasLasAlertas = todasLasAlertas + '\n\n' + mensajeCuerpo
@@ -5451,7 +5451,7 @@ class helpdesk_update(models.Model):
                 if equipo.x_studio_venta:
                     mensajeCuerpo = mensajeCuerpo + 'Equipo: ' + str(equipo.product_id.name) + ' Serie: ' + str(equipo.name) + '\n'
                     equipoSinServicio = True
-                    self.x_studio_equipo_por_nmero_de_serie = ''
+                    self.x_studio_equipo_por_nmero_de_serie = None
             if equipoSinServicio:
                 mensajeTitulo = 'Alerta ticket sin servicio creado'
                 todasLasAlertas = todasLasAlertas + '\n\n' + mensajeCuerpo
