@@ -355,7 +355,7 @@
                         <field name="x_studio_rendimientom" attrs="{'invisible': [('colorEquipo', '=', 'B/N')], 'readonly': 1}"/>
                         <field name="porcentajeMagenta" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
                         
-                        <field name="x_studio_field_qYMJD" invisible="0"/>
+                        <field name="x_studio_field_qYMJD" invisible="1"/>
                         
                       </group>
                       <group>
