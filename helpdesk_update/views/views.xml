@@ -382,7 +382,7 @@
                       <field name="x_studio_contador_color" string="Contador color" attrs="{'invisible': 1, 'readonly': 1}"/>
                       <field name="x_studio_contador_color_a_capturar" string="Contador color a capturar" attrs="{'invisible': 1, 'readonly': 1}"/>
                       <field name="x_studio_tamao_lista" string="Tamaño lista equipo por nmero serie" attrs="{'invisible': 1}"/>
-                      <field name="x_studio_activar_compatibilidad" string="Activar compatibilidad" attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }"/>
+                      <field name="x_studio_activar_compatibilidad" string="Activar compatibilidad" attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)], 'invisible': [('x_studio_tipo_de_vale', '=', 'Requerimiento')]}"/>
                       
                       <field style="color:black" name="x_studio_productos" string="Productos " domain="[]" invisible='1' options="{'no_create_edit': True, 'no_create': True}" >
                           <tree string="Product Variants"  editable="bottom" >
@@ -437,7 +437,7 @@
                       
                       
                       
-                      <field name="x_studio_fecha_prevista" string="Fecha Prevista" attrs="{'readonly': ['|', ('stage_id','=', 18), ('stage_id','=', 4) ]}" />
+                      <field name="x_studio_fecha_prevista" string="Fecha Prevista" attrs="{'readonly': ['|', ('stage_id','=', 18), ('stage_id','=', 4) ], 'invisible': 1}" />
                       
                       <field name="x_studio_usuario" string="Usuario" attrs="{'invisible': 1, 'readonly': 1, 'required': 0}"/>
                       <field name="x_studio_verificacin_de_tner" string="Verificación de tóner" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}"/>
@@ -469,7 +469,7 @@
 
                   </group>
                 </group>
-                <group string="Refacciones validadas" class="text-center"></group>
+                <group string="Refacciones validadas" class="text-center" invisible="[('x_studio_tipo_de_vale', '=', 'Requerimiento')]"></group>
                 <field name="validacionesRefaccion" attrs="{'readonly': 1, 'invisible': [('x_studio_tipo_de_vale', '=', 'Requerimiento')]}" >
                   <tree>
                     <field name="id"/>
