@@ -2020,7 +2020,7 @@ class lor(models.Model):
     
     Falta migrar a odoo 14
     """
-    x_studio_color_bn = fields.Selection([['B/N', 'B/N'], ['Color', 'Color']], readonly=True, store=True, string='Color B/N', compute='_compute_x_studio_color_bn')
+    x_studio_color_bn = fields.Selection([['B/N', 'B/N'], ['Color', 'Color']], readonly=True, store=False, string='Color B/N', compute='_compute_x_studio_color_bn')
     @api.depends('product_id')
     def _compute_x_studio_color_bn(self):
         #self.x_studio_color_bn = None
