@@ -154,7 +154,7 @@
       <field name="name">helpdesk.mesa.todosLosTickets.tree</field>
       <field name="model">helpdesk.ticket</field>
       <field name="arch" type="xml">
-        <tree string="Mesa" class="mesa_de_ayuda_tree_class" create="0" delete="0" edit="0" default_order="create_date desc">
+        <tree string="Todos los tickets" class="mesa_de_ayuda_tree_class" create="0" delete="0" edit="0" default_order="create_date desc">
           <field name='datos_ticket_info' invisible="1" />
           <field name="create_date" string="Fecha de creación" />
           <field name="abiertoPor" invisible="0" readonly="1" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
@@ -193,6 +193,56 @@
           <button name="open_to_form_view" type="object" icon="fa-folder-open" string="abrir" invisible="1"/>
           
           <field name="accesorios" string="Productos" options="{'no_create_edit': True, 'no_create': True}"  widget="many2many_tags" attrs="{'readonly': True }" invisible='1'/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_toner_tree">
+      <field name="name">helpdesk.toner.tree</field>
+      <field name="model">helpdesk.ticket</field>
+      <field name="arch" type="xml">
+        <tree string="Toner" class="mesa_de_ayuda_tree_class" create="1" delete="0" edit="0" default_order="create_date desc">
+          <field name='datos_ticket_info' groups="helpdesk_update.group_helpdesk_solo_ve_administrador" />
+          <field name="create_date" string="Fecha de creación" />
+          <field name="abiertoPor" invisible="0" readonly="1" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+          <field name="write_date" string="Fecha de último cambio" invisible="1"/>
+          <field name="write_uid" string="Ultima escritura" invisible="1"/>
+          <field name='ultimoDiagnosticoFecha' readonly='1' />
+          <field name='ultimoDiagnosticoUsuario' readonly='1' />
+          <field name="days_difference" string="Días de atraso" readonly="1"/>
+          <field name='x_studio_tipo_de_vale' string='Tipo de reporte' readonly='1'/>
+          <field name="stage_id" string="Etapa" invisible="0" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+          <field name="x_studio_nmero_de_ticket_cliente" string="Número de ticket cliente" readonly="1"/>
+          <field name="x_studio_refticket"  widget="html" string="Número de ticket" invisible="1"/>
+          <field name="x_studio_reftickettoner"  widget="html" string="Número de ticket toner" />
+          <field name="team_id" string="Área de atención" readonly="1" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+          <field name="x_studio_equipo_por_nmero_de_serie" string="Serie / Series" widget="many2many_tags" readonly="1" invisible="1"/>
+          <field name="x_studio_equipo_por_nmero_de_serie_1" string="Serie / Series" widget="many2many_tags" readonly="1" invisible='1' />
+          <button name="detalle_serie_wizard" type="object" string="Bitacoras" class="oe_highlight" attrs='{"invisible": ["|",["stage_id", "=", 1],["x_studio_equipo_por_nmero_de_serie","=",[]]]}'/>
+          <field name='serie_y_modelo' widget='html' readonly='1' />
+          <field name="x_studio_contadores" widget="html" string="Contadores Anteriores" readonly="1" force_save = "1" invisible="1"/>
+          <field name="contadores_anteriores" widget="html" string="Contadores Anteriores" readonly="1" force_save = "1" invisible='1'/>
+          <field name="datosCliente" />
+          <field name='idLocalidadAyuda' string='idLocalidadAyuda' invisible='1'  />
+          <field name='localidadContacto' string='Localidad contacto' options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+          <button name="contacto_wizard" string="Añadir contcto a localidad" icon="fa-user-plus" class="iconDiagnostico" type="object"  attrs='{"invisible": ["|", "|", ["x_studio_empresas_relacionadas","=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ]}' groups="helpdesk_update.group_helpdesk_agregar_y_editar_contacto"/>
+          <field name="x_studio_ultima_nota" widget="html" string="Ultima nota"/>
+          <field name="x_studio_ultima_evidencia"  widget="html" string="Ultima Evidencia"/>
+          <button name="cambio_wizard" string="Diagnostico" icon="fa-user-md" class="iconDiagnostico" type="object" />
+          <field name="x_studio_empresas_relacionadas" invisible="1" />
+          <field name="x_studio_tcnico" string="Técnico" options="{'no_create_edit': True, 'no_create': True}" invisible="1" domain='["|",["job_id.name","=","TÉCNICO "],["job_id.name","=","SOFTWARE"]]' attrs="{'readonly': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+          <field name="x_studio_activar_compatibilidad" string="Activar compatibilidad" invisible='1'/>
+          <field name="x_studio_productos" string="Productos" invisible="1" options="{'no_create_edit': True, 'no_create': True}"  widget="many2many_tags" attrs="{'readonly': ['|', '|' ,('stage_id', '=', 3), ('stage_id', '=', 18), ('x_studio_field_nO7Xg', '!=', False) ]}"/>
+          <button name="crear_solicitud_refaccion" string="Solicitud de Refacción" class="oe_highlight" attrs="{'invisible': ['|', '|', '|',('team_id', '=', 8), ('x_studio_productos', '=',[]), ('stage_id', '=', 3), ('stage_id', '=', 18) ]}" type="object"/>
+          <field name="x_studio_field_nO7Xg" string="Pedido de venta" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" readonly="1"/>
+          <field name="documentosTecnico" string="Evidencias técnico" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}" invisible="1" widget="many2many_binary"/>
+          <button name="open_to_form_view" type="object" icon="fa-folder-open" string="abrir" invisible="1"/>
+          <button name="detalle_toner_wizard" string="Más información" icon="fa-arrows-alt" class="iconDiagnostico" type="object" />
+          <button name="detalle_serie_toner_wizard" type="object" string="Bitacoras" icon="fa-clipboard-list" class="iconDiagnostico" attrs='{"invisible": [["x_studio_equipo_por_nmero_de_serie_1","=",[]]]}'/>
+          <button name="cerrar_con_comentario_wizard" string="Cerrar" type="object" icon="fa-lock" class="iconDiagnostico" groups="helpdesk_update.group_helpdesk_cambio_a_cerrado" attrs="{'invisible': ['|', ('stage_id', '=', 18), ('stage_id', '=', 4)] }" />
+          <field name='x_studio_backorder' invisible='1' />
+          <field name='backorderActivo' readonly='1' />
+          <field name='mensajeBackOrder' widget='html' readonly='1' />
         </tree>
       </field>
     </record>
@@ -778,10 +828,17 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="toner_action_window">
+      <field name="name">Toner</field>
+      <field name="res_model">helpdesk.ticket</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_toner_tree"/>
+    </record> 
+
     <record model="ir.actions.act_window" id="todos_los_tickets_action_window">
       <field name="name">todos los tickets</field>
       <field name="res_model">helpdesk.ticket</field>
-      <field name="view_mode">tree</field>
+      <field name="view_mode">tree,form</field>
       <field name="view_id" ref="view_mesa_todosLosTickets_tree"/>
     </record> 
 
@@ -795,10 +852,16 @@
               sequence="0"
               action="mesa_action_window"
               />
+    <menuitem id="toner_vista"
+              name="Toner"
+              parent="mesa_root"
+              sequence="1"
+              action="toner_action_window"
+              />
     <menuitem id="mesa_de_servicio_todos_los_tickets"
               name="Todos los tickets"
               parent="mesa_root"
-              sequence="1"
+              sequence="2"
               action="todos_los_tickets_action_window"
               />
 
