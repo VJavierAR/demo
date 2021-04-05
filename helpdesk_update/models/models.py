@@ -648,6 +648,7 @@ class helpdesk_update(models.Model):
     @api.depends('x_studio_field_nO7Xg')
     def _compute_x_studio_field_SbRz2(self):
         self.x_studio_field_SbRz2 = None
+        self.x_studio_field_nO7Xg = None
         for record in self:
             if record.x_studio_field_nO7Xg.id and record.x_studio_field_nO7Xg.delivery_count > 0:
                 for r in record.x_studio_field_nO7Xg.picking_ids:
