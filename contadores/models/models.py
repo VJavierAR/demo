@@ -2531,10 +2531,9 @@ class lor(models.Model):
     
     x_studio_producto_temp = fields.Many2one('product.product',string='producto temp',store=True, readonly=True, related='x_studio_field_Zi7sY')
 
+    
+
     """
-    x_studio_reftoner)
-    x_studio_reftonera)
-    x_studio_reftonerm)
     x_studio_rendimiento)
     x_studio_resultado)
     x_studio_servicio_contrato)
@@ -2552,13 +2551,43 @@ class lor(models.Model):
     x_studio_tickttmp)
     x_studio_tmp_char)
     x_studio_tmpint)
-    x_studio_tner_compatible_amarrillo)
-    x_studio_tner_compatible_magenta)
     x_studio_toner)
     """
     x_studio_toner_1 = fields.One2many('dcas.dcas','serie', store=True, string='Historico de toner', domain='[["fuente","=","helpdesk.ticket"]]')
     
     x_studio_toner_compatible = fields.Many2one('product.product',string='Tóner Compatible BN',store=True, copied=True)
+
+    x_studio_reftoner = fields.Char(string="refTonerBN", readonly=True, compute="_compute_x_studio_reftoner")
+    @api.depends('x_studio_toner_compatible')
+    def _compute_x_studio_reftoner(self):
+        self.x_studio_reftoner = ''
+        for r in self :
+            if r.x_studio_toner_compatible.id:
+                r['x_studio_reftoner'] = str(r.x_studio_toner_compatible.name)
+            else :
+                r['x_studio_reftoner'] = ''
+
+    x_studio_tner_compatible_amarrillo = fields.Many2one('product.product',string='Tóner Compatible Amarrillo',store=True, copied=True)
+    x_studio_reftonera = fields.Char(string="reftonerA", readonly=True, compute="_compute_x_studio_reftonera")
+    @api.depends('x_studio_tner_compatible_amarrillo')
+    def _compute_x_studio_reftonera(self):
+        self.x_studio_reftonera = ''
+        for r in self :
+            if r.x_studio_tner_compatible_amarrillo.id:
+                r['x_studio_reftonera'] = str(r.x_studio_tner_compatible_amarrillo.name)
+            else :
+                r['x_studio_reftonera'] = ''
+
+    x_studio_tner_compatible_magenta = fields.Many2one('product.product',string='Tóner Compatible Magenta',store=True, copied=True)
+    x_studio_reftonerm = fields.Char(string="reftonerm", readonly=True, compute="_compute_x_studio_reftonerm")
+    @api.depends('x_studio_tner_compatible_magenta')
+    def _compute_x_studio_reftonerm(self):
+        self.x_studio_reftonerm = ''
+        for r in self :
+            if r.x_studio_tner_compatible_magenta.id:
+                r['x_studio_reftonerm'] = str(r.x_studio_tner_compatible_magenta.name)
+            else :
+                r['x_studio_reftonerm'] = ''
 
     """
     x_studio_toner_compatible_1)
