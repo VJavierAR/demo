@@ -109,6 +109,7 @@ class sale_update(models.Model):
 	_inherit = 'sale.order'
 	compatiblesLineas = fields.One2many('sale_order_compatibles', 'saleOrder', string = 'nombre temp',copy=True)
 
+	x_studio_comentario_adicional = fields.Char(string="Comentario adicional", store=True)
 	serieRetiro2=fields.Many2one('stock.production.lot','Serie retiro')
 	tickets=fields.Many2many('helpdesk.ticket',widget='many2many_tags')
 	state = fields.Selection([
