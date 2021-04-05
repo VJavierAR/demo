@@ -332,10 +332,10 @@
                     <group>
                       <group>
                         <field name="serie"/>
-                        <field name="colorEquipo"/>
+                        <field name="colorEquipo" readonly="1"/>
                         
-                        <field name="ultimaUbicacion"/>
-                        <field name="equipo"/>
+                        <field name="ultimaUbicacion" readonly="1"/>
+                        <field name="equipo" readonly="1"/>
                         <field name="contadorMono"/>
                         <field name="contadorAnteriorNegro" readonly="1"/>
                         <field name="contadorColor" attrs="{'invisible': [('colorEquipo', '=', 'B/N')]}"/>
