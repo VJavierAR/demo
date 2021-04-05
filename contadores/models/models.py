@@ -287,9 +287,9 @@ class dcas(models.Model):
             bn_c = self.sudo().env['stock.production.lot'].search([['id','=',self.serie.id]])
             if bn_c.id and bn_c.x_studio_color_bn:
                 self.colorEquipo = bn_c.x_studio_color_bn
-            #_logger.info("bn_c.x_studio_ultima_ubicacin: " + str(bn_c.x_studio_ultima_ubicacin))
-            #if bn_c.id and bn_c.x_studio_ultima_ubicacin:
-                #self.ultimaUbicacion = str(bn_c.x_studio_ultima_ubicacin)
+            _logger.info("bn_c.x_studio_localidad_2: " + str(bn_c.x_studio_localidad_2))
+            if bn_c.id and bn_c.x_studio_localidad_2.id:
+                self.ultimaUbicacion = str(bn_c.x_studio_localidad_2.display_name)
             if bn_c.id and bn_c.product_id.id:
                 self.equipo = bn_c.product_id.name
             if self.colorEquipo=='B/N':
