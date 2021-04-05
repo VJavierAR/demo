@@ -616,7 +616,7 @@
                             <field name="x_studio_filtro_numeros_de_serie" string="id localidad" attrs="{'readonly': 1, 'invisible': 1}"/>
                             <field name="x_studio_localidad_id" string="localidad_id" attrs="{'readonly': 1, 'invisible': 1}"/>
             
-                        
+                            <button name="contacto_wizard" icon="fa-user-plus" type="object" attrs='{"invisible": [ "|", "|", ["cambiarDatosClienteCheck", "=", False], ("stage_id", "=", 18), ("stage_id", "=", 4) ]}' groups="helpdesk_update.group_helpdesk_agregar_y_editar_contacto"/>
                     </group>
                     <group name="studio_group_TaG67_right" string=" ">
                       <field name="idClienteAyuda" attrs="{'readonly': 1, 'invisible': 1}" string="id Cliente Ayuda"/>
