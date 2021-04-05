@@ -782,7 +782,7 @@
       <field name="name">todos los tickets</field>
       <field name="res_model">helpdesk.ticket</field>
       <field name="view_mode">tree</field>
-      <field nmero="view_id">view_mesa_todosLosTickets_tree</field>
+      <!--<field nmero="view_id">view_mesa_todosLosTickets_tree</field>-->
     </record> 
 
     <menuitem id="mesa_root"
