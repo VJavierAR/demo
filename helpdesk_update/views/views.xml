@@ -842,7 +842,7 @@
       <field name="name">bitacora</field>
       <field name="res_model">stock.production.lot</field>
       <field name="view_mode">tree,form</field>
-      <field name="view_id" ref="view_production_lot_tree"/>
+      <field name="view_id" ref="stock.view_production_lot_tree"/>
     </record>
 
     <menuitem id="mesa_root"
