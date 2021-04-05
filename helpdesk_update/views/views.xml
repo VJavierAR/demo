@@ -776,17 +776,31 @@
       <field name="name">mesa</field>
       <field name="res_model">helpdesk.ticket</field>
       <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="todos_los_tickets_action_window">
+      <field name="name">todos los tickets</field>
+      <field name="res_model">helpdesk.ticket</field>
+      <field name="view_mode">tree</field>
+      <field nmero="view_id">view_mesa_todosLosTickets_tree</field>
     </record> 
 
     <menuitem id="mesa_root"
               name="Mesa"
               web_icon="helpdesk_update, static/description/helpdesk-icon.png"
-    />
+              />
     <menuitem id="mesa_de_servicio"
               name="Mesa de servicio"
               parent="mesa_root"
               sequence="0"
-              action="mesa_action_window"/>
+              action="mesa_action_window"
+              />
+    <menuitem id="mesa_de_servicio_todos_los_tickets"
+              name="Todos los tickets"
+              parent="mesa_root"
+              sequence="1"
+              action="todos_los_tickets_action_window"
+              />
 
   </data>
 </odoo>
