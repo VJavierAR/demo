@@ -5806,9 +5806,9 @@ class helpdesk_update(models.Model):
         wiz = self.env['helpdesk.datos.toner'].create({
                                                         'ticket_id': self.id
                                                     })
-        idExterno = 'studio_customization.tiquete_del_servicio_e501a40f-0bd7-4726-b219-50085c31c177'
-        idExternoToner = 'studio_customization.tiquete_del_servicio_8a770195-f5a2-4b6c-b905-fc0ff46c1258'
-        pdf = self.env.ref(idExternoToner).sudo().render_qweb_pdf([self.id])[0]
+        #idExterno = 'studio_customization.tiquete_del_servicio_e501a40f-0bd7-4726-b219-50085c31c177'
+        #idExternoToner = 'studio_customization.tiquete_del_servicio_8a770195-f5a2-4b6c-b905-fc0ff46c1258'
+        #pdf = self.env.ref(idExternoToner).sudo().render_qweb_pdf([self.id])[0]
         wiz.pdfToner = base64.encodestring(pdf)
         view = self.env.ref('helpdesk_update.view_helpdesk_detalle_toner')
         return {
