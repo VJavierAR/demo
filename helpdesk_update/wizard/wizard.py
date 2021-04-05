@@ -3064,6 +3064,7 @@ class HelpDeskDatosToner(TransientModel):
             self.cliente = self.ticket_id.partner_id.id
     
     def _compute_tipo_cliente(self):
+        self.tipoCliente = None
         if self.ticket_id.x_studio_nivel_del_cliente:
             self.tipoCliente = self.ticket_id.x_studio_nivel_del_cliente
 
