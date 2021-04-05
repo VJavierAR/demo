@@ -403,6 +403,9 @@ class helpdesk_update(models.Model):
             if r.x_studio_id_ticket:
                r['x_studio_reftickettoner'] =  "<a href='https://vjavierar-demo-demo-2333330.dev.odoo.com/web#id="+str(r.x_studio_id_ticket)+"&action=358&active_id=8&model=helpdesk.ticket&view_type=form&cids=1&menu_id=231' target='_blank'>"+str(r.x_studio_id_ticket)+"</a>"
 
+    
+
+
     x_studio_numero_de_ticket_cliente = fields.Integer(string='Número de ticket cliente', store=True)
     x_studio_responsable_de_equipo = fields.Many2one('hr.employee', store=True, string='Encargado de área', track_visibility='onchange')
     x_studio_field_wK7RR = fields.Many2one('res.partner', store=True, string='Contactos foráneos', track_visibility='onchange')
@@ -638,7 +641,20 @@ class helpdesk_update(models.Model):
     ticketDeReincidencia = fields.Text(string = 'Ticket de provenencia', store = True)
 
     days_difference = fields.Integer(compute='_compute_difference',string='días de atraso')
-    x_studio_field_nO7Xg = fields.Many2one('sale.order')
+    x_studio_field_nO7Xg = fields.Many2one('sale.order', string="Pedido de venta")
+
+    x_studio_field_SbRz2 = fields.Many2one("stock.picking", string="Transfer alm", readonly=True, store=True, compute="_compute_x_studio_field_SbRz2")
+    @api.depends('x_studio_field_nO7Xg.delivery_count')
+    def _compute_x_studio_field_SbRz2(self):
+        self.x_studio_field_SbRz2 = None
+        for record in self:
+            if record.x_studio_field_nO7Xg.id and record.x_studio_field_nO7Xg.delivery_count > 0:
+                for r in record.x_studio_field_nO7Xg.picking_ids:
+                    if 'SU' in r.name:
+                        record['x_studio_field_SbRz2'] = r.id
+
+        
+    x_studio_backorder = fields.One2many("stock.picking", "backorder_id", string="Backorder", readonly=True, track_visibility="onchange", related="x_studio_field_SbRz2.backorder_ids")
 
     x_studio_fecha_prevista = fields.Datetime(string = 'Fecha Prevista')
     x_studio_fecha_nota = fields.Char(string='Fecha Nota', readonly=True)
