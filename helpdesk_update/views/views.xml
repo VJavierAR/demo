@@ -190,8 +190,6 @@
           <field name="x_studio_productos" string="Productos" invisible="1" options="{'no_create_edit': True, 'no_create': True}"  widget="many2many_tags" attrs="{'readonly': ['|', '|' ,('stage_id', '=', 3), ('stage_id', '=', 18), ('x_studio_field_nO7Xg', '!=', False) ]}"/>
           <field name="x_studio_field_nO7Xg" string="Pedido de venta" options="{'no_create_edit': True, 'no_create': True}" readonly="1"/>
           <field name="documentosTecnico" string="Evidencias técnico" attrs="{'invisible': 1, 'readonly': 0, 'required': 0}" invisible="1" widget="many2many_binary"/>
-          <button name="open_to_form_view" type="object" icon="fa-folder-open" string="abrir" invisible="1"/>
-          
           <field name="accesorios" string="Productos" options="{'no_create_edit': True, 'no_create': True}"  widget="many2many_tags" attrs="{'readonly': True }" invisible='1'/>
         </tree>
       </field>
@@ -838,7 +836,14 @@
       <field name="res_model">helpdesk.ticket</field>
       <field name="view_mode">tree,form</field>
       <field name="view_id" ref="view_mesa_todosLosTickets_tree"/>
-    </record> 
+    </record>
+
+    <record model="ir.actions.act_window" id="bitacora_action_window">
+      <field name="name">bitacora</field>
+      <field name="res_model">stock.production.lot</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_production_lot_tree"/>
+    </record>
 
     <menuitem id="mesa_root"
               name="Mesa"
@@ -861,6 +866,12 @@
               parent="mesa_root"
               sequence="2"
               action="todos_los_tickets_action_window"
+              />
+    <menuitem id="mesa_de_servicio_bitacora"
+              name="Bitacora"
+              parent="mesa_root"
+              sequence="3"
+              action="bitacora_action_window"
               />
 
   </data>
