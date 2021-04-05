@@ -28,7 +28,6 @@ class contactos(models.Model):
     x_studio_distribuidor = fields.Boolean(string = 'Distribuidor foráneo', store=True)
     x_studio_activo_1 = fields.Boolean(string = 'Activo final', store=True, track_visibility='onchange')
     x_studio_subtipo = fields.Selection([["Contacto comercial","Contacto comercial"],["Contacto sistemas","Contacto sistemas"],["Contacto para pagos","Contacto para pagos"],["Contacto para compras","Contacto para compras"],["Representante legal","Representante legal"],["Contacto de localidad","Contacto de localidad"],["Otro contacto","Otro contacto"]], string='', store=True, track_visibility='onchange')
-    x_studio_nivel_del_cliente = fields.Selection([["A","A"],["B","B"],["C","C"],["OTRO","D"],["VIP","VIP"],["Otro","Otro"],["Propio","Propio"]], string='Nivel del cliente', store=True, track_visibility='onchange')
 
 
 class zonaDistribuidor(models.Model):
@@ -48,6 +47,7 @@ class ContactosCes(models.Model):
     street_number=fields.Char(string='Exterior',track_visibility='onchange')
     street_number2=fields.Char(string='Interior',track_visibility='onchange')
     contact_address = fields.Char(string='Complete Address')
+    x_studio_nivel_del_cliente = fields.Selection([["A","A"],["B","B"],["C","C"],["OTRO","D"],["VIP","VIP"],["Otro","Otro"],["Propio","Propio"]], string='Nivel del cliente', store=True, track_visibility='onchange')
 
     def Reporte(self):
         fecha=datetime.datetime.now().date()
