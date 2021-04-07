@@ -2554,7 +2554,7 @@ class CrearYValidarSolTonerMassAction(TransientModel):
                     if self.almacenes:
                         ticket.write({'almacenes': self.almacenes.id})
                     ticket.write({'x_studio_field_nO7Xg': sale.id})
-                    self.env.cr.commit()
+
                     #record['x_studio_field_nO7Xg'] = sale.id
                     serieaca = ''
                     
@@ -2753,6 +2753,7 @@ class CrearYValidarSolTonerMassAction(TransientModel):
                                                             'creadoPorSistema': True
                                                         })
                         ticket.obten_ulimo_diagnostico_fecha_usuario()
+                        self.env.cr.commit()
                     else:
                         listaDeTicketsSinPoroductos.append(ticket.id)
                         
