@@ -2553,7 +2553,7 @@ class CrearYValidarSolTonerMassAction(TransientModel):
                     _logger.info("pedio de venta generado al validar toner: " + str(sale)) 
                     if self.almacenes:
                         ticket.write({'almacenes': self.almacenes.id})
-                    ticket.write({'x_studio_field_nO7Xg': sale.id})
+                    ticket.write({'x_studio_field_nO7Xg': sale})
                     #record['x_studio_field_nO7Xg'] = sale.id
                     serieaca = ''
                     
