@@ -85,6 +85,7 @@ class servicios_gnsys(models.Model):
     bolsaCambio=fields.Float()
 
     x_studio_solicitud = fields.Many2one('sale.order', string="Solicitud", readonly=True, store=True)
+    x_studio_field_7jBI3 = fields.Many2many('product.product', string="Producto", store=True)
 
     
     @api.onchange('serviciosNombre')
