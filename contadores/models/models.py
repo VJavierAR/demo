@@ -2424,7 +2424,7 @@ class lor(models.Model):
         #self.x_studio_ultima_ubicacin = ''
         for record in self:
             if r.x_studio_localidad_2.id:
-                if len(str(record.x_studio_localidad_2.display_name).rsplit(',',1))>=2 
+                if len(str(record.x_studio_localidad_2.display_name).rsplit(',',1))>=2:
                     record['x_studio_locacion_recortada'] = str(record.x_studio_localidad_2.display_name).rsplit(',',1)[1]
             """
             if record.x_studio_ultima_ubicacin:
