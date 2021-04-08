@@ -629,7 +629,7 @@ class contadores(models.Model):
     order_line = fields.One2many('contadores.lines','ticket',string='Order Lines')
     csvD = fields.Binary(string="Cargar por DCA csv")
     prefacturas=fields.Text(string="Pre-Factura")
-    x_studio_contratos = fields.Many2many('contrato', string='Contratos')
+    #x_studio_contratos = fields.Many2many('contrato', string='Contratos')
     
     
     
