@@ -2421,11 +2421,16 @@ class lor(models.Model):
     @api.depends('x_studio_ultima_ubicacin')
     def _compute_x_studio_locacion_recortada(self):
         self.x_studio_locacion_recortada = ''
-        self.x_studio_ultima_ubicacin = ''
+        #self.x_studio_ultima_ubicacin = ''
         for record in self:
+            if r.x_studio_localidad_2.id:
+                if len(str(record.x_studio_localidad_2.display_name).rsplit(',',1))>=2 
+                    record['x_studio_locacion_recortada'] = str(record.x_studio_localidad_2.display_name).rsplit(',',1)[1]
+            """
             if record.x_studio_ultima_ubicacin:
-                if(len(str(record.x_studio_ultima_ubicacin).rsplit(',',1))>=2):
+                if (len(str(record.x_studio_ultima_ubicacin).rsplit(',',1))>=2) :
                     record['x_studio_locacion_recortada'] = str(record.x_studio_ultima_ubicacin).rsplit(',',1)[1]
+            """
 
 
     x_studio_localidad = fields.Char(store=False, string='Localidad')
