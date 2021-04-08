@@ -50,7 +50,7 @@
 				                <field name="bolsaBN" readonly="0" modifiers="{}"/>
 				                <field name="clickExcedenteBN" readonly="0"  modifiers="{}"/>
 				                <field name="bolsaColor" modifiers="{}" readonly="0"/>
-				                <field name="clickExcedenteColor" modifiers="{}" readonly="1"/>
+				                <field name="clickExcedenteColor" modifiers="{}" readonly="0"/>
 				                <field name="fechaDeInicioDeServicio" widget="date" modifiers="{}" readonly="0"/>
 				                <field name="fechaDeFinDeServicio" widget="date" modifiers="{}" readonly="0"/>
 				            </group>
