@@ -630,7 +630,26 @@ class contadores(models.Model):
     csvD = fields.Binary(string="Cargar por DCA csv")
     prefacturas=fields.Text(string="Pre-Factura")
     x_studio_contratos = fields.Many2many('contrato', string='Contratos')
+
+    detalle = fields.One2many('contadores.contadores.detalle', inverse_name='contadores', string='Contadores', store=True)
+
+    x_studio_estado_capturas = fields.Char(string="Estado Capturas:", readonly=True, compute="_compute_x_studio_estado_capturas")
     
+    @api.depends('detalle')
+    def _compute_x_studio_estado_capturas(self):
+        self.x_studio_estado_capturas = ''
+        for r in self:
+            a=len(r.dca)
+            t=True
+            if a>0:
+              for d in r.dca:
+                  h=d.x_studio_capturar
+                  if str(h)=='False':
+                     t=False
+              if t:
+                 r['x_studio_estado_capturas']='Listo'
+              else:
+                 r['x_studio_estado_capturas']='No listo'
     
     
     @api.onchange('cliente')
