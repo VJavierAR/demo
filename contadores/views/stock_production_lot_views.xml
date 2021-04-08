@@ -205,7 +205,7 @@
                         <field name="x_studio_venta"/>
                         <field name="x_studio_ubicacion_id"/>
                         <field name="x_studio_ultma_ubicacin"/>
-                        <field name="x_studio_ultima_ubicacin"/>
+                        <!--<field name="x_studio_ultima_ubicacin"/>-->
                         <field name="x_studio_ubicaciontest"/>
                         <!--<field name="x_studio_locacion_recortada"/>-->
                         <field name="x_studio_delegacion"/>
