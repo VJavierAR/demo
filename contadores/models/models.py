@@ -2403,7 +2403,7 @@ class lor(models.Model):
     x_studio_ultima_ubicacin = fields.Char(readonly=True, store=False, string='Ultima Ubicación', compute = '_compute_x_studio_ultima_ubicacin')
     @api.depends('x_studio_cambio')
     def _compute_x_studio_ultima_ubicacin(self):
-        self.x_studio_ultima_ubicacin = None
+        self.x_studio_ultima_ubicacin = ''
         self.x_studio_delegacion = ''
         for r in self:
             tam = len(r.x_studio_move_line)
@@ -2419,7 +2419,7 @@ class lor(models.Model):
     @api.depends('x_studio_ultima_ubicacin')
     def _compute_x_studio_locacion_recortada(self):
         self.x_studio_locacion_recortada = ''
-        self.x_studio_ultima_ubicacin = None
+        self.x_studio_ultima_ubicacin = ''
         for record in self:
             if record.x_studio_ultima_ubicacin:
                 if(len(str(record.x_studio_ultima_ubicacin).rsplit(',',1))>=2):
