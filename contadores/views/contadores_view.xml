@@ -42,8 +42,7 @@
 				                
 				                          <button name="selecionaTODOContratos" string="Selecionar todos los contrato" type="object" />
 				                         <button name="desSelecionaTODOContratos" string="Deselecionar todos los contrato" type="object" />
-				            			<!--
-										comentado weeee
+				            			
 				            			<field style="color:black" name="x_studio_contratos" delete="0"  string="Contratos" domain="[('cliente','=',cliente)]" attrs="{}">
 				            			
 				                
@@ -55,7 +54,7 @@
 				                        
 				                 </tree>
 				          </field>     
-				                -->
+				                
 				    </page>
 				    
 				    
