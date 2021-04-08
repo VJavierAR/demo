@@ -14,7 +14,7 @@
     </record>
 
 
-        <record id="save_history_quant" model="ir.cron">
+    <record id="save_history_quant" model="ir.cron">
         <field name="name">Guardar hiistorial de Inventario</field>
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
@@ -26,4 +26,31 @@
         <field name="code">model.archivaReporte()</field>
     </record>
 
+  <record model="product.category" id="cat_toner"> 
+    <field name="name">Toner</field> 
+  </record>
+    <record model="product.category" id="cat_servicio"> 
+    <field name="name">Servicio</field> 
+  </record>
+    <record model="product.category" id="cat_refaccion"> 
+    <field name="name">Refacción</field> 
+  </record>
+    <record model="product.category" id="cat_producto"> 
+    <field name="name">Producto</field> 
+  </record>
+    <record model="product.category" id="cat_kit"> 
+    <field name="name">Kit de mtt</field> 
+  </record>
+      <record model="product.category" id="cat_conect"> 
+    <field name="name">Conectivity</field> 
+  </record>
+      <record model="product.category" id="cat_accesorio"> 
+    <field name="name">Accesorio</field> 
+  </record>
+      <record model="product.category" id="cat_software"> 
+    <field name="name">Software</field> 
+  </record>
+      <record model="product.category" id="cat_equipo"> 
+    <field name="name">Equipo</field> 
+  </record>
 </odoo>
