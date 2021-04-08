@@ -22,7 +22,7 @@
 				    <sheet string="Servicios">
 				        <group>
 				            <group>
-				                <field required="1" name="contrato" readonly="1" options="{&quot;always_reload&quot;: True ,'no_create_edit':True,'no_create':True}" />
+				                <field required="1" name="contrato"  />
 				                <field name="rfcCliente" modifiers="{}"/>
 				                <field  name="idtec" readonly="1" />
 				                <field name="id" modifiers="{}" />
@@ -47,12 +47,12 @@
 				        </group>
 				        <group>
 				            <group>
-				                <field name="bolsaBN" readonly="1" modifiers="{}"/>
-				                <field name="clickExcedenteBN" readonly="1"  modifiers="{}"/>
-				                <field name="bolsaColor" modifiers="{}" readonly="1"/>
+				                <field name="bolsaBN" readonly="0" modifiers="{}"/>
+				                <field name="clickExcedenteBN" readonly="0"  modifiers="{}"/>
+				                <field name="bolsaColor" modifiers="{}" readonly="0"/>
 				                <field name="clickExcedenteColor" modifiers="{}" readonly="1"/>
-				                <field name="fechaDeInicioDeServicio" widget="date" modifiers="{}" readonly="1"/>
-				                <field name="fechaDeFinDeServicio" widget="date" modifiers="{}" readonly="1"/>
+				                <field name="fechaDeInicioDeServicio" widget="date" modifiers="{}" readonly="0"/>
+				                <field name="fechaDeFinDeServicio" widget="date" modifiers="{}" readonly="0"/>
 				            </group>
 				            
 				            
@@ -62,10 +62,10 @@
 				                       
 				            
 				                <field name="cantidad"  modifiers="{}"/>
-				                <field name="importe" readonly="1" modifiers="{}"/>
-				                <field name="retencion" readonly="1" modifiers="{}"/>
-				                <field name="totalRetencion" readonly="1" modifiers="{}"/>
-				                <field name="nivelfactu" readonly="1"  modifiers="{}"/>
+				                <field name="importe" readonly="0" modifiers="{}"/>
+				                <field name="retencion" readonly="0" modifiers="{}"/>
+				                <field name="totalRetencion" readonly="0" modifiers="{}"/>
+				                <field name="nivelfactu" readonly="0"  modifiers="{}"/>
 				                <field name="codigosg"  readonly="1" modifiers="{}"/>
 				            
 				            </group>
