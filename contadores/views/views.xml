@@ -59,7 +59,7 @@
     
     
     <page name="studio_page_I0Vos" string="Contadores">
-                <group name="studio_group_I0Vos">
+                <group name="studio_group_I0Vos"> 
                 
                 <button name="carga_contadores_fac_invo" string="Terminar de capturar factura" type="object" confirm="Se generaran SO's en base a los contratos selecionados"/>
                 <button name="selecionaTODOLecturas" string="Selecionar todos las lecturas" type="object" />
