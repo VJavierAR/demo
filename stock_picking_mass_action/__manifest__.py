@@ -16,6 +16,7 @@
         'stock_account','vehiculos',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'wizard/mass_action_view.xml',
         'data/ir_cron.xml',
         'report/views.xml',
