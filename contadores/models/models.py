@@ -2398,8 +2398,10 @@ class lor(models.Model):
     x_studio_lec_ant_bn = fields.Integer(string='Lec. Ant. BN', readonly=True)
     
     x_studio_lec_ant_color = fields.Integer(string='Lec. Ant. color', readonly=True)
-    #x_studio_ultima_ubicacin = fields.Char(readonly=True, store=False, string='Ultima Ubicación')
+    x_studio_ultima_ubicacin = fields.Char(readonly=True, store=False, string='Ultima Ubicación')
     
+    """
+    Falta migrar a odoo 14
     x_studio_ultima_ubicacin = fields.Char(readonly=True, store=False, string='Ultima Ubicación', compute = '_compute_x_studio_ultima_ubicacin')
     @api.depends('x_studio_cambio')
     def _compute_x_studio_ultima_ubicacin(self):
@@ -2412,7 +2414,7 @@ class lor(models.Model):
                 loca = r.x_studio_localidad_2
                 r['x_studio_ultima_ubicacin'] = str(loca.display_name)
                 r['x_studio_delegacion'] = str(loca.l10n_mx_edi_locality)
-    
+    """
 
     x_studio_locacion_recortada = fields.Char(readonly=True, store=False, string='Locación', compute = '_compute_x_studio_locacion_recortada')
 
