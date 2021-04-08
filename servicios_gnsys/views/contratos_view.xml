@@ -2,6 +2,16 @@
 	<data>
 
 		
+		<record id="view_contrato_tree" model="ir.ui.view">
+      		<field name="name">contrato.tree</field>
+      		<field name="model">contrato</field>
+      		<field name="arch" type="xml">
+      			<tree>
+      				<field name="name"/>
+      			</tree>
+      		</field>
+      	</record>
+
 		<record id="view_contrato_form" model="ir.ui.view">
       		<field name="name">contrato.form</field>
       		<field name="model">contrato</field>
@@ -95,20 +105,37 @@
       		<field name="res_model">contrato</field>
       		<field name="view_mode">tree,form</field>
     	</record>
-    	<!--
+    	
+
+    	
+
+    	<record model="ir.actions.act_window" id="contratos_action_window">
+		    <field name="name">Contratos</field>
+			<field name="res_model">contrato</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_contrato_tree"/>
+	    </record>
+
+
     	<menuitem id="contrato_root"
 			      name="Contrato"
-			      
 			      web_icon="servicios_gnsys, static/description/contrato.png"
     	/>
-    -->
     	
+    	<menuitem id="contratos"
+              name="Contratos"
+              parent="contrato_root"
+              sequence="0"
+              action="contratos_action_window"
+              />
+    	
+    	<!--
     	<menuitem id="contrato_contrato"
     			  name="Contrato"
     			  sequence="40"
 				  parent="account_accountant.menu_accounting"
 				  action="contrato_action_window"
     	/>
-
+		-->
 	</data>
 </odoo>
