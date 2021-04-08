@@ -29,7 +29,7 @@ class contactos(models.Model):
     x_studio_activo_1 = fields.Boolean(string = 'Activo final', store=True, track_visibility='onchange')
     x_studio_subtipo = fields.Selection([["Contacto comercial","Contacto comercial"],["Contacto sistemas","Contacto sistemas"],["Contacto para pagos","Contacto para pagos"],["Contacto para compras","Contacto para compras"],["Representante legal","Representante legal"],["Contacto de localidad","Contacto de localidad"],["Otro contacto","Otro contacto"]], string='', store=True, track_visibility='onchange')
     x_studio_nivel_del_cliente = fields.Selection([["A","A"],["B","B"],["C","C"],["OTRO","D"],["VIP","VIP"]], string='Nivel del cliente', store=True, track_visibility='onchange')
-    x_x_studio_cliente__stock_production_lot_count=fields:Integer(default=0)
+    x_x_studio_cliente__stock_production_lot_count=fields.Integer(default=0)
 
     # x_x_studio_cliente__stock_production_lot_count=fields:Integer(compute='lot_count')
 
