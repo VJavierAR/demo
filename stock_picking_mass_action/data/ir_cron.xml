@@ -12,8 +12,6 @@
         <field name="state">code</field>
         <field name="code">model.check_assign_all()</field>
     </record>
-
-
     <record id="save_history_quant" model="ir.cron">
         <field name="name">Guardar hiistorial de Inventario</field>
         <field name="interval_number">1</field>
