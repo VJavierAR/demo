@@ -83,6 +83,9 @@ class servicios_gnsys(models.Model):
     fechaAplicacion=fields.Date()
     montoCambio=fields.Float()
     bolsaCambio=fields.Float()
+
+    x_studio_solicitud = fields.Many2one('sale.order', string="Solicitud", readonly=True, store=True)
+
     
     @api.onchange('serviciosNombre')
     def cambiarNombre(self):
