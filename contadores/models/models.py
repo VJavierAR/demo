@@ -2418,7 +2418,7 @@ class lor(models.Model):
 
     x_studio_locacion_recortada = fields.Char(readonly=True, store=False, string='Locación', compute = '_compute_x_studio_locacion_recortada')
 
-    @api.depends('x_studio_ultima_ubicacin')
+    @api.depends('x_studio_localidad_2')
     def _compute_x_studio_locacion_recortada(self):
         self.x_studio_locacion_recortada = ''
         #self.x_studio_ultima_ubicacin = ''
