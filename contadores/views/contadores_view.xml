@@ -2,7 +2,14 @@
 	<data>
 		
 		<!-- vistas lista -->
-
+		<record id="view_contadores_tree" model="ir.ui.view">
+			<field name="name">contadores.tree</field>
+			<field name="model">contadores.contadores</field>
+			<field name="arch" type="xml"></field>
+			<tree>
+				<field name="name"/>
+			</tree>
+		</record>
 
 		<!-- vistas formulario -->
 		<record id="view_contadores_form" model="ir.ui.view">
@@ -132,7 +139,7 @@
 		    <field name="name">Contadores</field>
 			<field name="res_model">contadores.contadores</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="view_contadores_form"/>
+			<field name="view_id" ref="view_contadores_tree"/>
 	    </record>
 
 
