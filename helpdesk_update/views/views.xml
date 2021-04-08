@@ -822,6 +822,7 @@
       <field name="name">mesa</field>
       <field name="res_model">helpdesk.ticket</field>
       <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_mesa_tree"/>
     </record>
 
     <record model="ir.actions.act_window" id="toner_action_window">
