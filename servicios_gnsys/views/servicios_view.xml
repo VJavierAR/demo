@@ -22,7 +22,7 @@
 				    <sheet string="Servicios">
 				        <group>
 				            <group>
-				                <field required="1" name="contrato" readonly="0" options="{&quot;always_reload&quot;: True ,'no_create_edit':True,'no_create':True}" />
+				                <field required="1" name="contrato"  />
 				                <field name="rfcCliente" modifiers="{}"/>
 				                <field  name="idtec" readonly="1" />
 				                <field name="id" modifiers="{}" />
