@@ -117,7 +117,7 @@
                                                 }"
                                                 force_save="1"
                                                />
-                                <field name="x_studio_field_9nQhR" domain="[('x_studio_ultima_ubicacin','=',x_studio_cliente)]"/>
+                                <field name="x_studio_field_9nQhR" />
                                 <field name="x_studio_categoria" attrs="{}" invisible="1"/>
                                 <field name="x_studio_cat" attrs="{}" invisible="1"/>
                                 <field name="x_studio_cliente" attrs="{}" invisible="1"/>
