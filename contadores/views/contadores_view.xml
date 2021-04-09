@@ -84,6 +84,7 @@
 				          			</field>
 				          			<field name="archivoglobal" widget="many2many_binary"/> 
 				                </group>
+				                <field name="x_studio_facturas" string="Facturas"/>
 				            </page>
 				        </notebook>
 				    </sheet>
@@ -97,6 +98,7 @@
 				    
 				</form>
 			</field>
+
 		</record>
 
 

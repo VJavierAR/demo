@@ -108,7 +108,7 @@ class dcas(models.Model):
     comentarioDeReinicio = fields.Text(string = 'Comentario de reinicio de contador')
     reinicioDeContador = fields.Boolean(string = 'Reinicio de contador')
     
-    ticket_techra = fields.Many2one('helpdesk.ticket.techra', string = 'Ticket techra relacion')
+    #ticket_techra = fields.Many2one('helpdesk.ticket.techra', string = 'Ticket techra relacion')
     ticket_techra_texto = fields.Text(string = 'Ticket techra texto')
     creado_por_tickets_techra = fields.Boolean(string = 'Creado por ppanificador de ticket techra', default = False)
     x_studio_tiquete=fields.Many2one('helpdesk.ticket')
@@ -2750,7 +2750,7 @@ class lor(models.Model):
 
         #tickets techra
         #dominio_tickets_techra = [(serie_name, 'in', 'numeroDeSerieTechra')]
-        tickets_techra = self.env['helpdesk.ticket.techra'].search([('numeroDeSerieTechra', 'ilike', serie_name)])
+        #tickets_techra = self.env['helpdesk.ticket.techra'].search([('numeroDeSerieTechra', 'ilike', serie_name)])
         #tickets_techra = tickets_techra.filtered(lambda x: serie_name in x.numeroDeSerieTechra )
         #_logger.info('tickets_techra: ' + str(tickets_techra))
 
