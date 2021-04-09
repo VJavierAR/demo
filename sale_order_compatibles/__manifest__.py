@@ -39,7 +39,7 @@
     'qweb': [
         'static/src/xml/pick_xml.xml'
     ],
-        'installable': True,
+    'installable': True,
     'application': True,
     'auto_install': False,
 }
