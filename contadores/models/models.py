@@ -619,6 +619,8 @@ class contadores(models.Model):
     mes=fields.Selection(valores,string='Mes',default='04')
     anio= fields.Selection(get_years(), string='Año',default=2020)
     archivoglobal = fields.Many2many('ir.attachment',string="Evidencia global")    
+    x_studio_contratos = fields.Many2many('contrato',string="contratos")    
+    x_studio_facturas = fields.Many2many('account.move',string="Facturas")    
     excelD = fields.Binary(string="Documento Excel")      
     dca = fields.One2many('dcas.dcas',inverse_name='contador_id',string='DCAS')
     cliente = fields.Many2one('res.partner', store=True,string='Cliente')
