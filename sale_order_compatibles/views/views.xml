@@ -74,9 +74,12 @@
         </div>
         <group>
             <group>
-                <field name="partner_id" widget="res_partner_many2one" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options='{"no_create_edit": True,"no_create": True,"no_open": True}'/>
+                <!--<field name="partner_id" widget="res_partner_many2one" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1, 'show_vat': True}" options='{"no_create_edit": True,"no_create": True,"no_open": True}'/>
                 <field name="partner_invoice_id" groups="sale.group_delivery_invoice_address" domain="['&amp;',('parent_id','=',partner_id),('type','=','invoice')]" context="{'default_type':'invoice'}" options='{"no_create_edit": True,"no_create": True,"no_open": True}'/>
-                <field name="partner_shipping_id" groups="sale.group_delivery_invoice_address" domain="['&amp;',('parent_id','=',partner_id),('type','=','delivery')]" context="{'default_type':'delivery'}" options='{"no_create_edit": True,"no_create": True,"no_open": True}'/>
+                <field name="partner_shipping_id" groups="sale.group_delivery_invoice_address" domain="['&amp;',('parent_id','=',partner_id),('type','=','delivery')]" context="{'default_type':'delivery'}" options='{"no_create_edit": True,"no_create": True,"no_open": True}'/>-->
+                <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}" options="{&quot;always_reload&quot;: True}"/>
+                <field name="partner_invoice_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'invoice'}" options="{&quot;always_reload&quot;: True}"/>
+                <field name="partner_shipping_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'delivery'}" options="{&quot;always_reload&quot;: True}"/>
             </group>
             <group>
                 <field name="validity_date" attrs="{'invisible': [('state', 'in', ['sale', 'done'])]}"/>
