@@ -113,4 +113,12 @@ class StockMoveLine(Model):
     x_studio_arreglo=fields.Char()
     x_studio_almacen = fields.Char(related='location_id.x_studio_field_JoD2k.display_name', string='Almacen')
     x_studio_field_aVMhn=fields.Many2one(related='product_id.categ_id')
+    x_studio_field_3lDS0=fields.Many2one('stock.warehouse',compute='alma')
+
+    @api.depends('location_id','write_date')
+    def alma(self):
+        for r in self:
+            if(r.location_id):
+                if(r.location_id.x_studio_field_JoD2k):
+                  r['x_studio_field_3lDS0']=r.location_id.x_studio_field_JoD2k.id
 
