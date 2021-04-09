@@ -5297,13 +5297,13 @@ class helpdesk_update(models.Model):
             for dca in self.x_studio_equipo_por_nmero_de_serie_1:
                 if dca.colorEquipo == 'Color':
                     if not dca.x_studio_cartuchonefro and not dca.x_studio_cartucho_amarillo and not dca.x_studio_cartucho_cian_1 and not dca.x_studio_cartucho_magenta:
-                        self.noCrearTicket = True
+                        #self.noCrearTicket = True
                         mensajeTitulo = "Alerta!!!"
                         mensajeCuerpo = "Crearas un ticket sin cartucho seleccionado. Selecciona al menos uno para la serie " + str(dca.serie.name)
                         todasLasAlertas = todasLasAlertas + '\n\n' + mensajeCuerpo
                 elif dca.colorEquipo == 'B/N':
                     if not dca.x_studio_cartuchonefro:
-                        self.noCrearTicket = True
+                        #self.noCrearTicket = True
                         mensajeTitulo = "Alerta!!!"
                         mensajeCuerpo = "Crearas un ticket sin cartucho seleccionado. Selecciona al menos uno para la serie " + str(dca.serie.name)
                         
