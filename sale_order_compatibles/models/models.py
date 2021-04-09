@@ -132,7 +132,7 @@ class sale_update(models.Model):
 	x_studio_usuario_creacion_1=fields.Char(compute='us')
 	x_studio_requiere_instalacin = fields.Boolean(string = 'Requiere instalación', store=True, compute='_compute_x_studio_requiere_instalacin')
 	x_studio_observaciones=fields.Text()
-
+	x_studio_cobrar_contrato=fields.Boolean()
 
 	@api.depends('order_line')
 	def _compute_x_studio_requiere_instalacin(self):
