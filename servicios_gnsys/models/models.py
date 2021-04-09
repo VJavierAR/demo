@@ -193,6 +193,7 @@ class contratos(models.Model):
     dividirServicios = fields.Boolean(string="Dividir Servicios", default=False)
     dividirExcedentes = fields.Boolean(string="Dividir Excedentes", default=False)
     mostrarUbicaciones = fields.Boolean(string="Mostrar Ubicaciones", default=False)
+    x_studio_cobrar_contrato = fields.Boolean(string="Cobrar", default=False)
     
     
     
