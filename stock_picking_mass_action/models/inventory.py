@@ -117,8 +117,9 @@ class StockMoveLine(Model):
 
     @api.depends('location_id','write_date')
     def alma(self):
+        valor=False
         for r in self:
             if(r.location_id):
                 if(r.location_id.x_studio_field_JoD2k):
-                  self.x_studio_field_3lDS0=r.location_id.x_studio_field_JoD2k.id
-
+                  valor=r.location_id.x_studio_field_JoD2k.id
+        self.x_studio_field_3lDS0=valor
