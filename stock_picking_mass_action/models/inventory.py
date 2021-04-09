@@ -110,7 +110,7 @@ class StockMoveLine(Model):
 
 class StockMoveLine(Model):
     _inherit = 'stock.move.line'
-
+    x_studio_arreglo=fields.Char()
     x_studio_almacen = fields.Char(related='location_id.x_studio_field_JoD2k.display_name', string='Almacen')
 
 
