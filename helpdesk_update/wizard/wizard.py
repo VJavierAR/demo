@@ -2554,6 +2554,8 @@ class CrearYValidarSolTonerMassAction(TransientModel):
                     if self.almacenes:
                         ticket.write({'almacenes': self.almacenes.id})
                     ticket.write({'x_studio_field_nO7Xg': sale.id})
+                    query = "update helpdesk_ticket set x_studio_field_nO7Xg = " + str(sale.id) + " where id = " + str(ticket.id) + ";"
+                    ss = self.env.cr.execute(query)
 
                     #record['x_studio_field_nO7Xg'] = sale.id
                     serieaca = ''
