@@ -114,7 +114,7 @@ class StockMoveLine(Model):
     x_studio_almacen = fields.Char(related='location_id.x_studio_field_JoD2k.display_name', string='Almacen')
     x_studio_field_aVMhn=fields.Many2one(related='product_id.categ_id')
     x_studio_field_3lDS0=fields.Many2one('stock.warehouse',compute='alma')
-
+    x_studio_comentarios=fields.Text()
     @api.depends('location_id','write_date')
     def alma(self):
         valor=False
