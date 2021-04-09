@@ -117,6 +117,7 @@ class StockMoveLine(Model):
     x_studio_comentarios=fields.Text()
     x_studio_ticket=fields.Char()
     x_studio_orden_de_venta=fields.Char()
+    x_studio_field_y5FBs=fields.Integer(default=0)
     @api.depends('location_id','write_date')
     def alma(self):
         valor=False
