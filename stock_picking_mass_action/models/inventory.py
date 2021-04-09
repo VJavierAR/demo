@@ -122,6 +122,7 @@ class StockMoveLine(Model):
     x_studio_modelo_equipo=fields.Char()
     x_studio_estado_destino=fields.Char()
     x_studio_colonia_destino=fields.Char()
+    x_studio_coment=fields.Char()
     @api.depends('location_id','write_date')
     def alma(self):
         valor=False
