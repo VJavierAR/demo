@@ -620,7 +620,7 @@ class contadores(models.Model):
     anio= fields.Selection(get_years(), string='Año',default=2020)
     archivoglobal = fields.Many2many('ir.attachment',string="Evidencia global")    
     x_studio_contratos = fields.Many2many('contrato',string="contratos")    
-    x_studio_facturas = fields.Many2many('account.move',string="Facturas")    
+
     excelD = fields.Binary(string="Documento Excel")      
     dca = fields.One2many('dcas.dcas',inverse_name='contador_id',string='DCAS')
     cliente = fields.Many2one('res.partner', store=True,string='Cliente')
@@ -632,7 +632,7 @@ class contadores(models.Model):
     csvD = fields.Binary(string="Cargar por DCA csv")
     prefacturas=fields.Text(string="Pre-Factura")
     x_studio_contratos = fields.Many2many('contrato', string='Contratos')
-
+    x_studio_facturas = fields.Many2many('account.move',string="Facturas")    
     detalle = fields.One2many('contadores.contadores.detalle', inverse_name='contadores', string='Contadores', store=True)
 
     x_studio_estado_capturas = fields.Char(string="Estado Capturas:", readonly=True, compute="_compute_x_studio_estado_capturas")
