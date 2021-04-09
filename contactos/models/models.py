@@ -31,6 +31,7 @@ class contactos(models.Model):
     x_studio_nivel_del_cliente = fields.Selection([["A","A"],["B","B"],["C","C"],["OTRO","D"],["VIP","VIP"]], string='Nivel del cliente', store=True, track_visibility='onchange')
     x_x_studio_cliente__stock_production_lot_count=fields.Integer(default=0)
     x_studio_vendedor=fields.Many2one('hr.employee')
+    x_studio_ejecutivo=fields.Many2one('hr.employee')
     # x_x_studio_cliente__stock_production_lot_count=fields:Integer(compute='lot_count')
 
     # def lot_count(self):
