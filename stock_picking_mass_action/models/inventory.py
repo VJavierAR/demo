@@ -120,5 +120,5 @@ class StockMoveLine(Model):
         for r in self:
             if(r.location_id):
                 if(r.location_id.x_studio_field_JoD2k):
-                  r['x_studio_field_3lDS0']=r.location_id.x_studio_field_JoD2k.id
+                  r.x_studio_field_3lDS0=r.location_id.x_studio_field_JoD2k.id
 
