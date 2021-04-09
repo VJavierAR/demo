@@ -403,4 +403,4 @@ class SaleLines(models.Model):
 	_inherit='sale.order.line'
 	x_studio_estado=fields.Selection([["Obsoleto","Obsoleto"],["Usado","Usado"],["Hueso","Hueso"],["Para reparación","Para reparación"],["Nuevo","Nuevo"],["Buenas condiciones","Buenas condiciones"],["Excelentes condiciones","Excelentes condiciones"],["Back-up","Back-up"],["Dañado","Dañado"]])
 	x_studio_field_9nQhR=fields.Many2one('stock.production.lot')
-	x_studio_categoria=fields:Char()
+	x_studio_categoria=fields.Char()
