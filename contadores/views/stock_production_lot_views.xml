@@ -241,7 +241,9 @@
         </form>
       </field>
     </record>
-        <record id="stock.action_production_lot_form" model="ir.actions.act_window">
+
+<!--
+    <record id="stock.action_production_lot_form" model="ir.actions.act_window">
         <field name="name">Lots/Serial Numbers</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">stock.production.lot</field>
@@ -260,5 +262,6 @@
           </p>
         </field>
     </record> 
+-->
   </data>
 </odoo>
