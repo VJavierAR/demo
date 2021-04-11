@@ -45,14 +45,14 @@
 		                        <button name="selecionaTODOContratos" string="Selecionar todos los contrato" type="object" />
 		                        <button name="desSelecionaTODOContratos" string="Deselecionar todos los contrato" type="object" />
 		            		
-								
+								<!--
 		            			<field style="color:black" name="x_studio_contratos" delete="0"  string="Contratos" domain="[('cliente','=',cliente)]" attrs="{}">
 				            		<tree delete="0" string="cx"  editable="bottom" limit="1000" options="{'no_create_edit':True,'no_create':True}">
-				                        <!--<field name="name" readonly="1"/>-->
+				                        <field name="name" readonly="1"/>
 				                        <field name="x_studio_cobrar_contrato" />
 				                	</tree>
 				          		</field>     
-				                
+				                -->
 				    		</page>
 				    		<page name="studio_page_I0Vos" string="Contadores">
 				                <group name="studio_group_I0Vos">
