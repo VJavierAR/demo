@@ -2984,138 +2984,141 @@ class lor(models.Model):
                     }
 
                     $(document).ready( function () {
-                        var table = $('#table_id').DataTable( {
-                            dom: 'Bfrtip',
-                            lengthMenu: [
-                                [ 10, 25, 50, -1 ],
-                                [ '10 filas', '25 filas', '50 filas', 'Todas las filas' ]
-                            ],
-                            buttons: [
-                                'pageLength',
-                                'copyHtml5',
-                                'excelHtml5',
-                                'csvHtml5',
-                                'pdfHtml5'
-                            ],
-                            "language": {
-                                "lengthMenu": "Mostrar _MENU_ registros por página",
-                                "zeroRecords": "Sin registros - perdón =(",
-                                "info": "Página _PAGE_ de _PAGES_",
-                                "infoEmpty": "No hay registros disponibles",
-                                "infoFiltered": "(Filtrado de _MAX_ registros)",
-                                "search": "Buscar",
-                                "Previous": "Anterior",
-                                "Next": "Siguiente"
-                            },
-                            "scrollX": true,
-                            scrollY: '50vh',
-                            scrollCollapse: true,
-                            "columnDefs": [
-                                {
-                                    "targets": [ 13 ],
-                                    "visible": false,
-                                    "searchable": true
-                                }
-                            ],
-                            "columns": [
-                                {
-                                    "class":          "details-control",
-                                    "orderable":      false,
-                                    "data":           null,
-                                    "defaultContent": '<i class="fa fa-info-circle" aria-hidden="false"> </ i>'
+                        try {
+                            var table = $('#table_id').DataTable( {
+                                dom: 'Bfrtip',
+                                lengthMenu: [
+                                    [ 10, 25, 50, -1 ],
+                                    [ '10 filas', '25 filas', '50 filas', 'Todas las filas' ]
+                                ],
+                                buttons: [
+                                    'pageLength',
+                                    'copyHtml5',
+                                    'excelHtml5',
+                                    'csvHtml5',
+                                    'pdfHtml5'
+                                ],
+                                "language": {
+                                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                                    "zeroRecords": "Sin registros - perdón =(",
+                                    "info": "Página _PAGE_ de _PAGES_",
+                                    "infoEmpty": "No hay registros disponibles",
+                                    "infoFiltered": "(Filtrado de _MAX_ registros)",
+                                    "search": "Buscar",
+                                    "Previous": "Anterior",
+                                    "Next": "Siguiente"
                                 },
-                                { "data": "Ticket" },
-                                { "data": "Fecha" },
-                                { "data": "No. Serie" },
-                                { "data": "Cliente" },
-                                { "data": "Área de atención" },
-                                { "data": "Zona" },
-                                { "data": "Ubicación" },
-                                { "data": "Falla" },
-                                { "data": "último estatus ticket" },
-                                { "data": "Contadores" },
-                                { "data": "última Nota" },
-                                { "data": "Fecha nota" },
-                                { "data": "DatosTicket" }
-                            ],
-                            "order": [[2, 'desc']],
-                            colReorder: true
-                        } );
-
-                        var detailRows = [];
-
-                        $('#table_id tbody').on( 'click', 'tr td.details-control', function () {
-                            var tr = $(this).closest('tr');
-                            var row = table.row( tr );
-                            var idx = $.inArray( tr.attr('id'), detailRows );
-                            
-                            var data_ticket_c = JSON.parse( row.data().DatosTicket );
-                            //console.log(isEmpty(data_ticket_c))
-                            if ( !isEmpty( data_ticket_c ) ) {
-
-                                if ( row.child.isShown() ) {
-                                    tr.removeClass( 'details' );
-                                    row.child.hide();
-                         
-                                    // Remove from the 'open' array
-                                    detailRows.splice( idx, 1 );
-
-                                } else {
-                                    tr.addClass( 'details' );
-                                    row.child( format( row.data(), table_id ) ).show();
-                                    
-
-                                    //table_diagnostico
-                                    //var table_diagnostico = $('table.display').DataTable( {
-                                    //var table_diagnostico = row.child.DataTable( {
-                                    var table_diagnostico = $('#table_diagnostico_' + table_id).DataTable( {
-                                        dom: 'Bfrtip',
-                                        lengthMenu: [
-                                            [ 10, 25, 50, -1 ],
-                                            [ '10 filas', '25 filas', '50 filas', 'Todas las filas' ]
-                                        ],
-                                        buttons: [
-                                            'pageLength',
-                                            'copyHtml5',
-                                            'excelHtml5',
-                                            'csvHtml5',
-                                            'pdfHtml5'
-                                        ],
-                                        "language": {
-                                            "lengthMenu": "Mostrar _MENU_ registros por página",
-                                            "zeroRecords": "Sin registros - perdón =(",
-                                            "info": "Página _PAGE_ de _PAGES_",
-                                            "infoEmpty": "No hay registros disponibles",
-                                            "infoFiltered": "(Filtrado de _MAX_ registros)",
-                                            "search": "Buscar",
-                                            "Previous": "Anterior",
-                                            "Next": "Siguiente"
-                                        },
-                                        "columns": [
-                                            { "data": "Creado_el" },
-                                            { "data": "Estado_de_ticket" },
-                                            { "data": "Diagnostico" },
-                                            { "data": "Encargado" }
-                                        ],
-                                        "order": [[0, 'asc']],
-                                        colReorder: true
-                                    } );
-
-
-                                    table_id += 1
-
-
-                                    // Add to the 'open' array
-                                    if ( idx === -1 ) {
-                                        detailRows.push( tr.attr('id') );
+                                "scrollX": true,
+                                scrollY: '50vh',
+                                scrollCollapse: true,
+                                "columnDefs": [
+                                    {
+                                        "targets": [ 13 ],
+                                        "visible": false,
+                                        "searchable": true
                                     }
-                                }
-                            } else {
-                                alert("No se cuentan con diagnosticos en el ticket seleccionado")
-                            }
-                        } );
-                        
+                                ],
+                                "columns": [
+                                    {
+                                        "class":          "details-control",
+                                        "orderable":      false,
+                                        "data":           null,
+                                        "defaultContent": '<i class="fa fa-info-circle" aria-hidden="false"> </ i>'
+                                    },
+                                    { "data": "Ticket" },
+                                    { "data": "Fecha" },
+                                    { "data": "No. Serie" },
+                                    { "data": "Cliente" },
+                                    { "data": "Área de atención" },
+                                    { "data": "Zona" },
+                                    { "data": "Ubicación" },
+                                    { "data": "Falla" },
+                                    { "data": "último estatus ticket" },
+                                    { "data": "Contadores" },
+                                    { "data": "última Nota" },
+                                    { "data": "Fecha nota" },
+                                    { "data": "DatosTicket" }
+                                ],
+                                "order": [[2, 'desc']],
+                                colReorder: true
+                            } );
 
+                            var detailRows = [];
+
+                            $('#table_id tbody').on( 'click', 'tr td.details-control', function () {
+                                var tr = $(this).closest('tr');
+                                var row = table.row( tr );
+                                var idx = $.inArray( tr.attr('id'), detailRows );
+                                
+                                var data_ticket_c = JSON.parse( row.data().DatosTicket );
+                                //console.log(isEmpty(data_ticket_c))
+                                if ( !isEmpty( data_ticket_c ) ) {
+
+                                    if ( row.child.isShown() ) {
+                                        tr.removeClass( 'details' );
+                                        row.child.hide();
+                             
+                                        // Remove from the 'open' array
+                                        detailRows.splice( idx, 1 );
+
+                                    } else {
+                                        tr.addClass( 'details' );
+                                        row.child( format( row.data(), table_id ) ).show();
+                                        
+
+                                        //table_diagnostico
+                                        //var table_diagnostico = $('table.display').DataTable( {
+                                        //var table_diagnostico = row.child.DataTable( {
+                                        var table_diagnostico = $('#table_diagnostico_' + table_id).DataTable( {
+                                            dom: 'Bfrtip',
+                                            lengthMenu: [
+                                                [ 10, 25, 50, -1 ],
+                                                [ '10 filas', '25 filas', '50 filas', 'Todas las filas' ]
+                                            ],
+                                            buttons: [
+                                                'pageLength',
+                                                'copyHtml5',
+                                                'excelHtml5',
+                                                'csvHtml5',
+                                                'pdfHtml5'
+                                            ],
+                                            "language": {
+                                                "lengthMenu": "Mostrar _MENU_ registros por página",
+                                                "zeroRecords": "Sin registros - perdón =(",
+                                                "info": "Página _PAGE_ de _PAGES_",
+                                                "infoEmpty": "No hay registros disponibles",
+                                                "infoFiltered": "(Filtrado de _MAX_ registros)",
+                                                "search": "Buscar",
+                                                "Previous": "Anterior",
+                                                "Next": "Siguiente"
+                                            },
+                                            "columns": [
+                                                { "data": "Creado_el" },
+                                                { "data": "Estado_de_ticket" },
+                                                { "data": "Diagnostico" },
+                                                { "data": "Encargado" }
+                                            ],
+                                            "order": [[0, 'asc']],
+                                            colReorder: true
+                                        } );
+
+
+                                        table_id += 1
+
+
+                                        // Add to the 'open' array
+                                        if ( idx === -1 ) {
+                                            detailRows.push( tr.attr('id') );
+                                        }
+                                    }
+                                } else {
+                                    alert("No se cuentan con diagnosticos en el ticket seleccionado")
+                                }
+                            } );
+                        } catch (error) {
+                            console.error("error");
+                            console.error(error);
+                        }
                     } );
 
                 </script>
