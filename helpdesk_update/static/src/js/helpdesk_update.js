@@ -58,9 +58,14 @@ odoo.define('invoice.action_button_helpdesk', function (require) {
                         this.$buttons.find('.oe_action_button_ticket_reporte2').click(this.proxy('action_def_reporte_2'));
                     } else {
                         console.log("Entre porque no fue ninguna")
-			    		this.$buttons.find('.o_list_button_add').show();
-			    		this.$buttons.find('.oe_action_button_helpdesk').hide();
-                        this.$buttons.find('.oe_action_button_ticket_reporte').hide();
+                        try {
+                            this.$buttons.find('.o_list_button_add').show();
+                            this.$buttons.find('.oe_action_button_helpdesk').hide();
+                            this.$buttons.find('.oe_action_button_ticket_reporte').hide();
+                        } catch (error) {
+                            console.error(error);
+                        }
+			    		
 			    	}
 		    	}
 		   	}
