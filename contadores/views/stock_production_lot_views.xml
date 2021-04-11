@@ -70,7 +70,7 @@
 
                 <notebook>
                     <page string="Tickets" name="tickets">
-                        <!--<field name="html" widget="html"/>-->
+                        <field name="html" widget="html"/>
                     </page>
                     <page string="Lecturas" name="lecturas">
                         <group>
