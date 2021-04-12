@@ -125,7 +125,7 @@ class sale_update(models.Model):
         ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', track_sequence=3, default='draft')
 	x_studio_field_RnhKr=fields.Many2one('res.partner','Contacto')
 	x_studio_field_bxHgp=fields.Many2one('helpdesk.ticket','Ticket')
-	x_studio_tipo_de_solicitud=fields.Selection([["Cambio","Cambio"],["Arrendamiento","Arrendamiento"],["Venta","Venta"],["Backup","Backup"],["Demostración","Demostración"],["Retiro","Retiro"],["Préstamo","Préstamo"]])
+	x_studio_tipo_de_solicitud=fields.Selection([["Cambio","Cambio"],["Arrendamiento","Arrendamiento"],["Venta","Venta"],["Backup","Backup"],["Demostración","Demostración"],["Retiro","Retiro"],["Préstamo","Préstamo"]], string="Tipo de Solicitud", store=True)
 	x_studio_factura=fields.Char()
 	x_studio_arreglo=fields.Char()
 	x_studio_localidades=fields.Char(compute='localid')
